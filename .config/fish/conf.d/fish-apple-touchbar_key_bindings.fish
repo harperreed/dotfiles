@@ -1,0 +1,1 @@
+__fish_apple_touchbar_first_view
