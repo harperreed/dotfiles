@@ -1,0 +1,38 @@
+#!/usr/bin/ruby
+
+require 'rubygems'
+require 'osx/cocoa'
+
+include OSX
+NSBundle.bundleWithPath("/System/Library/Frameworks/CalendarStore.framework").load
+ns_import :CalendarStore
+
+class NSDate
+  def formatted(format)
+    formatter = NSDateFormatter.new
+    formatter.dateFormat = format
+    formatter.stringFromDate(self)
+  end
+end
+
+class CalEvent
+  def to_nice
+    time_part = (self.isAllDay == 1) ? " '(All Day)'" : " 'at' HH:mm";
+    format = "EEEE#{time_part}"
+    "(#{self.calendar.title}) #{self.title} - #{self.startDate.formatted(format)}"
+  end
+end
+
+store = CalCalendarStore.defaultCalendarStore()
+
+cals = store.calendars.reject {|cal| cal.title == "Library Loans"}
+
+eventPred = CalCalendarStore.eventPredicateWithStartDate_endDate_calendars_(NSDate.date,
+  NSDate.dateWithNaturalLanguageString("next week"), cals)
+events = store.eventsWithPredicate(eventPred)
+
+puts "This Week"
+puts
+events.each do |event|
+  puts event.to_nice
+end

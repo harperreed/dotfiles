@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# usage: tarscp <host> [remote-dir [local-file ...]]
+#
+# Uses tar, bzip2, and ssh to transfer files to a remote host. It's
+# faster than scp -Cr with many small files.
+#
+# If no files are specified the current directory is copied to
+# remote-dir on host. If remote-dir is not specified the name of the
+# current directory is used as the remote directory.
+#
+# You may want to use gzip instead of bzip2 on slower machines,
+# bzip2's runtime can be longer than transfer times with fast
+# connections.
+#
+
+usage() {
+    echo "usage: $(basename $0) <host> [remote-dir [local-file ...]]"
+    exit 1
+}
+
+[[ $# < 1 ]] && usage
+
+HOST="$1"; shift
+DIR="$1"; shift
+
+if [[ "$1" = "" ]]; then
+    FILES="."
+    if [[ "$DIR" = "" ]]; then
+        DIR=$(basename $(dirname $PWD/.))
+    fi
+else
+    FILES="$@"
+fi
+
+tar cjf - "$FILES" | ssh "$HOST" "mkdir -p '${DIR}' && tar xjf - -C '${DIR}'"

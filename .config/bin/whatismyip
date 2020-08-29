@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# could be an alias but I'll leave it here anyway
+
+curl http://icanhazip.com
