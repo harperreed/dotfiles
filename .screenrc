@@ -1,0 +1,42 @@
+# ~/.screenrc
+
+# UTF-8 everywhere
+defutf8 on
+
+# disable Ctrl-S/Ctrl-Q "flow control"
+defflow off
+
+# skip intro
+startup_message off
+
+# detach on disconnect
+autodetach on
+
+# use regular audible bell
+vbell off
+
+# use backtick for prefix key instead of Ctrl-A
+#escape ``
+
+# make the shell in every window a login shell
+shell -$SHELL
+
+# connect windows to the display so programs like mplayer can find it when
+# we're inside a screen in a terminal application in a graphical environment
+setenv DISPLAY ':0'
+
+# print wackier status messages
+nethack on
+
+# restore window contents after using (e.g.) vi
+altscreen on
+
+# show MPD info in status bar
+backtick 1 5 5 hostname
+
+# Set the caption on the bottom line:
+# window-list <nowplaying> <mm/dd/yy> <HH:MM>am/pm
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %1` %m/%d/%y %C:%s%a"
+
+# default windows
+screen -t

@@ -1,0 +1,125 @@
+# based on gmail/mutt notes at:
+# http://www.techrepublic.com/blog/opensource/easy-gmail-reading-with-mutt/1737 
+set imap_user="harper@nata2.org"
+source "gpg -d ~/.mutt/passwords.gpg |"
+set smtp_authenticators = 'gssapi:login'
+
+
+# SSL hardening
+set ssl_force_tls=yes
+set ssl_starttls=yes
+set ssl_use_sslv2=no
+set ssl_use_sslv3=no
+set ssl_use_tlsv1=no
+set ssl_use_tlsv1_1=no
+set ssl_use_tlsv1_2=yes
+set ssl_verify_dates=yes
+set ssl_verify_host=yes
+
+#Misc
+set smtp_url="smtp://harper@nata2.org@smtp.gmail.com:587/"
+set folder="imaps://imap.gmail.com:993"
+set spoolfile="+INBOX"
+set imap_check_subscribed
+set hostname=nata2.org
+set mail_check=120
+set timeout=300
+set postponed="+[Gmail]/Drafts"
+set beep=no
+set realname="Harper Reed"
+set from="harper@nata2.org"
+set use_from=yes
+set use_envelope_from=yes
+set arrow_cursor
+set certificate_file=~/.mutt/gmail_certificates
+set implicit_autoview
+auto_view text/html
+#set mailcap_path="~/.mailcap"
+set hidden_host                           # Hide host details.
+set envelope_from                         # set the envelope-from information
+set reverse_name=yes                      # build From: in the reply based on the To: address (must have
+set charset=iso-8859-1                    # One of those days in England...
+set noallow_8bit                          # 8bit isn't safe via Demon.
+set ascii_chars=yes                       # use ascii characters when displaying trees
+#set edit_headers                          # I want to edit the message headers.
+set fast_reply                            # skip initial prompts when replying
+set nomark_old                            # Don't mark unread new msgs as old.
+set nomarkers                             # Don't want any wrap markers.
+set pager_context=6                       # Display 3 lines of context in pager.
+#set pager_index_lines=20
+set nostrict_threads                      # Lets have some fuzzy threading.
+set nopipe_decode                         # Don't decode messages when piping.
+set text_flowed                           # label messages as format-flowed
+
+unset move           # gmail does that
+set delete           # don't ask, just do
+unset confirmappend  # don't ask, just do!
+set quit             # don't ask, just do!!
+unset mark_old       # read/new is good enough for me
+
+# sort/threading
+set sort     = threads
+set sort_aux = reverse-last-date-received
+set sort_re
+
+# look and feel
+set menu_scroll
+set smart_wrap
+set tilde
+unset markers
+
+
+# composing 
+set fcc_attach
+unset mime_forward
+set forward_format = "Fwd: %s"
+set include
+set forward_quote
+
+ignore *                               # first, ignore all headers
+unignore from: to: cc: date: subject:  # then, show only these
+hdr_order from: to: cc: date: subject: # and in this order
+
+bind index ' ' next-page
+bind index '-' previous-page
+bind index c mail
+bind index g change-folder
+bind index x sync-mailbox
+
+bind pager ' ' next-page
+bind pager '-' previous-page
+bind pager c mail
+bind pager g change-folder
+
+bind index G imap-fetch-mail
+
+#color index     blue    default "~C USER"   # to or cc USER
+#color index     red     default ~D          # deleted
+#color index     green   default ~U          # unread
+#color index     yellow  default ~T          # tagged
+#color indicator black   yellow
+#color message   black   red
+#color quoted1   cyan    black
+#color quoted2   yellow  black
+#color quoted3   red     black
+#color quoted4   green   black
+#color quoted5   blue    black
+#color quoted6   green   black
+#color signature blue    black
+#color status    blue    black
+#color tree      cyan    black 
+
+#secure
+set editor="vim +13 -c 'set nobackup' -c 'set noswapfile' -c 'set nowritebackup' -c 'set tw=72 ft=mail noautoindent'"
+unset ssl_usesystemcerts
+
+
+#PGP
+source ~/.mutt/gpg.rc
+
+
+#source ~/.mutt/mutt-colors-solarized-light-16.muttrc
+source ~/.mutt/mutt-colors-solarized-dark-16.muttrc
+#source ~/.mutt/mutt-colors-solarized-dark-256.muttrc
+
+
