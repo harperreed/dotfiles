@@ -1,0 +1,39 @@
+[user]
+	name = Harper Reed
+	email = harper@nata2.org
+[github]
+	user = harperreed
+	token = d1be01fd129ee6c822e169659e0df8cb
+
+[alias]
+        st = status
+        ci = commit
+        br = branch
+        co = checkout
+        df = diff
+        lg = log -p
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit
+        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+        ls = ls-files
+
+[color]
+        ui = true
+[color "diff"]
+        whitespace = red reverse
+[color]
+        ui = true
+[color "diff"]
+        whitespace = red reverse
+[core]
+        whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+        excludesfile = /opt/boxen/config/git/gitignore
+[push]
+	default = simple
+
+[hub]
+protocol = https
+
+[credential]
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
