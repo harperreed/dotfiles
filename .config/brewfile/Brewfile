@@ -21,6 +21,8 @@ brew "go"
 brew "protobuf"
 brew "grpc"
 brew "htop"
+brew "neovim"
+
 brew "hugo"
 brew "iat"
 brew "jenv"
