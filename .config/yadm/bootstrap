@@ -17,7 +17,7 @@ if [ "$system_type" = "Darwin" ]; then
 
   # look for a brewfile and bootstrap brew
   if [ -f "$HOME/.config/brewfile/Brewfile" ]; then
-    brew-file install 
+    brew bundle --file "$HOME/.config/brewfile/Brewfile"
   fi
 
   # if we have fish make it the default shell
