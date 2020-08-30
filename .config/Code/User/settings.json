@@ -1,0 +1,9 @@
+{
+    "liveshare.accountProvider": "github",
+    "liveshare.account": "harper@nata2.org",
+    "liveshare.diagnosticLogging": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "liveshare.audio.joinCallBehavior": "accept",
+    "python.languageServer": "Microsoft"
+}

@@ -1,0 +1,24 @@
+[global_config]
+  title_transmit_bg_color = "#888a85"
+  suppress_multiple_term_dialog = True
+[keybindings]
+[profiles]
+  [[default]]
+    audible_bell = True
+    visible_bell = True
+    urgent_bell = True
+    background_color = "#282828"
+    background_darkness = 0.87
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#ebdbb2"
+    palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000ee:#cd00cd:#00cdcd:#e5e5e5:#7f7f7f:#ff0000:#00ff00:#ffff00:#5c5cff:#ff00ff:#00ffff:#ffffff"
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]

@@ -6,3 +6,4 @@ authorized_keys
 .ssh/id_ed25519
 known_hosts
 .secrets/secrets.env
+.config/remmina/remmina.pref
