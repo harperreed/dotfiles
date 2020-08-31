@@ -52,9 +52,5 @@ end
 
 kitty + complete setup fish | source
 
-
-alias rm trash-put
-alias vim nvim
-
-
-
+source ~/.config/fish/fish_aliases
+source ~/.config/fish/fish_paths
