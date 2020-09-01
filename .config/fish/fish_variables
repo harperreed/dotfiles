@@ -30,7 +30,3 @@ SETUVAR fish_pager_color_completion:\x1d
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-<<<<<<< HEAD
-SETUVAR fish_user_paths:/Users/harper/src/go/bin\x1e/Users/harper/.config/bin\x1e\x2e\x1e/usr/local/opt/fzf/bin\x1e/Users/harper/\x2efzf/bin\x1e/Users/harper/\x2easdf/installs/golang/1\x2e12\x2e6/packages/bin/\x1e/Users/rhys/\x2efzf/bin\x1e/Users/rhys/Library/Python/3\x2e7/bin
-=======
->>>>>>> 4ec0316d1406eeca7babefbac6e88d4679dc8adb
