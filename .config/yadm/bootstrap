@@ -3,6 +3,7 @@
 system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin" ]; then
+  echo "OMG OSX"
   
   # if we have fonts get them to the greek
   if [ -d "$~/.config/fonts/" ]; then
@@ -35,5 +36,9 @@ if [ "$system_type" = "Darwin" ]; then
     base16-manager set rebecca
   fi
 
+elif [ "$system_type" = "Linux" ]; then
+
+   echo "OMG Linux"
+   sudo apt install fish kitty yadm
 fi
 
