@@ -5,7 +5,6 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "liveshare.audio.joinCallBehavior": "accept",
-    "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
     "workbench.colorTheme": "SynthWave '84",
     "window.zoomLevel": 1,
     "workbench.colorCustomizations": {},
