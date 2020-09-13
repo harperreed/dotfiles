@@ -5,5 +5,7 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "liveshare.audio.joinCallBehavior": "accept",
-    "python.languageServer": "Microsoft"
+    "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
+    "workbench.colorTheme": "Community Material Theme Darker High Contrast",
+    "window.zoomLevel": 0
 }
