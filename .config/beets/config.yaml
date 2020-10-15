@@ -1,0 +1,7 @@
+directory: /media/scrap/music
+library: /media/scrap/music/musiclibrary.db
+
+import:
+    move: yes
+    quiet_fallback: asis
+    default_action: asis
