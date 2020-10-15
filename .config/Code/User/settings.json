@@ -5,8 +5,10 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "liveshare.audio.joinCallBehavior": "accept",
-    "workbench.colorTheme": "SynthWave '84",
+    "workbench.colorTheme": "Black Sand",
     "window.zoomLevel": 1,
     "workbench.colorCustomizations": {},
-    "git.autofetch": true
+    "git.autofetch": true,
+    "python.languageServer": "Microsoft",
+    "editor.tabSize": 2
 }
