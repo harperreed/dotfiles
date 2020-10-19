@@ -56,3 +56,8 @@ source ~/.config/fish/fish_aliases
 source ~/.config/fish/fish_paths
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/harper/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/home/harper/Downloads/google-cloud-sdk/path.fish.inc'; end
+
+hostname | figlet |lolcat
+fortune |lolcat
+echo
+echo
