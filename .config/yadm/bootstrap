@@ -27,18 +27,11 @@ if [ "$system_type" = "Darwin" ]; then
     echo `which fish` | sudo tee -a /etc/shells
     chsh -s `which fish`
   fi
- 
-  if command -v base16-manager >/dev/null 2>&1; then
-    echo "Setting up system-wide colour theming"
-    base16-manager install chriskempson/base16-shell
-    base16-manager install chriskempson/base16-vim
-    base16-manager install kdrag0n/base16-kitty
-    base16-manager set rebecca
-  fi
+
 
 elif [ "$system_type" = "Linux" ]; then
 
    echo "OMG Linux"
-   sudo apt install fish kitty yadm
+   sudo apt install fish kitty yadm figlet lolcat
 fi
 
