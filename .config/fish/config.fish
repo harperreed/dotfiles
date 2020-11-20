@@ -49,6 +49,12 @@ for i in (cat ~/.secrets/secrets.env)
         end
 end
 
+function fish_greeting
+    hostname | figlet |lolcat
+    fortune -a |lolcat
+echo
+echo
+end
 
 kitty + complete setup fish | source
 
@@ -57,7 +63,4 @@ source ~/.config/fish/fish_paths
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/harper/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/home/harper/Downloads/google-cloud-sdk/path.fish.inc'; end
 
-hostname | figlet |lolcat
-fortune |lolcat
-echo
-echo
+
