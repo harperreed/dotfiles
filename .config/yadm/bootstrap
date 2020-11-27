@@ -32,6 +32,6 @@ if [ "$system_type" = "Darwin" ]; then
 elif [ "$system_type" = "Linux" ]; then
 
    echo "OMG Linux"
-   sudo apt install fish kitty yadm figlet lolcat
+   sudo apt install fish kitty yadm figlet lolcat variety fortune remmina
 fi
 
