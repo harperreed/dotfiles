@@ -9,6 +9,12 @@
     "window.zoomLevel": 1,
     "workbench.colorCustomizations": {},
     "git.autofetch": true,
-    "python.languageServer": "Microsoft",
-    "editor.tabSize": 2
+    "python.languageServer": "Pylance",
+    "editor.tabSize": 2,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ]
 }
