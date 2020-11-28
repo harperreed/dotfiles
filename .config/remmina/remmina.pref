@@ -98,6 +98,7 @@ periodic_usage_stats_uuid_prefix=
 periodic_rmnews_last_get=1602702114
 periodic_rmnews_get_count=8
 periodic_rmnews_uuid_prefix=KWMGHRSAR13SYW
+periodic_news_permitted=false
 
 [remmina]
 name=
