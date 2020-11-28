@@ -32,6 +32,27 @@ if [ "$system_type" = "Darwin" ]; then
 elif [ "$system_type" = "Linux" ]; then
 
    echo "OMG Linux"
-   sudo apt install fish kitty yadm figlet lolcat variety fortune remmina
+   sudo apt install fish kitty yadm figlet lolcat variety fortune remmina npm speedtest-cli bsdgames -y
+   
+   #keybase
+  if [ ! -f /etc/apt/sources.list.d/keybase.list ]; then
+    curl https://keybase.io/docs/server_security/code_signing_key.asc | gpg --dearmor > keybase.gpg
+    sudo mv keybase.gpg /etc/apt/trusted.gpg.d/keybase.gpg
+    sudo sh -c 'echo "deb [arch=amd64] https://prerelease.keybase.io/deb stable main" > /etc/apt/sources.list.d/keybase.list'
+    sudo apt-get update
+  fi
+  
+  sudo apt-get install keybase -y # or code-insiders
+  
+  #CODE
+    if [ ! -f /etc/apt/sources.list.d/vscode.list ]; then
+      curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+      sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+      sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+      sudo apt-get update
+    fi
+
+    sudo apt-get install code -y # or code-insiders
+
 fi
 
