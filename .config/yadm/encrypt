@@ -7,3 +7,4 @@ authorized_keys
 known_hosts
 .secrets/secrets.env
 .config/remmina/remmina.pref
+.gcloud/*.json
