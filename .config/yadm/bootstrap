@@ -34,31 +34,31 @@ elif [ "$system_type" = "Linux" ]; then
    echo "OMG Linux"
    sudo apt install fish  yadm figlet lolcat  fortune npm speedtest-cli bsdgames -y
    
-   if ! xset q &>/dev/null; then
-    echo "No X server at \$DISPLAY [$DISPLAY]" >&2
-    exit 1
-   elif
-    npm install variety kitty remmina -y
-     #keybase
-    if [ ! -f /etc/apt/sources.list.d/keybase.list ]; then
-      curl https://keybase.io/docs/server_security/code_signing_key.asc | gpg --dearmor > keybase.gpg
-      sudo mv keybase.gpg /etc/apt/trusted.gpg.d/keybase.gpg
-      sudo sh -c 'echo "deb [arch=amd64] https://prerelease.keybase.io/deb stable main" > /etc/apt/sources.list.d/keybase.list'
-      sudo apt-get update
-    fi
-  
-    sudo apt-get install keybase -y # or code-insiders
-
-    #CODE
-      if [ ! -f /etc/apt/sources.list.d/vscode.list ]; then
-        curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-        sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-        sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+    if ! xset q &>/dev/null; then
+        echo "No X server at \$DISPLAY [$DISPLAY]" >&2
+        exit 1
+    elif xset q &>/dev/null; then
+        npm install variety kitty remmina -y
+        #keybase
+        if [ ! -f /etc/apt/sources.list.d/keybase.list ]; then
+        curl https://keybase.io/docs/server_security/code_signing_key.asc | gpg --dearmor > keybase.gpg
+        sudo mv keybase.gpg /etc/apt/trusted.gpg.d/keybase.gpg
+        sudo sh -c 'echo "deb [arch=amd64] https://prerelease.keybase.io/deb stable main" > /etc/apt/sources.list.d/keybase.list'
         sudo apt-get update
-      fi
+        fi
+  
+        sudo apt-get install keybase -y # or code-insiders
 
-      sudo apt-get install code -y # or code-insiders
-   fi
+        #CODE
+        if [ ! -f /etc/apt/sources.list.d/vscode.list ]; then
+            curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+            sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+            sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+            sudo apt-get update
+        fi
+
+        sudo apt-get install code -y # or code-insiders
+    fi
    
    
 
