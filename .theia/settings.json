@@ -1,0 +1,16 @@
+{
+   "editor.autoSave": "on",
+   "preview.openByDefault": true,
+   "workspace.preserveWindow": true,
+   "files.watcherExclude": {
+      "**/.cache/**": true,
+      "**/.git/**": true,
+      "**/node_modules/**": true
+   },
+   "go.useLanguageServer": true,
+   "go.useGoProxyToCheckForToolUpdates": false,
+   "python.autoUpdateLanguageServer": false,
+   "workbench.colorTheme": "Monokai",
+"workbench.iconTheme": "theia-file-icons",
+"csharp.suppressDotnetRestoreNotification": true
+}
