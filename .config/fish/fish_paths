@@ -1,2 +1,3 @@
 set -gx PATH /home/harper/.npm-global/bin/ $PATH
+set -gx PATH ~/.npm-global/bin/ $PATH
 set -gx PATH /home/harper/.config/bin/ $PATH
