@@ -1,0 +1,168 @@
+[io/elementary/appcenter/settings]
+last-refresh-time=int64 1607804084
+window-maximized=false
+window-position=(265, 151)
+window-size=(1100, 660)
+
+[org/gnome/control-center]
+last-panel='user-accounts'
+
+[org/gnome/desktop/app-folders/folders/Pop-Office]
+apps=['libreoffice-calc.desktop', 'libreoffice-draw.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'libreoffice-startcenter.desktop', 'libreoffice-writer.desktop']
+name='Office'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/Pop-System]
+apps=['gnome-language-selector.desktop', 'gnome-session-properties.desktop', 'gnome-system-monitor.desktop', 'im-config.desktop', 'nm-connection-editor.desktop', 'nvidia-settings.desktop', 'org.gnome.baobab.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.PowerStats.desktop', 'org.gnome.seahorse.Application.desktop', 'software-properties-gnome.desktop', 'system76-driver.desktop', 'system76-firmware.desktop']
+name='System'
+translate=true
+
+[org/gnome/desktop/app-folders/folders/Pop-Utility]
+apps=['com.github.donadigo.eddy.desktop', 'com.system76.Popsicle.desktop', 'gucharmap.desktop', 'info.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.Extensions.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.font-viewer.desktop', 'org.gnome.Screenshot.desktop', 'org.gnome.Totem.desktop', 'simple-scan.desktop', 'yelp.desktop']
+name='Utilities'
+translate=true
+
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///home/harper/Pictures/variety-copied-wallpaper-49729d11f0ca4f2640ffe6bff11217d8.jpg'
+primary-color='#000000'
+secondary-color='#000000'
+
+[org/gnome/desktop/input-sources]
+current=uint32 0
+per-window=false
+sources=[('xkb', 'us')]
+xkb-options=@as []
+
+[org/gnome/desktop/interface]
+gtk-im-module='gtk-im-context-simple'
+gtk-theme='Pop-dark'
+
+[org/gnome/desktop/notifications]
+application-children=['io-elementary-appcenter', 'google-chrome', 'org-gnome-nautilus', 'kitty', 'chrome-bgkodfmeijboinjdegggmkbkjfiagaan-default', 'org-gnome-chromegnomeshell', 'org-gnome-extensions-desktop', 'gnome-network-panel']
+
+[org/gnome/desktop/notifications/application/chrome-bgkodfmeijboinjdegggmkbkjfiagaan-default]
+application-id='chrome-bgkodfmeijboinjdegggmkbkjfiagaan-Default.desktop'
+
+[org/gnome/desktop/notifications/application/gnome-network-panel]
+application-id='gnome-network-panel.desktop'
+
+[org/gnome/desktop/notifications/application/google-chrome]
+application-id='google-chrome.desktop'
+
+[org/gnome/desktop/notifications/application/io-elementary-appcenter]
+application-id='io.elementary.appcenter.desktop'
+
+[org/gnome/desktop/notifications/application/kitty]
+application-id='kitty.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-chromegnomeshell]
+application-id='org.gnome.ChromeGnomeShell.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-extensions-desktop]
+application-id='org.gnome.Extensions.desktop.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-nautilus]
+application-id='org.gnome.Nautilus.desktop'
+
+[org/gnome/desktop/peripherals/touchpad]
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/privacy]
+report-technical-problems=true
+
+[org/gnome/desktop/screensaver]
+color-shading-type='solid'
+lock-delay=uint32 0
+picture-options='zoom'
+picture-uri='file:///home/harper/Pictures/variety-copied-wallpaper-49729d11f0ca4f2640ffe6bff11217d8.jpg'
+primary-color='#000000'
+secondary-color='#000000'
+
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
+[org/gnome/desktop/session]
+idle-delay=uint32 60
+
+[org/gnome/desktop/sound]
+allow-volume-above-100-percent=true
+
+[org/gnome/evolution-data-server]
+migrated=true
+network-monitor-gio-name=''
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='icon-view'
+executable-text-activation='ask'
+search-filter-time-type='last_modified'
+
+[org/gnome/nautilus/window-state]
+initial-size=(890, 550)
+maximized=false
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-last-coordinates=(41.90615696011519, -87.678068699999997)
+
+[org/gnome/settings-daemon/plugins/xsettings]
+antialiasing='grayscale'
+hinting='slight'
+
+[org/gnome/shell]
+enabled-extensions=['alt-tab-raise-first-window@system76.com', 'always-show-workspaces@system76.com', 'batteryiconfix@kylecorry31.github.io', 'pop-shell@system76.com', 'pop-shop-details@system76.com', 'system76-power@system76.com', 'ubuntu-appindicators@ubuntu.com', 'dash-to-dock@micxgx.gmail.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'openweather-extension@jenslody.de', 'sound-output-device-chooser@kgshank.net', 'appindicatorsupport@rgcjonas.gmail.com', 'TopIcons@phocean.net', 'update-extensions@franglais125.gmail.com', 'ding@rastersoft.com', 'system-monitor@paradoxxx.zero.gmail.com']
+favorite-apps=['google-chrome.desktop', 'chrome-bgkodfmeijboinjdegggmkbkjfiagaan-Default.desktop', 'kitty.desktop']
+
+[org/gnome/shell/extensions/dash-to-dock]
+dash-max-icon-size=24
+dock-position='RIGHT'
+height-fraction=0.90000000000000002
+icon-size-fixed=false
+isolate-monitors=false
+isolate-workspaces=false
+preferred-monitor=0
+show-mounts=true
+show-trash=false
+
+[org/gnome/shell/extensions/ding]
+icon-size='small'
+show-home=false
+show-trash=false
+show-volumes=false
+
+[org/gnome/shell/extensions/openweather]
+city='41.890555,-87.687272>Chicago, Cook County, Illinois, 60612, United States of America >-1'
+days-forecast=2
+decimal-places=1
+geolocation-provider='openstreetmaps'
+position-in-panel='center'
+pressure-unit='inHg'
+show-comment-in-forecast=true
+show-text-in-panel=true
+translate-condition=true
+unit='fahrenheit'
+use-default-owm-key=true
+use-symbolic-icons=true
+weather-provider='openweathermap'
+wind-direction=true
+wind-speed-unit='mph'
+
+[org/gnome/shell/extensions/system-monitor]
+icon-display=true
+
+[org/gnome/system/location]
+enabled=true
+
+[org/gtk/settings/file-chooser]
+date-format='regular'
+location-mode='path-bar'
+show-hidden=false
+show-size-column=true
+show-type-column=true
+sidebar-width=150
+sort-column='name'
+sort-directories-first=true
+sort-order='ascending'
+type-format='category'
+window-position=(1690, 407)
+window-size=(1124, 822)
