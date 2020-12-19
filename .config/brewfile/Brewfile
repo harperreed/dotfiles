@@ -5,14 +5,12 @@ tap "homebrew/cask-drivers"
 tap "homebrew/core"
 tap "wtfutil/wtfutil"
 
-brew "act"
 brew "ansible"
 brew "app-engine-python"
 brew "awscli"
 brew "boost"
 brew "glib"
 brew "fdupes"
-brew "harfbuzz"
 brew "ffmpeg"
 brew "fortune"
 brew "gnutls"
@@ -44,13 +42,8 @@ brew "wget"
 brew "wtfutil"
 brew "lolcat"
 brew "figlet"
-brew "heroku/brew/heroku"
-
 
 tap "chrokh/tap"
-brew "base16-manager"
-
-
 
 cask "appcleaner"
 cask "charles"
