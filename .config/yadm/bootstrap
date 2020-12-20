@@ -1,32 +1,60 @@
 #!/bin/bash
 
 system_type=$(uname -s)
+arch_type=$(uname -m)
 
 if [ "$system_type" = "Darwin" ]; then
   echo "OMG OSX"
-  
-  # if we have fonts get them to the greek
-  if [ -d "$~/.config/fonts/" ]; then
-     cp ~/.config/fonts/*.ttf /Library/Fonts/
-  fi
-  
-  # install homebrew if it's missing
-  if ! command -v brew >/dev/null 2>&1; then
-    echo "Installing homebrew"
-    curl -fsSL https://raw.github.com/rcmdnk/homebrew-file/install/install.sh |sh
-  fi
 
-  # look for a brewfile and bootstrap brew
-  if [ -f "$HOME/.config/brewfile/Brewfile" ]; then
-    brew bundle --file "$HOME/.config/brewfile/Brewfile"
-  fi
+  if [ "$arch_type" = "arm64" ]; then
+    echo "The newest in new"
 
-  # if we have fish make it the default shell
-  if command -v fish >/dev/null 2>&1; then
-    echo "Setting Fish as default shell"
-    echo `which fish` | sudo tee -a /etc/shells
-    chsh -s `which fish`
+    if ! command -v brew >/dev/null 2>&1; then
+      echo "Installing arm homebrew"
+      sudo mkdir -p /opt/homebrew
+      sudo chown -R $(whoami):staff /opt/homebrew
+      cd /opt
+      curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C homebrew
+    fi
+
+    # look for a brewfile and bootstrap brew
+    if [ -f "$HOME/.config/brewfile/Brewfile" ]; then
+      brew bundle --file "$HOME/.config/brewfile/Brewfile.arm64"
+    fi
+
+    # if we have fish make it the default shell
+    if command -v fish >/dev/null 2>&1; then
+      echo "Setting Fish as default shell"
+      echo `which fish` | sudo tee -a /etc/shells
+      chsh -s `which fish`
+    fi
+
+  else
+    echo "this"
+    # if we have fonts get them to the greek
+    if [ -d "$~/.config/fonts/" ]; then
+      cp ~/.config/fonts/*.ttf /Library/Fonts/
+    fi
+    
+    # install homebrew if it's missing
+    if ! command -v brew >/dev/null 2>&1; then
+      echo "Installing homebrew"
+      curl -fsSL https://raw.github.com/rcmdnk/homebrew-file/install/install.sh |sh
+    fi
+
+    # look for a brewfile and bootstrap brew
+    if [ -f "$HOME/.config/brewfile/Brewfile" ]; then
+      brew bundle --file "$HOME/.config/brewfile/Brewfile"
+    fi
+
+    # if we have fish make it the default shell
+    if command -v fish >/dev/null 2>&1; then
+      echo "Setting Fish as default shell"
+      echo `which fish` | sudo tee -a /etc/shells
+      chsh -s `which fish`
+    fi
   fi
+  
 
 
 elif [ "$system_type" = "Linux" ]; then

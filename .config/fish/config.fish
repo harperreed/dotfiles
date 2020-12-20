@@ -51,12 +51,15 @@ end
 
 function fish_greeting
     hostname | figlet |lolcat
-    fortune -a |lolcat
+    fortune |lolcat
 echo
 echo
 end
 
-kitty + complete setup fish | source
+if type -q kitty
+    kitty + complete setup fish | source
+end
+
 
 source ~/.config/fish/fish_aliases
 source ~/.config/fish/fish_paths
