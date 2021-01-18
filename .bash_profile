@@ -117,7 +117,9 @@ fi
 #
 # run fortune at startup
 #
-fortune
+hostname |figlet -f ~/.config/fonts/Bloody.flf|lolcat
+fortune |lolcat
+
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
