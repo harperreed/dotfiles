@@ -50,7 +50,7 @@ for i in (cat ~/.secrets/secrets.env)
 end
 
 function fish_greeting
-    hostname | figlet -f ~/.config/fonts/Bloody.flf |lolcat
+    hostname -s | figlet -f ~/.config/fonts/Bloody.flf |lolcat
     fortune |lolcat
 echo
 echo
