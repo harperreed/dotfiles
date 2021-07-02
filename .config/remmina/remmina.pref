@@ -66,6 +66,8 @@ ssh_tcp_keepidle=20
 ssh_tcp_keepintvl=10
 ssh_tcp_keepcnt=3
 ssh_tcp_usrtimeout=60000
+screenshot_name=remmina_%p_%h_%Y%m%d-%H%M%S
+trust_all=false
 
 [ssh_colors]
 background=#d5ccba
@@ -87,6 +89,7 @@ color12=#426a79
 color13=#97522c
 color14=#989a9c
 color15=#d5ccba
+bold=#45373c
 
 [usage_stats]
 periodic_usage_stats_permission_asked=true
