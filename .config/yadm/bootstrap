@@ -60,35 +60,74 @@ if [ "$system_type" = "Darwin" ]; then
 elif [ "$system_type" = "Linux" ]; then
 
    echo "OMG Linux"
-   sudo apt install fish  yadm figlet lolcat fortune speedtest-cli bsdgames -y
+   sudo apt install fish yadm figlet lolcat fortune speedtest-cli bsdgames neovim -y
    
     if ! xset q &>/dev/null; then
         echo "No X server at \$DISPLAY [$DISPLAY]" >&2
         exit 1
     elif xset q &>/dev/null; then
-        sudo apt install variety kitty remmina -y
+        sudo apt install variety kitty remmina vim-gtk -y
+
         #keybase
         if [ ! -f /etc/apt/sources.list.d/keybase.list ]; then
         curl https://keybase.io/docs/server_security/code_signing_key.asc | gpg --dearmor > keybase.gpg
         sudo mv keybase.gpg /etc/apt/trusted.gpg.d/keybase.gpg
         sudo sh -c 'echo "deb [arch=amd64] https://prerelease.keybase.io/deb stable main" > /etc/apt/sources.list.d/keybase.list'
-        sudo apt-get update
         fi
-  
-        sudo apt-get install keybase -y # or code-insiders
 
         #CODE
         if [ ! -f /etc/apt/sources.list.d/vscode.list ]; then
             curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
             sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
             sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-            sudo apt-get update
         fi
 
-        sudo apt-get install code -y # or code-insiders
+        #SyncThing
+        if [ ! -f /etc/apt/sources.list.d/syncthing.list ]; then
+            sudo curl -s -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+            echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+            printf "Package: *\nPin: origin apt.syncthing.net\nPin-Priority: 990\n" | sudo tee /etc/apt/preferences.d/syncthing
+        fi
+
+        #1Password
+        if [ ! -f /etc/apt/sources.list.d/1password.list ]; then
+            curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+            echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
+            sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
+            curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
+            sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
+            curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
+        fi
+
+        sudo apt-get update
+        sudo apt-get install code keybase syncthing 1password -y # or code-insiders
+
+        wget -O /tmp/discord.deb "https://discord.com/api/download?platform=linux&format=deb"
+        sudo dpkg -i /tmp/discord.deb
+
     fi
-   
-   
+
+    #Tailscale
+    if [ ! -f /etc/apt/sources.list.d/tailscale.list ]; then
+        curl -fsSL https://pkgs.tailscale.com/unstable/ubuntu/hirsute.gpg | sudo apt-key add -
+        curl -fsSL https://pkgs.tailscale.com/unstable/ubuntu/hirsute.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+    fi
+
+    #nodejs16
+    if [ ! -f /etc/apt/sources.list.d/nodesource.list ]; then
+        sudo apt remove nodejs -y
+        curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    fi
+
+    sudo apt-get update
+    sudo apt install nodejs tailscale -y
+
+    echo
+    echo "You will have to manually install slack, discord, steam and chrome"
+    echo
+
+    echo "Don't forget to change your shell to fish:"
+    echo "chsh -s /usr/bin/fish"
 
 fi
 
