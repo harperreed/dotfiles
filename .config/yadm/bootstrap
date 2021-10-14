@@ -60,7 +60,7 @@ if [ "$system_type" = "Darwin" ]; then
 elif [ "$system_type" = "Linux" ]; then
 
    echo "OMG Linux"
-   sudo apt install fish yadm figlet lolcat fortune speedtest-cli bsdgames neovim -y
+   sudo apt install fish yadm figlet lolcat fortune speedtest-cli bsdgames golang-go neovim -y
    
     if ! xset q &>/dev/null; then
         echo "No X server at \$DISPLAY [$DISPLAY]" >&2
