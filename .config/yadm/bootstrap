@@ -66,7 +66,7 @@ elif [ "$system_type" = "Linux" ]; then
         echo "No X server at \$DISPLAY [$DISPLAY]" >&2
         exit 1
     elif xset q &>/dev/null; then
-        npm install variety kitty remmina -y
+        sudo apt install variety kitty remmina -y
         #keybase
         if [ ! -f /etc/apt/sources.list.d/keybase.list ]; then
         curl https://keybase.io/docs/server_security/code_signing_key.asc | gpg --dearmor > keybase.gpg
