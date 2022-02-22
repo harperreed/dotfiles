@@ -20,10 +20,6 @@
         ui = true
 [color "diff"]
         whitespace = red reverse
-[color]
-        ui = true
-[color "diff"]
-        whitespace = red reverse
 [core]
         whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
         excludesfile = /opt/boxen/config/git/gitignore
