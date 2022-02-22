@@ -30,4 +30,8 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+<<<<<<< HEAD
 SETUVAR fish_user_paths:/Users/harper/\x2econfig/nvm/17\x2e1\x2e0/bin\x1e/Users/harper/\x2econfig/nvm/17\x2e0\x2e1/bin
+=======
+SETUVAR fish_user_paths:/home/harper/\x2econfig/nvm/15\x2e14\x2e0/bin\x1e/home/harper/\x2eyarn/bin
+>>>>>>> 4b9f8a5b88849542065eca2721f916fc47cdf41a
