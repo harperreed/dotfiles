@@ -9,3 +9,4 @@ known_hosts
 .config/remmina/remmina.pref
 .gcloud/*.json
 .npmrc
+.wakatime.cfg

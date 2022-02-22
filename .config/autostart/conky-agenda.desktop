@@ -3,5 +3,5 @@ Type=Application
 Exec=/usr/bin/conky -c /home/harper/.config/conky/agenda.conky.conf 
 Hidden=false
 NoDisplay=false
-X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-enabled=false
 Name=Conky Agenda Google Calendar

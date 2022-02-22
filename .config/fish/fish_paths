@@ -1,4 +1,8 @@
 set -gx PATH /home/harper/.npm-global/bin/ $PATH
 set -gx PATH ~/.npm-global/bin/ $PATH
 set -gx PATH /home/harper/.config/bin/ $PATH
+set -gx PATH /home/harper/.config/bin/ $PATH
 set -gx PATH /opt/homebrew/bin/ $PATH
+set -gx PATH /home/harper/go/ $PATH
+
+set -gx GOPATH /home/harper/go/ 
