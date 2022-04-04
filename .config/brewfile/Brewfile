@@ -46,43 +46,31 @@ brew "figlet"
 tap "chrokh/tap"
 
 cask "appcleaner"
-cask "charles"
 cask "flux"
 cask "google-cloud-sdk"
 cask "gpg-suite-no-mail"
 cask "iterm2"
 cask "java"
-cask "kitty"
 cask "macvim"
 cask "mailmate"
-cask "minecraft"
 cask "signal"
 cask "skype"
-cask "sonos"
 cask "spotify"
-cask "steam"
 cask "telegram"
 cask "twitch"
 cask "visual-studio-code"
 cask "vlc"
-cask "whatsapp"
-
 
 mas "Contacts+", id: 1094748271
 mas "Day One", id: 1055511498
-mas "Deliveries", id: 924726344
 mas "GrandPerspective", id: 1111570163
-mas "iNet Network Scanner", id: 403304796
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "MindNode", id: 1289197285
-mas "MQTT Explorer", id: 1455214828
 mas "Pixelmator", id: 407963104
 mas "Simplenote", id: 692867256
 mas "Slack", id: 803453959
 mas "Soulver", id: 413965349
 mas "Tailscale", id: 1475387142
-mas "Telephone", id: 406825478
 mas "Todoist", id: 585829637
 mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835
