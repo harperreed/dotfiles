@@ -3,11 +3,12 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/core"
-tap "wtfutil/wtfutil"
 
 brew "ansible"
+brew "fish"
 brew "app-engine-python"
 brew "awscli"
+brew "fish"
 brew "boost"
 brew "glib"
 brew "fdupes"
@@ -36,21 +37,18 @@ brew "pkg-config"
 brew "pv"
 brew "ruby"
 brew "sqlcipher"
-brew "teleconsole"
-brew "unrar"
 brew "wget"
 brew "wtfutil"
 brew "lolcat"
 brew "figlet"
+brew "ngrok"
 
 tap "chrokh/tap"
 
 cask "appcleaner"
-cask "flux"
 cask "google-cloud-sdk"
 cask "gpg-suite-no-mail"
 cask "iterm2"
-cask "java"
 cask "macvim"
 cask "mailmate"
 cask "signal"
@@ -59,18 +57,30 @@ cask "spotify"
 cask "telegram"
 cask "twitch"
 cask "visual-studio-code"
+cask "pitch"
+cask "figma"
+cask "discord"
 cask "vlc"
+cask "pop"
+cask "notion"
+cask "maestral"
+cask "webex"
 
 mas "Contacts+", id: 1094748271
 mas "Day One", id: 1055511498
 mas "GrandPerspective", id: 1111570163
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "Pixelmator", id: 407963104
-mas "Simplenote", id: 692867256
+mas "Pixelmator Pro", id: 407963104
+# mas "Simplenote", id: 692867256
 mas "Slack", id: 803453959
 mas "Soulver", id: 413965349
 mas "Tailscale", id: 1475387142
 mas "Todoist", id: 585829637
-mas "WhatsApp", id: 1147396723
+# mas "WhatsApp", id: 1147396723
+mas "TweetDeck", id: 485812721
+mas "Zerion", id: 1456732565
+mas "Apple Configurator", id: 1037126344
+mas "Crypto Pro", id: 980888073
 mas "Xcode", id: 497799835
+
