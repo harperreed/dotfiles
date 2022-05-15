@@ -65,3 +65,18 @@ source ~/.config/fish/fish_aliases
 source ~/.config/fish/fish_paths
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/harper/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/home/harper/Downloads/google-cloud-sdk/path.fish.inc'; end
+
+export PATH="$PATH:/Users/harper/.foundry/bin"
+
+
+switch (uname)
+#    case Linux
+#            echo Hi Tux!
+    case Darwin
+            set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+            set -gx PUPPETEER_EXECUTABLE_PATH (which chromium)
+#    case FreeBSD NetBSD DragonFly
+#            echo Hi Beastie!
+#    case '*'
+#            echo Hi, stranger!
+end
