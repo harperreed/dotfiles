@@ -5,7 +5,6 @@ tap "homebrew/cask-drivers"
 tap "homebrew/core"
 
 brew "ansible"
-brew "app-engine-python"
 brew "awscli"
 brew "boost"
 brew "exiftool"
@@ -43,9 +42,6 @@ brew "speedtest-cli"
 brew "sqlcipher"
 brew "wget"
 brew "wtfutil"
-
-
-# tap "chrokh/tap"
 
 cask "aerial"
 cask "appcleaner"
