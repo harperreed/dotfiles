@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/harper/.config/brewfile'
+let g:netrw_dirhist_3='/Users/harper/Documents/src/galactic/galactic.io/layouts/partials/team'
 let g:netrw_dirhist_2='/Users/harper/Dropbox/src/harperreed/harper.blog/layouts/archives'
 let g:netrw_dirhist_1='/Users/harper/Dropbox/src/harperreed/harper.blog/layouts'
