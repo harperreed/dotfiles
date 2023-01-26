@@ -24,7 +24,7 @@
         whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
         excludesfile = /opt/boxen/config/git/gitignore
 [push]
-	default = simple
+	default = current
 
 [hub]
 protocol = https
