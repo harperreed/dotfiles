@@ -1,7 +1,6 @@
 
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-drivers"
 tap "homebrew/core"
 
 brew "ansible"
@@ -65,7 +64,6 @@ cask "netnewswire"
 cask "notion"
 cask "nvidia-geforce-now"
 cask "pitch"
-cask "pitch"
 cask "plexamp"
 cask "rapidapi"
 cask "rotki"
@@ -73,19 +71,14 @@ cask "signal"
 cask "skype"
 cask "soulver"
 cask "spotify"
-cask "standard-notes"
 cask "tailscale"
 cask "tandem"
 cask "telegram"
 cask "trezor-suite"
 cask "twitch"
-cask "ubersicht"
 cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
-
-
-
 
 # mas "Contacts+", id: 1094748271
 # mas "Crypto Pro", id: 980888073
