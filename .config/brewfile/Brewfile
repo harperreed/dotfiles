@@ -41,6 +41,7 @@ brew "sqlcipher"
 brew "wget"
 brew "wtfutil"
 
+cask "1password"
 cask "aerial"
 cask "appcleaner"
 cask "arc"
@@ -48,6 +49,7 @@ cask "cron"
 cask "discord"
 cask "figma"
 cask "google-cloud-sdk"
+cask "google-chrome"
 cask "gpg-suite-no-mail"
 cask "hammerspoon"
 cask "insomnia"
@@ -62,9 +64,11 @@ cask "microsoft-teams"
 cask "mimestream"
 cask "netnewswire"
 cask "notion"
+cask "numi"
 cask "nvidia-geforce-now"
 cask "pitch"
 cask "plexamp"
+cask "protonmail-bridge"
 cask "rapidapi"
 cask "rotki"
 cask "signal"
@@ -85,7 +89,6 @@ cask "zoom"
 # mas "Soulver", id: 413965349
 # mas "TweetDeck", id: 485812721
 # mas "Zerion", id: 1456732565
-mas "1Password", id: 443987910
 mas "Apple Configurator", id: 1037126344
 mas "Day One", id: 1055511498
 mas "Drafts", id: 1435957248
