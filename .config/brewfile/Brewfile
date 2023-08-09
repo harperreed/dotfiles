@@ -50,7 +50,6 @@ cask "figma"
 cask "google-cloud-sdk"
 cask "gpg-suite-no-mail"
 cask "hammerspoon"
-cask "insomnia"
 cask "iterm2"
 cask "ledger-live"
 cask "logseq"
@@ -66,13 +65,9 @@ cask "nvidia-geforce-now"
 cask "pitch"
 cask "plexamp"
 cask "rapidapi"
-cask "rotki"
 cask "signal"
-cask "skype"
-cask "soulver"
 cask "spotify"
 cask "tailscale"
-cask "tandem"
 cask "telegram"
 cask "trezor-suite"
 cask "twitch"
@@ -101,6 +96,5 @@ mas "Tailscale", id: 1475387142
 mas "TestFlight", id: 899247664
 mas "Todoist", id: 585829637
 mas "UTM", id: 1538878817
-mas "VinylBox", id: 1212071750
 mas "Xcode", id: 497799835
 
