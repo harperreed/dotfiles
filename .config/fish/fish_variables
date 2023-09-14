@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export OPENAI_API_KEY:sk\x2d8SUUlKVB6pTbxWYxZUAmT3BlbkFJ22kDXomyn2iRG3uO5GDs
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
