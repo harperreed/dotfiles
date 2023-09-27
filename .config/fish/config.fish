@@ -82,3 +82,14 @@ switch (uname)
 end
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /Users/harper/.miniconda3/bin/conda
+    eval /Users/harper/.miniconda3/bin/conda "shell.fish" "hook" $argv | source
+end
+# <<< conda initialize <<<
+
+
+# Created by `pipx` on 2023-05-23 19:16:10
+set PATH $PATH /Users/harper/.local/bin
