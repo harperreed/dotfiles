@@ -91,14 +91,6 @@ end
 # <<< conda initialize <<<
 
 
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
-set -gx MAMBA_EXE "/opt/homebrew/opt/micromamba/bin/micromamba"
-set -gx MAMBA_ROOT_PREFIX "/Users/harper/micromamba"
-$MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
-# <<< mamba initialize <<<
-
-
 switch (uname -m)
     case 'x86_64'
         set GOPATH /home/harper/go/
