@@ -78,6 +78,7 @@ cask "twitch"
 cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
+cask "vimr"
 
 # mas "Contacts+", id: 1094748271
 # mas "Crypto Pro", id: 980888073
