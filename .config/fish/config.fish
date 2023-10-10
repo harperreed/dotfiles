@@ -91,5 +91,23 @@ end
 # <<< conda initialize <<<
 
 
+<<<<<<< HEAD
 # Created by `pipx` on 2023-05-23 19:16:10
 set PATH $PATH /Users/harper/.local/bin
+=======
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+set -gx MAMBA_EXE "/opt/homebrew/opt/micromamba/bin/micromamba"
+set -gx MAMBA_ROOT_PREFIX "/Users/harper/micromamba"
+$MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+# <<< mamba initialize <<<
+
+
+switch (uname -m)
+    case 'x86_64'
+        set GOPATH /home/harper/go/
+    case 'arm64'
+        set GOPATH /Users/harper/workspace/personal/go
+end
+
+>>>>>>> 7b915cda77b39d3f857964643dcbab053400d88c
