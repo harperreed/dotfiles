@@ -13,28 +13,38 @@
 # or by un-commenting and editing the following line:
 # VIM_APP_DIR=/Applications
 
+
+
 if [ -f "/usr/bin/gvim" ]
 then
   binary="/usr/bin/gvim"
 else
 
-  if [ -z "$VIM_APP_DIR" ]
+  if [ -f "/opt/homebrew/bin/vimr" ]
   then
-    myDir="`dirname "$0"`"
-    myAppDir="$myDir/../Applications"
-    for i in ~/Applications ~/Applications/vim $myDir $myDir/vim $myAppDir $myAppDir/vim /Applications /Applications/vim /Applications/Utilities /Applications/Utilities/vim; do
-      if [ -x "$i/MacVim.app" ]; then
-        VIM_APP_DIR="$i"
-        break
-      fi
-    done
+    binary="/opt/homebrew/bin/vimr"
+  else
+
+ 
+
+    if [ -z "$VIM_APP_DIR" ]
+    then
+      myDir="`dirname "$0"`"
+      myAppDir="$myDir/../Applications"
+      for i in ~/Applications ~/Applications/vim $myDir $myDir/vim $myAppDir $myAppDir/vim /Applications /Applications/vim /Applications/Utilities /Applications/Utilities/vim; do
+        if [ -x "$i/MacVim.app" ]; then
+          VIM_APP_DIR="$i"
+          break
+        fi
+      done
+    fi
+    if [ -z "$VIM_APP_DIR" ]
+    then
+      echo "Sorry, cannot find MacVim.app.  Try setting the VIM_APP_DIR environment variable to the directory containing MacVim.app."
+      exit 1
+    fi
+  binary="$VIM_APP_DIR/MacVim.app/Contents/MacOS/Vim"
   fi
-  if [ -z "$VIM_APP_DIR" ]
-  then
-    echo "Sorry, cannot find MacVim.app.  Try setting the VIM_APP_DIR environment variable to the directory containing MacVim.app."
-    exit 1
-  fi
-binary="$VIM_APP_DIR/MacVim.app/Contents/MacOS/Vim"
 fi
 
 # Next, peek at the name used to invoke this script, and set options

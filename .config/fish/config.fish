@@ -91,10 +91,11 @@ end
 # <<< conda initialize <<<
 
 
+# Created by `pipx` on 2023-05-23 19:16:10
+set PATH $PATH /Users/harper/.local/bin
 switch (uname -m)
     case 'x86_64'
         set GOPATH /home/harper/go/
     case 'arm64'
         set GOPATH /Users/harper/workspace/personal/go
 end
-

@@ -26,12 +26,15 @@ syntax on           " syntax highlighing
 
 set rtp+=~/.vim/bundle/vundle/
 
-colorscheme dracula
-color dracula
 
 if has("gui_running")
     " See ~/.gvimrc
 else
+    set background=dark        " adapt colors for background
+endif
+
+if has("gui_vimr")
+  " Here goes some VimR specific settings like
     set background=dark        " adapt colors for background
 endif
 
