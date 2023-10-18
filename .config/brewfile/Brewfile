@@ -53,6 +53,7 @@ cask "google-chrome"
 cask "gpg-suite-no-mail"
 cask "hammerspoon"
 cask "iterm2"
+cask "keeper-password-manager"
 cask "ledger-live"
 cask "logseq"
 cask "lunar"
@@ -79,6 +80,7 @@ cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
 cask "vimr"
+cask "1password-cli1"
 
 # mas "Contacts+", id: 1094748271
 # mas "Crypto Pro", id: 980888073
