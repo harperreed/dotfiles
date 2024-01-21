@@ -101,5 +101,5 @@ switch (uname -m)
 end
 
 if status is-interactive
-  atuin init fish  --disable-up-arrow  |source
+  atuin init fish  | source
 end
