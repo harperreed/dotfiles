@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AI Prompt</key>
+	<string>#!/usr/bin/\(shell)
+# Note this command runs on systems like this: \(uname)
+# The next line will do this: \(ai.prompt)
+</string>
 	<key>AllowTabbarInTitlebarAccessoryBigSur</key>
 	<false/>
 	<key>CheckTestRelease</key>
@@ -2318,7 +2323,7 @@
 	<key>SeparateStatusBarsPerPane</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>SmartPlacement</key>
 	<true/>
 	<key>SoundForEsc</key>
