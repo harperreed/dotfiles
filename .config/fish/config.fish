@@ -99,3 +99,7 @@ switch (uname -m)
     case 'arm64'
         set GOPATH /Users/harper/workspace/personal/go
 end
+
+if status is-interactive
+  atuin init fish |source
+end
