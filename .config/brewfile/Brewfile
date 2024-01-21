@@ -5,6 +5,7 @@ tap "homebrew/core"
 
 brew "ansible"
 brew "awscli"
+brew "atuin"
 brew "boost"
 brew "exiftool"
 brew "fdupes"
