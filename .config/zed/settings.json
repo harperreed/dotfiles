@@ -7,7 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-    "theme": "Gruvbox Dark Hard",
+    "theme": "Andromeda",
     "tab_size": 4,
     "preferred_line_length": 80,
     "soft_wrap": "none",
@@ -16,5 +16,5 @@
     "autosave": "on_focus_change",
     "format_on_save": "on",
     "vim_mode": false,
-    "projects_online_by_default": true,
+    "projects_online_by_default": true
 }
