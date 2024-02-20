@@ -14,7 +14,7 @@
     "buffer_font_size": 20,
     "buffer_font_family": "Zed Mono",
     "autosave": "on_focus_change",
-    "format_on_save": "on",
+    "format_on_save": "off",
     "vim_mode": false,
     "projects_online_by_default": true
 }
