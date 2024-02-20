@@ -23,6 +23,7 @@
 [core]
         whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
         excludesfile = /opt/boxen/config/git/gitignore
+	editor = nvim
 [push]
 	default = current
 	autoSetupRemote = true
@@ -60,3 +61,6 @@ protocol = https
 	fsckObjects = true
 [gpg]
 	format = ssh
+
+[url "git@github.com:"]
+	insteadOf = "https://github.com/"
