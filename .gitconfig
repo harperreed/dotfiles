@@ -26,6 +26,7 @@
 	editor = nvim
 [push]
 	default = current
+	autoSetupRemote = true
 
 [hub]
 protocol = https
@@ -43,3 +44,20 @@ protocol = https
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[diff]
+	algorithm = histogram
+	tool = difftastic
+[merge]
+	conflictstyle = zdiff3
+[branch]
+	sort = -committerdate
+[commit]
+	verbose = true
+[transfer]
+	fsckobjects = true
+[fetch]
+	fsckobjects = true
+[receive]
+	fsckObjects = true
+[gpg]
+	format = ssh
