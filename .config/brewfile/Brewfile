@@ -42,9 +42,9 @@ brew "wget"
 brew "wtfutil"
 
 cask "1password"
-cask "aerial"
 cask "appcleaner"
 cask "arc"
+cask "beeper"
 cask "discord"
 cask "figma"
 cask "google-cloud-sdk"
@@ -52,20 +52,16 @@ cask "google-chrome"
 cask "gpg-suite-no-mail"
 cask "hammerspoon"
 cask "iterm2"
-cask "keeper-password-manager"
 cask "lm-studio"
-cask "ledger-live"
-cask "logseq"
 cask "lunar"
 cask "macvim"
+cask "macwhisper"
 cask "maestral"
 cask "mailmate"
-cask "microsoft-teams"
 cask "mimestream"
 cask "netnewswire"
 cask "notion"
 cask "notion-calendar"
-cask "numi"
 cask "nvidia-geforce-now"
 cask "pitch"
 cask "plexamp"
@@ -74,12 +70,10 @@ cask "proton-drive"
 cask "rapidapi"
 cask "signal"
 cask "spotify"
-cask "tailscale"
 cask "telegram"
 cask "trezor-suite"
 cask "visual-studio-code"
 cask "vlc"
-cask "vox"
 cask "zoom"
 cask "vimr"
 cask "zed"
@@ -96,8 +90,9 @@ mas "GrandPerspective", id: 1111570163
 mas "Keynote", id: 409183694
 mas "Line", id: 539883307
 mas "Mastonaut", id: 1450757574
+mas "Menu bar for sonos", id: 1357379892
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "Pixelmator Pro", id: 407963104
+mas "Pixelmator Pro", id: 1289583905
 mas "Reeder", id: 1529448980
 mas "Slack", id: 803453959
 mas "Tailscale", id: 1475387142
