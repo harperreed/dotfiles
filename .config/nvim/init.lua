@@ -114,7 +114,8 @@ vim.wo.number = true
 vim.o.encoding = "utf-8"
 vim.o.cursorline = true
 vim.o.ruler = true
-vim.o.mouse = "a"
+vim.o.mouse = ""
+-- vim.o.mouse = "a"
 
 -- ==============================
 -- Editing and Indentation
