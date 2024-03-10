@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Check if the commit is a merge commit
+if [ -n "$2" ]; then
+  exit 0
+fi
+
+# Generate the commit message using git diff and llm
+commit_msg=$(git diff --cached | llm -s "$(cat ~/.config/prompts/commit-system-prompt.txt)")
+
+# Write the generated commit message to the commit message file
+echo "$commit_msg" > "$1"
