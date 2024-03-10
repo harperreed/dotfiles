@@ -14,7 +14,8 @@ spin_animation() {
     for i in "${spinner[@]}"; do
       tput civis # Hide the cursor
       tput el1 # Clear the line from the cursor to the beginning
-      echo -ne "${YELLOW}$i${NC} Generating commit message..."
+      printf "\r${YELLOW}%s${NC} Generating commit message..." "$i"
+
       sleep 0.1
       tput cub 32 # Move the cursor back 32 columns
     done
