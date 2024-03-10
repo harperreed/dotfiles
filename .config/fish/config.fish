@@ -70,23 +70,29 @@ export PATH="$PATH:/Users/harper/.foundry/bin"
 
 
 switch (uname)
-#    case Linux
-#            echo Hi Tux!
+    case Linux
+            echo Hi Tux!
     case Darwin
             set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
             set -gx PUPPETEER_EXECUTABLE_PATH (which chromium)
-#    case FreeBSD NetBSD DragonFly
-#            echo Hi Beastie!
-#    case '*'
-#            echo Hi, stranger!
+    case FreeBSD NetBSD DragonFly
+            echo Hi Beastie!
+    case '*'
+            echo Hi, stranger!
 end
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if test -f /Users/harper/.miniconda3/bin/conda
-    eval /Users/harper/.miniconda3/bin/conda "shell.fish" "hook" $argv | source
+if test -f /opt/homebrew/Caskroom/miniconda/base/bin/conda
+    eval /opt/homebrew/Caskroom/miniconda/base/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/opt/homebrew/Caskroom/miniconda/base/etc/fish/conf.d/conda.fish"
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/opt/homebrew/Caskroom/miniconda/base/bin" $PATH
+    end
 end
 # <<< conda initialize <<<
 

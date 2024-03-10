@@ -15,6 +15,18 @@
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
         ls = ls-files
+        # generate comment
+        gpt = "!f() { git diff $1 | llm -s \"$(cat ~/.config/prompts/commit-system-prompt.txt)\"; }; f"
+        llm = "!f() { \
+    commit_msg=$(git diff $1 | llm -s \"$(cat ~/.config/prompts/commit-system-prompt.txt)\"); \
+    echo \"Commit message:\n$commit_msg\"; \
+    read -p \"Do you want to commit with this message? [y/N] \" confirm; \
+    if [[ $confirm =~ ^[Yy]$ ]]; then \
+        git commit -m \"$commit_msg\"; \
+    else \
+        echo \"Commit aborted.\"; \
+    fi; \
+}; f"
 
 [color]
         ui = true

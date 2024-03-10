@@ -2504,7 +2504,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Monaco 12</string>
+			<string>MesloLGMNFM-Regular 12</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Open Toolbelt</key>
@@ -2936,6 +2936,8 @@
 			<string>/Users/harper</string>
 		</dict>
 	</array>
+	<key>OnePasswordAccount</key>
+	<string>GQEP3EWMENHQHIZIXJCFBITBBY</string>
 	<key>PasteTabToStringTabStopSize</key>
 	<integer>4</integer>
 	<key>PointerActions</key>
