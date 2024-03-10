@@ -70,15 +70,15 @@ export PATH="$PATH:/Users/harper/.foundry/bin"
 
 
 switch (uname)
-#    case Linux
-#            echo Hi Tux!
+    case Linux
+            echo Hi Tux!
     case Darwin
             set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
             set -gx PUPPETEER_EXECUTABLE_PATH (which chromium)
-#    case FreeBSD NetBSD DragonFly
-#            echo Hi Beastie!
-#    case '*'
-#            echo Hi, stranger!
+    case FreeBSD NetBSD DragonFly
+            echo Hi Beastie!
+    case '*'
+            echo Hi, stranger!
 end
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
