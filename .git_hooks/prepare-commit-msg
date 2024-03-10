@@ -12,8 +12,11 @@ spin_animation() {
   spinner=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
   while true; do
     for i in "${spinner[@]}"; do
-      echo -ne "\r${YELLOW}$i${NC} Generating commit message..."
+      tput civis # Hide the cursor
+      tput el1 # Clear the line from the cursor to the beginning
+      echo -ne "${YELLOW}$i${NC} Generating commit message..."
       sleep 0.1
+      tput cub 32 # Move the cursor back 32 columns
     done
   done
 }
@@ -34,13 +37,15 @@ commit_msg=$(git diff --cached | llm -s "$(cat ~/.config/prompts/commit-system-p
 kill $spin_pid
 wait $spin_pid 2>/dev/null
 
-# Move the cursor to the next line
-echo -ne "\n"
+# Move the cursor to the next line and show the cursor
+tput cnorm
+echo
 
 # Display the generated commit message with colors and formatting
 echo "${BLUE}=== Generated Commit Message ===${NC}"
 echo "${GREEN}$commit_msg${NC}"
-echo "${BLUE}=================================${NC}\n"
+echo "${BLUE}=================================${NC}"
+echo
 
 # Write the generated commit message to the commit message file
 echo "$commit_msg" > "$1"
