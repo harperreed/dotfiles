@@ -9,7 +9,7 @@ NC='\033[0m' # No Color
 
 # Function to display a spinning animation
 spin_animation() {
-  spinner=("-" "\\" "|" "/")
+  spinner=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
   while true; do
     for i in "${spinner[@]}"; do
       echo -ne "\r${YELLOW}$i${NC} Generating commit message..."
@@ -34,8 +34,11 @@ commit_msg=$(git diff --cached | llm -s "$(cat ~/.config/prompts/commit-system-p
 kill $spin_pid
 wait $spin_pid 2>/dev/null
 
+# Move the cursor to the next line
+echo -ne "\n"
+
 # Display the generated commit message with colors and formatting
-echo "\n${BLUE}=== Generated Commit Message ===${NC}"
+echo "${BLUE}=== Generated Commit Message ===${NC}"
 echo "${GREEN}$commit_msg${NC}"
 echo "${BLUE}=================================${NC}\n"
 
