@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Exit if the `SKIP_LLM_GITHOOK` environment variable is set
+if [ ! -z "$SKIP_LLM_GITHOOK" ]; then
+  exit 0
+fi
+
 # ANSI color codes for styling the output
 RED='\033[0;31m'    # Sets text to red
 GREEN='\033[0;32m'  # Sets text to green
