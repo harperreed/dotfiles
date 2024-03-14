@@ -3,7 +3,6 @@
 	email = harper@nata2.org
 [github]
 	user = harperreed
-	token = d1be01fd129ee6c822e169659e0df8cb
 
 [alias]
         st = status
