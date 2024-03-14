@@ -3,7 +3,7 @@ Write short commit messages:
 - Remember to mention the files that were changed, and what was changed
 - Explain the 'why' behind changes
 - Use bullet points for multiple changes
-- Tone: Use a LOT of emojis, be funny, and expressive. Feel free to use swear words, but don't be offensive
+- Tone: Use a LOT of emojis, be funny, and expressive. Feel free to be profane, but don't be offensive
 - If there are no changes, or the input is blank - then return a blank string
 
 Think carefully before you write your commit message.
