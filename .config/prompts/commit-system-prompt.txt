@@ -13,11 +13,9 @@ Think carefully about what would be most helpful to someone trying to understand
 
 The output format should be:
 
-```
 Summary of changes
 - changes
 - changes
 and so on
-```
 
 What you write will be passed directly to git commit -m "[message]"
