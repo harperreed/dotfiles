@@ -109,3 +109,5 @@ end
 if status is-interactive
   atuin init fish  | source
 end
+
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
