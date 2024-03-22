@@ -60,7 +60,6 @@ cask "macvim"
 cask "macwhisper"
 cask "maestral"
 cask "mailmate"
-cask "marked"
 cask "mimestream"
 cask "netnewswire"
 cask "notion"
@@ -95,6 +94,7 @@ mas "GrandPerspective", id: 1111570163
 mas "Keynote", id: 409183694
 mas "Line", id: 539883307
 mas "Mastonaut", id: 1450757574
+mas "Marked 2", id: 890031187
 mas "Menu bar for sonos", id: 1357379892
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Pixelmator Pro", id: 1289583905
