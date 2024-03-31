@@ -3,40 +3,77 @@
 # UTF-8 everywhere
 defutf8 on
 
-# disable Ctrl-S/Ctrl-Q "flow control"
+# Disable Ctrl-S/Ctrl-Q "flow control"
 defflow off
 
-# skip intro
+# Skip intro
 startup_message off
 
-# detach on disconnect
+# Detach on disconnect
 autodetach on
 
-# use regular audible bell
-vbell off
+# Use visual bell instead of audible bell
+vbell on
 
-# use backtick for prefix key instead of Ctrl-A
+# Use backtick for prefix key instead of Ctrl-A
 #escape ``
 
-# make the shell in every window a login shell
+# Make the shell in every window a login shell
 shell -$SHELL
 
-# connect windows to the display so programs like mplayer can find it when
-# we're inside a screen in a terminal application in a graphical environment
+# Connect windows to the display for programs like mplayer
 setenv DISPLAY ':0'
 
-# print wackier status messages
+# Print wackier status messages
 nethack on
 
-# restore window contents after using (e.g.) vi
+# Restore window contents after using (e.g.) vi
 altscreen on
 
-# show MPD info in status bar
+# Show MPD info in status bar
 backtick 1 5 5 hostname
 
 # Set the caption on the bottom line:
 # window-list <nowplaying> <mm/dd/yy> <HH:MM>am/pm
 caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %1` %m/%d/%y %C:%s%a"
 
-# default windows
+# Default windows
 screen -t
+
+# Monitor for activity
+activity "Activity in window %n"
+
+# Monitor for inactivity (e.g., silent for 30 seconds)
+silencewait 30
+silence on
+
+# Automatically title windows based on the command executed
+shelltitle "$ |bash"
+
+# Manually name a window
+# screen -t "editor" 0 vim
+
+# Display CPU and memory usage in status bar
+backtick 2 30 30 sh -c "uptime | cut -d ',' -f 4-5 | sed 's/^ //' | sed 's/,/|/'"
+backtick 3 30 30 sh -c "free | awk '/Mem/ {printf(\"Mem: %d/%dMB\", \$3/1024, \$2/1024)}'"
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %2` | %3` | %1` | %m/%d/%y %C:%s%a"
+
+# Set scrollback buffer to 10000 lines
+defscrollback 10000
+
+# Set terminal type
+term screen-256color
+
+# Enable mouse support
+mousetrack on
+
+# Customize status bar
+# hardstatus alwayslastline
+# hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m/%d %{W}%c %{g}]'
+
+# Set default window size
+#defwidth 80
+#defheight 24
+
+# Enable log file creation
+logfile $HOME/.screen_logs/%Y%m%d-%n.log
