@@ -1,7 +1,7 @@
 .ssh/id_rsa
 .ssh/*.key
 .ssh/*.pem
-.ssh/config
+.ssh/host_config
 authorized_keys
 .ssh/id_ed25519
 known_hosts
