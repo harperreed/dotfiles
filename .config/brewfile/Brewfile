@@ -2,6 +2,7 @@
 tap "homebrew/bundle"
 
 brew "ansible"
+brew "asdf"
 brew "awscli"
 brew "atuin"
 brew "boost"
@@ -67,9 +68,12 @@ cask "nvidia-geforce-now"
 cask "ollama"
 cask "pitch"
 cask "plexamp"
-cask "protonmail-bridge"
+cask "proton-mail"
+# cask "protonmail-bridge"
 cask "proton-drive"
 cask "rapidapi"
+cask "rotki"
+cask "roon"
 cask "signal"
 cask "spotify"
 cask "telegram"
@@ -92,6 +96,7 @@ mas "GrandPerspective", id: 1111570163
 mas "Keynote", id: 409183694
 mas "Line", id: 539883307
 mas "Mastonaut", id: 1450757574
+mas "Marked 2", id: 890031187
 mas "Menu bar for sonos", id: 1357379892
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Pixelmator Pro", id: 1289583905
@@ -102,4 +107,3 @@ mas "TestFlight", id: 899247664
 mas "Todoist", id: 585829637
 mas "UTM", id: 1538878817
 mas "Xcode", id: 497799835
-
