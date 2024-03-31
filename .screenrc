@@ -65,7 +65,7 @@ defscrollback 10000
 term screen-256color
 
 # Enable mouse support
-mousetrack on
+# mousetrack on
 
 # Customize status bar
 # hardstatus alwayslastline
