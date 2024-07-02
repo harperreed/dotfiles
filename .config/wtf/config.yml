@@ -1,0 +1,90 @@
+wtf:
+  grid:
+    columns: [20, 20, 20, 20, 20, 20, 20, 20]
+    rows: [7, 7, 7, 7, 7, 7, 7, 7,]
+  colors:
+    background: "black"
+    border:
+      focusable: "darkslateblue"
+      focused: "orange"
+      normal: "gray"
+    checked: "gray"
+    highlight:
+      fore: "black"
+      back: "green"
+    rows:
+      even: "black"
+      odd: "lightblue"
+  refreshInterval: 1
+  mods:
+    clocks:
+      enabled: true
+      colors:
+          rows:
+            even: "lightblue"
+            odd: "white"
+      sort: "chronological"
+      locations:
+        TKO: "Asia/Tokyo"
+        ORD: "America/Chicago"
+        NYC: "America/New_York"
+        SFO: "America/Los_Angeles"
+        LHR: "Europe/London"
+      position:
+        top: 0
+        left: 0
+        height: 1
+        width: 2  # Spans across both columns
+      timeFormat: "3:04 PM"
+    cmdrunner:
+        args: [""]
+        cmd: "uptime"
+        enabled: true
+        position:
+            top: 2
+            left: 0
+            height: 1
+            width: 2  # Fits in the second column
+        refreshInterval: 30s
+
+    ipinfo:
+      enabled: true
+      title: "🛜"
+      position:
+        top: 0
+        left: 2
+        height: 1
+        width: 2  # Fits in the second column
+    prettyweather:
+        enabled: true
+        title: "🌩️"
+        city: "Chicago"
+        refreshInterval: 5m
+        unit: "m"
+        view: 0
+        language: "en"
+        position:
+            top: 1
+            left: 2
+            height: 2
+            width: 2  # Fits in the first column
+    hackernews:
+      enabled: true
+      numberOfStories: 10
+      position:
+          top: 0
+          left: 4
+          height: 2
+          width: 3  # Fits in the first column
+
+
+    battery:
+        type: power
+        title: "⚡️"
+        enabled: true
+        position:
+            top: 1
+            left: 0
+            height: 1
+            width: 2
+        refreshInterval: 15
