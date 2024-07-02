@@ -16,5 +16,12 @@
     "autosave": "on_focus_change",
     "format_on_save": "off",
     "vim_mode": false,
-    "projects_online_by_default": true
+    "projects_online_by_default": true,
+    "assistant": {
+        "version": "1",
+        "provider": {
+            "default_model": "claude-3-sonnet-20240229",
+            "name": "anthropic"
+        }
+    }
 }
