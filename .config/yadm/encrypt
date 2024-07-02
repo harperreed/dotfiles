@@ -10,3 +10,4 @@ known_hosts
 .gcloud/*.json
 .npmrc
 .wakatime.cfg
+.config/vdirsyncer/tokens/*
