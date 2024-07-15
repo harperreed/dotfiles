@@ -7,7 +7,8 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-    "theme": "Andromeda",
+    // "theme": "Andromeda",
+    "theme": "macOS Classic Dark2",
     "tab_size": 4,
     "preferred_line_length": 80,
     "soft_wrap": "none",
@@ -16,5 +17,46 @@
     "autosave": "on_focus_change",
     "format_on_save": "off",
     "vim_mode": false,
-    "projects_online_by_default": true
+    "projects_online_by_default": true,
+    "assistant": {
+      // Version of this setting.
+      "version": "1",
+      // Whether to show the assistant panel button in the status bar.
+      "button": true,
+      // Where to dock the assistant panel. Can be 'left', 'right' or 'bottom'.
+      "dock": "right",
+      // Default width when the assistant is docked to the left or right.
+      "default_width": 640,
+      // Default height when the assistant is docked to the bottom.
+      "default_height": 320,
+      // AI provider.
+      "provider": {
+        "name": "openai",
+        // The default model to use when starting new conversations. This
+        // setting can take three values:
+        //
+        // 1. "gpt-3.5-turbo"
+        // 2. "gpt-4"
+        // 3. "gpt-4-turbo-preview"
+        "default_model": "gpt-4-turbo-preview",
+        // The API URL to use when communicating with the AI provider.
+        // "api_url" : "https://openaiproxy-baxvbakvia-uc.a.run.app/v1"
+      }
+    },
+    "git": {
+      "git_gutter": "tracked_files"
+    },
+    "journal": {
+      "path": "~",
+      "hour_format": "hour12"
+    },
+    "telemetry": {
+      "diagnostics": false,
+      "metrics": false
+    },
+    "project_panel": {
+      "dock": "left",
+      "git_status": true,
+      "default_width": "N/A - width in pixels"
+    }
 }
