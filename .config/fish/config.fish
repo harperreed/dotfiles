@@ -111,3 +111,17 @@ if status is-interactive
 end
 
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
+
+
+if not set -q SSH_AUTH_SOCK
+    eval (ssh-agent -c)
+    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+end
+
+# Function to add keys on demand
+function add_ssh_keys
+    ssh-add --apple-use-keychain ~/.ssh/id_rsa
+    ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+    # Add more keys as needed
+end
