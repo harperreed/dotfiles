@@ -1,436 +1,240 @@
-set -g fisher_version 3.3.2
-
-function fisher -a cmd -d "fish plugin manager"
-    set -q XDG_CACHE_HOME; or set XDG_CACHE_HOME ~/.cache
-    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-    set -q XDG_DATA_HOME; or set XDG_DATA_HOME ~/.local/share
-
-    set -g fish_config $XDG_CONFIG_HOME/fish
-    set -g fisher_cache $XDG_CACHE_HOME/fisher
-    set -g fisher_data $XDG_DATA_HOME/fisher
-
-    set -q fisher_path; or set -g fisher_path $fish_config
-    set -g fishfile $fish_config/fishfile
-
-    for path in {$fish_config,$fisher_path}/{functions,completions,conf.d} $fisher_cache
-        if test ! -d $path
-            command mkdir -p $path
-        end
-    end
-
-    if test ! -e $fisher_path/completions/fisher.fish
-        echo "fisher complete" >$fisher_path/completions/fisher.fish
-        _fisher_complete
-    end
-
-    if test -e $fisher_path/conf.d/fisher.fish
-        switch "$version"
-            case \*-\*
-                command rm -f $fisher_path/conf.d/fisher.fish
-            case 2\*
-            case \*
-                command rm -f $fisher_path/conf.d/fisher.fish
-        end
-    else
-        switch "$version"
-            case \*-\*
-            case 2\*
-                echo "fisher copy-user-key-bindings" >$fisher_path/conf.d/fisher.fish
-        end
-    end
-
-    # 2019-10-22: temp code, migrates fishfile from old path back to $fish_config
-    if test -e "$fisher_path/fishfile"; and test ! -e "$fishfile"
-        command mv -f "$fisher_path/fishfile" "$fishfile"
-    end
-
-    # 2020-06-23: temp code, migrates fisher data from XDG_CONFIG_HOME to XDG_DATA_HOME
-    set -l fisher_config $XDG_CONFIG_HOME/fisher
-    if test -d $fisher_config
-        echo "migrating local data from $fisher_config to $fisher_data"
-        command rm -rf $fisher_data
-        command mv -f $fisher_config $fisher_data
-    end
+function fisher --argument-names cmd --description "A plugin manager for Fish"
+    set --query fisher_path || set --local fisher_path $__fish_config_dir
+    set --local fisher_version 4.4.4
+    set --local fish_plugins $__fish_config_dir/fish_plugins
 
     switch "$cmd"
-        case {,self-}complete
-            _fisher_complete
-        case copy-user-key-bindings
-            _fisher_copy_user_key_bindings
-        case ls
-            set -e argv[1]
-            if test -s "$fishfile"
-                set -l file (_fisher_fmt <$fishfile | _fisher_parse -R | command sed "s|@.*||")
-                _fisher_ls | _fisher_fmt | command awk -v FILE="$file" "
-                    BEGIN { for (n = split(FILE, f); ++i <= n;) file[f[i]] } \$0 in file && /$argv[1]/
-                " | command sed "s|^$HOME|~|"
+        case -v --version
+            echo "fisher, version $fisher_version"
+        case "" -h --help
+            echo "Usage: fisher install <plugins...>  Install plugins"
+            echo "       fisher remove  <plugins...>  Remove installed plugins"
+            echo "       fisher update  <plugins...>  Update installed plugins"
+            echo "       fisher update                Update all installed plugins"
+            echo "       fisher list    [<regex>]     List installed plugins matching regex"
+            echo "Options:"
+            echo "       -v, --version  Print version"
+            echo "       -h, --help     Print this help message"
+            echo "Variables:"
+            echo "       \$fisher_path  Plugin installation path. Default: $__fish_config_dir" | string replace --regex -- $HOME \~
+        case ls list
+            string match --entire --regex -- "$argv[2]" $_fisher_plugins
+        case install update remove
+            isatty || read --local --null --array stdin && set --append argv $stdin
+
+            set --local install_plugins
+            set --local update_plugins
+            set --local remove_plugins
+            set --local arg_plugins $argv[2..-1]
+            set --local old_plugins $_fisher_plugins
+            set --local new_plugins
+
+            test -e $fish_plugins && set --local file_plugins (string match --regex -- '^[^\s]+$' <$fish_plugins)
+
+            if ! set --query argv[2]
+                if test "$cmd" != update
+                    echo "fisher: Not enough arguments for command: \"$cmd\"" >&2 && return 1
+                else if ! set --query file_plugins
+                    echo "fisher: \"$fish_plugins\" file not found: \"$cmd\"" >&2 && return 1
+                end
+                set arg_plugins $file_plugins
             end
-        case self-update
-            _fisher_self_update (status -f)
-        case self-uninstall
-            _fisher_self_uninstall
-        case {,-}-v{ersion,}
-            echo "fisher version $fisher_version" (status -f | command sed "s|^$HOME|~|")
-        case {,-}-h{elp,}
-            _fisher_help
-        case ""
-            _fisher_commit --
-        case add rm
-            if not isatty
-                while read -l arg
-                    set argv $argv $arg
+
+            for plugin in $arg_plugins
+                set plugin (test -e "$plugin" && realpath $plugin || string lower -- $plugin)
+                contains -- "$plugin" $new_plugins || set --append new_plugins $plugin
+            end
+
+            if set --query argv[2]
+                for plugin in $new_plugins
+                    if contains -- "$plugin" $old_plugins
+                        test "$cmd" = remove &&
+                            set --append remove_plugins $plugin ||
+                            set --append update_plugins $plugin
+                    else if test "$cmd" = install
+                        set --append install_plugins $plugin
+                    else
+                        echo "fisher: Plugin not installed: \"$plugin\"" >&2 && return 1
+                    end
+                end
+            else
+                for plugin in $new_plugins
+                    contains -- "$plugin" $old_plugins &&
+                        set --append update_plugins $plugin ||
+                        set --append install_plugins $plugin
+                end
+
+                for plugin in $old_plugins
+                    contains -- "$plugin" $new_plugins || set --append remove_plugins $plugin
                 end
             end
 
-            if test (count $argv) = 1
-                echo "fisher: invalid number of arguments" >&2
-                _fisher_help >&2
-                return 1
+            set --local pid_list
+            set --local source_plugins
+            set --local fetch_plugins $update_plugins $install_plugins
+            set --local fish_path (status fish-path)
+
+            echo (set_color --bold)fisher $cmd version $fisher_version(set_color normal)
+
+            for plugin in $fetch_plugins
+                set --local source (command mktemp -d)
+                set --append source_plugins $source
+
+                command mkdir -p $source/{completions,conf.d,themes,functions}
+
+                $fish_path --command "
+                    if test -e $plugin
+                        command cp -Rf $plugin/* $source
+                    else
+                        set temp (command mktemp -d)
+                        set repo (string split -- \@ $plugin) || set repo[2] HEAD
+
+                        if set path (string replace --regex -- '^(https://)?gitlab.com/' '' \$repo[1])
+                            set name (string split -- / \$path)[-1]
+                            set url https://gitlab.com/\$path/-/archive/\$repo[2]/\$name-\$repo[2].tar.gz
+                        else
+                            set url https://api.github.com/repos/\$repo[1]/tarball/\$repo[2]
+                        end
+
+                        echo Fetching (set_color --underline)\$url(set_color normal)
+
+                        if command curl -q --silent -L \$url | command tar -xzC \$temp -f - 2>/dev/null
+                            command cp -Rf \$temp/*/* $source
+                        else
+                            echo fisher: Invalid plugin name or host unavailable: \\\"$plugin\\\" >&2
+                            command rm -rf $source
+                        end
+
+                        command rm -rf \$temp
+                    end
+
+                    set files $source/* && string match --quiet --regex -- .+\.fish\\\$ \$files
+                " &
+
+                set --append pid_list (jobs --last --pid)
             end
 
-            _fisher_commit $argv
-        case \*
-            echo "fisher: unknown flag or command \"$cmd\"" >&2
-            _fisher_help >&2
-            return 1
-    end
-end
+            wait $pid_list 2>/dev/null
 
-function _fisher_complete
-    complete -ec fisher
-    complete -xc fisher -n __fish_use_subcommand -a add -d "Add plugins"
-    complete -xc fisher -n __fish_use_subcommand -a rm -d "Remove plugins"
-    complete -xc fisher -n __fish_use_subcommand -a ls -d "List installed plugins matching REGEX"
-    complete -xc fisher -n __fish_use_subcommand -a --help -d "Show usage help"
-    complete -xc fisher -n __fish_use_subcommand -a --version -d "$fisher_version"
-    complete -xc fisher -n __fish_use_subcommand -a self-update -d "Update to the latest version"
-    for pkg in (fisher ls)
-        complete -xc fisher -n "__fish_seen_subcommand_from rm" -a $pkg
-    end
-end
-
-function _fisher_copy_user_key_bindings
-    if functions -q fish_user_key_bindings
-        functions -c fish_user_key_bindings fish_user_key_bindings_copy
-    end
-    function fish_user_key_bindings
-        for file in $fisher_path/conf.d/*_key_bindings.fish
-            source $file >/dev/null 2>/dev/null
-        end
-        if functions -q fish_user_key_bindings_copy
-            fish_user_key_bindings_copy
-        end
-    end
-end
-
-function _fisher_ls
-    for pkg in $fisher_data/*/*/*
-        command readlink $pkg; or echo $pkg
-    end
-end
-
-function _fisher_fmt
-    command sed "s|^[[:space:]]*||;s|^$fisher_data/||;s|^~|$HOME|;s|^\.\/*|$PWD/|;s|^https*:/*||;s|^github\.com/||;s|/*\$||"
-end
-
-function _fisher_help
-    echo "usage: fisher add <plugin...>     Add plugin/s"
-    echo "       fisher rm  <plugin...>     Remove plugin/s"
-    echo "       fisher                     Update all plugins"
-    echo "       fisher ls  [<regex>]       List installed plugins matching <regex>"
-    echo "       fisher --help              Show this help"
-    echo "       fisher --version           Show the current version"
-    echo "       fisher self-update         Update to the latest version"
-    echo "       fisher self-uninstall      Uninstall from your system"
-    echo "examples:"
-    echo "       fisher add jorgebucaran/z rafaelrinaldi/pure"
-    echo "       fisher add gitlab.com/foo/bar@v2"
-    echo "       fisher add ~/path/to/local/pkg"
-    echo "       fisher add <file"
-    echo "       fisher rm rafaelrinaldi/pure"
-    echo "       fisher ls | fisher rm"
-end
-
-function _fisher_self_update -a file
-    set -l url "https://raw.githubusercontent.com/jorgebucaran/fisher/main/fisher.fish"
-    echo "fetching $url" >&2
-    command curl -s "$url?nocache" >$file.
-
-    set -l next_version (command awk '$4 ~ /^[0-9]+\.[0-9]+\.[0-9]+$/ { print v=$4 } { exit !v }' <$file.)
-    switch "$next_version"
-        case "" $fisher_version
-            command rm -f $file.
-            if test -z "$next_version"
-                echo "fisher: cannot update fisher -- are you offline?" >&2
-                return 1
+            for plugin in $fetch_plugins
+                if set --local source $source_plugins[(contains --index -- "$plugin" $fetch_plugins)] && test ! -e $source
+                    if set --local index (contains --index -- "$plugin" $install_plugins)
+                        set --erase install_plugins[$index]
+                    else
+                        set --erase update_plugins[(contains --index -- "$plugin" $update_plugins)]
+                    end
+                end
             end
-            echo "fisher is already up-to-date" >&2
+
+            for plugin in $update_plugins $remove_plugins
+                if set --local index (contains --index -- "$plugin" $_fisher_plugins)
+                    set --local plugin_files_var _fisher_(string escape --style=var -- $plugin)_files
+
+                    if contains -- "$plugin" $remove_plugins
+                        for name in (string replace --filter --regex -- '.+/conf\.d/([^/]+)\.fish$' '$1' $$plugin_files_var)
+                            emit {$name}_uninstall
+                        end
+                        printf "%s\n" Removing\ (set_color red --bold)$plugin(set_color normal) "         "$$plugin_files_var | string replace -- \~ ~
+                        set --erase _fisher_plugins[$index]
+                    end
+
+                    command rm -rf (string replace -- \~ ~ $$plugin_files_var)
+
+                    functions --erase (string replace --filter --regex -- '.+/functions/([^/]+)\.fish$' '$1' $$plugin_files_var)
+
+                    for name in (string replace --filter --regex -- '.+/completions/([^/]+)\.fish$' '$1' $$plugin_files_var)
+                        complete --erase --command $name
+                    end
+
+                    set --erase $plugin_files_var
+                end
+            end
+
+            if set --query update_plugins[1] || set --query install_plugins[1]
+                command mkdir -p $fisher_path/{functions,themes,conf.d,completions}
+            end
+
+            for plugin in $update_plugins $install_plugins
+                set --local source $source_plugins[(contains --index -- "$plugin" $fetch_plugins)]
+                set --local files $source/{functions,themes,conf.d,completions}/*
+
+                if set --local index (contains --index -- $plugin $install_plugins)
+                    set --local user_files $fisher_path/{functions,themes,conf.d,completions}/*
+                    set --local conflict_files
+
+                    for file in (string replace -- $source/ $fisher_path/ $files)
+                        contains -- $file $user_files && set --append conflict_files $file
+                    end
+
+                    if set --query conflict_files[1] && set --erase install_plugins[$index]
+                        echo -s "fisher: Cannot install \"$plugin\": please remove or move conflicting files first:" \n"        "$conflict_files >&2
+                        continue
+                    end
+                end
+
+                for file in (string replace -- $source/ "" $files)
+                    command cp -RLf $source/$file $fisher_path/$file
+                end
+
+                set --local plugin_files_var _fisher_(string escape --style=var -- $plugin)_files
+
+                set --query files[1] && set --universal $plugin_files_var (string replace -- $source $fisher_path $files | string replace -- ~ \~)
+
+                contains -- $plugin $_fisher_plugins || set --universal --append _fisher_plugins $plugin
+                contains -- $plugin $install_plugins && set --local event install || set --local event update
+
+                printf "%s\n" Installing\ (set_color --bold)$plugin(set_color normal) "           "$$plugin_files_var | string replace -- \~ ~
+
+                for file in (string match --regex -- '.+/[^/]+\.fish$' $$plugin_files_var | string replace -- \~ ~)
+                    source $file
+                    if set --local name (string replace --regex -- '.+conf\.d/([^/]+)\.fish$' '$1' $file)
+                        emit {$name}_$event
+                    end
+                end
+            end
+
+            command rm -rf $source_plugins
+
+            if set --query _fisher_plugins[1]
+                set --local commit_plugins
+
+                for plugin in $file_plugins
+                    contains -- (string lower -- $plugin) (string lower -- $_fisher_plugins) && set --append commit_plugins $plugin
+                end
+
+                for plugin in $_fisher_plugins
+                    contains -- (string lower -- $plugin) (string lower -- $commit_plugins) || set --append commit_plugins $plugin
+                end
+
+                printf "%s\n" $commit_plugins >$fish_plugins
+            else
+                set --erase _fisher_plugins
+                command rm -f $fish_plugins
+            end
+
+            set --local total (count $install_plugins) (count $update_plugins) (count $remove_plugins)
+
+            test "$total" != "0 0 0" && echo (string join ", " (
+                test $total[1] = 0 || echo "Installed $total[1]") (
+                test $total[2] = 0 || echo "Updated $total[2]") (
+                test $total[3] = 0 || echo "Removed $total[3]")
+            ) plugin/s
         case \*
-            echo "linking $file" | command sed "s|$HOME|~|" >&2
-            command mv -f $file. $file
-            source $file
-            echo "updated to fisher $fisher_version -- hooray!" >&2
-            _fisher_complete
+            echo "fisher: Unknown command: \"$cmd\"" >&2 && return 1
     end
 end
 
-function _fisher_self_uninstall
-    for pkg in (_fisher_ls)
-        _fisher_rm $pkg
-    end
-
-    for file in $fisher_cache $fisher_data $fisher_path/{functions,completions,conf.d}/fisher.fish $fishfile
-        echo "removing $file"
-        command rm -Rf $file 2>/dev/null
-    end | command sed "s|$HOME|~|" >&2
-
-    for name in (set -n | command awk '/^fisher_/')
-        set -e "$name"
-    end
-
-    functions -e (functions -a | command awk '/^_fisher/') fisher
-    complete -c fisher --erase
-end
-
-function _fisher_commit -a cmd
-    set -e argv[1]
-    set -l elapsed (_fisher_now)
-
-    if test ! -e "$fishfile"
-        command touch $fishfile
-        echo "created new fishfile in $fishfile" | command sed "s|$HOME|~|" >&2
-    end
-
-    set -l old_pkgs (_fisher_ls | _fisher_fmt)
-    for pkg in (_fisher_ls)
-        _fisher_rm $pkg
-    end
-    command rm -Rf $fisher_data
-    command mkdir -p $fisher_data
-
-    set -l next_pkgs (_fisher_fmt <$fishfile | _fisher_parse -R $cmd (printf "%s\n" $argv | _fisher_fmt))
-    set -l actual_pkgs (_fisher_fetch $next_pkgs)
-    set -l updated_pkgs
-    for pkg in $old_pkgs
-        if contains -- $pkg $actual_pkgs
-            set updated_pkgs $updated_pkgs $pkg
-        end
-    end
-
-    if test -z "$actual_pkgs$updated_pkgs$old_pkgs$next_pkgs"
-        echo "fisher: nothing to commit -- try adding some plugins" >&2
-        return 1
-    end
-
-    set -l out_pkgs
-    if test "$cmd" = "rm"
-        set out_pkgs $next_pkgs
+if ! set --query _fisher_upgraded_to_4_4
+    set --universal _fisher_upgraded_to_4_4
+    if functions --query _fisher_list
+        set --query XDG_DATA_HOME[1] || set --local XDG_DATA_HOME ~/.local/share
+        command rm -rf $XDG_DATA_HOME/fisher
+        functions --erase _fisher_{list,plugin_parse}
+        fisher update >/dev/null 2>/dev/null
     else
-        for pkg in $next_pkgs
-            if contains -- (echo $pkg | command sed "s|@.*||") $actual_pkgs
-                set out_pkgs $out_pkgs $pkg
-            end
+        for var in (set --names | string match --entire --regex '^_fisher_.+_files$')
+            set $var (string replace -- ~ \~ $$var)
         end
-    end
-
-    printf "%s\n" (_fisher_fmt <$fishfile | _fisher_parse -W $cmd $out_pkgs | command sed "s|^$HOME|~|") >$fishfile
-
-    _fisher_complete
-
-    command awk -v A=(count $actual_pkgs) -v U=(count $updated_pkgs) -v O=(count $old_pkgs) -v E=(_fisher_now $elapsed) '
-        BEGIN {
-            res = fmt("removed", O - U, fmt("updated", U, fmt("added", A - U)))
-            printf((res ? res : "done") " in %.2fs\n", E / 1000)
-        }
-        function fmt(action, n, s) {
-            return n ? (s ? s ", " : s) action " " n " plugin" (n > 1 ? "s" : "") : s
-        }
-    ' >&2
-end
-
-function _fisher_parse -a mode cmd
-    set -e argv[1..2]
-    command awk -v FS="[[:space:]]*#+" -v MODE="$mode" -v CMD="$cmd" -v ARGSTR="$argv" '
-        BEGIN {
-            for (n = split(ARGSTR, a, " "); i++ < n;) pkgs[getkey(a[i])] = a[i]
-        }
-        !NF { next } { k = getkey($1) }
-        MODE == "-R" && !(k in pkgs) && ($0 = $1)
-        MODE == "-W" && (/^#/ || k in pkgs || CMD != "rm") { print pkgs[k] (sub($1, "") ? $0 : "") }
-        MODE == "-W" || CMD == "rm" { delete pkgs[k] }
-        END {
-            for (k in pkgs) {
-                if (CMD != "rm" || MODE == "-W") print pkgs[k]
-                else print "fisher: cannot remove \""k"\" -- plugin is not in fishfile" > "/dev/stderr"
-            }
-        }
-        function getkey(s,  a) {
-            return (split(s, a, /@+|:/) > 2) ? a[2]"/"a[1]"/"a[3] : a[1]
-        }
-    '
-end
-
-function _fisher_fetch
-    set -l pkg_jobs
-    set -l out_pkgs
-    set -l next_pkgs
-    set -l local_pkgs
-    set -q fisher_user_api_token; and set -l curl_opts -u $fisher_user_api_token
-
-    for pkg in $argv
-        switch $pkg
-            case \~\* /\*
-                set -l path (echo "$pkg" | command sed "s|^~|$HOME|")
-                if test -e "$path"
-                    set local_pkgs $local_pkgs $path
-                else
-                    echo "fisher: cannot add \"$pkg\" -- is this a valid file?" >&2
-                end
-                continue
-        end
-
-        command awk -v PKG="$pkg" -v FS=/ '
-            BEGIN {
-                split(PKG, tmp, /@/)
-                pkg = split(PKG, _, "/") <= 2 ? "github.com/"tmp[1] : tmp[1]
-                tag = tmp[2] ? tmp[2] : "HEAD"
-                print pkg "\t" (\
-                    pkg ~ /^github/ ? "https://codeload."pkg"/tar.gz/"tag : \
-                    pkg ~ /^gitlab/ ? "https://"pkg"/-/archive/"tag"/"tmp[split(pkg, tmp, "/")]"-"tag".tar.gz" : \
-                    pkg ~ /^bitbucket/ ? "https://"pkg"/get/"tag".tar.gz" : pkg\
-                )
-            }
-        ' | read -l pkg url
-
-        if test ! -d "$fisher_data/$pkg"
-            fish -c "
-                echo fetching $url >&2
-                command mkdir -p $fisher_data/$pkg $fisher_cache/(command dirname $pkg)
-                if command curl $curl_opts -Ss -w \"\" $url 2>&1 | command tar -xzf- -C $fisher_data/$pkg 2>/dev/null
-                    command rm -Rf $fisher_cache/$pkg
-                    command mv -f $fisher_data/$pkg/* $fisher_cache/$pkg
-                    command rm -Rf $fisher_data/$pkg
-                    command cp -Rf {$fisher_cache,$fisher_data}/$pkg
-                else if test -d \"$fisher_cache/$pkg\"
-                    echo fisher: cannot connect to server -- looking in \"$fisher_cache/$pkg\" | command sed 's|$HOME|~|' >&2
-                    command cp -Rf $fisher_cache/$pkg $fisher_data/$pkg/..
-                else
-                    command rm -Rf $fisher_data/$pkg
-                    echo fisher: cannot add \"$pkg\" -- is this a valid plugin\? >&2
-                end
-            " >/dev/null &
-            set pkg_jobs $pkg_jobs (_fisher_jobs --last)
-            set next_pkgs $next_pkgs "$fisher_data/$pkg"
-        end
-    end
-
-    if set -q pkg_jobs[1]
-        while for job in $pkg_jobs
-                contains -- $job (_fisher_jobs); and break
-            end
-        end
-        for pkg in $next_pkgs
-            if test -d "$pkg"
-                set out_pkgs $out_pkgs $pkg
-                _fisher_add $pkg
-            end
-        end
-    end
-
-    set -l local_prefix $fisher_data/local/$USER
-    if test ! -d "$local_prefix"
-        command mkdir -p $local_prefix
-    end
-    for pkg in $local_pkgs
-        set -l target $local_prefix/(command basename $pkg)
-        if test ! -L "$target"
-            command ln -sf $pkg $target
-            set out_pkgs $out_pkgs $pkg
-            _fisher_add $pkg --link
-        end
-    end
-
-    if set -q out_pkgs[1]
-        _fisher_fetch (
-            for pkg in $out_pkgs
-                if test -s "$pkg/fishfile"
-                    _fisher_fmt <$pkg/fishfile | _fisher_parse -R
-                end
-            end)
-        printf "%s\n" $out_pkgs | _fisher_fmt
-    end
-end
-
-function _fisher_add -a pkg opts
-    for src in $pkg/{functions,completions,conf.d}/**.* $pkg/*.fish
-        set -l target (command basename $src)
-        switch $src
-            case $pkg/conf.d\*
-                set target $fisher_path/conf.d/$target
-            case $pkg/completions\*
-                set target $fisher_path/completions/$target
-            case $pkg/{functions,}\*
-                switch $target
-                    case uninstall.fish
-                        continue
-                    case {init,key_bindings}.fish
-                        set target $fisher_path/conf.d/(command basename $pkg)\_$target
-                    case \*
-                        set target $fisher_path/functions/$target
-                end
-        end
-        echo "linking $target" | command sed "s|$HOME|~|" >&2
-        if set -q opts[1]
-            command ln -sf $src $target
-        else
-            command cp -f $src $target
-        end
-        switch $target
-            case \*.fish
-                source $target >/dev/null 2>/dev/null
-        end
-    end
-end
-
-function _fisher_rm -a pkg
-    for src in $pkg/{conf.d,completions,functions}/**.* $pkg/*.fish
-        set -l target (command basename $src)
-        set -l filename (command basename $target .fish)
-        switch $src
-            case $pkg/conf.d\*
-                test "$filename.fish" = "$target"; and emit "$filename"_uninstall
-                set target conf.d/$target
-            case $pkg/completions\*
-                test "$filename.fish" = "$target"; and complete -ec $filename
-                set target completions/$target
-            case $pkg/{,functions}\*
-                test "$filename.fish" = "$target"; and functions -e $filename
-                switch $target
-                    case uninstall.fish
-                        source $src
-                        continue
-                    case {init,key_bindings}.fish
-                        set target conf.d/(command basename $pkg)\_$target
-                    case \*
-                        set target functions/$target
-                end
-        end
-        command rm -f $fisher_path/$target
-    end
-    if not functions -q fish_prompt
-        source "$__fish_datadir$__fish_data_dir/functions/fish_prompt.fish"
-    end
-end
-
-function _fisher_jobs
-    jobs $argv | command awk '/^[0-9]+\t/ { print $1 }'
-end
-
-function _fisher_now -a elapsed
-    switch (command uname)
-        case Darwin \*BSD
-            command perl -MTime::HiRes -e 'printf("%.0f\n", (Time::HiRes::time() * 1000) - $ARGV[0])' $elapsed
-        case \*
-            math (command date "+%s%3N") - "0$elapsed"
+        functions --erase _fisher_fish_postexec
     end
 end
