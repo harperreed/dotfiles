@@ -6,6 +6,8 @@
 	<false/>
 	<key>CheckTestRelease</key>
 	<true/>
+	<key>ClickToSelectCommand</key>
+	<false/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>3024 Night</key>
@@ -1434,8 +1436,6 @@
 	<true/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
-	<key>EnableAPIServer</key>
-	<true/>
 	<key>EnableDivisionView</key>
 	<true/>
 	<key>FlashTabBarInFullscreen</key>
