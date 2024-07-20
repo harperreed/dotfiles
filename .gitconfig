@@ -46,6 +46,7 @@
                 echo \"No changes staged for commit. Aborting.\"; \
             fi; \
         }; f"
+	pr = !pr.sh
 
 [color]
         ui = true

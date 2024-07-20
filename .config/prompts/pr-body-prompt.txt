@@ -1,0 +1,12 @@
+Write a clear, informative pull request message in markdown:
+
+* Remember to mention the files that were changed, and what was changed
+* Start with a summary
+* Explain the 'why' behind changes
+* Include a bulleted list to outline all of the changes
+* If there are changes that resolve specified issues add the issues to a list of closed issues
+* If there are no changes, or the input is blank - then return a blank string
+
+Think carefully before you write your pull request body.
+
+What you write will be passed to create a github pull request
