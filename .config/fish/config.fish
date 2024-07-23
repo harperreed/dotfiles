@@ -71,7 +71,7 @@ if status is-interactive
 end
 
 # ASDF version manager
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
+# source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 # SSH agent configuration
 if not set -q SSH_AUTH_SOCK
@@ -122,3 +122,6 @@ set -gx PATH $GOPATH/bin $PATH
 
 # Rust settings
 set -gx PATH $HOME/.cargo/bin $PATH
+
+#mise settings
+/opt/homebrew/bin/mise activate fish | source
