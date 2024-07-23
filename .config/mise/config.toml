@@ -1,0 +1,29 @@
+[settings]
+experimental = true
+
+[tasks.llm_helper_generate_output_txt]
+description = 'Generate a output.txt using repo2txt'
+# you can specify a multiline script instead of individual commands
+run = """
+#!/usr/bin/env bash
+repo2txt --ignore-files yarn.lock package-lock.json .env --exclude-dir node_modules
+"""
+
+[tasks.generate_readme]
+depends = ['llm_helper_generate_output_txt']
+description = 'Generate a readme file from output.txt'
+# you can specify a multiline script instead of individual commands
+run = """
+#!/usr/bin/env bash
+cat output.txt | llm -t readme-gen > README.md
+"""
+
+[tasks.llm_helper_copy_buffer_output_txt]
+depends = ['llm_helper_generate_output_txt']
+description = 'put the output.txt into the copy buffer'
+# you can specify a multiline script instead of individual commands
+run = """
+#!/usr/bin/env bash
+cat output.txt | pbcopy
+echo "Pushed output.txt to the copy buffer"
+"""
