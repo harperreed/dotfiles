@@ -8,7 +8,7 @@
 // from the command palette or from `Zed` application menu.
 {
     // "theme": "Andromeda",
-    "theme": "macOS Classic Dark2",
+    "theme": "Gruvbox Dark",
     "tab_size": 4,
     "preferred_line_length": 80,
     "soft_wrap": "none",
