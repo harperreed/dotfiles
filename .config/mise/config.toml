@@ -27,3 +27,6 @@ run = """
 cat output.txt | pbcopy
 echo "Pushed output.txt to the copy buffer"
 """
+
+[tools]
+usage = "latest"
