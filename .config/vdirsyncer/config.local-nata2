@@ -1,0 +1,26 @@
+[general]
+status_path = "~/.config/vdirsyncer/status/"
+
+### Local Storage
+
+[storage GMAIL_NATA2_main_contacts_local]
+type = "filesystem"
+path = "~/.contacts/"
+fileext = ".vcf"
+
+### Remote storages
+
+[storage GMAIL_NATA2_harper_at_nata2_org_remote_contacts]
+type = "google_contacts"
+token_file = "~/.config/vdirsyncer/tokens/google_harper_at_nata2_org"
+client_id.fetch = ["command", "keyring", "get", "google.com", "contacts_client_id"]
+client_secret.fetch = ["command", "keyring", "get", "google.com", "contacts_client_secret"]
+
+### Syncing
+
+[pair GMAIL_NATA2_harper_at_nata2_org_sync]
+a = "GMAIL_NATA2_harper_at_nata2_org_remote_contacts"
+b = "GMAIL_NATA2_main_contacts_local"
+collections = [["harper_at_nata2_org_contacts", "default", "main"]]
+conflict_resolution = "b wins"
+metadata = ["displayname"]
