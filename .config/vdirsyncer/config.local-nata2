@@ -3,7 +3,7 @@ status_path = "~/.config/vdirsyncer/status/"
 
 ### Local Storage
 
-[storage main_contacts_local]
+[storage GMAIL_NATA2_main_contacts_local]
 type = "filesystem"
 path = "~/.contacts/"
 fileext = ".vcf"
@@ -16,26 +16,11 @@ token_file = "~/.config/vdirsyncer/tokens/google_harper_at_nata2_org"
 client_id.fetch = ["command", "keyring", "get", "google.com", "contacts_client_id"]
 client_secret.fetch = ["command", "keyring", "get", "google.com", "contacts_client_secret"]
 
-[storage icloud_contacts_remote]
-type = "carddav"
-url = "https://contacts.icloud.com/"
-username = "harper@nata2.org"
-password.fetch = ["command", "keyring", "get", "icloud.com", "harper@nata2.org"]
-
-
 ### Syncing
 
 [pair GMAIL_NATA2_harper_at_nata2_org_sync]
 a = "GMAIL_NATA2_harper_at_nata2_org_remote_contacts"
-b = "main_contacts_local"
+b = "GMAIL_NATA2_main_contacts_local"
 collections = [["harper_at_nata2_org_contacts", "default", "main"]]
-conflict_resolution = "b wins"
-metadata = ["displayname"]
-
-
-[pair icloud_sync]
-a = "icloud_contacts_remote"
-b = "main_contacts_local"
-collections = [["icloud_contacts", "card", "main"]]
 conflict_resolution = "b wins"
 metadata = ["displayname"]
