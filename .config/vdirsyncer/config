@@ -10,12 +10,11 @@ fileext = ".vcf"
 
 ### Remote storages
 
-[storage fruux_contacts_remote]
-type = "carddav"
-url = "https://dav.fruux.com/"
-username = "b3297381638"
-password.fetch = ["command", "keyring", "get", "fruux", "b3297381638"]
-
+[storage GMAIL_NATA2_harper_at_nata2_org_remote_contacts]
+type = "google_contacts"
+token_file = "~/.config/vdirsyncer/tokens/google_harper_at_nata2_org"
+client_id.fetch = ["command", "keyring", "get", "google.com", "contacts_client_id"]
+client_secret.fetch = ["command", "keyring", "get", "google.com", "contacts_client_secret"]
 
 [storage icloud_contacts_remote]
 type = "carddav"
@@ -23,66 +22,20 @@ url = "https://contacts.icloud.com/"
 username = "harper@nata2.org"
 password.fetch = ["command", "keyring", "get", "icloud.com", "harper@nata2.org"]
 
-[storage harper_at_nata2_org_remote_contacts]
-type = "google_contacts"
-token_file = "~/.config/vdirsyncer/tokens/google_harper_at_nata2_org"
-client_id.fetch = ["command", "keyring", "get", "google.com", "contacts_client_id"]
-client_secret.fetch = ["command", "keyring", "get", "google.com", "contacts_client_secret"]
-
-[storage natatwo_gmail_com_remote_contacts]
-type = "google_contacts"
-token_file = "~/.config/vdirsyncer/tokens/google_natatwo_gmail_com"
-client_id.fetch = ["command", "keyring", "get", "google.com", "contacts_client_id"]
-client_secret.fetch = ["command", "keyring", "get", "google.com", "contacts_client_secret"]
-
-[storage harperreed_gmail_com_remote_contacts]
-type = "google_contacts"
-token_file = "~/.config/vdirsyncer/tokens/google_harperreed_gmail_com"
-client_id.fetch = ["command", "keyring", "get", "google.com", "contacts_client_id"]
-client_secret.fetch = ["command", "keyring", "get", "google.com", "contacts_client_secret"]
-
-[storage harper_at_2389_ai_remote_contacts]
-type = "google_contacts"
-token_file = "~/.config/vdirsyncer/tokens/google_harper_at_2389_ai"
-client_id.fetch = ["command", "keyring", "get", "google.com", "contacts_client_id"]
-client_secret.fetch = ["command", "keyring", "get", "google.com", "contacts_client_secret"]
 
 ### Syncing
 
-[pair harper_at_nata2_org_sync]
-a = "harper_at_nata2_org_remote_contacts"
+[pair GMAIL_NATA2_harper_at_nata2_org_sync]
+a = "GMAIL_NATA2_harper_at_nata2_org_remote_contacts"
 b = "main_contacts_local"
 collections = [["harper_at_nata2_org_contacts", "default", "main"]]
-#conflict_resolution = "b wins"
-
-[pair harper_at_2389_ai_sync]
-a = "harper_at_2389_ai_remote_contacts"
-b = "main_contacts_local"
-collections = [["harper_at_2389_ai_remote_contacts", "default", "main"]]
-#conflict_resolution = "b wins"
-
-#[pair fruux_sync]
-# a = "fruux_contacts_remote"
-#b = "main_contacts_local"
-#collections = [["fruux_contacts", "507d5472-efc5-44b7-b784-24cd4be7790c", "main"]]
-#conflict_resolution = "b wins"
+conflict_resolution = "b wins"
+metadata = ["displayname"]
 
 
-# New iCloud configuration
 [pair icloud_sync]
 a = "icloud_contacts_remote"
 b = "main_contacts_local"
 collections = [["icloud_contacts", "card", "main"]]
 conflict_resolution = "b wins"
-
-[pair natatwo_gmail_com_sync]
-a = "natatwo_gmail_com_remote_contacts"
-b = "main_contacts_local"
-collections = [["natatwo_gmail_com_remote_contacts", "default", "main"]]
-conflict_resolution = "b wins"
-
-[pair harperreed_gmail_com_sync]
-a = "harperreed_gmail_com_remote_contacts"
-b = "main_contacts_local"
-collections = [["harperreed_gmail_com_remote_contacts", "default", "main"]]
-conflict_resolution = "b wins"
+metadata = ["displayname"]
