@@ -39,6 +39,7 @@ switch (uname)
     case Darwin
         set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
         set -gx PUPPETEER_EXECUTABLE_PATH (which chromium)
+        echo "Hi Darwin" 
     case FreeBSD NetBSD DragonFly
         echo Hi Beastie!
     case '*'
