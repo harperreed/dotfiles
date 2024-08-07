@@ -8,6 +8,9 @@
 // from the command palette or from `Zed` application menu.
 {
     // "theme": "Andromeda",
+    "language_models": {
+        "openai": {}
+    },
     "theme": "Gruvbox Dark",
     "tab_size": 4,
     "preferred_line_length": 80,
@@ -20,7 +23,11 @@
     "projects_online_by_default": true,
     "assistant": {
       // Version of this setting.
-      "version": "1",
+      "default_model": {
+         "provider": "openai",
+         "model": "gpt-4-turbo-preview"
+      },
+      "version": "2",
       // Whether to show the assistant panel button in the status bar.
       "button": true,
       // Where to dock the assistant panel. Can be 'left', 'right' or 'bottom'.
@@ -28,20 +35,9 @@
       // Default width when the assistant is docked to the left or right.
       "default_width": 640,
       // Default height when the assistant is docked to the bottom.
-      "default_height": 320,
+      "default_height": 640.0,
       // AI provider.
-      "provider": {
-        "name": "openai",
-        // The default model to use when starting new conversations. This
-        // setting can take three values:
-        //
-        // 1. "gpt-3.5-turbo"
-        // 2. "gpt-4"
-        // 3. "gpt-4-turbo-preview"
-        "default_model": "gpt-4-turbo-preview",
-        // The API URL to use when communicating with the AI provider.
-        // "api_url" : "https://openaiproxy-baxvbakvia-uc.a.run.app/v1"
-      }
+      "provider": null
     },
     "git": {
       "git_gutter": "tracked_files"

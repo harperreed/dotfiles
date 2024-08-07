@@ -28,6 +28,19 @@ function fish_greeting
     echo
 end
 
+
+function add_ssh_keys --on-variable SSH_AUTH_SOCK
+    ssh-add --apple-use-keychain ~/.ssh/id_rsa 2>/dev/null
+    ssh-add --apple-use-keychain ~/.ssh/id_ed25519 2>/dev/null
+end
+
+# Start ssh-agent if it's not already running
+if not test -n "$SSH_AUTH_SOCK"
+    eval (ssh-agent -c)
+    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+end
+
 # Source aliases and paths
 source ~/.config/fish/aliases.fish
 source ~/.config/fish/paths.fish
@@ -39,7 +52,7 @@ switch (uname)
     case Darwin
         set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
         set -gx PUPPETEER_EXECUTABLE_PATH (which chromium)
-        echo "Hi Darwin" 
+        add_ssh_keys
     case FreeBSD NetBSD DragonFly
         echo Hi Beastie!
     case '*'
