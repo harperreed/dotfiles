@@ -32,13 +32,13 @@ end
 function add_ssh_keys --on-variable SSH_AUTH_SOCK
     if test -n "$SSH_TTY"
         # We are connected via SSH
-        echo "Connected via SSH. Using SSH agent forwarding."
+        echo "🔒 Connected via SSH. Using SSH agent forwarding."
     else if test -n "$SSH_CONNECTION"
         # We are connected via SSH but without a TTY (e.g., in a script)
-        echo "Connected via SSH (non-interactive). Using SSH agent forwarding."
+        echo "🤖 Connected via SSH (non-interactive). Using SSH agent forwarding."
     else
         # We are on a physical terminal
-        echo "On physical terminal. Adding local SSH keys."
+        echo "💻 On physical terminal. Adding local SSH keys."
         ssh-add --apple-use-keychain ~/.ssh/id_rsa 2>/dev/null
         ssh-add --apple-use-keychain ~/.ssh/id_ed25519 2>/dev/null
     end
