@@ -44,6 +44,9 @@ brew "speedtest-cli"
 brew "sqlcipher"
 brew "wget"
 brew "wtfutil"
+brew "ical-buddy"
+
+brew "keith/formulae/reminders-cli"
 
 cask "1password"
 cask "appcleaner"
