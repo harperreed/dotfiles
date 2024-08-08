@@ -9,7 +9,9 @@
 {
     // "theme": "Andromeda",
     "language_models": {
-        "openai": {}
+        "openai": {
+            "version": "1"
+        }
     },
     "theme": "Gruvbox Dark",
     "tab_size": 4,
