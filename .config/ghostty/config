@@ -1,5 +1,23 @@
-title = "Ghostty 👻"
+# https://github.com/mitchellh/ghostty/blob/main/src/config/Config.zig
 
-background-opacity = 0.95
+#title = "Ghostty 👻"
+
+background-opacity = 0.80
 background-blur-radius = 30
-unfocused-split-opacity = 0.90
+unfocused-split-opacity = 0.10
+window-decoration = true
+macos-titlebar-style = transparent
+font-family = monospace
+font-size = 14
+theme = Builtin Pastel Dark
+
+cursor-style-blink = true
+window-theme = auto
+working-directory = inherit
+clipboard-trim-trailing-spaces = true
+font-thicken = true
+confirm-close-surface = false
+quit-after-last-window-closed = true
+shell-integration-features = cursor, sudo, title
+# Inverting seems to work better with Solarized
+selection-invert-fg-bg = true
