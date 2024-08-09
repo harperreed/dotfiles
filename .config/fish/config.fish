@@ -37,9 +37,9 @@ function add_ssh_keys_darwin --on-variable SSH_AUTH_SOCK
         echo
     else if test -n "$SSH_CONNECTION"
         # We are connected via SSH but without a TTY (e.g., in a script)
-        echo
-        echo "🤖 Connected via SSH (non-interactive). Using SSH agent forwarding." | $lolcat_cmd
-        echo
+        # echo
+        # echo "🤖 Connected via SSH (non-interactive). Using SSH agent forwarding." | $lolcat_cmd
+        # echo
     else
         # We are on a physical terminal
         echo
