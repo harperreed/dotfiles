@@ -1,0 +1,5 @@
+title = "Ghostty 👻"
+
+background-opacity = 0.95
+background-blur-radius = 30
+unfocused-split-opacity = 0.90
