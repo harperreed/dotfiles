@@ -26,8 +26,8 @@
     "assistant": {
       // Version of this setting.
       "default_model": {
-         "provider": "openai",
-         "model": "gpt-4-turbo-preview"
+         "provider": "zed.dev",
+         "model": "claude-3-5-sonnet-20240620"
       },
       "version": "2",
       // Whether to show the assistant panel button in the status bar.
