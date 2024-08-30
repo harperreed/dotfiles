@@ -131,8 +131,11 @@ switch (uname)
         echo "       `':::_:' -- '' -'-' `':_::::'`"
 
 
-
         set -gx GOPATH $HOME/go
+        ~/.local/bin/mise activate fish | source
+        if status is-interactive
+          echo "Hi Tux!"
+        end 
     case Darwin
 
         init_darwin
@@ -177,7 +180,9 @@ set -gx LC_ALL en_US.UTF-8
 set -gx PYTHONDONTWRITEBYTECODE 1
 
 # Java settings
-set -gx JAVA_HOME (/usr/libexec/java_home)
+if test -e /usr/libexec/java_home
+   set -gx JAVA_HOME (/usr/libexec/java_home)
+end 
 
 # Node.js settings
 set -gx NODE_ENV development
