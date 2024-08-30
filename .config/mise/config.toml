@@ -9,7 +9,7 @@ run = """
 repo2txt --ignore-files yarn.lock package-lock.json .env --exclude-dir node_modules
 """
 
-[tasks.generate_readme]
+[tasks.llm_helper_generate_readme]
 depends = ['llm_helper_generate_output_txt']
 description = 'Generate a readme file from output.txt'
 # you can specify a multiline script instead of individual commands
