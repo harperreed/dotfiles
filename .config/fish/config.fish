@@ -186,6 +186,7 @@ end
 
 # Node.js settings
 set -gx NODE_ENV development
+set -x OSTYPE (uname | tr '[:upper:]' '[:lower:]')
 
 # Source aliases and paths
 source ~/.config/fish/aliases.fish
