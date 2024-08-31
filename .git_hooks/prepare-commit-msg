@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Exit if the `SKIP_LLM_GITHOOK` environment variable is set
 if [ ! -z "$SKIP_LLM_GITHOOK" ]; then
