@@ -54,7 +54,7 @@ filter_mode_shell_up_key_binding = "host"
 
 ## which style to use
 ## possible values: auto, full, compact
-style = "compact"
+style = "auto"
 
 ## the maximum number of lines the interface should take up
 ## set it to 0 to always go full screen
