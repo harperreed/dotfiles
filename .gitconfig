@@ -4,6 +4,12 @@
 [github]
 	user = harperreed
 
+[includeIf "env:OSTYPE=darwin"]
+    path = ~/.gitconfig.mac
+
+[includeIf "env:OSTYPE=linux"]
+    path = ~/.gitconfig.linux
+
 [alias]
         st = status
         ci = commit
@@ -53,8 +59,7 @@
 [color "diff"]
         whitespace = red reverse
 [core]
-        whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-        excludesfile = /opt/boxen/config/git/gitignore
+  whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	editor = nvim
 	hooksPath = /Users/harper/.git_hooks
 [push]
