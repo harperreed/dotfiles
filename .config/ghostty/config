@@ -20,7 +20,8 @@ theme = Builtin Pastel Dark
 
 cursor-style-blink = true
 window-theme = auto
-working-directory = inherit
+# working-directory = inherit
+working-directory = home
 clipboard-trim-trailing-spaces = true
 font-thicken = true
 

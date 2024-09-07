@@ -31,3 +31,4 @@ echo "Pushed output.txt to the copy buffer"
 [tools]
 usage = "latest"
 node = "20"
+go = "1.22.2"
