@@ -13,7 +13,7 @@
     },
     "theme": {
         "mode": "system",
-        "light": "Atelier Estuary Dark",
+        "light": "Atelier Cave Dark",
         "dark": "One Dark"
     },
     "git": {
@@ -25,7 +25,7 @@
     "tab_size": 4,
     "ui_font_size": 16,
     "preferred_line_length": 80,
-    "soft_wrap": "none",
+    "soft_wrap": "editor_width",
     "buffer_font_size": 20,
     "autosave": {
         "after_delay": {
@@ -61,7 +61,7 @@
         "background_coloring": "indent_aware"
     },
     "inlay_hints": {
-        "enabled": true
+        "enabled": false
     },
     "remove_trailing_whitespace_on_save": false,
     "ensure_final_newline_on_save": true,
