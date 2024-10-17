@@ -1,6 +1,7 @@
 [settings]
 experimental = true
 
+
 [tasks.llm_helper_generate_output_txt]
 description = 'Generate a output.txt using repo2txt'
 # you can specify a multiline script instead of individual commands
