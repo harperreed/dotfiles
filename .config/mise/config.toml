@@ -1,6 +1,12 @@
 [settings]
 experimental = true
 
+[tools]
+usage = "latest"
+node = "latest"
+go = "latest"
+rust = "latest"
+python = "latest"
 
 [tasks.llm_helper_generate_output_txt]
 description = 'Generate a output.txt using repo2txt'
@@ -28,10 +34,3 @@ run = """
 cat output.txt | pbcopy
 echo "Pushed output.txt to the copy buffer"
 """
-
-[tools]
-usage = "latest"
-node = "latest"
-python = "latest"
-go = "latest"
-rust = "latest"

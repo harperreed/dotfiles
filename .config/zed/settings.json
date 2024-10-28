@@ -8,12 +8,35 @@
 // from the command palette or from `Zed` application menu.
 {
     // "theme": "Andromeda",
+    "ssh_connections": [
+    {
+      "host": "meteorite.ninja",
+      "username": "hl2dmserver",
+      "projects": [
+        {
+          "paths": [
+            "~/backups"
+          ]
+        },
+        {
+          "paths": [
+            "~/backups"
+          ]
+        },
+        {
+          "paths": [
+            "~/serverfiles"
+          ]
+        }
+      ]
+    }
+  ],
     "outline_panel": {
         "dock": "right"
     },
     "theme": {
         "mode": "system",
-        "light": "Dracula",
+        "light": "Summercamp",
         "dark": "One Dark"
     },
     "git": {
