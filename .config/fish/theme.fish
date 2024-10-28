@@ -57,6 +57,11 @@ function fish_prompt
     # Print a newline before the prompt
     echo
 
+    # Print Python virtual environment if active
+    if set -q VIRTUAL_ENV
+        echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+    end
+
     # Print username and hostname
     set_color brblue
     echo -n (whoami)
@@ -82,10 +87,6 @@ function fish_prompt
         echo -n (fish_git_prompt)
     end
 
-    # Print Python virtual environment if active
-    if set -q VIRTUAL_ENV
-        echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
-    end
 
     # Print prompt symbol
     echo
