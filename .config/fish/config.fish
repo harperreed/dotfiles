@@ -1,3 +1,4 @@
+
 # Fish shell main configuration
 
 # Load theme settings
