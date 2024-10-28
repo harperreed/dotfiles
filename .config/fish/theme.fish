@@ -59,7 +59,7 @@ function fish_prompt
 
     # Print Python virtual environment if active
     if set -q VIRTUAL_ENV
-        echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " "
+        echo -n -s (set_color -b blue black) "[" (basename "$VIRTUAL_ENV") "]" (set_color normal) " "
     end
 
     # Print username and hostname
