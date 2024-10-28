@@ -13,7 +13,7 @@ description = 'Generate a output.txt using repo2txt'
 # you can specify a multiline script instead of individual commands
 run = """
 #!/usr/bin/env bash
-repo2txt --ignore-files yarn.lock package-lock.json .env --exclude-dir node_modules
+uvx repo2txt --ignore-files yarn.lock package-lock.json .env --exclude-dir node_modules
 """
 
 [tasks.llm_helper_generate_readme]
@@ -34,3 +34,15 @@ run = """
 cat output.txt | pbcopy
 echo "Pushed output.txt to the copy buffer"
 """
+
+[tasks.pyformat]
+description = 'Format Python code using ruff formatter'
+run = "uvx ruff format"
+
+[tasks.pylint]
+description = 'Lint Python code using ruff'
+run = "uvx ruff check"
+
+[tasks.pylint-fix]
+description = 'Automatically fix Python linting issues using ruff'
+run = "uvx ruff check --fix"
