@@ -7,27 +7,46 @@ node = "latest"
 go = "latest"
 rust = "latest"
 python = "latest"
+deno = "latest"
+# bun = "latest"
+# ruby = "latest"
+# java = "latest"
+# kotlin = "latest"
+# zig = "latest"
+# elixir = "latest"
+# haskell = "latest"
+# scala = "latest"
+# terraform = "latest"
+# ansible = "latest"
+# pnpm = "latest"
+yarn = "latest"
+cargo = "latest"
 
-[tasks.llm_helper_generate_output_txt]
-description = 'Generate a output.txt using repo2txt'
-# you can specify a multiline script instead of individual commands
+[tasks.llm_helper_generate_llm_bundle]
+description = 'Generate output.txt in XML style using repomix'
+run = """
+#!/usr/bin/env bash
+npx repomix --style xml --output output.txt --ignore uv.lock,package-lock.json,.env 
+"""
+
+[tasks.llm_helper_generate_output_txt_repo2txt]
+description = 'Generate output.txt using repo2txt'
 run = """
 #!/usr/bin/env bash
 uvx repo2txt --ignore-files yarn.lock package-lock.json .env --exclude-dir node_modules
 """
 
 [tasks.llm_helper_generate_readme]
-depends = ['llm_helper_generate_output_txt']
-description = 'Generate a readme file from output.txt'
-# you can specify a multiline script instead of individual commands
+depends = ['llm_helper_generate_llm_bundle']
+description = 'Generate README.md from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
 cat output.txt | llm -t readme-gen > README.md
 """
 
-[tasks.llm_helper_copy_buffer_output_txt]
-depends = ['llm_helper_generate_output_txt']
-description = 'put the output.txt into the copy buffer'
+[tasks.llm_helper_copy_buffer_llm_bundle]
+depends = ['llm_helper_generate_llm_bundle']
+description = 'Copy output.txt content to system clipboard'
 # you can specify a multiline script instead of individual commands
 run = """
 #!/usr/bin/env bash
