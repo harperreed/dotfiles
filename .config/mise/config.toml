@@ -26,7 +26,7 @@ cargo = "latest"
 description = 'Generate output.txt in XML style using repomix'
 run = """
 #!/usr/bin/env bash
-npx repomix --style xml --output output.txt --ignore uv.lock,package-lock.json,.env 
+npx repomix --style xml --output output.txt --ignore **/uv.lock,**/package-lock.json,**/.env 
 """
 
 [tasks.llm_helper_generate_output_txt_repo2txt]

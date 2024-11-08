@@ -29,6 +29,27 @@
           ]
         }
       ]
+    },
+    {
+      "host": "192.168.120.34",
+      "projects": [
+        {
+          "paths": [
+            "~/docker"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "3.94.165.7",
+      "username": "ec2-user",
+      "projects": [
+        {
+          "paths": [
+            "~/src"
+          ]
+        }
+      ]
     }
   ],
     "outline_panel": {
