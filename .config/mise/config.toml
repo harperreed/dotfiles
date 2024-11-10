@@ -65,3 +65,7 @@ run = "uvx ruff check"
 [tasks.pylint-fix]
 description = 'Automatically fix Python linting issues using ruff'
 run = "uvx ruff check --fix"
+
+[tasks.jupyter]
+description = 'Start Jupyter Lab'
+run = "uv run --with jupyter jupyter lab"
