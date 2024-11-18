@@ -26,14 +26,7 @@ cargo = "latest"
 description = 'Generate output.txt in XML style using repomix'
 run = """
 #!/usr/bin/env bash
-npx repomix --style xml --output output.txt --ignore **/uv.lock,**/package-lock.json,**/.env 
-"""
-
-[tasks.llm_helper_generate_output_txt_repo2txt]
-description = 'Generate output.txt using repo2txt'
-run = """
-#!/usr/bin/env bash
-uvx repo2txt --ignore-files yarn.lock package-lock.json .env --exclude-dir node_modules
+npx repomix --style xml --output-show-line-numbers --output output.txt --ignore **/uv.lock,**/package-lock.json,**/.env 
 """
 
 [tasks.llm_helper_generate_readme]
@@ -53,6 +46,23 @@ run = """
 cat output.txt | pbcopy
 echo "Pushed output.txt to the copy buffer"
 """
+
+[tasks.llm_helper_generate_github_issues]
+depends = ['llm_helper_generate_llm_bundle']
+description = 'Generate README.md from repository content stored in output.txt using LLM generation'
+run = """
+#!/usr/bin/env bash
+cat output.txt | llm -m claude-3.5-sonnet -t github-issue-gen > issues.md
+"""
+
+[tasks.llm_helper_generate_code_review]
+depends = ['llm_helper_generate_llm_bundle']
+description = 'Generate README.md from repository content stored in output.txt using LLM generation'
+run = """
+#!/usr/bin/env bash
+cat output.txt | llm -m claude-3.5-sonnet -t code-review-gen > code-review.md
+"""
+
 
 [tasks.pyformat]
 description = 'Format Python code using ruff formatter'
