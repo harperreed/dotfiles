@@ -21,6 +21,7 @@ deno = "latest"
 # pnpm = "latest"
 yarn = "latest"
 cargo = "latest"
+ruff = "latest"
 
 [tasks.generate_llm_bundle]
 description = 'Generate LLM bundle output file using repomix'
@@ -63,23 +64,22 @@ run = """
 cat output.txt | llm -m claude-3.5-sonnet -t code-review-gen > code-review.md
 """
 
-
 [tasks."python:format"]
 description = 'Format Python code using ruff formatter'
-run = ["uvx", "ruff", "format"]
+run = "uvx ruff format"
 
 [tasks."python:lint"]
 description = 'Lint Python code using ruff'
-run = ["uvx", "ruff", "check"]
+run = "uvx ruff check"
 
 [tasks."python:lint-fix"]
 description = 'Automatically fix Python linting issues using ruff'
-run = ["uvx", "ruff", "check", "--fix"]
+run = "uvx ruff check --fix"
 
 [tasks."python:test"]
 description = 'Run Python tests using pytest'
-run = ["uv", "run", "pytest"]
+run = "uv run pytest"
 
 [tasks.jupyter]
 description = 'Start Jupyter Lab'
-run = ["uv", "run", "--with jupyter", "jupyter", "lab"]
+run = "uv run --with jupyter jupyter lab"
