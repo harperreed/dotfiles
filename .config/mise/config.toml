@@ -22,15 +22,16 @@ deno = "latest"
 yarn = "latest"
 cargo = "latest"
 
-[tasks.llm_helper_generate_llm_bundle]
-description = 'Generate output.txt in XML style using repomix'
+[tasks.generate_llm_bundle]
+description = 'Generate LLM bundle output file using repomix'
+hide = true # hide this task from the lis
 run = """
 #!/usr/bin/env bash
 npx repomix --style xml --output-show-line-numbers --output output.txt --ignore **/uv.lock,**/package-lock.json,**/.env 
 """
 
 [tasks.llm_helper_generate_readme]
-depends = ['llm_helper_generate_llm_bundle']
+depends = ['generate_llm_bundle']
 description = 'Generate README.md from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
@@ -38,9 +39,8 @@ cat output.txt | llm -t readme-gen > README.md
 """
 
 [tasks.llm_helper_copy_buffer_llm_bundle]
-depends = ['llm_helper_generate_llm_bundle']
-description = 'Copy output.txt content to system clipboard'
-# you can specify a multiline script instead of individual commands
+depends = ['generate_llm_bundle']
+description = 'Copy generated LLM bundle from output.txt to system clipboard for external use'
 run = """
 #!/usr/bin/env bash
 cat output.txt | pbcopy
@@ -48,30 +48,34 @@ echo "Pushed output.txt to the copy buffer"
 """
 
 [tasks.llm_helper_generate_github_issues]
-depends = ['llm_helper_generate_llm_bundle']
-description = 'Generate README.md from repository content stored in output.txt using LLM generation'
+depends = ['generate_llm_bundle']
+description = 'Generate GitHub issues from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
 cat output.txt | llm -m claude-3.5-sonnet -t github-issue-gen > issues.md
 """
 
 [tasks.llm_helper_generate_code_review]
-depends = ['llm_helper_generate_llm_bundle']
-description = 'Generate README.md from repository content stored in output.txt using LLM generation'
+depends = ['generate_llm_bundle']
+description = 'Generate code review output from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
 cat output.txt | llm -m claude-3.5-sonnet -t code-review-gen > code-review.md
 """
 
 
-[tasks.pyformat]
+[tasks."python:format"]
 description = 'Format Python code using ruff formatter'
-run = "uvx ruff format"
+run = ["uvx", "ruff", "format"]
 
-[tasks.pylint]
+[tasks."python:lint"]
 description = 'Lint Python code using ruff'
-run = "uvx ruff check"
+run = ["uvx", "ruff", "check"]
 
-[tasks.pylint-fix]
+[tasks."python:lint-fix"]
 description = 'Automatically fix Python linting issues using ruff'
-run = "uvx ruff check --fix"
+run = ["uvx", "ruff", "check", "--fix"]
+
+[tasks."python:test"]
+description = 'Run Python tests using pytest'
+run = ["uv", "run", "pytest"]
