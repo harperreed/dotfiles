@@ -28,7 +28,15 @@ description = 'Generate LLM bundle output file using repomix'
 hide = true # hide this task from the lis
 run = """
 #!/usr/bin/env bash
-npx repomix --style xml --output-show-line-numbers --output output.txt --ignore **/uv.lock,**/package-lock.json,**/.env 
+npx repomix --style xml --output-show-line-numbers --output output.txt --ignore **/uv.lock,**/package-lock.json,**/.env,**/Cargo.lock,**/node_modules,**/target,**/dist,**/build,**/output.txt 
+"""
+
+[tasks.clean_llm_bundles]
+description = 'Generate LLM bundle output file using repomix'
+
+run = """
+#!/usr/bin/env bash
+find . -name "output.txt" -print -delete
 """
 
 [tasks.llm_helper_generate_readme]
