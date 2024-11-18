@@ -79,3 +79,7 @@ run = ["uvx", "ruff", "check", "--fix"]
 [tasks."python:test"]
 description = 'Run Python tests using pytest'
 run = ["uv", "run", "pytest"]
+
+[tasks.jupyter]
+description = 'Start Jupyter Lab'
+run = ["uv", "run", "--with jupyter", "jupyter", "lab"]
