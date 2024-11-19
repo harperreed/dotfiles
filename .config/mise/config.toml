@@ -20,7 +20,6 @@ deno = "latest"
 # ansible = "latest"
 # pnpm = "latest"
 yarn = "latest"
-cargo = "latest"
 ruff = "latest"
 
 [tasks.generate_llm_bundle]
