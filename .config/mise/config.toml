@@ -22,7 +22,7 @@ deno = "latest"
 yarn = "latest"
 ruff = "latest"
 
-[tasks.generate_llm_bundle]
+[tasks."llm:generate_bundle"]
 description = 'Generate LLM bundle output file using repomix'
 hide = true # hide this task from the lis
 run = """
@@ -30,7 +30,7 @@ run = """
 npx repomix --style xml --output-show-line-numbers --output output.txt --ignore **/uv.lock,**/package-lock.json,**/.env,**/Cargo.lock,**/node_modules,**/target,**/dist,**/build,**/output.txt,**/yarn.lock
 """
 
-[tasks.clean_llm_bundles]
+[tasks."llm:clean_bundles"]
 description = 'Generate LLM bundle output file using repomix'
 
 run = """
@@ -38,16 +38,16 @@ run = """
 find . -name "output.txt" -print -delete
 """
 
-[tasks.llm_helper_generate_readme]
-depends = ['generate_llm_bundle']
+[tasks."llm:generate_readme"]
+depends = ["llm:generate_bundle"]
 description = 'Generate README.md from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
 cat output.txt | llm -t readme-gen > README.md
 """
 
-[tasks.llm_helper_copy_buffer_llm_bundle]
-depends = ['generate_llm_bundle']
+[tasks."llm:copy_buffer_bundle"]
+depends = ["llm:generate_bundle"]
 description = 'Copy generated LLM bundle from output.txt to system clipboard for external use'
 run = """
 #!/usr/bin/env bash
@@ -55,20 +55,28 @@ cat output.txt | pbcopy
 echo "Pushed output.txt to the copy buffer"
 """
 
-[tasks.llm_helper_generate_github_issues]
-depends = ['generate_llm_bundle']
+[tasks."llm:generate_github_issues"]
+depends = ["llm:generate_bundle"]
 description = 'Generate GitHub issues from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
 cat output.txt | llm -m claude-3.5-sonnet -t github-issue-gen > issues.md
 """
 
-[tasks.llm_helper_generate_code_review]
-depends = ['generate_llm_bundle']
+[tasks."llm:generate_code_review"]
+depends = ["llm:generate_bundle"]
 description = 'Generate code review output from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
 cat output.txt | llm -m claude-3.5-sonnet -t code-review-gen > code-review.md
+"""
+
+[tasks."llm:generate_missing_tests"]
+depends = ["llm:generate_bundle"]
+description = 'Generate code review output from repository content stored in output.txt using LLM generation'
+run = """
+#!/usr/bin/env bash
+cat output.txt | llm -m claude-3.5-sonnet -t missing-tests-gen > missing-tests.md
 """
 
 [tasks."python:format"]
