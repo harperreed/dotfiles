@@ -6,7 +6,6 @@ usage = "latest"
 node = "latest"
 go = "latest"
 rust = "latest"
-python = "latest"
 deno = "latest"
 # bun = "latest"
 # ruby = "latest"
@@ -21,6 +20,7 @@ deno = "latest"
 # pnpm = "latest"
 yarn = "latest"
 ruff = "latest"
+python = "3.12"
 
 [tasks."llm:generate_bundle"]
 description = 'Generate LLM bundle output file using repomix'
