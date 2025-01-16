@@ -1,0 +1,39 @@
+{
+    "output": {
+        "filePath": "output.txt",
+        "style": "xml",
+        "fileSummary": true,
+        "directoryStructure": true,
+        "removeComments": false,
+        "removeEmptyLines": true,
+        "showLineNumbers": true,
+        "copyToClipboard": false,
+        "topFilesLength": 5,
+        "includeEmptyDirectories": false
+    },
+    "include": ["**/*"],
+    "ignore": {
+        "useGitignore": true,
+        "useDefaultPatterns": true,
+        // Patterns can also be specified in .repomixignore
+        "customPatterns": [
+            "**/*.log",
+            "**/uv.lock",
+            "**/package-lock.json",
+            "**/.env",
+            "**/Cargo.lock",
+            "**/node_modules",
+            "**/target",
+            "**/dist",
+            "**/build",
+            "**/output.txt",
+            "**/yarn.lock"
+        ]
+    },
+    "security": {
+        "enableSecurityCheck": true
+    },
+    "tokenCount": {
+        "encoding": "o200k_base"
+    }
+}

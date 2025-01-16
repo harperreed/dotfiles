@@ -73,10 +73,18 @@ cat output.txt | llm -m claude-3.5-sonnet -t code-review-gen > code-review.md
 
 [tasks."llm:generate_missing_tests"]
 depends = ["llm:generate_bundle"]
-description = 'Generate code review output from repository content stored in output.txt using LLM generation'
+description = 'Generate missing tests for code in repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
 cat output.txt | llm -m claude-3.5-sonnet -t missing-tests-gen > missing-tests.md
+"""
+
+[tasks."llm:generate_issue_prompts"]
+depends = ["llm:generate_bundle"]
+description = 'Generate issue prompts from repository content stored in output.txt using LLM generation'
+run = """
+#!/usr/bin/env bash
+cat output.txt | llm -m claude-3.5-sonnet -t issue-prompts-gen > issue-prompts.md
 """
 
 [tasks."python:format"]
