@@ -106,3 +106,7 @@ run = "uv run pytest"
 [tasks.jupyter]
 description = 'Start Jupyter Lab'
 run = "uv run --with jupyter jupyter lab"
+
+[tasks.webui]
+description = 'Start WebUI'
+run = "uvx --python 3.11 open-webui serve"
