@@ -84,7 +84,7 @@ depends = ["llm:generate_bundle"]
 description = 'Generate issue prompts from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
-cat output.txt | llm -m claude-3.5-sonnet -t issue-prompts-gen > issue-prompts.md
+cat output.txt | llm -m o3-mini -t issue-prompts-gen > issue-prompts.md
 """
 
 [tasks."python:format"]

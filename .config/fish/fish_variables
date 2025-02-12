@@ -3,7 +3,7 @@
 SETUVAR --export SSH_AGENT_PID:79967
 SETUVAR --export SSH_AUTH_SOCK:/var/folders/jk/c2vjzrvj7dl8937cgztbtnt40000gn/T//ssh\x2dNeFg1XTJu4Dn/agent\x2e79966
 SETUVAR Z_DATA_DIR:/Users/harper/\x2elocal/share/z
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
 SETUVAR _fisher_danhper_2F_fish_2D_ssh_2D_agent_files:\x7e/\x2econfig/fish/functions/__ssh_agent_is_started\x2efish\x1e\x7e/\x2econfig/fish/functions/__ssh_agent_start\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fish\x2dssh\x2dagent\x2efish
 SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
 SETUVAR _fisher_franciscolourenco_2F_done_files:\x7e/\x2econfig/fish/conf\x2ed/done\x2efish
