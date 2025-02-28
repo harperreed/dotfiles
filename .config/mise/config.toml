@@ -110,3 +110,9 @@ run = "uv run --with jupyter jupyter lab"
 [tasks.webui]
 description = 'Start WebUI'
 run = "uvx --python 3.11 open-webui serve"
+
+[tasks.claude]
+description = 'Start WebUI'
+run = "bash -c 'claude'"
+
+
