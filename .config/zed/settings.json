@@ -8,6 +8,9 @@
 // from the command palette or from `Zed` application menu.
 {
     // "theme": "Andromeda",
+    "features": {
+        "edit_prediction_provider": "zed"
+    },
     "ssh_connections": [
     {
       "host": "meteorite.ninja",
