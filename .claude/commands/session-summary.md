@@ -1,10 +1,8 @@
-can you write a summary of our session together including the costs and put it in session.md
+Create `session_{slug}_{timestamp}.md` with a complete summary of our session. Include:
 
-Include:
-
-- summary of the session
-- cost
-- thoughts on efficiency
-- thoughts on how we can make the process better
-- number of turns we took
-- anything else you think would be awesome
+- A brief recap of key actions.
+- Total cost of the session.
+- Efficiency insights.
+- Possible process improvements.
+- The total number of conversation turns.
+- Any other interesting observations or highlights.
