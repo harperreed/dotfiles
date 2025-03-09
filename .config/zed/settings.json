@@ -12,49 +12,39 @@
         "edit_prediction_provider": "zed"
     },
     "ssh_connections": [
-    {
-      "host": "meteorite.ninja",
-      "username": "hl2dmserver",
-      "projects": [
         {
-          "paths": [
-            "~/backups"
-          ]
+            "host": "meteorite.ninja",
+            "username": "hl2dmserver",
+            "projects": [
+                {
+                    "paths": ["~/backups"]
+                },
+                {
+                    "paths": ["~/backups"]
+                },
+                {
+                    "paths": ["~/serverfiles"]
+                }
+            ]
         },
         {
-          "paths": [
-            "~/backups"
-          ]
+            "host": "192.168.120.34",
+            "projects": [
+                {
+                    "paths": ["~/docker"]
+                }
+            ]
         },
         {
-          "paths": [
-            "~/serverfiles"
-          ]
+            "host": "3.94.165.7",
+            "username": "ec2-user",
+            "projects": [
+                {
+                    "paths": ["~/src"]
+                }
+            ]
         }
-      ]
-    },
-    {
-      "host": "192.168.120.34",
-      "projects": [
-        {
-          "paths": [
-            "~/docker"
-          ]
-        }
-      ]
-    },
-    {
-      "host": "3.94.165.7",
-      "username": "ec2-user",
-      "projects": [
-        {
-          "paths": [
-            "~/src"
-          ]
-        }
-      ]
-    }
-  ],
+    ],
     "outline_panel": {
         "dock": "right"
     },
