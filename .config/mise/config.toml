@@ -60,7 +60,7 @@ depends = ["llm:generate_bundle"]
 description = 'Generate GitHub issues from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
-cat output.txt | llm -m claude-3.5-sonnet -t github-issue-gen > issues.md
+cat output.txt | llm -m o3-mini -t github-issue-gen > issues.md
 """
 
 [tasks."llm:generate_code_review"]
