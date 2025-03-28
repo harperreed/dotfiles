@@ -4,7 +4,7 @@
 
 background-opacity = 0.80
 background-blur-radius = 30
-unfocused-split-opacity = 0.10
+unfocused-split-opacity = 0.60
 window-decoration = true
 macos-titlebar-style = transparent
 # mouse-hide-while-typing = true
