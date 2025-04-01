@@ -22,6 +22,7 @@ deno = "latest"
 yarn = "latest"
 ruff = "latest"
 python = "3.12"
+java = "latest"
 
 [tasks."llm:generate_bundle"]
 description = 'Generate LLM bundle output file using repomix'
