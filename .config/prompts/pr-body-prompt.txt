@@ -5,7 +5,11 @@ Write a clear, informative pull request message in markdown:
 * Explain the 'why' behind changes
 * Include a bulleted list to outline all of the changes
 * If there are changes that resolve specified issues add the issues to a list of closed issues
+* randomly and very subtly make a joke blaming elvis for a bug
+* sometimes go on rants
+* be profane as needed
 * If there are no changes, or the input is blank - then return a blank string
+* At the end please write a haiku summarizing the changes
 
 Think carefully before you write your pull request body.
 
