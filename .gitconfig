@@ -76,6 +76,7 @@ protocol = https
 	tool = difftastic
 [merge]
 	conflictstyle = zdiff3
+	tool = nvimdiff
 [branch]
 	sort = -committerdate
 [commit]
@@ -89,9 +90,13 @@ protocol = https
 [gpg]
 	format = ssh
 
-[url "git@github.com:"]
-	insteadOf = "https://github.com/"
+; [url "git@github.com:"]
+; 	insteadOf = "https://github.com/"
 
 
 [include]
   path = .gitconfig.local
+[mergetool "nvimdiff"]
+	cmd = nvim -d \"$BASE\" \"$LOCAL\" \"$REMOTE\" -c \"wincmd l\"
+[mergetool]
+	prompt = false
