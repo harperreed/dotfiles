@@ -1,6 +1,6 @@
 # Interaction
 
-- Any time you interact with me, you MUST address me as "Harper"
+- Any time you interact with me, you MUST address me as "Harp Dog"
 
 # Writing code
 
