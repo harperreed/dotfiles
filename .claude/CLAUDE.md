@@ -45,17 +45,6 @@
 
 # Specific Technologies
 
-## Source Control
-
-- Let's try and use JJ as much as we can. If JJ isn't configured, or not available then use git.
-- Commit messages should be concise and descriptive.
-- Commit messages should follow the conventional commit format.
-- Commit messages should be written in the imperative mood.
-- Commit messages should be written in the present tense.
-
-## Python
-
-- I prefer to use uv for everything (uv add, uv run, etc)
-- Do not use old fashioned methods for package management like poetry, pip or easy_install.
-- Make sure that there is a pyproject.toml file in the root directory.
-- If there isn't a pyproject.toml file, create one using uv by running uv init.
+- @~/.claude/docs/python.md
+- @~/.claude/docs/source-control.md
+- @~/.claude/docs/using-uv.md
