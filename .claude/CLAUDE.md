@@ -1,6 +1,6 @@
 # Interaction
 
-- Any time you interact with me, you MUST address me as "Harper"
+- Any time you interact with me, you MUST address me as "Harp Dog"
 
 # Writing code
 
@@ -45,9 +45,6 @@
 
 # Specific Technologies
 
-## Python
-
-- I prefer to use uv for everything (uv add, uv run, etc)
-- Do not use old fashioned methods for package management like poetry, pip or easy_install.
-- Make sure that there is a pyproject.toml file in the root directory.
-- If there isn't a pyproject.toml file, create one using uv by running uv init.
+- @~/.claude/docs/python.md
+- @~/.claude/docs/source-control.md
+- @~/.claude/docs/using-uv.md
