@@ -68,7 +68,7 @@ protocol = https
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [pull]
-	rebase = false
+	rebase = true
 [init]
 	defaultBranch = main
 [diff]
@@ -100,3 +100,5 @@ protocol = https
 	cmd = nvim -d \"$BASE\" \"$LOCAL\" \"$REMOTE\" -c \"wincmd l\"
 [mergetool]
 	prompt = false
+[rebase]
+	autoStash = true
