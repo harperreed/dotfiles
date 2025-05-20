@@ -61,7 +61,7 @@ depends = ["llm:generate_bundle"]
 description = 'Generate GitHub issues from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
-cat output.txt | llm -m o3-mini -t github-issue-gen > issues.md
+cat output.txt | llm -m claude-3.7-sonnet -t github-issue-gen > issues.md
 """
 
 [tasks."llm:generate_code_review"]
@@ -69,7 +69,7 @@ depends = ["llm:generate_bundle"]
 description = 'Generate code review output from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
-cat output.txt | llm -m claude-3.5-sonnet -t code-review-gen > code-review.md
+cat output.txt | llm -m claude-3.7-sonnet -t code-review-gen > code-review.md
 """
 
 [tasks."llm:generate_missing_tests"]
@@ -77,15 +77,7 @@ depends = ["llm:generate_bundle"]
 description = 'Generate missing tests for code in repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
-cat output.txt | llm -m claude-3.5-sonnet -t missing-tests-gen > missing-tests.md
-"""
-
-[tasks."llm:generate_issue_prompts"]
-depends = ["llm:generate_bundle"]
-description = 'Generate issue prompts from repository content stored in output.txt using LLM generation'
-run = """
-#!/usr/bin/env bash
-cat output.txt | llm -m o3-mini -t issue-prompts-gen > issue-prompts.md
+cat output.txt | llm -m claude-3.7-sonnet -t missing-tests-gen > missing-tests.md
 """
 
 [tasks."python:format"]
@@ -115,5 +107,3 @@ run = "uvx --python 3.11 open-webui serve"
 [tasks.claude]
 description = 'Start WebUI'
 run = "bash -c 'claude'"
-
-
