@@ -1,0 +1,24 @@
+[2025-05-27 21:54:37] [INFO] Starting yadm bootstrap
+[2025-05-27 21:54:37] [INFO] Bootstrap directory: /Users/harper/.config/yadm/bootstrap.d
+[2025-05-27 21:54:37] [INFO] Dry-run mode enabled
+[2025-05-27 21:54:37] [INFO] Detected platform: [0;34m[INFO][0m Dry-run mode enabled
+[2025-05-27 21:54:37] [INFO] Architecture: arm64
+[2025-05-27 21:54:37] [ERROR] Platform script not found: /Users/harper/.config/yadm/bootstrap.d/[0;34m[INFO][0m Dry-run mode enabled.sh
+[2025-05-27 21:54:37] [ERROR] Bootstrap failed with exit code: 1
+[2025-05-27 21:54:37] [INFO] Check log file: /Users/harper/.config/yadm/bootstrap.log
+[2025-05-27 21:54:48] [INFO] Starting yadm bootstrap
+[2025-05-27 21:54:48] [INFO] Bootstrap directory: /Users/harper/.config/yadm/bootstrap.d
+[2025-05-27 21:54:48] [INFO] Detected platform: darwin
+[2025-05-27 21:54:48] [INFO] Architecture: arm64
+[2025-05-27 21:54:48] [INFO] Running platform bootstrap: /Users/harper/.config/yadm/bootstrap.d/darwin.sh
+[2025-05-27 21:54:48] [INFO] Starting Darwin bootstrap
+[2025-05-27 21:54:48] [INFO] Darwin bootstrap started
+[2025-05-27 21:54:48] [INFO] Homebrew is already installed
+[2025-05-27 21:54:48] [INFO] Line already exists in /Users/harper/.zprofile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2025-05-27 21:54:48] [INFO] Backing up /Users/harper/.bash_profile to /Users/harper/.bash_profile.yadm-backup.20250527_215448
+[2025-05-27 21:54:48] [SUCCESS] Added to /Users/harper/.bash_profile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2025-05-27 21:54:48] [INFO] Installing packages from Brewfile
+[2025-05-27 21:54:48] [INFO] Executing: brew update
+[2025-05-27 21:54:55] [ERROR] Command failed: brew update
+[2025-05-27 21:54:55] [ERROR] Bootstrap failed with exit code: 1
+[2025-05-27 21:54:55] [INFO] Check log file: /Users/harper/.config/yadm/bootstrap.log

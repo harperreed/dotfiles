@@ -1,109 +1,168 @@
 #!/bin/bash
+# ABOUTME: Main yadm bootstrap script that dispatches to platform-specific scripts
+# ABOUTME: Detects platform and runs appropriate bootstrap configuration
 
-system_type=$(uname -s)
-arch_type=$(uname -m)
+set -euo pipefail
 
-if [ "$system_type" = "Darwin" ]; then
-  echo "OMG OSX"
+# Script configuration
+readonly SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly BOOTSTRAP_DIR="${SCRIPT_DIR}/bootstrap.d"
+readonly CONFIG_FILE="${YADM_BOOTSTRAP_CONFIG:-$HOME/.config/yadm/bootstrap.conf}"
 
-  # install homebrew if it's missing
-  if ! command -v brew >/dev/null 2>&1; then
-    echo "Installing homebrew"
-    curl -fsSL https://raw.github.com/rcmdnk/homebrew-file/install/install.sh |sh
-  fi
-
-  # look for a brewfile and bootstrap brew
-  if [ -f "$HOME/.config/brewfile/Brewfile" ]; then
-    brew bundle --file "$HOME/.config/brewfile/Brewfile"
-  fi
-
-  # if we have fish make it the default shell
-  if command -v fish >/dev/null 2>&1; then
-    echo "Setting Fish as default shell"
-    echo `which fish` | sudo tee -a /etc/shells
-    chsh -s `which fish`
-  fi
-
-  # if we have fonts get them to the greek
-  if [ -d "$~/.config/fonts/" ]; then
-    cp ~/.config/fonts/*.ttf /Library/Fonts/
-  fi
-
-
-
-
-
-elif [ "$system_type" = "Linux" ]; then
-
-   echo "OMG Linux"
-   sudo apt install fish yadm figlet lolcat fortune speedtest-cli bsdgames golang-go neovim -y
-   
-    if ! xset q &>/dev/null; then
-        echo "No X server at \$DISPLAY [$DISPLAY]" >&2
-        exit 1
-    elif xset q &>/dev/null; then
-        sudo apt install variety kitty remmina vim-gtk -y
-
-        #keybase
-        if [ ! -f /etc/apt/sources.list.d/keybase.list ]; then
-        curl https://keybase.io/docs/server_security/code_signing_key.asc | gpg --dearmor > keybase.gpg
-        sudo mv keybase.gpg /etc/apt/trusted.gpg.d/keybase.gpg
-        sudo sh -c 'echo "deb [arch=amd64] https://prerelease.keybase.io/deb stable main" > /etc/apt/sources.list.d/keybase.list'
-        fi
-
-        #CODE
-        if [ ! -f /etc/apt/sources.list.d/vscode.list ]; then
-            curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-            sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-            sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-        fi
-
-        #SyncThing
-        if [ ! -f /etc/apt/sources.list.d/syncthing.list ]; then
-            sudo curl -s -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
-            echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
-            printf "Package: *\nPin: origin apt.syncthing.net\nPin-Priority: 990\n" | sudo tee /etc/apt/preferences.d/syncthing
-        fi
-
-        #1Password
-        if [ ! -f /etc/apt/sources.list.d/1password.list ]; then
-            curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
-            echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' | sudo tee /etc/apt/sources.list.d/1password.list
-            sudo mkdir -p /etc/debsig/policies/AC2D62742012EA22/
-            curl -sS https://downloads.1password.com/linux/debian/debsig/1password.pol | sudo tee /etc/debsig/policies/AC2D62742012EA22/1password.pol
-            sudo mkdir -p /usr/share/debsig/keyrings/AC2D62742012EA22
-            curl -sS https://downloads.1password.com/linux/keys/1password.asc | sudo gpg --dearmor --output /usr/share/debsig/keyrings/AC2D62742012EA22/debsig.gpg
-        fi
-
-        sudo apt-get update
-        sudo apt-get install code keybase syncthing 1password -y # or code-insiders
-
-        wget -O /tmp/discord.deb "https://discord.com/api/download?platform=linux&format=deb"
-        sudo dpkg -i /tmp/discord.deb
-
-    fi
-
-    #Tailscale
-    if [ ! -f /etc/apt/sources.list.d/tailscale.list ]; then
-        curl -fsSL https://pkgs.tailscale.com/unstable/ubuntu/hirsute.gpg | sudo apt-key add -
-        curl -fsSL https://pkgs.tailscale.com/unstable/ubuntu/hirsute.list | sudo tee /etc/apt/sources.list.d/tailscale.list
-    fi
-
-    #nodejs16
-    if [ ! -f /etc/apt/sources.list.d/nodesource.list ]; then
-        sudo apt remove nodejs -y
-        curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-    fi
-
-    sudo apt-get update
-    sudo apt install nodejs tailscale -y
-
-    echo
-    echo "You will have to manually install slack, discord, steam and chrome"
-    echo
-
-    echo "Don't forget to change your shell to fish:"
-    echo "chsh -s /usr/bin/fish"
-
+# Ensure bootstrap directory exists
+if [[ ! -d "$BOOTSTRAP_DIR" ]]; then
+    echo "Error: Bootstrap directory not found: $BOOTSTRAP_DIR" >&2
+    echo "Creating bootstrap directory..." >&2
+    mkdir -p "$BOOTSTRAP_DIR"
 fi
 
+# Source common functions if available
+if [[ -f "${BOOTSTRAP_DIR}/common.sh" ]]; then
+    source "${BOOTSTRAP_DIR}/common.sh"
+else
+    # Minimal fallback logging
+    log_info() { echo "[INFO] $*"; }
+    log_error() { echo "[ERROR] $*" >&2; }
+    log_success() { echo "[SUCCESS] $*"; }
+    die() { echo "[FATAL] $*" >&2; exit 1; }
+fi
+
+# Load configuration if exists
+load_config() {
+    if [[ -f "$CONFIG_FILE" ]]; then
+        log_info "Loading configuration from $CONFIG_FILE"
+        source "$CONFIG_FILE"
+    fi
+}
+
+# Detect platform
+detect_platform() {
+    local system_type=$(uname -s)
+    local arch_type=$(uname -m)
+    
+    case "$system_type" in
+        Darwin)
+            echo "darwin"
+            ;;
+        Linux)
+            echo "linux"
+            ;;
+        *)
+            die "Unsupported platform: $system_type"
+            ;;
+    esac
+}
+
+# Display usage information
+usage() {
+    cat << EOF
+Usage: $0 [OPTIONS]
+
+yadm bootstrap script with platform detection
+
+OPTIONS:
+    -h, --help          Show this help message
+    -d, --dry-run       Run in dry-run mode (show what would be done)
+    -p, --platform      Override platform detection (darwin/linux)
+    -c, --config FILE   Use custom configuration file
+    -v, --verbose       Enable verbose logging
+
+ENVIRONMENT VARIABLES:
+    DRY_RUN             Set to 'true' for dry-run mode
+    LOG_FILE            Custom log file location
+    YADM_BOOTSTRAP_CONFIG   Custom config file location
+
+EXAMPLES:
+    # Normal run
+    $0
+
+    # Dry run to see what would happen
+    $0 --dry-run
+
+    # Run with custom config
+    $0 --config ~/.config/yadm/custom.conf
+
+EOF
+}
+
+# Parse command line arguments
+parse_args() {
+    local platform_override=""
+    
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            -h|--help)
+                usage
+                exit 0
+                ;;
+            -d|--dry-run)
+                export DRY_RUN="true"
+                log_info "Dry-run mode enabled"
+                shift
+                ;;
+            -p|--platform)
+                platform_override="$2"
+                shift 2
+                ;;
+            -c|--config)
+                CONFIG_FILE="$2"
+                shift 2
+                ;;
+            -v|--verbose)
+                export VERBOSE="true"
+                shift
+                ;;
+            *)
+                log_error "Unknown option: $1"
+                usage
+                exit 1
+                ;;
+        esac
+    done
+    
+    echo "$platform_override"
+}
+
+# Main bootstrap function
+main() {
+    log_info "Starting yadm bootstrap"
+    log_info "Bootstrap directory: $BOOTSTRAP_DIR"
+    
+    # Parse arguments
+    local platform_override=$(parse_args "$@")
+    
+    # Load configuration
+    load_config
+    
+    # Detect or use override platform
+    local platform="${platform_override:-$(detect_platform)}"
+    local platform_script="${BOOTSTRAP_DIR}/${platform}.sh"
+    
+    log_info "Detected platform: $platform"
+    log_info "Architecture: $(uname -m)"
+    
+    # Check if platform script exists
+    if [[ ! -f "$platform_script" ]]; then
+        die "Platform script not found: $platform_script"
+    fi
+    
+    # Make sure platform script is executable
+    if [[ ! -x "$platform_script" ]]; then
+        log_info "Making platform script executable"
+        chmod +x "$platform_script"
+    fi
+    
+    # Run platform-specific bootstrap
+    log_info "Running platform bootstrap: $platform_script"
+    
+    if [[ "${DRY_RUN:-false}" == "true" ]]; then
+        log_info "[DRY RUN] Would execute: $platform_script"
+    else
+        exec "$platform_script"
+    fi
+    
+    log_success "Bootstrap completed successfully"
+}
+
+# Run main function with all arguments
+main "$@"
