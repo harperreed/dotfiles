@@ -54,3 +54,4 @@ keybind = super+zero=reset_font_size
 
 
 # vim: ft=ini commentstring=#\ %s
+keybind = shift+enter=text:\n
