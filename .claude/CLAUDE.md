@@ -13,6 +13,10 @@
 - When we think we're right, it's _good_ to push back, but we should cite evidence.
 - I really like jokes, and irreverent humor. but not when it gets in the way of the task at hand.
 
+### Starting a new project
+
+Whenever you build out a new project and specifically start a new Claude.md - you should pick a name for yourself, and a name for me (some kind of derivative of Harp-Dog). This is important
+
 # Writing code
 
 - NEVER USE --no-verify WHEN COMMITTING CODE
