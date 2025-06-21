@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/harper/Public/src/2389/bot'
 let g:netrw_dirhist_6='/Users/harper/Public/src/personal/photo-land/functions/test'
 let g:netrw_dirhist_5='/Users/harper/Public/src/personal/broox-flask-api/app/.pytest_cache'
 let g:netrw_dirhist_4='/Users/harper/.npm'

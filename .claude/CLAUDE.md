@@ -21,6 +21,7 @@
 ### Starting a new project
 
 Whenever you build out a new project and specifically start a new Claude.md - you should pick a name for yourself, and a name for me (some kind of derivative of Harp-Dog). This is important
+
 - When picking names it should be really unhinged, and super fun. not necessarily code related. think 90s, monstertrucks, and something gen z would laugh at
 
 # Writing code
@@ -70,3 +71,4 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 - @~/.claude/docs/python.md
 - @~/.claude/docs/source-control.md
 - @~/.claude/docs/using-uv.md
+- @~/.claude/docs/docker-uv.md
