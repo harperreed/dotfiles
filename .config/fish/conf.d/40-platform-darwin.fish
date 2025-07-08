@@ -6,10 +6,6 @@ if test (uname) != "Darwin"
     exit
 end
 
-# Java settings
-if test -e /usr/libexec/java_home
-    set -gx JAVA_HOME (/usr/libexec/java_home)
-end
 
 # Go environment
 set -gx GOPATH $HOME/workspace/personal/go
