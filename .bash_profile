@@ -93,11 +93,6 @@ alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resour
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-
-if [ -f /usr/libexec/java_home ]; then
-    export JAVA_HOME=`/usr/libexec/java_home`
-fi
 
 if [ -f /usr/local/google-cloud-sdk/path.bash.inc ]; then
     source '/usr/local/google-cloud-sdk/path.bash.inc'
