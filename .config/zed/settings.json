@@ -86,7 +86,7 @@
         "git_diff": true,
         "search_results": true,
         "selected_symbol": true,
-        "diagnostics": true
+        "diagnostics": "all"
     },
     "vertical_scroll_margin": 5,
     // "relative_line_numbers": true,
@@ -105,11 +105,21 @@
     "format_on_save": "on",
     "vim_mode": false,
     "projects_online_by_default": true,
-    "assistant": {
+    "agent": {
         // Version of this setting.
+        "always_allow_tool_actions": false,
+        "play_sound_when_agent_done": false,
         "default_model": {
+<<<<<<< Updated upstream
             "provider": "anthropic",
             "model": "claude-sonnet-4-latest"
+||||||| Stash base
+            "provider": "zed.dev",
+            "model": "claude-3-5-sonnet-latest"
+=======
+            "provider": "copilot_chat",
+            "model": "gpt-4.1"
+>>>>>>> Stashed changes
         },
         "version": "2",
         // Whether to show the assistant panel button in the status bar.
