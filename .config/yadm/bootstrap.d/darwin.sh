@@ -167,6 +167,60 @@ install_fonts() {
     log_success "Installed $installed_count fonts"
 }
 
+# Install uv Python package installer
+install_uv() {
+    if command_exists uv; then
+        log_info "uv is already installed"
+        return 0
+    fi
+    
+    log_info "Installing uv"
+    
+    if [[ "$DRY_RUN" == "true" ]]; then
+        log_info "[DRY RUN] Would install uv"
+        return 0
+    fi
+    
+    curl -LsSf https://astral.sh/uv/install.sh | sh || die "Failed to install uv"
+    log_success "uv installed successfully"
+}
+
+# Install mise development environment manager
+install_mise() {
+    if command_exists mise; then
+        log_info "mise is already installed"
+        return 0
+    fi
+    
+    log_info "Installing mise"
+    
+    if [[ "$DRY_RUN" == "true" ]]; then
+        log_info "[DRY RUN] Would install mise"
+        return 0
+    fi
+    
+    curl https://mise.run | sh || die "Failed to install mise"
+    log_success "mise installed successfully"
+}
+
+# Install atuin shell history manager
+install_atuin() {
+    if command_exists atuin; then
+        log_info "atuin is already installed"
+        return 0
+    fi
+    
+    log_info "Installing atuin"
+    
+    if [[ "$DRY_RUN" == "true" ]]; then
+        log_info "[DRY RUN] Would install atuin"
+        return 0
+    fi
+    
+    curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh || die "Failed to install atuin"
+    log_success "atuin installed successfully"
+}
+
 # macOS-specific settings
 configure_macos_settings() {
     log_info "Configuring macOS settings"
@@ -208,6 +262,9 @@ main() {
     install_brewfile
     configure_fish_shell
     install_fonts
+    install_uv
+    install_mise
+    install_atuin
     
     if confirm "Configure macOS settings?"; then
         configure_macos_settings
