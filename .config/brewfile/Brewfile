@@ -2,7 +2,7 @@
 
 
 brew "ansible"
-brew "atuin"
+# brew "atuin"
 brew "awscli"
 brew "boost"
 brew "clipboard"
@@ -23,17 +23,17 @@ brew "ical-buddy"
 brew "jenv"
 brew "jhead"
 brew "lolcat"
-brew "mise"
+# brew "mise"
 brew "mosh"
 brew "ncdu"
 brew "neovim"
 brew "nmap"
-brew "ollama"
+# brew "ollama"
 brew "pkg-config"
 brew "protobuf"
 brew "pv"
 brew "speedtest-cli"
-brew "uv"
+# brew "uv"
 brew "wget"
 brew "wtfutil"
 brew "yank"
@@ -47,17 +47,17 @@ cask "beeper"
 cask "discord"
 cask "claude"
 cask "chatgpt"
-cask "figma"
+# cask "figma"
 cask "google-cloud-sdk"
 cask "ghostty"
-cask "google-chrome"
+# cask "google-chrome"
 cask "gpg-suite-no-mail"
 cask "granola"
 # cask "hammerspoon"
 # cask "iterm2"
 # cask "lm-studio"
 # cask "lunar"
-cask "macvim"
+# cask "macvim"
 cask "macwhisper"
 cask "maestral"
 # cask "mailmate"
@@ -65,9 +65,10 @@ cask "mimestream"
 cask "netnewswire"
 cask "notion"
 cask "notion-calendar"
+cask "notion-email"
 cask "nvidia-geforce-now"
-cask "ollama"
-cask "pitch"
+# cask "ollama"
+# cask "pitch"
 cask "plexamp"
 # cask "proton-mail"
 # cask "protonmail-bridge"
@@ -75,7 +76,7 @@ cask "plexamp"
 cask "rapidapi"
 cask "rotki"
 # cask "roon"
-cask "signal"
+# cask "signal"
 cask "spotify"
 # cask "telegram"
 # cask "trezor-suite"
@@ -96,7 +97,7 @@ mas "Drafts", id: 1435957248
 mas "GrandPerspective", id: 1111570163
 mas "Keynote", id: 409183694
 mas "Line", id: 539883307
-mas "Mastonaut", id: 1450757574
+# mas "Mastonaut", id: 1450757574
 mas "Marked 2", id: 890031187
 mas "Menu bar for sonos", id: 1357379892
 mas "Microsoft Remote Desktop", id: 1295203466
@@ -105,6 +106,6 @@ mas "Reeder", id: 1529448980
 mas "Slack", id: 803453959
 mas "Tailscale", id: 1475387142
 mas "TestFlight", id: 899247664
-mas "Todoist", id: 585829637
+# mas "Todoist", id: 585829637
 mas "UTM", id: 1538878817
 mas "Xcode", id: 497799835

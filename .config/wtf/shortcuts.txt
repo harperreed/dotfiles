@@ -1,0 +1,19 @@
+=== wtfutil Shortcuts ===
+Tab/Shift+Tab - Navigate widgets
+j/k - Scroll down/up
+h/l - Navigate left/right  
+r - Refresh current widget
+R - Refresh all widgets
+q - Quit wtfutil
+
+=== Custom Commands ===
+Ctrl+T - Open terminal
+Cmd+Space - Spotlight
+Cmd+Shift+. - Show hidden files
+
+=== Development ===
+git st - Status
+git co - Checkout  
+git cm - Commit
+uv run - Execute with uv
+mise use - Activate version

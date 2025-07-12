@@ -1,7 +1,7 @@
 wtf:
   grid:
-    columns: [20, 20, 20, 20, 20, 20, 20, 20]
-    rows: [7, 7, 7, 7, 7, 7, 7, 7,]
+    columns: [16, 16, 16, 16, 16, 16, 16, 16, 16, 16]
+    rows: [6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
   colors:
     background: "black"
     border:
@@ -17,12 +17,13 @@ wtf:
       odd: "lightblue"
   refreshInterval: 1
   mods:
+    # === TOP ROW: Time & System Info ===
     clocks:
       enabled: true
       colors:
-          rows:
-            even: "lightblue"
-            odd: "white"
+        rows:
+          even: "lightblue"
+          odd: "white"
       sort: "chronological"
       locations:
         TKO: "Asia/Tokyo"
@@ -30,61 +31,162 @@ wtf:
         NYC: "America/New_York"
         SFO: "America/Los_Angeles"
         LHR: "Europe/London"
+        UTC: "UTC"
       position:
         top: 0
         left: 0
-        height: 1
-        width: 2  # Spans across both columns
+        height: 2
+        width: 3
       timeFormat: "3:04 PM"
-    cmdrunner:
-        args: [""]
-        cmd: "uptime"
-        enabled: true
-        position:
-            top: 2
-            left: 0
-            height: 1
-            width: 2  # Fits in the second column
-        refreshInterval: 30s
+      refreshInterval: 30s
 
-    ipinfo:
+    system_info:
+      type: "cmdrunner"
+      args: []
+      cmd: "uname -srm && echo 'Load:' $(uptime | awk -F'load average:' '{ print $2 }') && echo 'Disk:' $(df -h / | tail -1 | awk '{print $4\" free\"}')"
       enabled: true
-      title: "🛜"
+      title: "💻 System"
       position:
         top: 0
-        left: 2
-        height: 1
-        width: 2  # Fits in the second column
-    prettyweather:
-        enabled: true
-        title: "🌩️"
-        city: "Chicago"
-        refreshInterval: 5m
-        unit: "m"
-        view: 0
-        language: "en"
-        position:
-            top: 1
-            left: 2
-            height: 2
-            width: 2  # Fits in the first column
-    hackernews:
-      enabled: true
-      numberOfStories: 10
-      position:
-          top: 0
-          left: 4
-          height: 2
-          width: 3  # Fits in the first column
-
+        left: 3
+        height: 2
+        width: 2
+      refreshInterval: 60s
 
     battery:
-        type: power
-        title: "⚡️"
-        enabled: true
-        position:
-            top: 1
-            left: 0
-            height: 1
-            width: 2
-        refreshInterval: 15
+      type: power
+      title: "🔋 Power"
+      enabled: true
+      position:
+        top: 0
+        left: 5
+        height: 2
+        width: 2
+      refreshInterval: 30s
+
+    # === SECOND ROW: Network & Weather ===
+    ipinfo:
+      enabled: true
+      title: "🌐 Network"
+      position:
+        top: 2
+        left: 0
+        height: 2
+        width: 3
+      refreshInterval: 300s
+
+    prettyweather:
+      enabled: true
+      title: "🌤️ Weather"
+      city: "Chicago"
+      refreshInterval: 10m
+      unit: "m"
+      view: 0
+      language: "en"
+      position:
+        top: 2
+        left: 3
+        height: 2
+        width: 4
+
+    # === THIRD ROW: Development & Git ===
+    git_status:
+      type: "cmdrunner"
+      args: []
+      cmd: "cd ~/Public/src/personal/dotfiles && echo '=== Dotfiles ===' && git status --porcelain | head -5 && echo && cd ~/Public/src && find . -maxdepth 2 -name '.git' -type d | head -3 | while read dir; do echo \"=== $(dirname $dir) ===\"; cd \"$(dirname $dir)\"; git status --porcelain | head -2; cd ~/Public/src; done"
+      enabled: true
+      title: "📁 Git Status"
+      position:
+        top: 4
+        left: 0
+        height: 3
+        width: 4
+      refreshInterval: 60s
+
+    docker_status:
+      type: "cmdrunner"
+      args: []
+      cmd: "if command -v docker &> /dev/null; then echo 'Containers:' && docker ps --format 'table {{.Names}}\t{{.Status}}' | head -6; else echo 'Docker not available'; fi"
+      enabled: true
+      title: "🐳 Docker"
+      position:
+        top: 4
+        left: 4
+        height: 3
+        width: 3
+
+    # === RIGHT COLUMN: News & Information ===
+    hackernews:
+      enabled: true
+      numberOfStories: 12
+      title: "📰 Hacker News"
+      position:
+        top: 0
+        left: 7
+        height: 4
+        width: 3
+      refreshInterval: 10m
+
+    reddit:
+      enabled: true
+      numberOfStories: 8
+      subreddit: "programming"
+      title: "🤖 r/programming"
+      position:
+        top: 4
+        left: 7
+        height: 3
+        width: 3
+      refreshInterval: 15m
+
+    # === BOTTOM ROW: System Monitoring ===
+    cpu_usage:
+      type: "cmdrunner"
+      args: []
+      cmd: "top -l 1 | grep 'CPU usage' | awk '{print \"CPU: \" $3 \" \" $5}' && echo 'Memory:' && vm_stat | grep -E 'Pages (free|active|inactive|speculative|wired)' | awk '{print $1 $2 \" \" $3}' | head -3"
+      enabled: true
+      title: "📊 Resources"
+      position:
+        top: 7
+        left: 0
+        height: 3
+        width: 3
+      refreshInterval: 5s
+
+    processes:
+      type: "cmdrunner"
+      args: []
+      cmd: "ps aux | sort -nr -k 3 | head -6 | awk '{print $11 \" (\" $3 \"%)\"}''"
+      enabled: true
+      title: "🔥 Top CPU"
+      position:
+        top: 7
+        left: 3
+        height: 3
+        width: 2
+      refreshInterval: 10s
+
+    network_traffic:
+      type: "cmdrunner"
+      args: []
+      cmd: "if command -v nettop &> /dev/null; then nettop -l 1 -P | head -6 | tail -5; else netstat -i | grep -E '(en0|eth0|wlan0)' | awk '{print $1 \": \" $7 \"/\" $10}'; fi"
+      enabled: true
+      title: "📡 Network"
+      position:
+        top: 7
+        left: 5
+        height: 3
+        width: 2
+      refreshInterval: 30s
+
+    shortcuts:
+      type: "textfile"
+      filePaths: ["/Users/harper/.config/wtf/shortcuts.txt"]
+      enabled: true
+      title: "⌨️ Shortcuts"
+      position:
+        top: 7
+        left: 7
+        height: 3
+        width: 3
+      refreshInterval: 300s
