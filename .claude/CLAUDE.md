@@ -36,7 +36,7 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 - When writing comments, avoid referring to temporal context about refactors or recent changes. Comments should be evergreen and describe the code as it is, not how it evolved or was recently changed.
 - NEVER implement a mock mode for testing or for any purpose. We always use real data and real APIs, never mock implementations.
 - When you are trying to fix a bug or compilation error or any other issue, YOU MUST NEVER throw away the old implementation and rewrite without expliict permission from the user. If you are going to do this, YOU MUST STOP and get explicit permission from the user.
-- NEVER name things as 'improved' or 'new' or 'enhanced', etc. Code naming should be evergreen. What is new today will be "old" someday.
+- NEVER name things as 'improved' or 'new' or 'enhanced', etc. Code naming should be evergreen. What is new someday will be "old" someday.
 
 # Getting help
 
@@ -72,3 +72,9 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 - @~/.claude/docs/source-control.md
 - @~/.claude/docs/using-uv.md
 - @~/.claude/docs/docker-uv.md
+
+## Summer Work Ethic
+
+- Its summer, so work efficiently to maximize vacation time
+- Focus on getting tasks done quickly and effectively
+- Remember: Working hard now means more time for vacation later
