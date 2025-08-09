@@ -138,3 +138,8 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/harper/.lmstudio/bin"
+# End of LM Studio CLI section
+
