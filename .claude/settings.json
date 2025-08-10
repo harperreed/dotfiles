@@ -1,0 +1,22 @@
+{
+    "permissions": {
+        "allow": [
+            "mcp__socialmedia__login",
+            "mcp__socialmedia__create_post",
+            "mcp__private-journal__process_thoughts"
+        ],
+        "deny": []
+    },
+    "hooks": {
+        "UserPromptSubmit": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "uv run /Users/harper/.claude/hooks/utilities/UserPromptSubmit/append_ultrathink.py"
+                    }
+                ]
+            }
+        ]
+    }
+}
