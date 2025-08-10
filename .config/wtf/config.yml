@@ -5,16 +5,16 @@ wtf:
   colors:
     background: "black"
     border:
-      focusable: "darkslateblue"
-      focused: "orange"
-      normal: "gray"
-    checked: "gray"
+      focusable: "cyan"
+      focused: "yellow"
+      normal: "white"
+    checked: "green"
     highlight:
       fore: "black"
-      back: "green"
+      back: "cyan"
     rows:
       even: "black"
-      odd: "lightblue"
+      odd: "white"
   refreshInterval: 1
   mods:
     # === TOP ROW: Time & System Info ===
@@ -22,7 +22,7 @@ wtf:
       enabled: true
       colors:
         rows:
-          even: "lightblue"
+          even: "cyan"
           odd: "white"
       sort: "chronological"
       locations:
@@ -43,7 +43,7 @@ wtf:
     system_info:
       type: "cmdrunner"
       args: []
-      cmd: "uname -srm && echo 'Load:' $(uptime | awk -F'load average:' '{ print $2 }') && echo 'Disk:' $(df -h / | tail -1 | awk '{print $4\" free\"}')"
+      cmd: "uname -s && uptime | awk '{print \"Load: \" $(NF-2) \" \" $(NF-1) \" \" $NF}' && df -h / | tail -1 | awk '{print \"Disk: \" $4 \" free\"}'"
       enabled: true
       title: "💻 System"
       position:
@@ -51,7 +51,7 @@ wtf:
         left: 3
         height: 2
         width: 2
-      refreshInterval: 60s
+      refreshInterval: 60
 
     battery:
       type: power
@@ -90,30 +90,37 @@ wtf:
         width: 4
 
     # === THIRD ROW: Development & Git ===
-    git_status:
-      type: "cmdrunner"
-      args: []
-      cmd: "cd ~/Public/src/personal/dotfiles && echo '=== Dotfiles ===' && git status --porcelain | head -5 && echo && cd ~/Public/src && find . -maxdepth 2 -name '.git' -type d | head -3 | while read dir; do echo \"=== $(dirname $dir) ===\"; cd \"$(dirname $dir)\"; git status --porcelain | head -2; cd ~/Public/src; done"
+    git:
       enabled: true
+      commitCount: 5
+      commitFormat: "[%h] %s"
+      dateFormat: "Jan 2 15:04"
+      excludes: ["vendor/", "node_modules/"]
+      remotes: ["origin"]
+      repositories:
+        "/Users/harper/Public/src/personal/dotfiles":
+          name: "dotfiles"
+        "/Users/harper/Public/src/personal":
+          name: "personal"
       title: "📁 Git Status"
       position:
         top: 4
         left: 0
         height: 3
         width: 4
-      refreshInterval: 60s
+      refreshInterval: 60
 
-    docker_status:
-      type: "cmdrunner"
-      args: []
-      cmd: "if command -v docker &> /dev/null; then echo 'Containers:' && docker ps --format 'table {{.Names}}\t{{.Status}}' | head -6; else echo 'Docker not available'; fi"
+    docker:
       enabled: true
+      labelColor: "lightblue"
+      showStatistics: true
       title: "🐳 Docker"
       position:
         top: 4
         left: 4
         height: 3
         width: 3
+      refreshInterval: 30
 
     # === RIGHT COLUMN: News & Information ===
     hackernews:
@@ -143,7 +150,7 @@ wtf:
     cpu_usage:
       type: "cmdrunner"
       args: []
-      cmd: "top -l 1 | grep 'CPU usage' | awk '{print \"CPU: \" $3 \" \" $5}' && echo 'Memory:' && vm_stat | grep -E 'Pages (free|active|inactive|speculative|wired)' | awk '{print $1 $2 \" \" $3}' | head -3"
+      cmd: "top -l 1 | grep 'CPU usage' | sed 's/CPU usage: /CPU: /' && echo 'Memory:' && vm_stat | grep -E 'Pages (free|active|wired)' | awk '{printf \"%s %s\\n\", $1 $2, $3}' | head -3"
       enabled: true
       title: "📊 Resources"
       position:
@@ -156,7 +163,7 @@ wtf:
     processes:
       type: "cmdrunner"
       args: []
-      cmd: "ps aux | sort -nr -k 3 | head -6 | awk '{print $11 \" (\" $3 \"%)\"}''"
+      cmd: "ps aux | sort -nr -k 3 | head -6 | awk '{print $11 \" (\" $3 \"%)\"}'"
       enabled: true
       title: "🔥 Top CPU"
       position:
@@ -169,7 +176,7 @@ wtf:
     network_traffic:
       type: "cmdrunner"
       args: []
-      cmd: "if command -v nettop &> /dev/null; then nettop -l 1 -P | head -6 | tail -5; else netstat -i | grep -E '(en0|eth0|wlan0)' | awk '{print $1 \": \" $7 \"/\" $10}'; fi"
+      cmd: "ifconfig | grep -A 1 'en0:' | grep 'inet ' | awk '{print \"WiFi: \" $2}' && netstat -i | grep en0 | awk '{print \"Packets: \" $5 \"/\" $7}'"
       enabled: true
       title: "📡 Network"
       position:

@@ -16,6 +16,14 @@ end
 # 50-greeting.fish    - Custom greeting
 # 60-prompt.fish      - Prompt configuration
 # 90-plugins.fish     - Plugin initialization
+<<<<<<< Updated upstream
+||||||| Stash base
+# 90-plugins.fish     - Plugin initialization
+=======
+# opencode
+fish_add_path /Users/harper/.opencode/bin
+
+>>>>>>> Stashed changes
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/harper/.lmstudio/bin
 # End of LM Studio CLI section
