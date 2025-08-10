@@ -7,54 +7,56 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  // "theme": "Andromeda",
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
-  "ssh_connections": [
-    {
-      "host": "meteorite.ninja",
-      "username": "hl2dmserver",
-      "projects": [
+    // "theme": "Andromeda",
+    "features": {
+        "edit_prediction_provider": "zed"
+    },
+    "ssh_connections": [
         {
-          "paths": ["~/backups"]
+            "host": "meteorite.ninja",
+            "username": "hl2dmserver",
+            "projects": [
+                {
+                    "paths": ["~/backups"]
+                },
+                {
+                    "paths": ["~/backups"]
+                },
+                {
+                    "paths": ["~/serverfiles"]
+                }
+            ]
         },
         {
-          "paths": ["~/backups"]
+            "host": "192.168.120.34",
+            "projects": [
+                {
+                    "paths": ["~/docker"]
+                }
+            ]
         },
         {
-          "paths": ["~/serverfiles"]
+            "host": "3.94.165.7",
+            "username": "ec2-user",
+            "projects": [
+                {
+                    "paths": ["~/src"]
+                }
+            ]
         }
-      ]
-    },
-    {
-      "host": "192.168.120.34",
-      "projects": [
-        {
-          "paths": ["~/docker"]
-        }
-      ]
-    },
-    {
-      "host": "3.94.165.7",
-      "username": "ec2-user",
-      "projects": [
-        {
-          "paths": ["~/src"]
-        }
-<<<<<<< Updated upstream
-      ]
-||||||| Stash base
-    },
+    ],
+
     "toolbar": {
         "breadcrumbs": true,
         "quick_actions": true
     },
     "tabs": {
         // https://zed.dev/docs/configuring-zed#editor-tabs
-        "show_icons": true,
+        "file_icons": true,
         "git_status": true,
-        "close_position": "right"
+        "activate_on_close": "history",
+        "show_close_button": "hover",
+        "show_diagnostics": "all"
     },
     "scrollbar": {
         "show": "auto",
@@ -62,7 +64,7 @@
         "git_diff": true,
         "search_results": true,
         "selected_symbol": true,
-        "diagnostics": true
+        "diagnostics": "all"
     },
     "vertical_scroll_margin": 5,
     // "relative_line_numbers": true,
@@ -80,90 +82,40 @@
     "ensure_final_newline_on_save": true,
     "format_on_save": "on",
     "vim_mode": false,
-    "projects_online_by_default": true,
-    "assistant": {
-        // Version of this setting.
-        "default_model": {
-            "provider": "zed.dev",
-            "model": "claude-3-5-sonnet-latest"
-        },
-        "version": "2",
-        // Whether to show the assistant panel button in the status bar.
-        "button": true,
-        // Where to dock the assistant panel. Can be 'left', 'right' or 'bottom'.
-        "dock": "right",
-        // Default width when the assistant is docked to the left or right.
-        "default_width": 640,
-        // Default height when the assistant is docked to the bottom.
-        "default_height": 640.0,
-        // AI provider.
-        "provider": null
+
+    "outline_panel": {
+        "dock": "right"
+    },
+    "theme": {
+        "mode": "system",
+        "light": "Ayu Dark",
+        "dark": "Ayu Dark"
+    },
+    "git": {
+        "git_gutter": "tracked_files",
+        "inline_blame": {
+            "enabled": true
+        }
+    },
+    "tab_size": 4,
+    "ui_font_size": 16,
+    "preferred_line_length": 80,
+    "soft_wrap": "editor_width",
+    "buffer_font_size": 20,
+    "autosave": {
+        "after_delay": {
+            "milliseconds": 1000
+        }
     },
 
-    "journal": {
-        "path": "~",
-        "hour_format": "hour12"
-    },
-    "telemetry": {
-        "diagnostics": false,
-        "metrics": false
-    },
-    "project_panel": {
-        "dock": "left",
-        "git_status": true,
-        "button": true
-    },
-    "notification_panel": {
-        "dock": "left"
-        // "button": false
-    },
-    "chat_panel": {
-        "dock": "left"
-        // "button": false
-=======
-    },
-    "toolbar": {
-        "breadcrumbs": true,
-        "quick_actions": true
-    },
-    "tabs": {
-        // https://zed.dev/docs/configuring-zed#editor-tabs
-        "show_icons": true,
-        "git_status": true,
-        "close_position": "right"
-    },
-    "scrollbar": {
-        "show": "auto",
-        "cursors": true,
-        "git_diff": true,
-        "search_results": true,
-        "selected_symbol": true,
-        "diagnostics": true
-    },
-    "vertical_scroll_margin": 5,
-    // "relative_line_numbers": true,
-    "indent_guides": {
-        "enabled": true,
-        "coloring": "indent_aware",
-        "line_width": 1,
-        "active_line_width": 1,
-        "background_coloring": "indent_aware"
-    },
-    "inlay_hints": {
-        "enabled": false
-    },
-    "remove_trailing_whitespace_on_save": false,
-    "ensure_final_newline_on_save": true,
-    "format_on_save": "on",
-    "vim_mode": false,
-    "projects_online_by_default": true,
-    "assistant": {
+    "agent": {
         // Version of this setting.
+        "always_allow_tool_actions": true,
+        "play_sound_when_agent_done": true,
         "default_model": {
             "provider": "anthropic",
             "model": "claude-sonnet-4-latest"
         },
-        "version": "2",
         // Whether to show the assistant panel button in the status bar.
         "button": true,
         // Where to dock the assistant panel. Can be 'left', 'right' or 'bottom'.
@@ -171,9 +123,7 @@
         // Default width when the assistant is docked to the left or right.
         "default_width": 640,
         // Default height when the assistant is docked to the bottom.
-        "default_height": 640.0,
-        // AI provider.
-        "provider": null
+        "default_height": 640.0
     },
 
     "journal": {
@@ -196,109 +146,5 @@
     "chat_panel": {
         "dock": "left"
         // "button": false
->>>>>>> Stashed changes
     }
-  ],
-  "outline_panel": {
-    "dock": "right"
-  },
-  "theme": {
-    "mode": "system",
-    "light": "Ayu Dark",
-    "dark": "One Dark"
-  },
-  "git": {
-    "git_gutter": "tracked_files",
-    "inline_blame": {
-      "enabled": true
-    }
-  },
-  "tab_size": 4,
-  "ui_font_size": 16,
-  "preferred_line_length": 80,
-  "soft_wrap": "editor_width",
-  "buffer_font_size": 20,
-  "autosave": {
-    "after_delay": {
-      "milliseconds": 1000,
-      "current_line_highlight": "gutter"
-    }
-  },
-  "toolbar": {
-    "breadcrumbs": true,
-    "quick_actions": true
-  },
-  "tabs": {
-    // https://zed.dev/docs/configuring-zed#editor-tabs
-    "show_icons": true,
-    "git_status": true,
-    "close_position": "right"
-  },
-  "scrollbar": {
-    "show": "auto",
-    "cursors": true,
-    "git_diff": true,
-    "search_results": true,
-    "selected_symbol": true,
-    "diagnostics": "all"
-  },
-  "vertical_scroll_margin": 5,
-  // "relative_line_numbers": true,
-  "indent_guides": {
-    "enabled": true,
-    "coloring": "indent_aware",
-    "line_width": 1,
-    "active_line_width": 1,
-    "background_coloring": "indent_aware"
-  },
-  "inlay_hints": {
-    "enabled": false
-  },
-  "remove_trailing_whitespace_on_save": false,
-  "ensure_final_newline_on_save": true,
-  "format_on_save": "on",
-  "vim_mode": false,
-  "projects_online_by_default": true,
-  "agent": {
-    // Version of this setting.
-    "always_allow_tool_actions": false,
-    "play_sound_when_agent_done": false,
-    "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-latest"
-    },
-    "version": "2",
-    // Whether to show the assistant panel button in the status bar.
-    "button": true,
-    // Where to dock the assistant panel. Can be 'left', 'right' or 'bottom'.
-    "dock": "right",
-    // Default width when the assistant is docked to the left or right.
-    "default_width": 640,
-    // Default height when the assistant is docked to the bottom.
-    "default_height": 640.0,
-    // AI provider.
-    "provider": null
-  },
-
-  "journal": {
-    "path": "~",
-    "hour_format": "hour12"
-  },
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
-  },
-  "project_panel": {
-    "dock": "left",
-    "git_status": true,
-    "button": true
-  },
-  "notification_panel": {
-    "dock": "left"
-    // "button": false
-  },
-  "chat_panel": {
-    "dock": "left"
-    // "button": false
-  }
 }
