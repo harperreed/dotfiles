@@ -18,5 +18,12 @@
                 ]
             }
         ]
+    },
+    "feedbackSurveyState": {
+        "lastShownTime": 1754360713440
+    },
+    "statusLine": {
+        "type": "command",
+        "command": "bun x ccusage statusline"
     }
 }
