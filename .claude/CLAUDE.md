@@ -139,3 +139,5 @@ When encountering tool failures (biome, ruff, pytest, etc.):
 - Build competence with development tools rather than avoiding them
 
 Remember: Quality tools are guardrails that help you, not barriers that block you.
+
+- for whatever reason timeout, and gtimeout are not installed
