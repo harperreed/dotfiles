@@ -1,29 +1,30 @@
 {
-    "permissions": {
-        "allow": [
-            "mcp__socialmedia__login",
-            "mcp__socialmedia__create_post",
-            "mcp__private-journal__process_thoughts"
-        ],
-        "deny": []
-    },
-    "hooks": {
-        "UserPromptSubmit": [
-            {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "uv run /Users/harper/.claude/hooks/utilities/UserPromptSubmit/append_ultrathink.py"
-                    }
-                ]
-            }
+  "permissions": {
+    "allow": [
+      "mcp__socialmedia__login",
+      "mcp__socialmedia__create_post",
+      "mcp__private-journal__process_thoughts"
+    ],
+    "deny": []
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run /Users/harper/.claude/hooks/utilities/UserPromptSubmit/append_ultrathink.py"
+          }
         ]
-    },
-    "feedbackSurveyState": {
-        "lastShownTime": 1754360713440
-    },
-    "statusLine": {
-        "type": "command",
-        "command": "bun x ccusage statusline"
-    }
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bun x ccusage statusline"
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 1754360713440
+  },
+  "model": "opusplan"
 }
