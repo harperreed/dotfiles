@@ -8,3 +8,5 @@
     - Update **@prompt_plan.md** to mark this prompt as completed.
 3. After you finish each prompt, pause and wait for user review or feedback.
 4. Repeat with the next unfinished prompt as directed by the user.
+
+Think carefully and only action the specific task I have given you with the most concise and elegant solution that changes as little code as possible.
