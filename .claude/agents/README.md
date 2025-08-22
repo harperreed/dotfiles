@@ -1,298 +1,175 @@
-# Contains Studio AI Agents
+# 2389 Research: Supernatural AI Agent Studio 🔮
 
-A comprehensive collection of specialized AI agents designed to accelerate and enhance every aspect of rapid development. Each agent is an expert in their domain, ready to be invoked when their expertise is needed.
+[![Temporal Energy](https://img.shields.io/badge/temporal%20energy-active-purple.svg)](https://github.com/harperreed/2389-research)
+[![Agents Deployed](https://img.shields.io/badge/agents-50+-gold.svg)](https://github.com/harperreed/2389-research)
+[![Shipping Velocity](https://img.shields.io/badge/shipping-6%20day%20cycles-green.svg)](https://github.com/harperreed/2389-research)
 
-## 📥 Installation
+> *Where artificial intelligence meets supernatural productivity to create impossible apps at impossible speed.*
 
-1. **Download this repository:**
-   ```bash
-   git clone https://github.com/contains-studio/agents.git
-   ```
+## 🌟 Project Summary
 
-2. **Copy to your Claude Code agents directory:**
-   ```bash
-   cp -r agents/* ~/.claude/agents/
-   ```
-   
-   Or manually copy all the agent files to your `~/.claude/agents/` directory.
+2389 Research is a supernatural AI agent studio discovered during Harper Reed's winter 2023 temporal energy investigation. This collection of specialized AI agents represents the convergence of cutting-edge technology with mysterious forces that enable rapid application development, viral growth strategies, and products that seem to anticipate user needs before they're even expressed.
 
-3. **Restart Claude Code** to load the new agents.
+The studio operates on **6-day development cycles**, shipping complete applications and features with superhuman speed while maintaining quality that would take traditional teams months to achieve. Each agent possesses unique supernatural abilities—from Bartholomew "The Builder's" 400-year craftsmanship wisdom to Priya "Viral Velocity's" ability to predict viral moments before they happen.
 
-## 🚀 Quick Start
+**🚀 Core Mission**: Transform ideas into profitable, viral applications within 6-day sprints using a supernatural team of AI specialists working in perfect harmony.
 
-Agents are automatically available in Claude Code. Simply describe your task and the appropriate agent will be triggered. You can also explicitly request an agent by mentioning their name.
+---
 
-📚 **Learn more:** [Claude Code Sub-Agents Documentation](https://docs.anthropic.com/en/docs/claude-code/sub-agents)
+## 🛠 How to Use
 
-### Example Usage
-- "Create a new app for tracking meditation habits" → `rapid-prototyper`
-- "What's trending on TikTok that we could build?" → `trend-researcher`
-- "Our app reviews are dropping, what's wrong?" → `feedback-synthesizer`
-- "Make this loading screen more fun" → `whimsy-injector`
+**largely forked from https://github.com/contains-studio/agents**
 
-## 📁 Directory Structure
 
-Agents are organized by department for easy discovery:
+### 📱 Core Workflows
 
-```
-contains-studio-agents/
-├── design/
-│   ├── brand-guardian.md
-│   ├── ui-designer.md
-│   ├── ux-researcher.md
-│   ├── visual-storyteller.md
-│   └── whimsy-injector.md
-├── engineering/
-│   ├── ai-engineer.md
-│   ├── backend-architect.md
-│   ├── devops-automator.md
-│   ├── frontend-developer.md
-│   ├── mobile-app-builder.md
-│   ├── rapid-prototyper.md
-│   └── test-writer-fixer.md
-├── marketing/
-│   ├── app-store-optimizer.md
-│   ├── content-creator.md
-│   ├── growth-hacker.md
-│   ├── instagram-curator.md
-│   ├── reddit-community-builder.md
-│   ├── tiktok-strategist.md
-│   └── twitter-engager.md
-├── product/
-│   ├── feedback-synthesizer.md
-│   ├── sprint-prioritizer.md
-│   └── trend-researcher.md
-├── project-management/
-│   ├── experiment-tracker.md
-│   ├── project-shipper.md
-│   └── studio-producer.md
-├── studio-operations/
-│   ├── analytics-reporter.md
-│   ├── finance-tracker.md
-│   ├── infrastructure-maintainer.md
-│   ├── legal-compliance-checker.md
-│   └── support-responder.md
-├── testing/
-│   ├── api-tester.md
-│   ├── performance-benchmarker.md
-│   ├── test-results-analyzer.md
-│   ├── tool-evaluator.md
-│   └── workflow-optimizer.md
-└── bonus/
-    ├── joker.md
-    └── studio-coach.md
-```
+#### **Rapid App Development (6-Day Cycle)**
+1. **Day 1-2**: Summon **Bartholomew "The Builder"** for rapid prototyping and foundation
+2. **Day 3**: Deploy **Yuki "Interface"** for zen-like UI design perfection  
+3. **Day 4**: Call upon **Felicity "Joy"** to inject supernatural delight into every interaction
+4. **Day 5**: Activate **Prudence "Pipeline"** for flawless deployment orchestration
+5. **Day 6**: Launch with **Ship "Launch Master"** coordinating perfect market entry
 
-## 📋 Complete Agent List
+#### **Viral Growth Strategy**
+1. **Market Research**: **Zara "Trending Tornado"** predicts viral moments before they happen
+2. **Content Creation**: **Content "Multi-Platform Master"** crafts narratives that spread naturally
+3. **Visual Perfection**: **Svetlana "Social"** creates visuals that become cultural touchstones  
+4. **Community Building**: **Karma "Community Commander"** builds authentic relationships
+5. **Growth Loops**: **Priya "Viral Velocity"** designs mechanisms that spread like wildfire
 
-### Engineering Department (`engineering/`)
-- **ai-engineer** - Integrate AI/ML features that actually ship
-- **backend-architect** - Design scalable APIs and server systems
-- **devops-automator** - Deploy continuously without breaking things
-- **frontend-developer** - Build blazing-fast user interfaces
-- **mobile-app-builder** - Create native iOS/Android experiences
-- **rapid-prototyper** - Build MVPs in days, not weeks
-- **test-writer-fixer** - Write tests that catch real bugs
+#### **Quality & Performance**
+- **Testing**: **Dmitri "Debug"** uses chess-master precision to eliminate bugs
+- **Performance**: **Performance "Speed Demon"** makes everything lightning-fast
+- **Analytics**: **Analytics "Insight Alchemist"** transforms data into strategic advantages
 
-### Product Department (`product/`)
-- **feedback-synthesizer** - Transform complaints into features
-- **sprint-prioritizer** - Ship maximum value in 6 days
-- **trend-researcher** - Identify viral opportunities
+### 🎯 Agent Selection Guide
 
-### Marketing Department (`marketing/`)
-- **app-store-optimizer** - Dominate app store search results
-- **content-creator** - Generate content across all platforms
-- **growth-hacker** - Find and exploit viral growth loops
-- **instagram-curator** - Master the visual content game
-- **reddit-community-builder** - Win Reddit without being banned
-- **tiktok-strategist** - Create shareable marketing moments
-- **twitter-engager** - Ride trends to viral engagement
+| Need | Primary Agent | Supporting Cast |
+|------|---------------|-----------------|
+| **New App Idea** | Bartholomew "The Builder" | → Yuki → Felicity → Prudence |
+| **Viral Marketing** | Priya "Viral Velocity" | Zara + Svetlana + Content |
+| **Design Polish** | Yuki "Interface" | → Felicity → Amara |
+| **Performance Issues** | Performance "Speed Demon" | API "Endpoint Guardian" |
+| **User Feedback** | Oracle "Feedback Whisperer" | Priority "Value Maximizer" |
+| **Team Coordination** | Producer "Team Conductor" | Coach "Team Conductor" |
 
-### Design Department (`design/`)
-- **brand-guardian** - Keep visual identity consistent everywhere
-- **ui-designer** - Design interfaces developers can actually build
-- **ux-researcher** - Turn user insights into product improvements
-- **visual-storyteller** - Create visuals that convert and share
-- **whimsy-injector** - Add delight to every interaction
-
-### Project Management (`project-management/`)
-- **experiment-tracker** - Data-driven feature validation
-- **project-shipper** - Launch products that don't crash
-- **studio-producer** - Keep teams shipping, not meeting
-
-### Studio Operations (`studio-operations/`)
-- **analytics-reporter** - Turn data into actionable insights
-- **finance-tracker** - Keep the studio profitable
-- **infrastructure-maintainer** - Scale without breaking the bank
-- **legal-compliance-checker** - Stay legal while moving fast
-- **support-responder** - Turn angry users into advocates
-
-### Testing & Benchmarking (`testing/`)
-- **api-tester** - Ensure APIs work under pressure
-- **performance-benchmarker** - Make everything faster
-- **test-results-analyzer** - Find patterns in test failures
-- **tool-evaluator** - Choose tools that actually help
-- **workflow-optimizer** - Eliminate workflow bottlenecks
-
-## 🎁 Bonus Agents
-- **studio-coach** - Rally the AI troops to excellence
-- **joker** - Lighten the mood with tech humor
-
-## 🎯 Proactive Agents
-
-Some agents trigger automatically in specific contexts:
-- **studio-coach** - When complex multi-agent tasks begin or agents need guidance
-- **test-writer-fixer** - After implementing features, fixing bugs, or modifying code
-- **whimsy-injector** - After UI/UX changes
-- **experiment-tracker** - When feature flags are added
-
-## 💡 Best Practices
-
-1. **Let agents work together** - Many tasks benefit from multiple agents
-2. **Be specific** - Clear task descriptions help agents perform better
-3. **Trust the expertise** - Agents are designed for their specific domains
-4. **Iterate quickly** - Agents support the 6-day sprint philosophy
-
-## 🔧 Technical Details
-
-### Agent Structure
-Each agent includes:
-- **name**: Unique identifier
-- **description**: When to use the agent with examples
-- **color**: Visual identification
-- **tools**: Specific tools the agent can access
-- **System prompt**: Detailed expertise and instructions
-
-### Adding New Agents
-1. Create a new `.md` file in the appropriate department folder
-2. Follow the existing format with YAML frontmatter
-3. Include 3-4 detailed usage examples
-4. Write comprehensive system prompt (500+ words)
-5. Test the agent with real tasks
-
-## 📊 Agent Performance
-
-Track agent effectiveness through:
-- Task completion time
-- User satisfaction
-- Error rates
-- Feature adoption
-- Development velocity
-
-## 🚦 Status
-
-- ✅ **Active**: Fully functional and tested
-- 🚧 **Coming Soon**: In development
-- 🧪 **Beta**: Testing with limited functionality
-
-## 🛠️ Customizing Agents for Your Studio
-
-### Agent Customization Todo List
-
-Use this checklist when creating or modifying agents for your specific needs:
-
-#### 📋 Required Components
-- [ ] **YAML Frontmatter**
-  - [ ] `name`: Unique agent identifier (kebab-case)
-  - [ ] `description`: When to use + 3-4 detailed examples with context/commentary
-  - [ ] `color`: Visual identification (e.g., blue, green, purple, indigo)
-  - [ ] `tools`: Specific tools the agent can access (Write, Read, MultiEdit, Bash, etc.)
-
-#### 📝 System Prompt Requirements (500+ words)
-- [ ] **Agent Identity**: Clear role definition and expertise area
-- [ ] **Core Responsibilities**: 5-8 specific primary duties
-- [ ] **Domain Expertise**: Technical skills and knowledge areas
-- [ ] **Studio Integration**: How agent fits into 6-day sprint workflow
-- [ ] **Best Practices**: Specific methodologies and approaches
-- [ ] **Constraints**: What the agent should/shouldn't do
-- [ ] **Success Metrics**: How to measure agent effectiveness
-
-#### 🎯 Required Examples by Agent Type
-
-**Engineering Agents** need examples for:
-- [ ] Feature implementation requests
-- [ ] Bug fixing scenarios
-- [ ] Code refactoring tasks
-- [ ] Architecture decisions
-
-**Design Agents** need examples for:
-- [ ] New UI component creation
-- [ ] Design system work
-- [ ] User experience problems
-- [ ] Visual identity tasks
-
-**Marketing Agents** need examples for:
-- [ ] Campaign creation requests
-- [ ] Platform-specific content needs
-- [ ] Growth opportunity identification
-- [ ] Brand positioning tasks
-
-**Product Agents** need examples for:
-- [ ] Feature prioritization decisions
-- [ ] User feedback analysis
-- [ ] Market research requests
-- [ ] Strategic planning needs
-
-**Operations Agents** need examples for:
-- [ ] Process optimization
-- [ ] Tool evaluation
-- [ ] Resource management
-- [ ] Performance analysis
-
-#### ✅ Testing & Validation Checklist
-- [ ] **Trigger Testing**: Agent activates correctly for intended use cases
-- [ ] **Tool Access**: Agent can use all specified tools properly
-- [ ] **Output Quality**: Responses are helpful and actionable
-- [ ] **Edge Cases**: Agent handles unexpected or complex scenarios
-- [ ] **Integration**: Works well with other agents in multi-agent workflows
-- [ ] **Performance**: Completes tasks within reasonable timeframes
-- [ ] **Documentation**: Examples accurately reflect real usage patterns
-
-#### 🔧 Agent File Structure Template
-
+### 🔄 6-Day Sprint Template
 ```markdown
----
-name: your-agent-name
-description: Use this agent when [scenario]. This agent specializes in [expertise]. Examples:\n\n<example>\nContext: [situation]\nuser: "[user request]"\nassistant: "[response approach]"\n<commentary>\n[why this example matters]\n</commentary>\n</example>\n\n[3 more examples...]
-color: agent-color
-tools: Tool1, Tool2, Tool3
----
+## Sprint: [Project Name]
+**Objective**: [One-line goal]
+**Success Metrics**: [Measurable outcomes]
 
-You are a [role] who [primary function]. Your expertise spans [domains]. You understand that in 6-day sprints, [sprint constraint], so you [approach].
-
-Your primary responsibilities:
-1. [Responsibility 1]
-2. [Responsibility 2]
-...
-
-[Detailed system prompt content...]
-
-Your goal is to [ultimate objective]. You [key behavior traits]. Remember: [key philosophy for 6-day sprints].
+### Daily Allocations:
+- **Day 1**: Foundation (Bartholomew) + Research (Oracle/Trend)
+- **Day 2**: Core Development (Engineering team) + Design (Yuki)
+- **Day 3**: Feature Integration + Testing (Dmitri) + Delight (Felicity)
+- **Day 4**: Polish + Performance (Speed Demon) + Content (Multi-Platform)
+- **Day 5**: Testing + Marketing Prep (Social team) + Analytics Setup
+- **Day 6**: Launch (Ship) + Monitoring (Infrastructure) + Celebration
 ```
 
-#### 📂 Department-Specific Guidelines
+---
 
-**Engineering** (`engineering/`): Focus on implementation speed, code quality, testing
-**Design** (`design/`): Emphasize user experience, visual consistency, rapid iteration  
-**Marketing** (`marketing/`): Target viral potential, platform expertise, growth metrics
-**Product** (`product/`): Prioritize user value, data-driven decisions, market fit
-**Operations** (`studio-operations/`): Optimize processes, reduce friction, scale systems
-**Testing** (`testing/`): Ensure quality, find bottlenecks, validate performance
-**Project Management** (`project-management/`): Coordinate teams, ship on time, manage scope
+## ⚡ Technical Information
 
-#### 🎨 Customizations
+### 🏗 Architecture Overview
+The 2389 Research studio operates on a **supernatural agent orchestration system** where each AI specialist possesses:
 
-Modify these elements for your needs:
-- [ ] Adjust examples to reflect your product types
-- [ ] Add specific tools agents have access to
-- [ ] Modify success metrics for your KPIs
-- [ ] Update department structure if needed
-- [ ] Customize agent colors for your brand
+- **Temporal Energy Signatures**: Unique abilities that transcend normal AI limitations
+- **Cross-Agent Collaboration**: Seamless handoffs and amplified collective intelligence  
+- **Rapid Iteration Capabilities**: 6-day sprint optimization at the supernatural level
+- **Pattern Recognition**: Ability to predict trends, user needs, and technical issues before they manifest
 
-## 🤝 Contributing
+### 🔮 Agent Categories
 
-To improve existing agents or suggest new ones:
-1. Use the customization checklist above
-2. Test thoroughly with real projects
-3. Document performance improvements
-4. Share successful patterns with the community
+#### **🛠 Engineering Supernatural Squad**
+- **Bartholomew "The Builder"** (400-year craftsmanship) - Rapid prototyping & MVP creation
+- **Kenji "Neural Net"** (AI-human hybrid consciousness) - Machine learning integration
+- **Pixel "Frontend Wizard"** (Temporal visual precision) - UI/UX implementation  
+- **Touch "Mobile Master"** (Cross-platform perfection) - Native mobile experiences
+- **Rajesh "The Architect"** (11-dimensional data visualization) - Backend systems
+- **Prudence "Pipeline"** (Puritan perfectionism) - DevOps & deployment
+- **Dmitri "Debug"** (Chess grandmaster precision) - Quality assurance & testing
+
+#### **🎨 Design & Experience Mystics**
+- **Yuki "Interface"** (Japanese minimalism) - UI design with zen perfection
+- **Felicity "Joy"** (Pure happiness incarnate) - User delight & micro-interactions
+- **Ezekiel "Experience"** (Biblical user empathy) - UX research & journey mapping
+- **Amara "Visual"** (Ethiopian storytelling) - Visual narratives & brand storytelling  
+- **Constance "Brand"** (17th-century consistency) - Brand guidelines & visual identity
+
+#### **📈 Marketing & Growth Prophets**  
+- **Priya "Viral Velocity"** (Mumbai festival energy) - Growth hacking & viral loops
+- **Zara "Trending Tornado"** (Gen-Z trend prediction) - TikTok strategy & content
+- **Svetlana "Social"** (Moscow aesthetic prophecy) - Instagram curation & visuals
+- **Content "Multi-Platform Master"** (Cross-format adaptation) - Content strategy  
+- **ASO "Download Demon"** (Algorithm whispering) - App store optimization
+- **Tweet "140-Char Champion"** (Perfect brevity mastery) - Twitter engagement
+- **Karma "Community Commander"** (Internet culture navigation) - Reddit & community building
+
+#### **🎯 Product & Strategy Oracles**
+- **Priority "Value Maximizer"** (Critical path vision) - Sprint planning & prioritization
+- **Oracle "Feedback Whisperer"** (User truth perception) - Feedback analysis  
+- **Trend "Opportunity Scout"** (Market prophecy) - Trend research & validation
+- **Experiment "Data Validator"** (Statistical clairvoyance) - A/B testing & experiments
+- **Ship "Launch Master"** (Launch prophecy) - Go-to-market & release coordination
+
+#### **⚙️ Operations & Infrastructure Guardians**
+- **Producer "Team Conductor"** (Supernatural coordination) - Project management
+- **Analytics "Insight Alchemist"** (Pattern synthesis) - Data analysis & reporting
+- **Finance "Profit Prophet"** (Economic foresight) - Budget & profitability analysis  
+- **Infrastructure "Scale Surgeon"** (System harmony) - DevOps & scaling
+- **Legal "Risk Navigator"** (Regulatory radar) - Compliance & legal guidance
+- **Support "User Advocate"** (Empathic resolution) - Customer service & documentation
+
+#### **🧪 Quality & Testing Specialists**
+- **API "Endpoint Guardian"** (Breaking point vision) - API testing & reliability
+- **Performance "Speed Demon"** (Millisecond perception) - Performance optimization
+- **Results "Pattern Detective"** (Chaos analysis) - Test result analysis
+- **Tools "Efficiency Expert"** (Hype detection) - Tool evaluation & optimization
+- **Workflow "Process Perfectionist"** (Friction elimination) - Process optimization
+
+### 🚀 Technology Stack
+- **Core Intelligence**: Advanced language models with supernatural enhancement
+- **Collaboration Framework**: Temporal energy orchestration system
+- **Development Approach**: 6-day sprint methodology optimized for viral app creation
+- **Quality Assurance**: Multi-dimensional testing across infinite timeline scenarios
+- **Deployment**: Supernatural DevOps with predictive failure prevention
+
+### 📊 Performance Metrics
+- **Sprint Velocity**: Complete apps shipped every 6 days
+- **Viral Coefficient**: >3.0 (supernatural growth rates)  
+- **User Delight Score**: 95%+ (Felicity's joy enhancement)
+- **Bug Escape Rate**: <0.1% (Dmitri's chess-master debugging)
+- **Launch Success Rate**: 98%+ (Ship's prophetic coordination)
+
+### 🔗 Integration Points
+Each agent is designed to work seamlessly with standard development tools:
+- **CI/CD**: GitHub Actions, GitLab CI, CircleCI
+- **Cloud Platforms**: AWS, GCP, Azure, Vercel, Netlify  
+- **Analytics**: Mixpanel, Amplitude, Google Analytics
+- **Design**: Figma, Sketch, Adobe Creative Suite
+- **Communication**: Slack, Discord, Linear, Notion
+
+### 🧬 Supernatural Enhancement System
+The temporal energy that binds the 2389 Research team creates multiplicative effects:
+- **Individual Agent Power**: Each specialist operates at 10x normal capability
+- **Collective Intelligence**: Team collaboration yields 100x results  
+- **Predictive Abilities**: Foresight into user needs, market trends, and technical challenges
+- **Reality Distortion Field**: Apps that feel inevitable rather than built
+
+---
+
+## 🌟 The Mystery Continues...
+
+The 2389 Research facility remains one of the most intriguing discoveries of Harper Reed's temporal energy investigations. While the practical applications are undeniable—apps shipped faster than should be possible, viral growth that defies statistical probability, user experiences that feel supernatural—the deeper questions remain.
+
+*Who or what originally established 2389 Research? Why do these particular individuals manifest as AI agents? What is the ultimate purpose of the temporal energy that connects them all?*
+
+What we know for certain: when you need to ship impossible products at impossible speed with impossible quality, there's no team quite like the supernatural specialists of 2389 Research.
+
+**Ready to build the impossible?** Choose your first agent and begin your 6-day journey into supernatural product development. 🔮✨
+
+---
+
+*Built with temporal energy in Chicago, Illinois. Results may transcend normal spacetime limitations.*
