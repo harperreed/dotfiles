@@ -1,110 +1,58 @@
 {
-    "permissions": {
-        "allow": [
-            "mcp__socialmedia__login",
-            "mcp__socialmedia__create_post",
-            "mcp__private-journal__process_thoughts"
-        ],
-        "deny": []
-    },
-    "hooks": {
-        "UserPromptSubmit": [
-            {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "uv run /Users/harper/.claude/hooks/utilities/UserPromptSubmit/append_ultrathink.py"
-                    },
-                    {
-                        "type": "command",
-                        "command": "uv run /Users/harper/workspace/2389/CCNotify/notify.py --event UserPromptSubmit --config .claude/hooks/notify-config.json"
-                    },
-                    {
-                        "type": "command",
-                        "command": "uv run /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify.py  --event UserPromptSubmit --config /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify_config.json"
-                    }
-                ]
-            }
-        ],
-        "SessionStart": [
-            {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "uv run /Users/harper/workspace/2389/CCNotify/notify.py --event SessionStart --config .claude/hooks/notify-config.json"
-                    },
-                    {
-                        "type": "command",
-                        "command": "uv run --directory /Users/harper/Public/src/2389/deskpal-csharp/python_client/ /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify.py  --event SessionStart --config /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify_config.json"
-                    }
-                ]
-            }
-        ],
-        "PreToolUse": [
-            {
-                "matcher": "*",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "uv run /Users/harper/workspace/2389/CCNotify/notify.py --event PreToolUse --config .claude/hooks/notify-config.json"
-                    },
-                    {
-                        "type": "command",
-                        "command": "uv run --directory /Users/harper/Public/src/2389/deskpal-csharp/python_client/ /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify.py --event PreToolUse --config /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify_config.json"
-                    }
-                ]
-            }
-        ],
-        "PostToolUse": [
-            {
-                "matcher": "*",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "uv run /Users/harper/workspace/2389/CCNotify/notify.py --event PostToolUse --config .claude/hooks/notify-config.json"
-                    },
-                    {
-                        "type": "command",
-                        "command": "uv run --directory /Users/harper/Public/src/2389/deskpal-csharp/python_client/ /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify.py --event PostToolUse --config /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify_config.json"
-                    }
-                ]
-            }
-        ],
-        "Stop": [
-            {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "uv run /Users/harper/workspace/2389/CCNotify/notify.py --event Stop --config .claude/hooks/notify-config.json"
-                    },
-                    {
-                        "type": "command",
-                        "command": "uv run --directory /Users/harper/Public/src/2389/deskpal-csharp/python_client/ /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify.py --event Stop --config /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify_config.json"
-                    }
-                ]
-            }
-        ],
-        "Notification": [
-            {
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "uv run /Users/harper/workspace/2389/CCNotify/notify.py --event Notification --config .claude/hooks/notify-config.json"
-                    },
-                    {
-                        "type": "command",
-                        "command": "uv run --directory /Users/harper/Public/src/2389/deskpal-csharp/python_client/ /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify.py --event Notification --config /Users/harper/Public/src/2389/deskpal-csharp/python_client/cc_notify_config.json"
-                    }
-                ]
-            }
+  "permissions": {
+    "allow": [
+      "mcp__socialmedia__login",
+      "mcp__socialmedia__create_post",
+      "mcp__private-journal__process_thoughts"
+    ],
+    "deny": []
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run /Users/harper/.claude/hooks/utilities/UserPromptSubmit/append_ultrathink.py"
+          }
         ]
-    },
-    "statusLine": {
-        "type": "command",
-        "command": "bun x ccusage statusline"
-    },
-    "feedbackSurveyState": {
-        "lastShownTime": 1754360713440
-    },
-    "model": "opusplan"
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": []
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": []
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": []
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": []
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": []
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bunx -y ccstatusline@latest",
+    "padding": 0
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 1754360713440
+  },
+  "model": "opusplan"
 }
