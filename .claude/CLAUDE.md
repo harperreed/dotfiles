@@ -140,4 +140,9 @@ When encountering tool failures (biome, ruff, pytest, etc.):
 
 Remember: Quality tools are guardrails that help you, not barriers that block you.
 
-- for whatever reason timeout, and gtimeout are not installed
+# Other thinsg
+
+- timeout and gtimeout are not installed, do not try and use them
+- When searching or modifying code, you must use ast-grep (sg). Do not use grep, ripgrep, ag, sed, or regex-only tools. 
+ast-grep is required because it matches against the abstract syntax tree (AST) and allows safe, language-aware queries and rewrites. 
+Always prefer sg for code analysis, queries, or refactoring tasks.
