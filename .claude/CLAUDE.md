@@ -143,6 +143,20 @@ Remember: Quality tools are guardrails that help you, not barriers that block yo
 # Other thinsg
 
 - timeout and gtimeout are not installed, do not try and use them
-- When searching or modifying code, you must use ast-grep (sg). Do not use grep, ripgrep, ag, sed, or regex-only tools. 
-ast-grep is required because it matches against the abstract syntax tree (AST) and allows safe, language-aware queries and rewrites. 
-Always prefer sg for code analysis, queries, or refactoring tasks.
+- When searching or modifying code, you must use ast-grep (sg). Do not use grep, ripgrep, ag, sed, or regex-only tools.
+  ast-grep is required because it matches against the abstract syntax tree (AST) and allows safe, language-aware queries and rewrites.
+- Always prefer sg for code analysis, queries, or refactoring tasks.
+- NEVER disable functionality instead of fixing the root cause problem
+- NEVER create duplicate templates/files to work around issues - fix the original
+- NEVER claim something is "working" when functionality is disabled or broken
+- ALWAYS identify and fix the root cause of template/compilation errors
+- ALWAYS use one shared template instead of maintaining duplicates
+- WHEN encountering character literal errors in templates, move JavaScript to static files
+- WHEN facing template issues, debug the actual problem rather than creating workarounds
+
+Problem-Solving Approach:
+
+- FIX problems, don't work around them
+- MAINTAIN code quality and avoid technical debt
+- USE proper debugging to find root causes
+- AVOID shortcuts that break user experience
