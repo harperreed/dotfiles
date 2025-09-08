@@ -7,6 +7,7 @@
     ],
     "deny": []
   },
+  "model": "sonnet[1m]",
   "hooks": {
     "UserPromptSubmit": [
       {
@@ -53,6 +54,5 @@
   },
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
-  },
-  "model": "opusplan"
+  }
 }
