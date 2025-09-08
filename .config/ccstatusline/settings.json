@@ -8,16 +8,6 @@
         "color": "magenta"
       },
       {
-        "id": "7",
-        "type": "git-changes",
-        "color": "yellow"
-      },
-      {
-        "id": "b4fe9eb0-7928-4c2c-891d-da60e17517a4",
-        "type": "output-style",
-        "backgroundColor": "bgYellow"
-      },
-      {
         "id": "a6bd1187-5db3-475b-a284-14aad1738387",
         "type": "session-clock",
         "backgroundColor": "bgBrightYellow"

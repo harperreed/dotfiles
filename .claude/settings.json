@@ -1,6 +1,11 @@
 {
   "permissions": {
     "allow": [
+      "mcp__zen__chat",
+"mcp__zen__thinkdeep",
+"mcp__zen__planner",
+"mcp__zen__consensus",,
+"mcp__zen__codereview",
       "mcp__socialmedia__login",
       "mcp__socialmedia__create_post",
       "mcp__private-journal__process_thoughts"
@@ -55,4 +60,5 @@
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
   }
+  "model": "opusplan"
 }
