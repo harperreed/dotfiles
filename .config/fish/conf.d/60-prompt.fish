@@ -25,7 +25,7 @@ set -g theme_display_user ssh                  # Show user in SSH sessions
 set -g theme_display_hostname ssh              # Show hostname in SSH sessions
 
 # Additional UI elements
-set -g theme_display_vi yes                    # Show Vi mode indicator
+set -g theme_display_vi no                     # Don't show Vi mode indicator
 set -g theme_display_date yes                  # Show current date in prompt
 set -g theme_display_cmd_duration yes          # Show duration of last command
 set -g theme_title_display_process yes         # Show current process in terminal title

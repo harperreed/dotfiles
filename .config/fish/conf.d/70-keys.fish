@@ -1,8 +1,8 @@
-# ABOUTME: Vi key bindings, bang-bang (!!), and quick shell reload
+# ABOUTME: Default key bindings, bang-bang (!!), and quick shell reload
 # ABOUTME: Essential keyboard shortcuts and shell management functions
 
-# Vi mode
-fish_vi_key_bindings
+# Default mode (not Vi)
+fish_default_key_bindings
 
 # "!!" -> last command (works anywhere)
 function __hist_last_cmd; echo $history[1]; end
