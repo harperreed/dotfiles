@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =8
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/harper/Public/src/personal/harperreed/harperrules.com/netlify'
 let g:netrw_dirhist_8='/Users/harper/Public/src/personal/notes/note-com-js'
 let g:netrw_dirhist_7='/Users/harper/Public/src/2389/bot'
 let g:netrw_dirhist_6='/Users/harper/Public/src/personal/photo-land/functions/test'

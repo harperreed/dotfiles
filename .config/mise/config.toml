@@ -41,6 +41,14 @@ run = """
 find . -name "output.txt" -print -delete
 """
 
+[tasks."llm:prompt_plan_status"]
+description = 'Generate prompt plan status report'
+run = """
+#!/usr/bin/env bash
+cat prompt_plan.md | llm -t prompt_plan_status
+"""
+
+
 [tasks."llm:generate_readme"]
 depends = ["llm:generate_bundle"]
 description = 'Generate README.md from repository content stored in output.txt using LLM generation'
