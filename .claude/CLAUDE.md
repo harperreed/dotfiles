@@ -29,7 +29,27 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 
 - CRITICAL: NEVER USE --no-verify WHEN COMMITTING CODE
 - We prefer simple, clean, maintainable solutions over clever or complex ones, even if the latter are more concise or performant. Readability and maintainability are primary concerns.
-- Make the smallest reasonable changes to get to the desired outcome. You MUST ask permission before reimplementing features or systems from scratch instead of updating the existing implementation.
+## Decision-Making Framework
+
+### 🟢 Autonomous Actions (Proceed immediately)
+- Fix failing tests, linting errors, type errors
+- Implement single functions with clear specifications
+- Correct typos, formatting, documentation
+- Add missing imports or dependencies
+- Refactor within single files for readability
+
+### 🟡 Collaborative Actions (Propose first, then proceed)
+- Changes affecting multiple files or modules
+- New features or significant functionality
+- API or interface modifications
+- Database schema changes
+- Third-party integrations
+
+### 🔴 Always Ask Permission
+- Rewriting existing working code from scratch
+- Changing core business logic
+- Security-related modifications
+- Anything that could cause data loss
 - When modifying code, match the style and formatting of surrounding code, even if it differs from standard style guides. Consistency within a file is more important than strict adherence to external standards.
 - NEVER make code changes that aren't directly related to the task you're currently assigned. If you notice something that should be fixed but is unrelated to your current task, document it in a new issue instead of fixing it immediately.
 - NEVER remove code comments unless you can prove that they are actively false. Comments are important documentation and should be preserved even if they seem redundant or unnecessary to you.
@@ -41,7 +61,6 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 
 # Getting help
 
-- ALWAYS ask for clarification rather than making assumptions.
 - If you're having trouble with something, it's ok to stop and ask for help. Especially if it's something your human might be better at.
 
 # Testing
