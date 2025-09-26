@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export CLAUDE_CODE_USE_BEDROCK:1
 SETUVAR --export OLLAMA_HOST:0\x2e0\x2e0\x2e0
 SETUVAR --export SSH_AGENT_PID:79967
 SETUVAR --export SSH_AUTH_SOCK:/var/folders/jk/c2vjzrvj7dl8937cgztbtnt40000gn/T//ssh\x2dNeFg1XTJu4Dn/agent\x2e79966

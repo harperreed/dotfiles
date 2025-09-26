@@ -1,64 +1,71 @@
-      {
-  "permissions": {
-    "allow": [
-      "mcp__zen__chat",
-"mcp__zen__thinkdeep",
-"mcp__zen__planner",
-"mcp__zen__consensus",,
-"mcp__zen__codereview",
-      "mcp__socialmedia__login",
-      "mcp__socialmedia__create_post",
-      "mcp__private-journal__process_thoughts"
-    ],
-    "deny": []
-  },
-  "model": "sonnet[1m]",
-  "hooks": {
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run /Users/harper/.claude/hooks/utilities/UserPromptSubmit/append_ultrathink.py"
-          }
+{
+    "permissions": {
+        "allow": [
+            "mcp__zen__chat",
+            "mcp__zen__thinkdeep",
+            "mcp__zen__planner",
+            "mcp__zen__consensus",
+            "mcp__zen__codereview",
+            "mcp__socialmedia__login",
+            "mcp__socialmedia__create_post",
+            "mcp__private-journal__process_thoughts"
+        ],
+        "deny": []
+    },
+    "model": "sonnet[1m]",
+    "hooks": {
+        "UserPromptSubmit": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "uv run /Users/harper/.claude/hooks/utilities/UserPromptSubmit/append_ultrathink.py"
+                    }
+                ]
+            }
+        ],
+        "SessionStart": [
+            {
+                "hooks": []
+            }
+        ],
+        "PreToolUse": [
+            {
+                "matcher": "*",
+                "hooks": []
+            }
+        ],
+        "PostToolUse": [
+            {
+                "matcher": "*",
+                "hooks": []
+            }
+        ],
+        "Stop": [
+            {
+                "hooks": []
+            }
+        ],
+        "Notification": [
+            {
+                "hooks": []
+            }
         ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": []
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "*",
-        "hooks": []
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "*",
-        "hooks": []
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": []
-      }
-    ],
-    "Notification": [
-      {
-        "hooks": []
-      }
-    ]
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "bunx -y ccstatusline@latest",
-    "padding": 0
-  },
-  "feedbackSurveyState": {
-    "lastShownTime": 1754360713440
-  }
-  "model": "opusplan"
+    },
+    "statusLine": {
+        "type": "command",
+        "command": "bunx -y ccstatusline@latest",
+        "padding": 0
+    },
+    "feedbackSurveyState": {
+        "lastShownTime": 1754360713440
+    },
+    "awsAuthRefresh": "aws sso login --profile 2389-cc",
+    "env": {
+        "AWS_PROFILE": "2389-cc",
+        "AWS_REGION": "us-east-1",
+        "CLAUDE_CODE_USE_BEDROCK": "1",
+        "ANTHROPIC_MODEL": "global.anthropic.claude-sonnet-4-20250514-v1:0",
+        "ANTHROPIC_SMALL_FAST_MODEL": "us.anthropic.claude-3-5-haiku-20241022-v1:0"
+    }
 }
