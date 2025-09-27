@@ -3,6 +3,7 @@
 
 brew "ansible"
 # brew "atuin"
+brew "AST-grep"
 brew "awscli"
 brew "boost"
 brew "clipboard"
