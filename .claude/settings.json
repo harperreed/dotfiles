@@ -1,15 +1,4 @@
 {
-    "awsAuthRefresh": "aws sso login --profile 2389-cc",
-    "env": {
-        "AWS_PROFILE": "2389-cc",
-        "AWS_REGION": "us-east-1",
-        "CLAUDE_CODE_USE_BEDROCK": "1",
-        "ANTHROPIC_DEFAULT_OPUS_MODEL": "us.anthropic.claude-opus-4-20250514-v1:0",
-        "ANTHROPIC_DEFAULT_SONNET_MODEL": "global.anthropic.claude-sonnet-4-20250514-v1:0",
-        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "us.anthropic.claude-3-5-haiku-20241022-v1:0",
-        "CLAUDE_CODE_SUBAGENT_MODEL": "us.anthropic.claude-opus-4-20250514-v1:0",
-        "ANTHROPIC_SMALL_FAST_MODEL": "us.anthropic.claude-3-5-haiku-20241022-v1:0"
-    },
     "model": "opusplan",
     "permissions": {
         "allow": [
