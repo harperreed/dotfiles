@@ -3,6 +3,7 @@
     - Double-check if it's truly unfinished (if uncertain, ask for clarification).
     - If you confirm it's already done, skip it.
     - Otherwise, implement it as described.
+    - Look at the spec.md, and any .dot files to ensure your implementation aligns with the requirements.
     - Make sure the tests pass, and the program builds/runs
     - Commit the changes to your repository with a clear commit message.
     - Update **@prompt_plan.md** to mark this prompt as completed.
