@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =0
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/Users/harper/.config/helix'
 let g:netrw_dirhist_0='/Users/harper/Public/src/2389/hamstr-lite/relay'
 let g:netrw_dirhist_9='/Users/harper/Public/src/personal/harperreed/harperrules.com/netlify'
 let g:netrw_dirhist_8='/Users/harper/Public/src/personal/notes/note-com-js'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_5='/Users/harper/Public/src/personal/broox-flask-api/app/.py
 let g:netrw_dirhist_4='/Users/harper/.npm'
 let g:netrw_dirhist_3='/Users/harper/Documents/src'
 let g:netrw_dirhist_2='/Users/harper/Dropbox/src/harperreed/harper.blog/layouts/archives'
-let g:netrw_dirhist_1='/Users/harper/Dropbox/src/harperreed/harper.blog/layouts'
