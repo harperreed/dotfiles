@@ -24,6 +24,7 @@ ruff = "latest"
 python = "3.12"
 java = "latest"
 bun = "latest"
+pnpm = "latest"
 
 [tasks."llm:generate_bundle"]
 description = 'Generate LLM bundle output file using repomix'

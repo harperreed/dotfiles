@@ -56,8 +56,11 @@
     "command": "bunx -y ccstatusline@latest",
     "padding": 0
   },
-  "alwaysThinkingEnabled": false,
+  "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
+  },
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true
   }
 }
