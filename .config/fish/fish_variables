@@ -1,6 +1,5 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-# SETUVAR --export CLAUDE_CODE_USE_BEDROCK:1
 SETUVAR --export OLLAMA_HOST:0\x2e0\x2e0\x2e0
 SETUVAR --export SSH_AGENT_PID:79967
 SETUVAR --export SSH_AUTH_SOCK:/var/folders/jk/c2vjzrvj7dl8937cgztbtnt40000gn/T//ssh\x2dNeFg1XTJu4Dn/agent\x2e79966
@@ -43,4 +42,4 @@ SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
-SETUVAR fish_user_paths:/Users/harper/\x2eopencode/bin\x1e/opt/homebrew/sbin\x1e/Users/harper/\x2econfig/nvm/18\x2e19\x2e1/bin\x1e/Applications/Xcode\x2eapp/Contents/Developer/usr/bin\x1e/opt/homebrew/opt/openjdk/bin\x1e/Users/harper/\x2econfig/bin\x1e/Users/harper/\x2elocal/bin\x1e/Users/harper/\x2econfig/nvm/16\x2e15\x2e1/bin\x1e/opt/homebrew/bin\x1e/Users/harper/\x2eyarn/bin
+SETUVAR fish_user_paths:/Users/harper/\x2eopencode/bin\x1e/opt/homebrew/sbin\x1e/Users/harper/\x2econfig/nvm/18\x2e19\x2e1/bin\x1e/Applications/Xcode\x2eapp/Contents/Developer/usr/bin\x1e/opt/homebrew/opt/openjdk/bin\x1e/Users/harper/\x2econfig/bin\x1e/Users/harper/\x2elocal/bin\x1e/Users/harper/\x2econfig/nvm/16\x2e15\x2e1/bin\x1e/opt/homebrew/bin\x1e/Users/harper/\x2eyarn/bin\x1e/Applications/Ghostty\x2eapp/Contents/MacOS
