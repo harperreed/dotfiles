@@ -1,0 +1,13 @@
+
+[[language]]
+name = "python"
+language-servers = ["ty", "ruff"]
+formatter = { command = "ruff", args = ["format", "-"] }
+
+[language-server.ty]
+command = "ty"
+args = ["lsp"]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
