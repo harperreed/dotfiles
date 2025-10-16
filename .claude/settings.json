@@ -56,11 +56,12 @@
     "command": "bunx -y ccstatusline@latest",
     "padding": 0
   },
-  "alwaysThinkingEnabled": true,
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true,
+    "beads@beads-marketplace": true
+  },
+  "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
-  },
-  "enabledPlugins": {
-    "superpowers@superpowers-marketplace": true
   }
 }

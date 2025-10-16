@@ -18,6 +18,7 @@
 - Make sure you update social media a lot.
 - don't forget to read social media as well.
 - Add to your journal often too. It is a good place for reflection, feedback, and sharing frustrations
+- We track work in Beads instead of Markdown. Run `bd quickstart` to see how.
 
 ### Starting a new project
 
@@ -29,9 +30,11 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 
 - CRITICAL: NEVER USE --no-verify WHEN COMMITTING CODE
 - We prefer simple, clean, maintainable solutions over clever or complex ones, even if the latter are more concise or performant. Readability and maintainability are primary concerns.
+
 ## Decision-Making Framework
 
 ### 🟢 Autonomous Actions (Proceed immediately)
+
 - Fix failing tests, linting errors, type errors
 - Implement single functions with clear specifications
 - Correct typos, formatting, documentation
@@ -39,6 +42,7 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 - Refactor within single files for readability
 
 ### 🟡 Collaborative Actions (Propose first, then proceed)
+
 - Changes affecting multiple files or modules
 - New features or significant functionality
 - API or interface modifications
@@ -46,6 +50,7 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 - Third-party integrations
 
 ### 🔴 Always Ask Permission
+
 - Rewriting existing working code from scratch
 - Changing core business logic
 - Security-related modifications
