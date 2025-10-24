@@ -82,10 +82,10 @@ install_brewfile() {
     log_info "Installing packages from Brewfile"
     
     # Update Homebrew first
-    run_command "brew update"
+    #run_command "brew update"
     
     # Install from Brewfile
-    run_command "brew bundle --file '$BREWFILE_PATH' --no-lock"
+    run_command "brew bundle --file '$BREWFILE_PATH'"
     
     # Cleanup
     if confirm "Run brew cleanup?"; then
