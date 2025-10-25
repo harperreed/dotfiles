@@ -21,10 +21,12 @@ deno = "latest"
 # pnpm = "latest"
 yarn = "latest"
 ruff = "latest"
-python = "3.12"
+# python = "3.12"
 java = "latest"
 bun = "latest"
 pnpm = "latest"
+claude = "latest"
+codex = "latest"
 
 [tasks."llm:generate_bundle"]
 description = 'Generate LLM bundle output file using repomix'
