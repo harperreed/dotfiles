@@ -63,6 +63,6 @@ alias la 'eza --icons --group-directories-first -a'
 alias l 'eza --icons --group-directories-first'
 alias tree 'eza --tree --icons'
 alias du dust
-alias find fd
+# alias find fd
 alias grep rg
 alias top btm

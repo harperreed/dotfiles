@@ -58,9 +58,10 @@
   },
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
-    "beads@beads-marketplace": true
+    "beads@beads-marketplace": true,
+    "episodic-memory@superpowers-marketplace": true
   },
-  "alwaysThinkingEnabled": false,
+  "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
   }
