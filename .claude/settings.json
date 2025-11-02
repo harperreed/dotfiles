@@ -26,6 +26,24 @@
     "SessionStart": [
       {
         "hooks": []
+      },
+      {
+        "matcher": "clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run /Users/harper/.claude/hooks/utilities/BuddyNotification/buddy.py"
+          }
+        ]
+      },
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run /Users/harper/.claude/hooks/utilities/BuddyNotification/buddy.py"
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -48,6 +66,15 @@
     "Notification": [
       {
         "hooks": []
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run /Users/harper/.claude/hooks/utilities/BuddyNotification/buddy.py"
+          }
+        ]
       }
     ]
   },
@@ -59,7 +86,10 @@
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
     "beads@beads-marketplace": true,
-    "episodic-memory@superpowers-marketplace": true
+    "episodic-memory@superpowers-marketplace": true,
+    "example-skills@anthropic-agent-skills": true,
+    "superpowers-developing-for-claude-code@superpowers-marketplace": true,
+    "document-skills@anthropic-agent-skills": true
   },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
