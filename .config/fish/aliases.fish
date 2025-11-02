@@ -56,13 +56,12 @@ alias gl 'git pull'
 alias lg lazygit
 
 # Modern CLI replacements
-alias cat bat
+# alias cat bat
 alias ls 'eza --icons --group-directories-first'
 alias ll 'eza --icons --group-directories-first -la'
 alias la 'eza --icons --group-directories-first -a'
 alias l 'eza --icons --group-directories-first'
 alias tree 'eza --tree --icons'
-alias du dust
 # alias find fd
 alias grep rg
 alias top btm
