@@ -105,3 +105,5 @@ protocol = https
 	prompt = false
 [rebase]
 	autoStash = true
+[safe]
+	directory = /private/tmp
