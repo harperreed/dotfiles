@@ -64,6 +64,10 @@
 [hub]
 protocol = https
 
+[url "git@github.com:"]
+ 	insteadOf = "https://github.com/"
+
+
 [credential]
 [filter "media"]
 	clean = git-media-clean %f
