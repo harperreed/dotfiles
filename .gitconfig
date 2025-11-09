@@ -81,7 +81,7 @@ protocol = https
 	tool = difftastic
 [merge]
 	conflictstyle = zdiff3
-	tool = nvimdiff
+	tool = meld
 [branch]
 	sort = -committerdate
 [commit]
