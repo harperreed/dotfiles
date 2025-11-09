@@ -185,3 +185,5 @@ Problem-Solving Approach:
 - USE proper debugging to find root causes
 - AVOID shortcuts that break user experience
 - 17
+- I prefer to work on the main branch unless specified. Worktrees, and feature branches are the alternative, the default is work on main.
+- I highly prefer all work to be done via the subagent development skill
