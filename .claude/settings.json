@@ -85,14 +85,15 @@
   },
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
-    "beads@beads-marketplace": true,
+    "beads@beads-marketplace": false,
     "episodic-memory@superpowers-marketplace": true,
     "example-skills@anthropic-agent-skills": true,
     "superpowers-developing-for-claude-code@superpowers-marketplace": true,
     "document-skills@anthropic-agent-skills": true,
     "superpowers-chrome@superpowers-marketplace": true,
     "elements-of-style@superpowers-marketplace": true,
-    "superpowers-lab@superpowers-marketplace": true
+    "superpowers-lab@superpowers-marketplace": true,
+    "frontend-design@claude-code-plugins": true
   },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
