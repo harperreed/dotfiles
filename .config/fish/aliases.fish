@@ -22,6 +22,7 @@ alias ..... 'cd ../../../..'
 # Shortcuts
 alias g git
 alias v nvim
+alias vi nvim
 alias vim nvim
 alias dc 'docker-compose'
 alias k kubectl

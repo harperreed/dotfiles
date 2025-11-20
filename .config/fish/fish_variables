@@ -1,8 +1,10 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export EDITOR:nvim
 SETUVAR --export OLLAMA_HOST:0\x2e0\x2e0\x2e0
 SETUVAR --export SSH_AGENT_PID:79967
 SETUVAR --export SSH_AUTH_SOCK:/var/folders/jk/c2vjzrvj7dl8937cgztbtnt40000gn/T//ssh\x2dNeFg1XTJu4Dn/agent\x2e79966
+SETUVAR --export VISUAL:nvim
 SETUVAR Z_DATA_DIR:/Users/harper/\x2elocal/share/z
 SETUVAR __fish_initialized:3800
 SETUVAR _fisher_edc_2F_bass_files:\x7e/\x2econfig/fish/functions/__bass\x2epy\x1e\x7e/\x2econfig/fish/functions/bass\x2efish
