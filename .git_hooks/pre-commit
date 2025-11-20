@@ -3,5 +3,5 @@
 if [ -f "$(git rev-parse --show-toplevel)/.pre-commit-config.yaml" ]; then
     HOOKSPATH=$(git config --get core.hookspath)
     export PRE_COMMIT_ALLOW_NO_CONFIG=1
-    cd "$(git rev-parse --show-toplevel)" && pre-commit run --hook-stage pre-commit
+    cd "$(git rev-parse --show-toplevel)" && prek run --hook-stage pre-commit
 fi
