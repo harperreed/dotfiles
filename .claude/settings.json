@@ -96,7 +96,7 @@
     "commit-commands@claude-code-plugins": true,
     "security-guidance@claude-code-plugins": true
   },
-  "alwaysThinkingEnabled": true,
+  "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
   }
