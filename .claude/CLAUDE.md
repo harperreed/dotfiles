@@ -189,3 +189,4 @@ Problem-Solving Approach:
 - I highly prefer all work to be done via the subagent development skill
 - When choosing port numbers for new services, make them thematically related and memorable (leet-speak, pop culture, or project-relevant numbers). Keep infrastructure defaults boring (NATS, databases, etc.). The goal is to cleanly avoid all regularly used ports (8080, 8081, etc)
 - when refering to models from foundational model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. your knowledge cut off is getting in the way of you making good decisions
+- use the remember MCP server to remember various important things
