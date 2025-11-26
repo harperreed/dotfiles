@@ -38,69 +38,67 @@ end
 
 ### COMPACT PROMPT FOR BLINK ###
 
-# Override the verbose prompt with a compact single-line version
+# Ultra-compact single-line prompt optimized for mobile
 if is_blink
     function fish_prompt
         set -l last_status $status
 
-        # Virtual env (compact)
+        # Build prompt in one line: [env] [user@]host:dir [git] >
+        set -l prompt_parts ""
+
+        # Virtual env (ultra compact)
         if set -q VIRTUAL_ENV
-            set_color --bold blue
-            echo -n "("(basename "$VIRTUAL_ENV")") "
+            set_color blue
+            echo -n (basename "$VIRTUAL_ENV" | string sub -l 8)":"
             set_color normal
         end
 
-        # Show user@host only in SSH
+        # User@host (only in SSH, ultra short)
         if set -q SSH_CLIENT; or set -q SSH_TTY
-            set_color brblue
-            echo -n (whoami)"@"
             set_color yellow
-            echo -n (hostname -s)" "
+            echo -n (hostname -s | string sub -l 8)":"
             set_color normal
         end
 
-        # Current directory (shortened to last 2 components)
-        set_color $fish_color_cwd
-        set -l cwd (pwd | string replace -r "^$HOME" "~")
-        set -l path_parts (string split "/" $cwd)
-        if test (count $path_parts) -gt 2
-            echo -n "…/"(string join "/" $path_parts[-1..-1])" "
+        # Current directory (just basename, with ~ for home)
+        set_color cyan
+        set -l cwd (pwd)
+        if test "$cwd" = "$HOME"
+            echo -n "~"
         else
-            echo -n $cwd" "
+            echo -n (basename $cwd)
         end
         set_color normal
 
-        # Git info (only if not in fast mode)
+        # Git branch (only if not in fast mode, ultra compact)
         if test $BLINK_FAST_MODE -eq 0
             if command -q git; and git rev-parse --is-inside-work-tree >/dev/null 2>&1
-                set_color magenta
                 set -l branch (git symbolic-ref --short HEAD 2>/dev/null; or git rev-parse --short HEAD 2>/dev/null)
-                echo -n "($branch"
-
-                # Quick dirty check (faster than full status)
+                # Quick dirty check
                 if not git diff-index --quiet HEAD -- 2>/dev/null
                     set_color yellow
-                    echo -n "*"
+                    echo -n " "(string sub -l 8 $branch)"*"
+                else
                     set_color magenta
+                    echo -n " "(string sub -l 8 $branch)
                 end
-                echo -n ") "
                 set_color normal
             end
         end
 
-        # Prompt symbol
+        # Prompt symbol (red on error, green on success)
         if test $last_status -eq 0
             set_color green
+            echo -n " > "
         else
             set_color red
+            echo -n " [$last_status] > "
         end
-        echo -n '➜ '
         set_color normal
     end
 
-    # Disable right prompt in Blink to save space
+    # Disable right prompt completely
     function fish_right_prompt
-        # Empty
     end
 end
 
