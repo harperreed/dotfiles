@@ -87,12 +87,7 @@
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true,
     "beads@beads-marketplace": false,
-<<<<<<< Updated upstream
-||||||| Stash base
-    "episodic-memory@superpowers-marketplace": true,
-=======
     "episodic-memory@superpowers-marketplace": false,
->>>>>>> Stashed changes
     "superpowers-developing-for-claude-code@superpowers-marketplace": true,
     "superpowers-chrome@superpowers-marketplace": true,
     "elements-of-style@superpowers-marketplace": true,
