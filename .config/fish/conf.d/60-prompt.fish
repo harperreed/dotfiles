@@ -24,6 +24,13 @@ end
 function fish_prompt
     set -l last_status $status
 
+    # Mobile indicator (if using Blink)
+    if test -f ~/.using-blink
+        set_color brblack
+        echo -n "📱 "
+        set_color normal
+    end
+
     # Virtual env (ultra compact)
     if set -q VIRTUAL_ENV
         set_color blue
