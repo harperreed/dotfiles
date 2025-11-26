@@ -38,13 +38,33 @@ function fish_prompt
         set_color normal
     end
 
-    # Current directory (just basename, with ~ for home)
+    # Current directory (responsive to terminal width)
     set_color cyan
-    set -l cwd (pwd)
-    if test "$cwd" = "$HOME"
+    set -l cwd (pwd | string replace -r "^$HOME" "~")
+    set -l term_width (tput cols 2>/dev/null; or echo 80)
+
+    if test "$cwd" = "~"
+        # Home directory
         echo -n "~"
-    else
+    else if test $term_width -lt 80
+        # Narrow: just basename
         echo -n (basename $cwd)
+    else if test $term_width -lt 120
+        # Medium: last 2 components
+        set -l parts (string split "/" $cwd)
+        if test (count $parts) -gt 2
+            echo -n (string join "/" $parts[-2..-1])
+        else
+            echo -n $cwd
+        end
+    else
+        # Wide: last 3 components or full path if shorter
+        set -l parts (string split "/" $cwd)
+        if test (count $parts) -gt 3
+            echo -n (string join "/" $parts[-3..-1])
+        else
+            echo -n $cwd
+        end
     end
     set_color normal
 
