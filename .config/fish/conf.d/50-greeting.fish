@@ -3,6 +3,15 @@
 
 # Custom greeting
 function fish_greeting
+    # Mobile/Blink: ultra minimal greeting
+    if test -f ~/.using-blink
+        set_color brblack
+        echo "📱 "(hostname -s)
+        set_color normal
+        return
+    end
+
+    # Desktop: full greeting with figlet
     set -l hostname_cmd (command -v hostname)
     set -l figlet_cmd (command -v figlet)
     set -l lolcat_cmd (command -v lolcat)
