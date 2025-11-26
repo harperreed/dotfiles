@@ -16,91 +16,12 @@ end
 
 ### PERFORMANCE TOGGLES ###
 
-# Global variable to control heavy operations (git status, etc)
-set -g BLINK_FAST_MODE 0
-
-# Toggle fast mode for slow connections
-function blink_fast
-    if test $BLINK_FAST_MODE -eq 0
-        set -g BLINK_FAST_MODE 1
-        echo "⚡ Fast mode enabled - git checks disabled"
-    else
-        set -g BLINK_FAST_MODE 0
-        echo "🐢 Normal mode - all features enabled"
-    end
-end
-
-# Auto-enable fast mode if connection is slow (optional)
-function blink_auto_fast
-    # Could check SSH_CONNECTION latency here
-    # For now, manual toggle only
-end
+# blink_fast function is now defined globally in 60-prompt.fish
 
 ### COMPACT PROMPT FOR BLINK ###
 
-# Ultra-compact single-line prompt optimized for mobile
-if is_blink
-    function fish_prompt
-        set -l last_status $status
-
-        # Build prompt in one line: [env] [user@]host:dir [git] >
-        set -l prompt_parts ""
-
-        # Virtual env (ultra compact)
-        if set -q VIRTUAL_ENV
-            set_color blue
-            echo -n (basename "$VIRTUAL_ENV" | string sub -l 8)":"
-            set_color normal
-        end
-
-        # User@host (only in SSH, ultra short)
-        if set -q SSH_CLIENT; or set -q SSH_TTY
-            set_color yellow
-            echo -n (hostname -s | string sub -l 8)":"
-            set_color normal
-        end
-
-        # Current directory (just basename, with ~ for home)
-        set_color cyan
-        set -l cwd (pwd)
-        if test "$cwd" = "$HOME"
-            echo -n "~"
-        else
-            echo -n (basename $cwd)
-        end
-        set_color normal
-
-        # Git branch (only if not in fast mode, ultra compact)
-        if test $BLINK_FAST_MODE -eq 0
-            if command -q git; and git rev-parse --is-inside-work-tree >/dev/null 2>&1
-                set -l branch (git symbolic-ref --short HEAD 2>/dev/null; or git rev-parse --short HEAD 2>/dev/null)
-                # Quick dirty check
-                if not git diff-index --quiet HEAD -- 2>/dev/null
-                    set_color yellow
-                    echo -n " "(string sub -l 8 $branch)"*"
-                else
-                    set_color magenta
-                    echo -n " "(string sub -l 8 $branch)
-                end
-                set_color normal
-            end
-        end
-
-        # Prompt symbol (red on error, green on success)
-        if test $last_status -eq 0
-            set_color green
-            echo -n " > "
-        else
-            set_color red
-            echo -n " [$last_status] > "
-        end
-        set_color normal
-    end
-
-    # Disable right prompt completely
-    function fish_right_prompt
-    end
-end
+# Prompt is now defined globally in 60-prompt.fish
+# No Blink-specific overrides needed
 
 ### BLINK-SPECIFIC ALIASES & ABBREVIATIONS ###
 
