@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export ANDROID_HOME:/Users/harper/Library/Android/sdk
 SETUVAR --export EDITOR:nvim
 SETUVAR --export OLLAMA_HOST:0\x2e0\x2e0\x2e0
 SETUVAR --export SSH_AGENT_PID:79967
