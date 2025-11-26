@@ -5,8 +5,26 @@
 
 # Detect if we're running in Blink Shell
 function is_blink
-    # Blink sets TERM_PROGRAM=Blink
-    test "$TERM_PROGRAM" = "Blink"
+    # Direct Blink: TERM_PROGRAM=Blink (local iOS shell)
+    if test "$TERM_PROGRAM" = "Blink"
+        return 0
+    end
+
+    # SSH from Blink: Check if a marker file exists
+    # You'll need to create this file in Blink: touch ~/.using-blink
+    if test -f ~/.using-blink
+        return 0
+    end
+
+    # Alternative: Check for specific terminal characteristics
+    # Blink uses xterm-256color and is often from mobile IPs
+    if set -q SSH_CLIENT
+        # Could add heuristics here if needed
+        # For now, rely on the marker file
+        return 1
+    end
+
+    return 1
 end
 
 # Detect if we're on iOS (Blink's platform)
