@@ -96,7 +96,8 @@
     "pr-review-toolkit@claude-code-plugins": true,
     "commit-commands@claude-code-plugins": true,
     "security-guidance@claude-code-plugins": true,
-    "double-shot-latte@superpowers-marketplace": true
+    "double-shot-latte@superpowers-marketplace": true,
+    "osgrep@osgrep": true
   },
   "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {
