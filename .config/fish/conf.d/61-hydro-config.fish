@@ -20,6 +20,17 @@ function fish_right_prompt
 end
 
 # Basic hydro configuration
-set -g hydro_multiline true
+# One line in tmux, multiline outside
+if set -q TMUX
+    set -g hydro_multiline false
+else
+    set -g hydro_multiline true
+end
 set -g hydro_fetch false
 set -g hydro_cmd_duration_threshold 500
+
+# Show more of the path (default is 1 char per segment)
+set -g fish_prompt_pwd_dir_length 4
+
+# Git branch color
+set -g hydro_color_git green
