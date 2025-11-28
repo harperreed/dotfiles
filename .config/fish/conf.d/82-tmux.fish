@@ -2,12 +2,12 @@
 
 # w: mosh into host, attach/create tmux session
 # usage:
-#   w host           -> session "main"
-#   w host foo       -> session "foo"
-#   w host 3         -> session "3"
-function w --description "mosh into host and attach tmux session"
+#   m host           -> session "main"
+#   m host foo       -> session "foo"
+#   m host 3         -> session "3"
+function m --description "mosh into host and attach tmux session"
     if test (count $argv) -lt 1
-        echo "usage: w <host> [session]"
+        echo "usage: m <host> [session]"
         return 1
     end
 
@@ -24,11 +24,11 @@ end
 
 # ws: plain ssh into host (with agent forwarding etc)
 # usage:
-#   ws host          -> ssh host
-#   ws host cmd ...  -> ssh host 'cmd ...'
-function ws --description "ssh into host (optionally run command)"
+#   ms host          -> ssh host
+#   ms host cmd ...  -> ssh host 'cmd ...'
+function ms --description "ssh into host (optionally run command)"
     if test (count $argv) -lt 1
-        echo "usage: ws <host> [command ...]"
+        echo "usage: ms <host> [command ...]"
         return 1
     end
 
