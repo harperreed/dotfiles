@@ -5,11 +5,6 @@
 function fish_right_prompt
     set -l segments
 
-    # Inside tmux?
-    if set -q TMUX
-        set segments $segments "⧉ tmux"
-    end
-
     # Blink Shell (iOS) detection
     if test "$TERM_PROGRAM" = "BlinkShell"
         set segments $segments "⚡ blink"
@@ -28,12 +23,3 @@ end
 set -g hydro_multiline true
 set -g hydro_fetch false
 set -g hydro_cmd_duration_threshold 500
-
-# Change start symbol depending on tmux
-if set -q TMUX
-    set -g hydro_symbol_start "⧉"
-    set -g hydro_color_start brcyan
-else
-    set -g hydro_symbol_start "~"
-    set -g hydro_color_start normal
-end
