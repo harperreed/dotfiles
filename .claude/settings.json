@@ -99,7 +99,7 @@
     "double-shot-latte@superpowers-marketplace": true,
     "osgrep@osgrep": true
   },
-  "alwaysThinkingEnabled": false,
+  "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
   }
