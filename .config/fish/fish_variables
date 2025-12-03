@@ -17,6 +17,8 @@ SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_f
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1efranciscolourenco/done\x1epatrickf1/fzf\x2efish\x1eoh\x2dmy\x2dfish/plugin\x2dgrc\x1eedc/bass\x1ejorgebucaran/hydro
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR _hydro_git_32949:main\x20
+SETUVAR _hydro_git_49953:main\u2022\x20
+SETUVAR _hydro_git_73627:main\x20
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7
