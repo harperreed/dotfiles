@@ -97,9 +97,10 @@
     "commit-commands@claude-code-plugins": true,
     "security-guidance@claude-code-plugins": true,
     "double-shot-latte@superpowers-marketplace": true,
-    "osgrep@osgrep": true
+    "osgrep@osgrep": true,
+    "office-admin@harper.dev": true
   },
-  "alwaysThinkingEnabled": true,
+  "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
   }
