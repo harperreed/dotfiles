@@ -98,7 +98,14 @@
     "security-guidance@claude-code-plugins": true,
     "double-shot-latte@superpowers-marketplace": true,
     "osgrep@osgrep": true,
-    "office-admin@harper.dev": true
+    "office-admin@harper.dev": true,
+    "scenario-testing@2389-research-marketplace": true,
+    "sysadmin@2389-research-marketplace": true,
+    "css-development@2389-research-marketplace": true,
+    "firebase-development@2389-research-marketplace": true,
+    "building-multiagent-systems@2389-research-marketplace": true,
+    "fresh-eyes-review@2389-research-marketplace": true,
+    "remote-system-maintenance@2389-research-marketplace": true
   },
   "alwaysThinkingEnabled": false,
   "feedbackSurveyState": {

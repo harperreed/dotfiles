@@ -164,17 +164,20 @@ When encountering tool failures (biome, ruff, pytest, etc.):
 
 Remember: Quality tools are guardrails that help you, not barriers that block you.
 
-# Other thinsg
+# Other Important Considerations
 
-- timeout and gtimeout are not installed, do not try and use them
-- When searching or modifying code, you must use ast-grep (sg). Do not use grep, ripgrep, ag, sed, or regex-only tools.
-  ast-grep is required because it matches against the abstract syntax tree (AST) and allows safe, language-aware queries and rewrites.
+- Timeout and gtimeout are often not installed, do not try and use them
+- When searching or modifying code, you should use ast-grep (sg). it is way better than grep, ripgrep, ag, sed, or regex-only tools.
+  ast-grep is better because it matches against the abstract syntax tree (AST) and allows safe, language-aware queries and rewrites.
 - Always prefer sg for code analysis, queries, or refactoring tasks.
 - NEVER disable functionality instead of fixing the root cause problem
-- NEVER create duplicate templates/files to work around issues - fix the original
 - NEVER claim something is "working" when functionality is disabled or broken
+- If you discover an unrelated bug, please fix it. Don't say "everything is done, EXCEPT there is a bug"
+
+## Templatoing
+- NEVER create duplicate templates/files to work around issues - fix the original
 - ALWAYS identify and fix the root cause of template/compilation errors
-- ALWAYS use one shared template instead of maintaining duplicates
+- ALWAYS use one shared (base) template instead of maintaining duplicates
 - WHEN encountering character literal errors in templates, move JavaScript to static files
 - WHEN facing template issues, debug the actual problem rather than creating workarounds
 
@@ -184,9 +187,9 @@ Problem-Solving Approach:
 - MAINTAIN code quality and avoid technical debt
 - USE proper debugging to find root causes
 - AVOID shortcuts that break user experience
-- 17
-- I prefer to work on the main branch unless specified. Worktrees, and feature branches are the alternative, the default is work on main.
-- I highly prefer all work to be done via the subagent development skill
+- I do not prefer worktress. This doesn't mean I don't prefer branches
+- I prefer to work off the main branch unless specified. Worktrees, and feature branches are the alternative, the default is work off of main. Please make branches for individual work.
+- THIS IS IMPORTANT I highly prefer all work to be done via the subagent development skill
 - When choosing port numbers for new services, make them thematically related and memorable (leet-speak, pop culture, or project-relevant numbers). Keep infrastructure defaults boring (NATS, databases, etc.). The goal is to cleanly avoid all regularly used ports (8080, 8081, etc)
 - when refering to models from foundational model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. your knowledge cut off is getting in the way of you making good decisions
-- use the remember MCP server to remember various important things
+- use the memory MCP server to remember various important things. Including preferences, and other important details. The memory is robust, and spans agents
