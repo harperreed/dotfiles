@@ -40,6 +40,31 @@ readonly GUI_PACKAGES=(
     vim-gtk
 )
 
+# Arch base packages (equivalents to Debian packages)
+readonly ARCH_BASE_PACKAGES=(
+    fish
+    yadm
+    figlet
+    lolcat
+    fortune-mod
+    speedtest-cli
+    bsd-games
+    go
+    neovim
+    curl
+    wget
+    git
+    htop
+    base-devel
+)
+
+# Arch GUI packages
+readonly ARCH_GUI_PACKAGES=(
+    kitty
+    remmina
+    gvim
+)
+
 # Detect if system has GUI
 has_gui() {
     # Check for X11
@@ -278,6 +303,61 @@ install_atuin() {
     log_success "atuin installed successfully"
 }
 
+# Update pacman package database
+update_pacman() {
+    log_info "Updating package database"
+    require_sudo
+    run_command "sudo pacman -Sy"
+}
+
+# Install packages with pacman
+install_packages_arch() {
+    local packages=("$@")
+    local failed_packages=()
+
+    for package in "${packages[@]}"; do
+        if is_package_installed "$package"; then
+            log_info "Package already installed: $package"
+        else
+            log_info "Installing package: $package"
+            if ! run_command "sudo pacman -S --noconfirm '$package'"; then
+                failed_packages+=("$package")
+                log_error "Failed to install: $package"
+            fi
+        fi
+    done
+
+    if [[ ${#failed_packages[@]} -gt 0 ]]; then
+        log_error "Failed to install packages: ${failed_packages[*]}"
+        return 1
+    fi
+
+    return 0
+}
+
+# Install AUR packages (requires yay)
+install_aur_packages() {
+    log_info "Installing AUR packages"
+
+    local aur_packages=(
+        visual-studio-code-bin
+        1password
+        syncthing
+        discord
+    )
+
+    for package in "${aur_packages[@]}"; do
+        if is_package_installed "$package"; then
+            log_info "AUR package already installed: $package"
+        else
+            log_info "Installing AUR package: $package"
+            if ! run_command "yay -S --noconfirm '$package'"; then
+                log_error "Failed to install AUR package: $package"
+            fi
+        fi
+    done
+}
+
 # Configure Fish shell
 configure_fish_shell() {
     if ! command_exists fish; then
@@ -306,77 +386,67 @@ configure_fish_shell() {
     fi
 }
 
-# Main Linux bootstrap
-main() {
-    log_info "Linux bootstrap started"
-    
-    # Check if running on Linux
-    if [[ "$(uname -s)" != "Linux" ]]; then
-        die "This script is for Linux only"
-    fi
-    
-    # Check distribution
-    if [[ ! -f /etc/debian_version ]]; then
-        die "This script currently only supports Debian-based distributions"
-    fi
-    
+# Debian/Ubuntu bootstrap
+bootstrap_debian() {
+    log_info "Running Debian/Ubuntu bootstrap"
+
     # Initial update
     update_apt
-    
+
     # Install base packages
     log_info "Installing base packages"
     install_packages "${BASE_PACKAGES[@]}"
-    
+
     # Install additional tools
     install_uv
     install_mise
     install_atuin
-    
+
     # GUI-specific setup
     if has_gui; then
         log_info "GUI environment detected"
-        
+
         # Install GUI packages
         log_info "Installing GUI packages"
         install_packages "${GUI_PACKAGES[@]}"
-        
+
         # Setup repositories
         setup_repositories
         update_apt
-        
+
         # Install repository packages
         local repo_packages=(code syncthing 1password)
         install_packages "${repo_packages[@]}"
-        
+
         # Configure 1Password
         configure_1password
-        
+
         # Install Discord
         install_discord
     else
         log_info "Headless environment detected, skipping GUI packages"
-        
+
         # Still install some repositories for headless
         add_apt_repository \
             "tailscale" \
             "https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg" \
             "deb [signed-by=$APT_KEYRINGS_DIR/tailscale.gpg] https://pkgs.tailscale.com/stable/ubuntu jammy main"
-        
+
         update_apt
         install_packages tailscale nodejs
     fi
-    
+
     # Configure Fish shell
     configure_fish_shell
-    
+
     # Cleanup
     if confirm "Clean up package cache?"; then
         run_command "sudo apt-get autoremove -y"
         run_command "sudo apt-get autoclean"
     fi
-    
-    log_success "Linux bootstrap completed"
-    
+
+    log_success "Debian/Ubuntu bootstrap completed"
+
     # Final notes
     if has_gui; then
         log_info "Remember to:"
@@ -384,9 +454,94 @@ main() {
         log_info "  - Configure Syncthing"
         log_info "  - Sign in to 1Password"
     fi
-    
+
     log_info "To change shell to Fish, run: chsh -s $(command -v fish)"
 }
 
-# Run main function
-main "$@"
+# Arch Linux bootstrap
+bootstrap_arch() {
+    log_info "Running Arch Linux bootstrap"
+
+    # Update package database
+    update_pacman
+
+    # Install base packages
+    log_info "Installing base packages"
+    install_packages_arch "${ARCH_BASE_PACKAGES[@]}"
+
+    # Install additional tools
+    install_uv
+    install_mise
+    install_atuin
+
+    # GUI-specific setup
+    if has_gui; then
+        log_info "GUI environment detected"
+
+        # Install GUI packages
+        log_info "Installing GUI packages"
+        install_packages_arch "${ARCH_GUI_PACKAGES[@]}"
+
+        # Install AUR packages if yay is available
+        if command_exists yay; then
+            install_aur_packages
+        else
+            log_warn "yay not found, skipping AUR packages"
+            log_info "Install yay to enable AUR package installation"
+        fi
+    else
+        log_info "Headless environment detected, skipping GUI packages"
+    fi
+
+    # Configure Fish shell
+    configure_fish_shell
+
+    # Cleanup
+    if confirm "Clean up package cache?"; then
+        run_command "sudo pacman -Sc --noconfirm"
+    fi
+
+    log_success "Arch Linux bootstrap completed"
+
+    # Final notes
+    if has_gui; then
+        log_info "Remember to:"
+        log_info "  - Manually install AUR packages if yay not installed"
+        log_info "  - Configure Syncthing"
+        log_info "  - Sign in to 1Password"
+    fi
+
+    log_info "To change shell to Fish, run: chsh -s $(command -v fish)"
+}
+
+# Main Linux bootstrap
+main() {
+    log_info "Linux bootstrap started"
+
+    # Check if running on Linux
+    if [[ "$(uname -s)" != "Linux" ]]; then
+        die "This script is for Linux only"
+    fi
+
+    # Detect distribution
+    local distro=$(detect_linux_distro)
+    log_info "Detected distribution: $distro"
+
+    # Dispatch to appropriate bootstrap
+    if is_debian_based "$distro"; then
+        # Check Debian version
+        if [[ ! -f /etc/debian_version ]]; then
+            log_warn "Debian-based but no /etc/debian_version found"
+        fi
+        bootstrap_debian
+    elif is_arch_based "$distro"; then
+        bootstrap_arch
+    else
+        die "Unsupported Linux distribution: $distro"
+    fi
+}
+
+# Only run main if script is executed directly (not sourced)
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+fi

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# ABOUTME: Pre-commit hook to run bootstrap tests
+# ABOUTME: Ensures tests pass before committing changes to bootstrap scripts
+
+set -euo pipefail
+
+# Only run if bootstrap files changed
+if git diff --cached --name-only | grep -qE "\.config/yadm/bootstrap"; then
+    echo "Bootstrap files changed, running tests..."
+
+    if ! ./tests/run-tests.sh; then
+        echo "Tests failed. Fix tests before committing."
+        exit 1
+    fi
+fi
+
+exit 0
