@@ -3,6 +3,12 @@
 
 # Custom greeting
 function fish_greeting
+    # Minimal greeting in tmux
+    if set -q TMUX
+        command fortune | lolcat
+        return
+    end
+
     set -l hostname_cmd (command -v hostname)
     set -l figlet_cmd (command -v figlet)
     set -l lolcat_cmd (command -v lolcat)
