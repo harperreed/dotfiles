@@ -113,8 +113,46 @@ require_sudo() {
 detect_platform() {
     local system_type=$(uname -s)
     local arch_type=$(uname -m)
-    
+
     echo "${system_type}_${arch_type}"
+}
+
+# Detect Linux distribution
+detect_linux_distro() {
+    if [[ ! -f /etc/os-release ]]; then
+        log_error "Cannot detect Linux distribution: /etc/os-release not found"
+        return 1
+    fi
+
+    # Read ID from os-release
+    local distro=$(grep "^ID=" /etc/os-release | cut -d= -f2 | tr -d '"')
+    echo "$distro"
+}
+
+# Check if distribution is Debian-based
+is_debian_based() {
+    local distro="${1:-$(detect_linux_distro)}"
+    case "$distro" in
+        debian|ubuntu|linuxmint|pop|elementary)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+# Check if distribution is Arch-based
+is_arch_based() {
+    local distro="${1:-$(detect_linux_distro)}"
+    case "$distro" in
+        arch|manjaro|endeavouros)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
 }
 
 # Version comparison
@@ -170,7 +208,7 @@ safe_symlink() {
 is_package_installed() {
     local package="$1"
     local platform=$(detect_platform)
-    
+
     case $platform in
         Darwin_*)
             if command_exists brew; then
@@ -180,7 +218,15 @@ is_package_installed() {
             fi
             ;;
         Linux_*)
-            dpkg -l "$package" 2>/dev/null | grep -q "^ii"
+            local distro=$(detect_linux_distro)
+            if is_debian_based "$distro"; then
+                dpkg -l "$package" 2>/dev/null | grep -q "^ii"
+            elif is_arch_based "$distro"; then
+                pacman -Q "$package" &>/dev/null
+            else
+                log_warn "Unknown Linux distribution for package check: $distro"
+                return 1
+            fi
             ;;
         *)
             log_warn "Unknown platform for package check: $platform"
@@ -249,3 +295,4 @@ export -f die run_command command_exists file_exists dir_exists
 export -f confirm require_sudo detect_platform version_gte
 export -f backup_file safe_symlink is_package_installed
 export -f add_to_shell_rc show_progress
+export -f detect_linux_distro is_debian_based is_arch_based

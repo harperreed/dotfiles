@@ -88,16 +88,13 @@ EOF
 # Parse command line arguments
 parse_args() {
     local platform_override=""
-    
+
     while [[ $# -gt 0 ]]; do
         case $1 in
-            -h|--help)
-                usage
-                exit 0
-                ;;
             -d|--dry-run)
-                export DRY_RUN="true"
-                log_info "Dry-run mode enabled"
+                if [[ -z "${DRY_RUN+x}" ]]; then
+                    export DRY_RUN="true"
+                fi
                 shift
                 ;;
             -p|--platform)
@@ -109,12 +106,14 @@ parse_args() {
                 shift 2
                 ;;
             -v|--verbose)
-                export VERBOSE="true"
+                if [[ -z "${VERBOSE+x}" ]]; then
+                    export VERBOSE="true"
+                fi
                 shift
                 ;;
             *)
-                log_error "Unknown option: $1"
-                usage
+                echo "Unknown option: $1" >&2
+                usage >&2
                 exit 1
                 ;;
         esac
@@ -125,9 +124,17 @@ parse_args() {
 
 # Main bootstrap function
 main() {
+    # Handle help before parsing
+    for arg in "$@"; do
+        if [[ "$arg" == "-h" || "$arg" == "--help" ]]; then
+            usage
+            exit 0
+        fi
+    done
+
     log_info "Starting yadm bootstrap"
     log_info "Bootstrap directory: $BOOTSTRAP_DIR"
-    
+
     # Parse arguments
     local platform_override=$(parse_args "$@")
     

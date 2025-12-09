@@ -1,0 +1,3 @@
+# Test artifacts
+tests/*.log
+*.log
