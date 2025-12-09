@@ -1,4 +1,6 @@
 #!/usr/bin/env bats
+# ABOUTME: Tests for Debian/Ubuntu bootstrap functionality
+# ABOUTME: Verifies bootstrap_debian function exists and executes properly
 
 load setup
 

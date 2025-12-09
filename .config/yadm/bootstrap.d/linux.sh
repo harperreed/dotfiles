@@ -347,7 +347,7 @@ install_aur_packages() {
     )
 
     for package in "${aur_packages[@]}"; do
-        if command_exists "$package"; then
+        if is_package_installed "$package"; then
             log_info "AUR package already installed: $package"
         else
             log_info "Installing AUR package: $package"
