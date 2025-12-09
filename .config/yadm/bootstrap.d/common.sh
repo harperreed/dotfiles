@@ -295,4 +295,4 @@ export -f die run_command command_exists file_exists dir_exists
 export -f confirm require_sudo detect_platform version_gte
 export -f backup_file safe_symlink is_package_installed
 export -f add_to_shell_rc show_progress
-export -f detect_linux_distro is_debian_based is_arch_based# test
+export -f detect_linux_distro is_debian_based is_arch_based
