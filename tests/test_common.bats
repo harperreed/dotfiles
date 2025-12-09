@@ -46,7 +46,6 @@ load setup
 @test "is_debian_based returns true for debian" {
     load_common
 
-    # Will fail until we implement it
     is_debian_based "debian"
 }
 
