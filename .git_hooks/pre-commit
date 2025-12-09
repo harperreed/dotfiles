@@ -1,4 +1,6 @@
 #!/bin/sh
+# ABOUTME: Main pre-commit hook that runs all pre-commit checks
+# ABOUTME: Calls individual hook scripts for modular testing
 # Run pre-commit for the current repository
 if [ -f "$(git rev-parse --show-toplevel)/.pre-commit-config.yaml" ]; then
     HOOKSPATH=$(git config --get core.hookspath)
