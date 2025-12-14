@@ -18,60 +18,6 @@
           }
         ]
       }
-    ],
-    "SessionStart": [
-      {
-        "hooks": []
-      },
-      {
-        "matcher": "clear",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run /Users/harper/.claude/hooks/utilities/BuddyNotification/buddy.py"
-          }
-        ]
-      },
-      {
-        "matcher": "startup",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run /Users/harper/.claude/hooks/utilities/BuddyNotification/buddy.py"
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "*",
-        "hooks": []
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "*",
-        "hooks": []
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": []
-      }
-    ],
-    "Notification": [
-      {
-        "hooks": []
-      },
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run /Users/harper/.claude/hooks/utilities/BuddyNotification/buddy.py"
-          }
-        ]
-      }
     ]
   },
   "statusLine": {
