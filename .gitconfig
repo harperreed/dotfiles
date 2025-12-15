@@ -63,11 +63,6 @@
 
 [hub]
 protocol = https
-
-[url "git@github.com:"]
- 	insteadOf = "https://github.com/"
-
-
 [credential]
 [filter "media"]
 	clean = git-media-clean %f
@@ -107,3 +102,11 @@ protocol = https
 	autoStash = true
 [safe]
 	directory = /private/tmp
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[url "git@github.com:"]
+	insteadof = https://github.com/
