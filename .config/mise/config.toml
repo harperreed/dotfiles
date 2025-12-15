@@ -26,6 +26,7 @@ rust = "latest"
 # bun = "latest"
 # pnpm = "latest"
 claude = "latest"
+codex = "latest"
 # codex = "latest"
 
 [tasks."llm:generate_bundle"]
@@ -74,7 +75,7 @@ depends = ["llm:generate_bundle"]
 description = 'Generate GitHub issues from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
-cat output.txt | llm -m claude-4-sonnet -t github-issue-gen > issues.md
+cat output.txt | llm -m gpt-5.2 -t github-issue-gen > issues.md
 """
 
 [tasks."llm:generate_code_review"]
@@ -82,7 +83,7 @@ depends = ["llm:generate_bundle"]
 description = 'Generate code review output from repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
-cat output.txt | llm -m claude-4-sonnet -t code-review-gen > code-review.md
+cat output.txt | llm -m gpt-5.2 -t code-review-gen > code-review.md
 """
 
 [tasks."llm:generate_missing_tests"]
@@ -90,7 +91,7 @@ depends = ["llm:generate_bundle"]
 description = 'Generate missing tests for code in repository content stored in output.txt using LLM generation'
 run = """
 #!/usr/bin/env bash
-cat output.txt | llm -m claude-4-sonnet -t missing-tests-gen > missing-tests.md
+cat output.txt | llm -m gpt-5.2 -t missing-tests-gen > missing-tests.md
 """
 
 [tasks."python:format"]
