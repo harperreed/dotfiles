@@ -358,13 +358,44 @@ install_aur_packages() {
     done
 }
 
+# Configure SSH config symlink for platform-specific settings
+configure_ssh_config() {
+    log_info "Configuring SSH config symlink"
+
+    local ssh_dir="$HOME/.ssh"
+    local config_local="$ssh_dir/config_local"
+    local config_platform="config_linux"
+
+    if [[ ! -d "$ssh_dir" ]]; then
+        log_info "Creating .ssh directory"
+        mkdir -p "$ssh_dir"
+        chmod 700 "$ssh_dir"
+    fi
+
+    if [[ -L "$config_local" ]]; then
+        local current_target=$(readlink "$config_local")
+        if [[ "$current_target" == "$config_platform" ]]; then
+            log_info "SSH config symlink already correct"
+            return 0
+        fi
+    fi
+
+    if [[ "$DRY_RUN" == "true" ]]; then
+        log_info "[DRY RUN] Would create symlink: $config_local -> $config_platform"
+        return 0
+    fi
+
+    ln -sf "$config_platform" "$config_local"
+    log_success "SSH config symlink created: $config_local -> $config_platform"
+}
+
 # Configure Fish shell
 configure_fish_shell() {
     if ! command_exists fish; then
         log_warn "Fish shell not installed, skipping configuration"
         return 0
     fi
-    
+
     local fish_path=$(command -v fish)
     
     # Check if fish is in /etc/shells
@@ -401,6 +432,7 @@ bootstrap_debian() {
     install_uv
     install_mise
     install_atuin
+    configure_ssh_config
 
     # GUI-specific setup
     if has_gui; then
@@ -473,6 +505,7 @@ bootstrap_arch() {
     install_uv
     install_mise
     install_atuin
+    configure_ssh_config
 
     # GUI-specific setup
     if has_gui; then

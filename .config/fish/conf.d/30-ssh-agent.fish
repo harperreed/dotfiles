@@ -16,6 +16,26 @@ function __ssh_agent__valid --description 'Return 0 if SSH_AUTH_SOCK is a valid 
     return 1
 end
 
+function __ssh_agent__symlink --description 'Create stable symlink for tmux persistence'
+    # Only do this for forwarded SSH sessions (where socket path changes on reconnect)
+    if not set -q SSH_CONNECTION
+        return 0
+    end
+
+    set -l stable_sock "$HOME/.ssh/agent_sock"
+
+    # If already using the stable path, nothing to do
+    if test "$SSH_AUTH_SOCK" = "$stable_sock"
+        return 0
+    end
+
+    # If we have a valid socket, symlink it to the stable path
+    if test -S "$SSH_AUTH_SOCK"
+        ln -sf "$SSH_AUTH_SOCK" "$stable_sock" 2>/dev/null
+        set -gx SSH_AUTH_SOCK "$stable_sock"
+    end
+end
+
 function __ssh_agent__from_launchd --description 'Try to adopt launchd-managed agent (macOS)'
     if test (uname) = "Darwin"
         set -l sock (launchctl getenv SSH_AUTH_SOCK)
@@ -75,5 +95,6 @@ end
 
 # ---- Main flow ----
 __ssh_agent__ensure
+__ssh_agent__symlink
 __ssh_agent__valid; and __ssh_agent__add_keys
 
