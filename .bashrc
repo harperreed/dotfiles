@@ -8,6 +8,17 @@ case $- in
       *) return;;
 esac
 
+# SSH agent socket symlink for tmux persistence
+# When SSH-forwarded, create a stable symlink so tmux sessions survive reconnects
+if [ -n "$SSH_CONNECTION" ] && [ -n "$SSH_AUTH_SOCK" ] && [ -S "$SSH_AUTH_SOCK" ]; then
+    _stable_sock="$HOME/.ssh/agent_sock"
+    if [ "$SSH_AUTH_SOCK" != "$_stable_sock" ]; then
+        ln -sf "$SSH_AUTH_SOCK" "$_stable_sock" 2>/dev/null
+        export SSH_AUTH_SOCK="$_stable_sock"
+    fi
+    unset _stable_sock
+fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth

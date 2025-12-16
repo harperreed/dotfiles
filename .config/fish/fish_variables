@@ -1,10 +1,11 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3800
-SETUVAR _hydro_git_14276:main\x20
-SETUVAR _hydro_git_43441:main\u2022\x20
+SETUVAR _hydro_git_39570:main\x20\u21911\x20
 SETUVAR _hydro_git_47535:main\u2022\x20
 SETUVAR _hydro_git_49732:main\x20
+SETUVAR _hydro_git_73307:main\u2022\x20
+SETUVAR _hydro_git_82538:main\x20
 SETUVAR _hydro_git_83704:main\x20
 SETUVAR _hydro_git_84751:main\u2022\x20\u21911\x20
 SETUVAR _hydro_git_86013:main\x20
