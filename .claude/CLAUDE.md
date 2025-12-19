@@ -193,3 +193,15 @@ Problem-Solving Approach:
 - When choosing port numbers for new services, make them thematically related and memorable (leet-speak, pop culture, or project-relevant numbers). Keep infrastructure defaults boring (NATS, databases, etc.). The goal is to cleanly avoid all regularly used ports (8080, 8081, etc)
 - when refering to models from foundational model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. your knowledge cut off is getting in the way of you making good decisions
 - use the memory MCP server to remember various important things. Including preferences, and other important details. The memory is robust, and spans agents
+
+## MCP Servers Quick Reference
+
+When I say a server name, here's what I mean:
+- **memory**: Key-value facts and conversation storage (mcp__memory__*)
+- **notes/memo**: Markdown notes with tags (mcp__notes__* or `memo` CLI)
+- **bbs**: Bulletin board threads for Q&A (mcp__bbs__*)
+- **chronicle**: Activity/accomplishment logging (mcp__chronicle__*)
+- **private-journal**: Claude's private reflection space (mcp__private-journal__*)
+- **socialmedia**: Status updates and posts (mcp__socialmedia__*)
+
+When I say "notes" or "memo", I mean the memo/notes MCP server, not memory.
