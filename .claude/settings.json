@@ -26,7 +26,6 @@
     "padding": 0
   },
   "enabledPlugins": {
-    "css-development@2389-research-marketplace": true,
     "firebase-development@2389-research-marketplace": true,
     "building-multiagent-systems@2389-research-marketplace": true,
     "fresh-eyes-review@2389-research-marketplace": true,
@@ -37,7 +36,12 @@
     "elements-of-style@superpowers-marketplace": true,
     "superpowers-lab@superpowers-marketplace": true,
     "superpowers-developing-for-claude-code@superpowers-marketplace": true,
-    "double-shot-latte@superpowers-marketplace": true
+    "swift-lsp@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {

@@ -15,10 +15,10 @@ fish_add_path -g $GOPATH/bin
 set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 set -gx PUPPETEER_EXECUTABLE_PATH (which chromium)
 
-# iTerm2 integration
-if test -e {$HOME}/.iterm2_shell_integration.fish
-    source {$HOME}/.iterm2_shell_integration.fish
-end
+# iTerm2 integration (disabled - was conflicting with custom prompt)
+# if test -e {$HOME}/.iterm2_shell_integration.fish
+#     source {$HOME}/.iterm2_shell_integration.fish
+# end
 
 # Conda lazy initialization
 # Set up conda paths but defer full initialization until first use
