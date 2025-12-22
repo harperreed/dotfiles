@@ -32,6 +32,17 @@ function fish_prompt
         echo -n (hostname -s)
     end
 
+    # Background jobs in yellow
+    set -l job_count (jobs | count)
+    if test $job_count -gt 0
+        set_color white
+        echo -n " ["
+        set_color yellow
+        echo -n $job_count
+        set_color white
+        echo -n "]"
+    end
+
     # Cyan directory (collapsed: shorten path components to 1 char if path is long)
     set_color cyan
     set -l pwd_result (prompt_pwd --dir-length 1)
