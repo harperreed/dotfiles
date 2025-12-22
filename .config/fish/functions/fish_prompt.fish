@@ -4,14 +4,29 @@
 function fish_prompt
     set -l last_status $status
 
-    # Colorful user@hostname (red hostname with ^ if SSH)
+    # Colorful user@hostname (^ for SSH, † for tmux)
     set_color green
     echo -n $USER
     set_color yellow
     echo -n @
-    if set -q SSH_CONNECTION
+    if set -q SSH_CONNECTION; and not set -q TMUX
         set_color red
-        echo -n (hostname -s)"^"
+        echo -n (hostname -s)
+        set_color white
+        echo -n " ["
+        set_color yellow
+        echo -n "§"
+        set_color white
+        echo -n "]"
+    else if set -q TMUX
+        set_color blue
+        echo -n (hostname -s)
+        set_color white
+        echo -n " ["
+        set_color magenta
+        echo -n "†"
+        set_color white
+        echo -n "]"
     else
         set_color blue
         echo -n (hostname -s)
@@ -30,7 +45,7 @@ function fish_prompt
         # Fast dirty check - just checks if there are any changes
         if not git diff --quiet HEAD 2>/dev/null
             set_color red
-            echo -n "*"
+            echo -n "…"
             set_color magenta
         end
         echo -n ")"
