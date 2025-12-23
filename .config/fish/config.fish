@@ -16,7 +16,6 @@ end
 # 50-greeting.fish    - Custom greeting
 # 60-prompt.fish      - Prompt configuration
 # 90-plugins.fish     - Plugin initialization
-# 90-plugins.fish     - Plugin initialization
 
 # pnpm
 set -gx PNPM_HOME "/Users/harper/.local/share/pnpm"

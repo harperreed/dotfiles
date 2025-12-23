@@ -65,10 +65,13 @@ function __ssh_agent__ensure --description 'Ensure a valid agent socket is avail
 end
 
 function __ssh_agent__add_keys --description 'Add local keys to the agent (macOS keychain aware)'
-    # Only add keys on a local TTY (don’t mess with forwarded remote sessions)
+    # Only add keys on a local TTY (don't mess with forwarded remote sessions)
     if set -q SSH_CONNECTION
         return 0
     end
+
+    # Get list of keys already in the agent
+    set -l loaded (ssh-add -l 2>/dev/null | string replace -r '.* (\S+) \([^)]+\)$' '$1')
 
     # Build key list: $SSH_KEYS takes precedence, else common defaults if they exist.
     set -l keys
@@ -82,13 +85,21 @@ function __ssh_agent__add_keys --description 'Add local keys to the agent (macOS
     test (count $keys) -eq 0; and return 0
 
     # Add each key; on macOS use Keychain integration.
-    if test (uname) = "Darwin"
-        for k in $keys
-            ssh-add --apple-use-keychain $k ^/dev/null 2>/dev/null
+    # Skip keys already loaded in the agent.
+    for k in $keys
+        # Get the public key fingerprint to compare
+        set -l pubkey "$k.pub"
+        if test -f "$pubkey"
+            set -l fp (ssh-keygen -lf "$pubkey" 2>/dev/null | string split ' ')[2]
+            if contains -- "$fp" $loaded
+                continue
+            end
         end
-    else
-        for k in $keys
-            ssh-add $k ^/dev/null 2>/dev/null
+
+        if test (uname) = "Darwin"
+            ssh-add --apple-use-keychain $k 2>/dev/null
+        else
+            ssh-add $k 2>/dev/null
         end
     end
 end
