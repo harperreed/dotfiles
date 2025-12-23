@@ -5,7 +5,7 @@ idiomatic_version_file_enable_tools = ["python"]
 [tools]
 usage = "latest"
 node = "latest"
-go = "1.24.11"
+go = "latest"
 rust = "latest"
 # deno = "latest"
 # bun = "latest"

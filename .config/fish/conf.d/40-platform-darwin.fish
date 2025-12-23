@@ -13,7 +13,9 @@ fish_add_path -g $GOPATH/bin
 
 # Puppeteer settings
 set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
-set -gx PUPPETEER_EXECUTABLE_PATH (which chromium)
+if type -q chromium
+    set -gx PUPPETEER_EXECUTABLE_PATH (which chromium)
+end
 
 # iTerm2 integration (disabled - was conflicting with custom prompt)
 # if test -e {$HOME}/.iterm2_shell_integration.fish
@@ -35,7 +37,4 @@ function conda --description 'Lazy-loaded conda' --wraps conda
     conda $argv
 end
 
-# mise settings
-if test -e /opt/homebrew/bin/mise
-    /opt/homebrew/bin/mise activate fish | source
-end
+# mise is activated in 32-mise.fish
