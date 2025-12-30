@@ -1,6 +1,14 @@
 #!/bin/bash
 
-SESSION_NAME="${1:-✨}"
+# Machine-specific default emoji
+case "$(hostname -s)" in
+    "orbit")     DEFAULT_EMOJI="🪐" ;;
+    "godzilla")  DEFAULT_EMOJI="🦖" ;;
+    "occult")    DEFAULT_EMOJI="🔮" ;;
+    *)           DEFAULT_EMOJI="✨" ;;
+esac
+
+SESSION_NAME="${1:-$DEFAULT_EMOJI}"
 
 # Check if session exists
 if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
