@@ -6,6 +6,10 @@ function fish_greeting
     # Minimal greeting in tmux
     if set -q TMUX
         command fortune | lolcat
+        # Check keychain status in SSH sessions
+        if set -q SSH_CONNECTION; or set -q SSH_TTY
+            _check_keychain_status
+        end
         return
     end
 
@@ -20,5 +24,39 @@ function fish_greeting
     else
         echo "Welcome!"
     end
+
+    # Check keychain status in SSH sessions
+    if set -q SSH_CONNECTION; or set -q SSH_TTY
+        _check_keychain_status
+    end
+
     echo
+end
+
+# Helper function to check keychain status
+function _check_keychain_status
+    # Use gtimeout if available, fallback to timeout, or just security command
+    set -l timeout_cmd ""
+    if command -v gtimeout >/dev/null 2>&1
+        set timeout_cmd "gtimeout 1"
+    else if command -v timeout >/dev/null 2>&1
+        set timeout_cmd "timeout 1"
+    end
+
+    if test -n "$timeout_cmd"
+        if eval $timeout_cmd security show-keychain-info >/dev/null 2>&1
+            echo (set_color green)"🔓 ✨ Keychain unlocked"(set_color normal)
+        else
+            echo (set_color red)"🔒 ⚠️  WARNING: Keychain is locked!"(set_color normal)
+            echo (set_color yellow)"   💡 Run 'unlock.sh' to unlock it"(set_color normal)
+        end
+    else
+        # Fallback without timeout - use a quick check
+        if security show-keychain-info >/dev/null 2>&1
+            echo (set_color green)"🔓 ✨ Keychain unlocked"(set_color normal)
+        else
+            echo (set_color red)"🔒 ⚠️  WARNING: Keychain might be locked!"(set_color normal)
+            echo (set_color yellow)"   💡 Run 'unlock.sh' to check"(set_color normal)
+        end
+    end
 end
