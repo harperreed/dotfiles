@@ -6,9 +6,11 @@ function fish_greeting
     # Minimal greeting in tmux
     if set -q TMUX
         command fortune | lolcat
-        # Check keychain status in SSH sessions
-        if set -q SSH_CONNECTION; or set -q SSH_TTY
-            _check_keychain_status
+        # Check keychain status in SSH sessions (macOS only)
+        if test (uname) = "Darwin"
+            if set -q SSH_CONNECTION; or set -q SSH_TTY
+                _check_keychain_status
+            end
         end
         return
     end
@@ -25,9 +27,11 @@ function fish_greeting
         echo "Welcome!"
     end
 
-    # Check keychain status in SSH sessions
-    if set -q SSH_CONNECTION; or set -q SSH_TTY
-        _check_keychain_status
+    # Check keychain status in SSH sessions (macOS only)
+    if test (uname) = "Darwin"
+        if set -q SSH_CONNECTION; or set -q SSH_TTY
+            _check_keychain_status
+        end
     end
 
     echo
