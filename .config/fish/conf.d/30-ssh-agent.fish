@@ -70,8 +70,11 @@ function __ssh_agent__add_keys --description 'Add local keys to the agent (macOS
         return 0
     end
 
-    # Get list of keys already in the agent
-    set -l loaded (ssh-add -l 2>/dev/null | string replace -r '.* (\S+) \([^)]+\)$' '$1')
+    # Get list of fingerprints already in the agent (field 2 of ssh-add -l output)
+    set -l loaded
+    for line in (ssh-add -l 2>/dev/null)
+        set -a loaded (string split ' ' -- $line)[2]
+    end
 
     # Build key list: $SSH_KEYS takes precedence, else common defaults if they exist.
     set -l keys
