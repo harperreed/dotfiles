@@ -103,17 +103,19 @@ struct FeedView: View {
         }
     }
 }
+```
+
 The state is defined inside the view, using an enum.
 
 No ViewModel.
 No indirection.
 The view is a direct expression of state.
 
-The Magic of Environment
+## The Magic of Environment
+
 Instead of dependency injection through ViewModels, SwiftUI gives us @Environment.
 
-swift
-Copy code
+```swift
 @Environment(BlueSkyClient.self) private var client
 
 private func loadFeed() async {
@@ -124,6 +126,8 @@ private func loadFeed() async {
         viewState = .error(error.localizedDescription)
     }
 }
+```
+
 Your services live in the environment, are testable in isolation, and encapsulate complexity.
 
 The view orchestrates UI flow — nothing else.
@@ -139,11 +143,11 @@ The Medium iOS app (millions of users) is now mostly SwiftUI and uses very few V
 
 For new features, we inject services into the environment and build lightweight views with local state.
 
-Using .task(id:) and .onChange()
-SwiftUI’s modifiers act as small state reducers.
+Using `.task(id:)` and `.onChange()`
 
-swift
-Copy code
+## SwiftUI’s modifiers act as small state reducers.
+
+```swift
 .task(id: searchText) {
     guard !searchText.isEmpty else { return }
     await searchFeed(query: searchText)
@@ -152,11 +156,13 @@ Copy code
     guard !isInSearch else { return }
     Task { await fetchSuggestedFeed() }
 }
+```
+
 Readable. Local. Explicit.
 
-App-Level Environment Setup
-swift
-Copy code
+## App-Level Environment Setup
+
+```swift
 @main
 struct IcySkyApp: App {
 
@@ -188,13 +194,14 @@ struct IcySkyApp: App {
         }
     }
 }
+```
+
 All dependencies are injected once and available everywhere.
 
-SwiftData: The Perfect Example
+## SwiftData: The Perfect Example
 SwiftData was built to work directly in views.
 
-swift
-Copy code
+```swift
 struct BookListView: View {
 
     @Query private var books: [Book]
@@ -213,10 +220,11 @@ struct BookListView: View {
         }
     }
 }
+```
+
 Now compare that to forcing a ViewModel:
 
-swift
-Copy code
+```swift
 @Observable
 class BookListViewModel {
     private var modelContext: ModelContext
@@ -232,64 +240,68 @@ class BookListViewModel {
         books = try! modelContext.fetch(descriptor)
     }
 }
+```
+
 Manual fetching. Manual refresh. Boilerplate everywhere.
 
 You’re fighting the framework.
 
-Testing Reality
+## Testing Reality
 Testing SwiftUI views provides minimal value.
 
 Instead:
 
-Unit test services and business logic
+* Unit test services and business logic
 
-Test models and transformations
+* Test models and transformations
 
-Use SwiftUI previews for visual regression
+* Use SwiftUI previews for visual regression
 
-Use UI automation for E2E tests
+* Use UI automation for E2E tests
 
-If needed, use ViewInspector for view introspection.
+* If needed, use `ViewInspector` for view introspection.
 
-The 2025 Reality
+## The 2025 Reality
+
 SwiftUI is mature:
 
-@Observable
+* `@Observable`
 
-Better Environment
+* Better Environment
 
-Improved async & task lifecycle
+* Improved async & task lifecycle
 
-Almost everything you need lives inside the view.
+* Almost everything you need lives inside the view.
 
 I’ll reconsider ViewModels when Apple lets us access Environment outside views.
 
 Until then, vanilla SwiftUI is the canon.
 
-Why This Matters
+## Why This Matters
+
 Every ViewModel adds:
 
-More complexity
+* More complexity
 
-More objects to sync
+* More objects to sync
 
-More indirection
+* More indirection
 
-More cognitive overhead
+* More cognitive overhead
 
 SwiftUI gives you:
 
-@State
+* `@State`
 
-@Environment
+* `@Environment`
 
-@Observable
+* `@Observable`
 
-Binding
+* Binding
 
 Use them. Trust the framework.
 
-The Bottom Line
+## The Bottom Line
 In 2025, there’s no excuse for cluttering SwiftUI apps with unnecessary ViewModels.
 
 Let views be pure expressions of state.
