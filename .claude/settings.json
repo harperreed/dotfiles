@@ -32,7 +32,10 @@
     "pyright-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
-    "test-kitchen@2389-research-marketplace": true
+    "test-kitchen@2389-research-marketplace": true,
+    "xtool@2389-research-marketplace": true,
+    "ceo-personal-os@2389-research-marketplace": true,
+    "worldview-synthesis@2389-research-marketplace": true
   },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {

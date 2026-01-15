@@ -4,7 +4,7 @@
 function fish_prompt
     set -l last_status $status
 
-    # Colorful user@hostname (^ for SSH, † for tmux)
+    # Colorful user@hostname (§ for SSH, † for tmux, z for ZMX)
     set_color green
     echo -n $USER
     set_color yellow
@@ -25,6 +25,15 @@ function fish_prompt
         echo -n " ["
         set_color magenta
         echo -n "†"
+        set_color white
+        echo -n "]"
+    else if set -q ZMX_SESSION
+        set_color blue
+        echo -n (hostname -s)
+        set_color white
+        echo -n " ["
+        set_color cyan
+        echo -n "z"
         set_color white
         echo -n "]"
     else
