@@ -30,7 +30,7 @@ brew "jhead"
 brew "lolcat"
 # brew "mise"
 brew "mosh"
-brew "meld"
+# brew "meld"
 brew "mole"
 brew "ncdu"
 brew "neovim"
@@ -38,12 +38,13 @@ brew "nmap"
 # brew "ollama"
 brew "pv"
 brew "speedtest-cli"
+brew "tmux"
 # brew "uv"
 brew "wget"
 brew "wtfutil"
 brew "yank"
 brew "yt-dlp"
-brew "charmbracelet/tap/melt"
+# brew "charmbracelet/tap/melt"
 
 # brew "keith/formulae/reminders-cli"
 
@@ -51,9 +52,10 @@ cask "1password"
 cask "appcleaner"
 # cask "arc"
 cask "beeper"
-cask "discord"
 cask "claude"
 cask "chatgpt"
+cask "discord"
+cask "element"
 # cask "figma"
 cask "gcloud-cli"
 cask "ghostty"
@@ -117,4 +119,4 @@ mas "Tailscale", id: 1475387142
 mas "TestFlight", id: 899247664
 # mas "Todoist", id: 585829637
 mas "UTM", id: 1538878817
-mas "Xcode", id: 497799835
+# mas "Xcode", id: 497799835

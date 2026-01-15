@@ -3,8 +3,9 @@
 # Machine-specific default emoji
 case "$(hostname -s)" in
     "orbit")     DEFAULT_EMOJI="🪐" ;;
-    "godzilla")  DEFAULT_EMOJI="🦖" ;;
+    "disaster")  DEFAULT_EMOJI="🌪️" ;;
     "occult")    DEFAULT_EMOJI="🔮" ;;
+    "magic")    DEFAULT_EMOJI="🪄" ;;
     *)           DEFAULT_EMOJI="✨" ;;
 esac
 
