@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+# ABOUTME: Bidirectional additive sync of ~/.claude/projects/ across machines.
+# ABOUTME: Pulls from remotes first, then pushes everywhere. Never deletes.
+
+set -euo pipefail
+
+PROJECTS="$HOME/.claude/projects/"
+
+# ============================================================
+# CONFIGURATION - Edit these to match your setup
+# ============================================================
+
+# Local backup directory (iCloud) - one-way push only
+LOCAL_BACKUP="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Backups/CC/"
+
+# Remote machines to sync with (bidirectional)
+REMOTES=(
+    "godzilla:~/.claude/projects/"
+    "occult:~/.claude/projects/"
+    "magic:~/.claude/projects/"
+)
+
+# ============================================================
+# END CONFIGURATION
+# ============================================================
+
+DRY_RUN=""
+VERBOSE="-v"
+
+usage() {
+    echo "Usage: $(basename "$0") [OPTIONS]"
+    echo ""
+    echo "Bidirectional additive sync of ~/.claude/projects/ across all machines."
+    echo "Pulls from remotes first, then pushes to all. NEVER deletes anything."
+    echo ""
+    echo "OPTIONS:"
+    echo "  -n, --dry-run    Show what would be transferred without doing it"
+    echo "  -q, --quiet      Suppress verbose output"
+    echo "  -h, --help       Show this help message"
+    echo ""
+    echo "Machines configured:"
+    for remote in "${REMOTES[@]:-}"; do
+        echo "  - $remote"
+    done
+    echo ""
+    echo "Backup (push only):"
+    echo "  - $LOCAL_BACKUP"
+}
+
+pull_from_remotes() {
+    echo "=== PULLING FROM REMOTES ==="
+    echo ""
+
+    for remote in "${REMOTES[@]}"; do
+        echo "--> Pulling from: $remote"
+        # Use || true so we continue if a machine is unreachable
+        rsync -az $VERBOSE $DRY_RUN "$remote" "$PROJECTS" || {
+            echo "    WARNING: Could not reach $remote, skipping..."
+        }
+        echo ""
+    done
+}
+
+push_to_remotes() {
+    echo "=== PUSHING TO REMOTES ==="
+    echo ""
+
+    for remote in "${REMOTES[@]}"; do
+        echo "--> Pushing to: $remote"
+        rsync -az $VERBOSE $DRY_RUN "$PROJECTS" "$remote" || {
+            echo "    WARNING: Could not reach $remote, skipping..."
+        }
+        echo ""
+    done
+}
+
+push_to_backup() {
+    if [[ -z "$LOCAL_BACKUP" ]]; then
+        return
+    fi
+
+    echo "=== BACKING UP TO ICLOUD ==="
+    echo ""
+    echo "--> Pushing to: $LOCAL_BACKUP"
+    mkdir -p "$LOCAL_BACKUP"
+    rsync -a $VERBOSE $DRY_RUN "$PROJECTS" "$LOCAL_BACKUP"
+    echo ""
+}
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -n|--dry-run)
+            DRY_RUN="--dry-run"
+            echo "[DRY RUN MODE - no changes will be made]"
+            echo ""
+            shift
+            ;;
+        -q|--quiet)
+            VERBOSE=""
+            shift
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            usage
+            exit 1
+            ;;
+    esac
+done
+
+# Check local projects dir exists
+if [[ ! -d "$PROJECTS" ]]; then
+    echo "Error: Projects directory does not exist: $PROJECTS"
+    exit 1
+fi
+
+echo "Syncing: $PROJECTS"
+echo ""
+
+# Order matters: pull first, then push, so everyone gets everything
+pull_from_remotes
+push_to_remotes
+push_to_backup
+
+echo "=== SYNC COMPLETE ==="
+echo "All machines now have the union of all projects."
