@@ -13,12 +13,16 @@ PROJECTS="$HOME/.claude/projects/"
 # Local backup directory (iCloud) - one-way push only
 LOCAL_BACKUP="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Backups/CC/"
 
-# Remote machines to sync with (bidirectional)
+# All machines in the sync pool (script auto-skips current host)
 REMOTES=(
+    "orbit:~/.claude/projects/"
     "godzilla:~/.claude/projects/"
     "occult:~/.claude/projects/"
     "magic:~/.claude/projects/"
 )
+
+# Current hostname (used to skip self)
+CURRENT_HOST=$(hostname -s)
 
 # ============================================================
 # END CONFIGURATION
@@ -52,8 +56,17 @@ pull_from_remotes() {
     echo ""
 
     for remote in "${REMOTES[@]}"; do
+        # Extract hostname from "host:path" format
+        remote_host="${remote%%:*}"
+
+        # Skip self
+        if [[ "$remote_host" == "$CURRENT_HOST" ]]; then
+            echo "--> Skipping $remote_host (that's me)"
+            echo ""
+            continue
+        fi
+
         echo "--> Pulling from: $remote"
-        # Use || true so we continue if a machine is unreachable
         rsync -az $VERBOSE $DRY_RUN "$remote" "$PROJECTS" || {
             echo "    WARNING: Could not reach $remote, skipping..."
         }
@@ -66,6 +79,14 @@ push_to_remotes() {
     echo ""
 
     for remote in "${REMOTES[@]}"; do
+        remote_host="${remote%%:*}"
+
+        if [[ "$remote_host" == "$CURRENT_HOST" ]]; then
+            echo "--> Skipping $remote_host (that's me)"
+            echo ""
+            continue
+        fi
+
         echo "--> Pushing to: $remote"
         rsync -az $VERBOSE $DRY_RUN "$PROJECTS" "$remote" || {
             echo "    WARNING: Could not reach $remote, skipping..."
