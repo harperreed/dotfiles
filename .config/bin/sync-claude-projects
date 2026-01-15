@@ -16,7 +16,7 @@ LOCAL_BACKUP="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Backups/CC/"
 # All machines in the sync pool (script auto-skips current host)
 REMOTES=(
     "orbit:~/.claude/projects/"
-    "godzilla:~/.claude/projects/"
+    "disaster:~/.claude/projects/"
     "occult:~/.claude/projects/"
     "magic:~/.claude/projects/"
 )
