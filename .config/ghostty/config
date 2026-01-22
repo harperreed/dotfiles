@@ -7,6 +7,7 @@ shell-integration = fish
 shell-integration-features = cursor, sudo, title
 term = "xterm-256color"
 clipboard-read = allow
+clipboard-write = allow
 clipboard-trim-trailing-spaces = true
 window-decoration = true
 background-opacity = 0.90

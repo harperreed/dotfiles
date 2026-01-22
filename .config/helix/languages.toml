@@ -1,8 +1,9 @@
-
+# --- Python ---
 [[language]]
 name = "python"
 language-servers = ["ty", "ruff"]
 formatter = { command = "ruff", args = ["format", "-"] }
+auto-format = true
 
 [language-server.ty]
 command = "ty"
@@ -11,3 +12,118 @@ args = ["lsp"]
 [language-server.ruff]
 command = "ruff"
 args = ["server"]
+
+# --- TypeScript / JavaScript ---
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "file.ts"] }
+auto-format = true
+
+[[language]]
+name = "javascript"
+language-servers = ["typescript-language-server"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "file.js"] }
+auto-format = true
+
+[[language]]
+name = "tsx"
+language-servers = ["typescript-language-server"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "file.tsx"] }
+auto-format = true
+
+[[language]]
+name = "jsx"
+language-servers = ["typescript-language-server"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "file.jsx"] }
+auto-format = true
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+config.hostInfo = "helix"
+
+[language-server.typescript-language-server.config.typescript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = "all"
+includeInlayParameterNameHints = "all"
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
+
+# --- TOML ---
+[[language]]
+name = "toml"
+language-servers = ["taplo"]
+formatter = { command = "taplo", args = ["fmt", "-"] }
+auto-format = true
+
+[language-server.taplo]
+command = "taplo"
+args = ["lsp", "stdio"]
+
+# --- JSON ---
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server"]
+formatter = { command = "biome", args = ["format", "--stdin-file-path", "file.json"] }
+auto-format = true
+
+[language-server.vscode-json-language-server]
+command = "vscode-json-language-server"
+args = ["--stdio"]
+
+[language-server.vscode-json-language-server.config.json]
+validate = { enable = true }
+
+# --- Markdown ---
+[[language]]
+name = "markdown"
+language-servers = ["marksman"]
+formatter = { command = "dprint", args = ["fmt", "--stdin", "file.md"] }
+
+[language-server.marksman]
+command = "marksman"
+args = ["server"]
+
+# --- Go ---
+[[language]]
+name = "go"
+language-servers = ["gopls"]
+formatter = { command = "goimports" }
+auto-format = true
+
+[language-server.gopls]
+command = "gopls"
+
+[language-server.gopls.config.hints]
+assignVariableTypes = true
+compositeLiteralFields = true
+constantValues = true
+functionTypeParameters = true
+parameterNames = true
+rangeVariableTypes = true
+
+# --- Rust ---
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+auto-format = true
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language-server.rust-analyzer.config.inlayHints.lifetimeElisionHints]
+enable = "always"
+
+# --- Swift ---
+[[language]]
+name = "swift"
+language-servers = ["sourcekit-lsp"]
+auto-format = true
+
+[language-server.sourcekit-lsp]
+command = "sourcekit-lsp"
