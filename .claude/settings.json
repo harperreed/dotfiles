@@ -8,8 +8,7 @@
     ],
     "deny": []
   },
-  "hooks": {
-  },
+  "hooks": {},
   "statusLine": {
     "type": "command",
     "command": "bunx -y ccstatusline@latest",
@@ -35,7 +34,8 @@
     "test-kitchen@2389-research-marketplace": true,
     "xtool@2389-research-marketplace": true,
     "ceo-personal-os@2389-research-marketplace": true,
-    "worldview-synthesis@2389-research-marketplace": true
+    "worldview-synthesis@2389-research-marketplace": true,
+    "css-development@2389-research-marketplace": true
   },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
