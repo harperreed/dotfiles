@@ -94,10 +94,14 @@ G = "goto_file_end"
 V = ["select_mode", "extend_to_line_bounds"]
 x = "delete_char_forward"
 X = "delete_char_backward"
+a = ["collapse_selection", "append_mode"]
 esc = ["collapse_selection", "keep_primary_selection"]
 H = "goto_previous_buffer"
 L = "goto_next_buffer"
 J = ["select_mode", "extend_line_below", "join_selections", "normal_mode", "collapse_selection"]
+
+[keys.normal.d]
+d = ["extend_to_line_bounds", "delete_selection"]
 
 # Space-mode extensions
 [keys.normal.space]
