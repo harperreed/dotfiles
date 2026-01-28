@@ -147,3 +147,5 @@ export PATH="$PATH:/Users/harper/.lmstudio/bin"
 . "$HOME/.local/share/../bin/env"
 
 . "$HOME/.atuin/bin/env"
+
+export PATH="/Users/harper/.local/share/solana/install/active_release/bin:$PATH"

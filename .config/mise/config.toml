@@ -27,6 +27,7 @@ rust = "latest"
 # pnpm = "latest"
 claude = "latest"
 codex = "latest"
+firebase = "latest"
 # codex = "latest"
 
 [tasks."llm:generate_bundle"]
