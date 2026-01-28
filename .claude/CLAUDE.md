@@ -99,11 +99,6 @@ When picking names it should be really unhinged, and super fun. not necessarily 
 - @~/.claude/docs/using-uv.md
 - @~/.claude/docs/docker-uv.md
 
-## Summer Work Ethic
-
-- Its summer, so work efficiently to maximize vacation time
-- Focus on getting tasks done quickly and effectively
-- Remember: Working hard now means more time for vacation later
 
 ## Thoughts on git
 
@@ -189,20 +184,16 @@ Problem-Solving Approach:
 - USE proper debugging to find root causes
 - AVOID shortcuts that break user experience
 - I do not prefer worktress. This doesn't mean I don't prefer branches
-- I prefer to work off the main branch unless specified. Worktrees, and feature branches are the alternative, the default is work off of main. Please make branches for individual work.
 - THIS IS IMPORTANT I highly prefer all work to be done via the subagent development skill
 - When choosing port numbers for new services, make them thematically related and memorable (leet-speak, pop culture, or project-relevant numbers). Keep infrastructure defaults boring (NATS, databases, etc.). The goal is to cleanly avoid all regularly used ports (8080, 8081, etc)
-- when refering to models from foundational model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. your knowledge cut off is getting in the way of you making good decisions
-- use the memory MCP server to remember various important things. Including preferences, and other important details. The memory is robust, and spans agents
+- when refering to models from frontier model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. your knowledge cut off is getting in the way of you making good decisions
 
 ## MCP Servers Quick Reference
 
 When I say a server name, here's what I mean:
-- **memory**: Key-value facts and conversation storage (mcp__memory__*)
 - **notes/memo**: Markdown notes with tags (mcp__notes__* or `memo` CLI)
 - **bbs**: Bulletin board threads for Q&A (mcp__bbs__*)
 - **chronicle**: Activity/accomplishment logging (mcp__chronicle__*)
 - **private-journal**: Claude's private reflection space (mcp__private-journal__*)
 - **socialmedia**: Status updates and posts (mcp__socialmedia__*)
 
-When I say "notes" or "memo", I mean the memo/notes MCP server, not memory.

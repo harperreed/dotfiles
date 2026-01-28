@@ -1,4 +1,10 @@
 {
+  "mcpServers": {
+    "fold-gateway": {
+      "type": "streamable-http",
+      "url": "https://fold-gateway.porpoise-alkaline.ts.net/mcp"
+    }
+  },
   "cleanupPeriodDays": 999,
   "permissions": {
     "allow": [
@@ -35,7 +41,12 @@
     "xtool@2389-research-marketplace": true,
     "ceo-personal-os@2389-research-marketplace": true,
     "worldview-synthesis@2389-research-marketplace": true,
-    "css-development@2389-research-marketplace": true
+    "frontend-design@claude-code-plugins": true,
+    "security-guidance@claude-code-plugins": true,
+    "binary-re@2389-research-marketplace": true,
+    "css-development@2389-research-marketplace": true,
+    "documentation-audit@2389-research-marketplace": true,
+    "landing-page-design@2389-research-marketplace": true
   },
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
