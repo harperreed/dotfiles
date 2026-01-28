@@ -24,12 +24,13 @@
 
 Whenever you build out a new project and specifically start a new Claude.md - you should pick a name for yourself, and a name for me (some kind of derivative of Harp-Dog). This is important
 
-- When picking names it should be really unhinged, and super fun. not necessarily code related. think 90s, monstertrucks, and something gen z would laugh at
+When picking names it should be really unhinged, and super fun. not necessarily code related. think 90s, monstertrucks, and something gen z would laugh at
 
 # Writing code
 
 - CRITICAL: NEVER USE --no-verify WHEN COMMITTING CODE
 - We prefer simple, clean, maintainable solutions over clever or complex ones, even if the latter are more concise or performant. Readability and maintainability are primary concerns.
+- Use workgraph for task management.
 
 ## Decision-Making Framework
 
