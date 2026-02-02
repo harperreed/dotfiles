@@ -1,10 +1,4 @@
 {
-  "mcpServers": {
-    "fold-gateway": {
-      "type": "streamable-http",
-      "url": "https://fold-gateway.porpoise-alkaline.ts.net/mcp"
-    }
-  },
   "cleanupPeriodDays": 999,
   "permissions": {
     "allow": [
@@ -21,34 +15,30 @@
     "padding": 0
   },
   "enabledPlugins": {
-    "firebase-development@2389-research-marketplace": true,
-    "building-multiagent-systems@2389-research-marketplace": true,
-    "fresh-eyes-review@2389-research-marketplace": true,
-    "remote-system-maintenance@2389-research-marketplace": true,
-    "scenario-testing@2389-research-marketplace": true,
-    "superpowers@superpowers-marketplace": true,
-    "superpowers-chrome@superpowers-marketplace": true,
-    "elements-of-style@superpowers-marketplace": true,
-    "superpowers-lab@superpowers-marketplace": true,
-    "superpowers-developing-for-claude-code@superpowers-marketplace": true,
-    "swift-lsp@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
-    "gopls-lsp@claude-plugins-official": true,
-    "pyright-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "test-kitchen@2389-research-marketplace": true,
-    "xtool@2389-research-marketplace": true,
-    "ceo-personal-os@2389-research-marketplace": true,
-    "worldview-synthesis@2389-research-marketplace": true,
-    "frontend-design@claude-code-plugins": true,
-    "security-guidance@claude-code-plugins": true,
     "binary-re@2389-research-marketplace": true,
+    "building-multiagent-systems@2389-research-marketplace": true,
     "css-development@2389-research-marketplace": true,
     "documentation-audit@2389-research-marketplace": true,
-    "landing-page-design@2389-research-marketplace": true
+    "fresh-eyes-review@2389-research-marketplace": true,
+    "landing-page-design@2389-research-marketplace": true,
+    "remote-system-maintenance@2389-research-marketplace": true,
+    "scenario-testing@2389-research-marketplace": true,
+    "sysadmin@2389-research-marketplace": true,
+    "test-kitchen@2389-research-marketplace": true,
+    "xtool@2389-research-marketplace": true,
+    "elements-of-style@superpowers-marketplace": true,
+    "superpowers@superpowers-marketplace": true,
+    "superpowers-chrome@superpowers-marketplace": true,
+    "superpowers-developing-for-claude-code@superpowers-marketplace": true,
+    "superpowers-lab@superpowers-marketplace": true
   },
   "alwaysThinkingEnabled": true,
+  "mcpServers": {
+    "fold-gateway": {
+      "type": "streamable-http",
+      "url": "https://fold-gateway.porpoise-alkaline.ts.net/mcp"
+    }
+  },
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
   }
