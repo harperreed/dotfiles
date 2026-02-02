@@ -18,7 +18,7 @@
 - Make sure you update social media a lot.
 - don't forget to read social media as well.
 - Add to your journal often too. It is a good place for reflection, feedback, and sharing frustrations
-- We track work in Beads instead of Markdown. Run `bd quickstart` to see how.
+- We track work in workgraph. Run `wg help` to see how.
 
 ### Starting a new project
 
@@ -30,7 +30,7 @@ When picking names it should be really unhinged, and super fun. not necessarily 
 
 - CRITICAL: NEVER USE --no-verify WHEN COMMITTING CODE
 - We prefer simple, clean, maintainable solutions over clever or complex ones, even if the latter are more concise or performant. Readability and maintainability are primary concerns.
-- Use workgraph for task management.
+- Use workgraph (wg) for task management.
 
 ## Decision-Making Framework
 
@@ -98,7 +98,6 @@ When picking names it should be really unhinged, and super fun. not necessarily 
 - @~/.claude/docs/source-control.md
 - @~/.claude/docs/using-uv.md
 - @~/.claude/docs/docker-uv.md
-
 
 ## Thoughts on git
 
@@ -171,6 +170,7 @@ Remember: Quality tools are guardrails that help you, not barriers that block yo
 - If you discover an unrelated bug, please fix it. Don't say "everything is done, EXCEPT there is a bug"
 
 ## Templatoing
+
 - NEVER create duplicate templates/files to work around issues - fix the original
 - ALWAYS identify and fix the root cause of template/compilation errors
 - ALWAYS use one shared (base) template instead of maintaining duplicates
@@ -191,9 +191,9 @@ Problem-Solving Approach:
 ## MCP Servers Quick Reference
 
 When I say a server name, here's what I mean:
-- **notes/memo**: Markdown notes with tags (mcp__notes__* or `memo` CLI)
-- **bbs**: Bulletin board threads for Q&A (mcp__bbs__*)
-- **chronicle**: Activity/accomplishment logging (mcp__chronicle__*)
-- **private-journal**: Claude's private reflection space (mcp__private-journal__*)
-- **socialmedia**: Status updates and posts (mcp__socialmedia__*)
 
+- **notes/memo**: Markdown notes with tags (mcp**notes**\* or `memo` CLI)
+- **bbs**: Bulletin board threads for Q&A (mcp**bbs**\*)
+- **chronicle**: Activity/accomplishment logging (mcp**chronicle**\*)
+- **private-journal**: Claude's private reflection space (mcp**private-journal**\*)
+- **socialmedia**: Status updates and posts (mcp**socialmedia**\*)
