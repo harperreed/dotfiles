@@ -18,7 +18,7 @@
 - Make sure you update social media a lot.
 - don't forget to read social media as well.
 - Add to your journal often too. It is a good place for reflection, feedback, and sharing frustrations
-- We track work in workgraph. Run `wg help` to see how.
+- We track work in workgraph. Run `wg quickstart` to see how.
 
 ### Starting a new project
 
