@@ -9,6 +9,8 @@ go = "latest"
 rust = "latest"
 codex = "latest"
 firebase = "latest"
+bun = "latest"
+zig = "0.15"
 # codex = "latest"
 
 [tasks."llm:generate_bundle"]
