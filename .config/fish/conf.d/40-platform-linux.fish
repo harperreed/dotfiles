@@ -6,9 +6,13 @@ if test (uname) != "Linux"
     exit
 end
 
-# Go environment
-set -gx GOPATH $HOME/go
-fish_add_path -g $GOPATH/bin
+# Go environment - check common locations
+if test -d $HOME/workspace/personal/go
+    set -gx GOPATH $HOME/workspace/personal/go
+else if test -d $HOME/go
+    set -gx GOPATH $HOME/go
+end
+test -n "$GOPATH"; and fish_add_path -g $GOPATH/bin
 
 # mise settings
 if test -e ~/.local/bin/mise
