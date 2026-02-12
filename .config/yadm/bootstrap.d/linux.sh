@@ -30,6 +30,14 @@ readonly BASE_PACKAGES=(
     git
     htop
     build-essential
+    fd-find
+    fzf
+    zoxide
+    direnv
+    jq
+    bat
+    docker.io
+    docker-compose
 )
 
 # GUI-specific packages
@@ -56,6 +64,14 @@ readonly ARCH_BASE_PACKAGES=(
     git
     htop
     base-devel
+    fd
+    fzf
+    zoxide
+    direnv
+    jq
+    bat
+    docker
+    docker-compose
 )
 
 # Arch GUI packages

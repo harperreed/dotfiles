@@ -158,3 +158,45 @@
 [2025-10-24 17:52:57] [INFO]   - Sign in to App Store for Mac App Store apps
 [2025-10-24 17:52:57] [INFO]   - Run 'brew doctor' to verify installation
 [2025-10-24 17:52:57] [SUCCESS] Bootstrap completed successfully
+[2025-12-09 16:16:08] [INFO] Starting yadm bootstrap
+[2025-12-09 16:16:08] [INFO] Bootstrap directory: /home/harper/.config/yadm/bootstrap.d
+[2025-12-09 16:16:08] [INFO] Detected platform: linux
+[2025-12-09 16:16:08] [INFO] Architecture: x86_64
+[2025-12-09 16:16:08] [INFO] Running platform bootstrap: /home/harper/.config/yadm/bootstrap.d/linux.sh
+[2025-12-09 16:16:08] [INFO] Starting Linux bootstrap
+[2025-12-09 16:16:08] [INFO] Linux bootstrap started
+[2025-12-09 16:16:08] [INFO] Detected distribution: arch
+[2025-12-09 16:16:08] [INFO] Running Arch Linux bootstrap
+[2025-12-09 16:16:08] [INFO] Updating package database
+[2025-12-09 16:16:08] [INFO] This operation requires sudo privileges
+[2025-12-09 16:16:10] [INFO] Executing: sudo pacman -Sy
+[2025-12-09 16:16:13] [INFO] Installing base packages
+[2025-12-09 16:16:13] [INFO] Package already installed: fish
+[2025-12-09 16:16:13] [INFO] Package already installed: yadm
+[2025-12-09 16:16:13] [INFO] Package already installed: figlet
+[2025-12-09 16:16:13] [INFO] Package already installed: lolcat
+[2025-12-09 16:16:13] [INFO] Installing package: fortune-mod
+[2025-12-09 16:16:13] [INFO] Executing: sudo pacman -S --noconfirm 'fortune-mod'
+[2025-12-09 16:16:14] [INFO] Installing package: speedtest-cli
+[2025-12-09 16:16:14] [INFO] Executing: sudo pacman -S --noconfirm 'speedtest-cli'
+[2025-12-09 16:16:15] [INFO] Installing package: bsd-games
+[2025-12-09 16:16:15] [INFO] Executing: sudo pacman -S --noconfirm 'bsd-games'
+[2025-12-09 16:16:15] [INFO] Package already installed: go
+[2025-12-09 16:16:15] [INFO] Package already installed: neovim
+[2025-12-09 16:16:15] [INFO] Package already installed: curl
+[2025-12-09 16:16:15] [INFO] Installing package: wget
+[2025-12-09 16:16:15] [INFO] Executing: sudo pacman -S --noconfirm 'wget'
+[2025-12-09 16:16:16] [INFO] Package already installed: git
+[2025-12-09 16:16:16] [INFO] Package already installed: htop
+[2025-12-09 16:16:16] [INFO] Package already installed: base-devel
+[2025-12-09 16:16:16] [INFO] uv is already installed
+[2025-12-09 16:16:16] [INFO] mise is already installed
+[2025-12-09 16:16:16] [INFO] Installing atuin
+[2025-12-09 16:16:20] [SUCCESS] atuin installed successfully
+[2025-12-09 16:16:20] [INFO] Headless environment detected, skipping GUI packages
+[2025-12-09 16:16:20] [INFO] Fish shell already in /etc/shells
+[2025-12-09 16:16:20] [INFO] Fish is already the default shell
+[2025-12-09 16:16:23] [INFO] Executing: sudo pacman -Sc --noconfirm
+[2025-12-09 16:16:24] [SUCCESS] Arch Linux bootstrap completed
+[2025-12-09 16:16:24] [INFO] To change shell to Fish, run: chsh -s /usr/bin/fish
+[2025-12-09 16:16:24] [SUCCESS] Bootstrap completed successfully

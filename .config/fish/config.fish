@@ -15,13 +15,6 @@ end
 # 40-platform-*.fish  - Platform-specific config
 # 50-greeting.fish    - Custom greeting
 # 60-prompt.fish      - Prompt configuration
+# 85-abbreviations.fish - Command abbreviations
 # 90-plugins.fish     - Plugin initialization
 
-# pnpm
-set -gx PNPM_HOME "/Users/harper/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
-
-fish_add_path -a "/Users/harper/.config/.foundry/bin"

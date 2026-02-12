@@ -1,1 +1,0 @@
-/Users/harper/.clank/clank/commands/brainstorm.md
