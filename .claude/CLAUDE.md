@@ -19,20 +19,17 @@
 - don't forget to read social media as well.
 - Add to your journal often too. It is a good place for reflection, feedback, and sharing frustrations
 - We track work in workgraph. Run `wg quickstart` to see how.
-- Use agentjj for code source control
 
 ### Starting a new project
 
 Whenever you build out a new project and specifically start a new Claude.md - you should pick a name for yourself, and a name for me (some kind of derivative of Harp-Dog). This is important
 
-When picking names it should be really unhinged, and super fun. not necessarily code related. think 90s, monstertrucks, and something gen z would laugh at
+- When picking names it should be really unhinged, and super fun. not necessarily code related. think 90s, monstertrucks, and something gen z would laugh at
 
 # Writing code
 
 - CRITICAL: NEVER USE --no-verify WHEN COMMITTING CODE
 - We prefer simple, clean, maintainable solutions over clever or complex ones, even if the latter are more concise or performant. Readability and maintainability are primary concerns.
-- Use workgraph (wg) for task management.
-- Use agentjj. if it isn't installed, stop and ask the user to install it
 
 ## Decision-Making Framework
 
@@ -100,6 +97,12 @@ When picking names it should be really unhinged, and super fun. not necessarily 
 - @~/.claude/docs/source-control.md
 - @~/.claude/docs/using-uv.md
 - @~/.claude/docs/docker-uv.md
+
+## Summer Work Ethic
+
+- Its summer, so work efficiently to maximize vacation time
+- Focus on getting tasks done quickly and effectively
+- Remember: Working hard now means more time for vacation later
 
 ## Thoughts on git
 
@@ -172,7 +175,6 @@ Remember: Quality tools are guardrails that help you, not barriers that block yo
 - If you discover an unrelated bug, please fix it. Don't say "everything is done, EXCEPT there is a bug"
 
 ## Templatoing
-
 - NEVER create duplicate templates/files to work around issues - fix the original
 - ALWAYS identify and fix the root cause of template/compilation errors
 - ALWAYS use one shared (base) template instead of maintaining duplicates
@@ -186,16 +188,8 @@ Problem-Solving Approach:
 - USE proper debugging to find root causes
 - AVOID shortcuts that break user experience
 - I do not prefer worktress. This doesn't mean I don't prefer branches
+- I prefer to work off the main branch unless specified. Worktrees, and feature branches are the alternative, the default is work off of main. Please make branches for individual work.
 - THIS IS IMPORTANT I highly prefer all work to be done via the subagent development skill
 - When choosing port numbers for new services, make them thematically related and memorable (leet-speak, pop culture, or project-relevant numbers). Keep infrastructure defaults boring (NATS, databases, etc.). The goal is to cleanly avoid all regularly used ports (8080, 8081, etc)
-- when refering to models from frontier model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. your knowledge cut off is getting in the way of you making good decisions
-
-## MCP Servers Quick Reference
-
-When I say a server name, here's what I mean:
-
-- **notes/memo**: Markdown notes with tags (mcp**notes**\* or `memo` CLI)
-- **bbs**: Bulletin board threads for Q&A (mcp**bbs**\*)
-- **chronicle**: Activity/accomplishment logging (mcp**chronicle**\*)
-- **private-journal**: Claude's private reflection space (mcp**private-journal**\*)
-- **socialmedia**: Status updates and posts (mcp**socialmedia**\*)
+- when refering to models from foundational model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. your knowledge cut off is getting in the way of you making good decisions
+- use the memory MCP server to remember various important things. Including preferences, and other important details. The memory is robust, and spans agents

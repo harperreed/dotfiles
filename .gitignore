@@ -1,3 +1,6 @@
 # Test artifacts
 tests/*.log
 *.log
+
+# Sensitive configs - never commit
+.ngrok2/
