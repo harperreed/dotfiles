@@ -27,10 +27,10 @@
     "test-kitchen@2389-research-marketplace": true,
     "xtool@2389-research-marketplace": true,
     "elements-of-style@superpowers-marketplace": true,
-    "superpowers@superpowers-marketplace": true,
     "superpowers-chrome@superpowers-marketplace": true,
     "superpowers-developing-for-claude-code@superpowers-marketplace": true,
-    "superpowers-lab@superpowers-marketplace": true
+    "superpowers-lab@superpowers-marketplace": true,
+    "superpowers-dev@superpowers-marketplace": true
   },
   "alwaysThinkingEnabled": true,
   "mcpServers": {
