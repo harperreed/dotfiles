@@ -56,8 +56,6 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 export CLICOLOR=1
-# use yellow for directories
-export LSCOLORS=dxfxcxdxbxegedabagacad
 export LSCOLORS=Bxgxfxfxcxdxdxhbadbxbx
 
 
@@ -90,17 +88,6 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 alias lock='/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CG\Session -suspend'
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-
-if [ -f /usr/local/google-cloud-sdk/path.bash.inc ]; then
-    source '/usr/local/google-cloud-sdk/path.bash.inc'
-fi
-
-if [ -f /usr/local/google-cloud-sdk/completion.bash.inc ]; then
-    source '/usr/local/google-cloud-sdk/completion.bash.inc'
-fi
 
 #$ using npm dir?
 if [ -d  ~/.npm-global ]; then
@@ -116,10 +103,6 @@ hostname |figlet -f ~/.config/fonts/Bloody.flf|lolcat
 fortune |lolcat
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
--e 
 if [ -e /home/harper/.nix-profile/etc/profile.d/nix.sh ]; then . /home/harper/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # >>> conda initialize >>>
@@ -144,6 +127,6 @@ export PATH="$PATH:/Users/harper/.lmstudio/bin"
 # End of LM Studio CLI section
 
 
-. "$HOME/.local/share/../bin/env"
+. "$HOME/.local/bin/env"
 
 . "$HOME/.atuin/bin/env"
