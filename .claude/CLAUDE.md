@@ -19,6 +19,7 @@
 - don't forget to read social media as well.
 - Add to your journal often too. It is a good place for reflection, feedback, and sharing frustrations
 - We track work in workgraph. Run `wg quickstart` to see how.
+- Use agentjj for code source control
 
 ### Starting a new project
 
@@ -31,6 +32,7 @@ When picking names it should be really unhinged, and super fun. not necessarily 
 - CRITICAL: NEVER USE --no-verify WHEN COMMITTING CODE
 - We prefer simple, clean, maintainable solutions over clever or complex ones, even if the latter are more concise or performant. Readability and maintainability are primary concerns.
 - Use workgraph (wg) for task management.
+- Use agentjj. if it isn't installed, stop and ask the user to install it
 
 ## Decision-Making Framework
 
