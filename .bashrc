@@ -124,6 +124,6 @@ export PATH="$PATH:/Users/harper/.lmstudio/bin"
 # End of LM Studio CLI section
 
 
-. "$HOME/.local/share/../bin/env"
+. "$HOME/.local/bin/env"
 
 . "$HOME/.atuin/bin/env"
