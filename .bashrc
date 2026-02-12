@@ -84,11 +84,13 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # Homebrew (Apple Silicon)
 [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Go
-if [ -d "$HOME/src/go" ]; then
-    export GOPATH="$HOME/src/go"
-    export PATH="$PATH:$GOPATH/bin"
+# Go - check common GOPATH locations
+if [ -d "$HOME/workspace/personal/go" ]; then
+    export GOPATH="$HOME/workspace/personal/go"
+elif [ -d "$HOME/go" ]; then
+    export GOPATH="$HOME/go"
 fi
+[ -n "$GOPATH" ] && export PATH="$PATH:$GOPATH/bin"
 [ -d /usr/local/go/bin ] && export PATH="$PATH:/usr/local/go/bin"
 
 # npm global

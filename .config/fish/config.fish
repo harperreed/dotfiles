@@ -15,6 +15,6 @@ end
 # 40-platform-*.fish  - Platform-specific config
 # 50-greeting.fish    - Custom greeting
 # 60-prompt.fish      - Prompt configuration
-# 90-plugins.fish     - Plugin initialization
+# 85-abbreviations.fish - Command abbreviations
 # 90-plugins.fish     - Plugin initialization
 
