@@ -4,3 +4,6 @@ tests/*.log
 
 # Sensitive configs - never commit
 .ngrok2/
+
+# Machine-specific fish state
+.config/fish/fish_variables
