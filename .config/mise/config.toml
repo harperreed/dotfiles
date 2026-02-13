@@ -7,11 +7,12 @@ usage = "latest"
 node = "latest"
 go = "latest"
 rust = "latest"
+claude = "latest"
 codex = "latest"
 firebase = "latest"
 bun = "latest"
-zig = "0.15"
-# codex = "latest"
+zig = "latest"
+python = "latest"
 
 [tasks."llm:generate_bundle"]
 description = 'Generate LLM bundle output file using repomix'
