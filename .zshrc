@@ -21,3 +21,7 @@ export PATH="$PATH:/Users/harper/.lmstudio/bin"
 . "$HOME/.atuin/bin/env"
 
 eval "$(atuin init zsh)"
+
+# OpenClaw Completion
+source <(openclaw completion --shell zsh)
+export PATH="$HOME/.local/bin:$PATH"

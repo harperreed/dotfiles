@@ -140,5 +140,30 @@ conda() {
 
 # Atuin shell history
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+<<<<<<< Updated upstream
 [ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
 command -v atuin &>/dev/null && eval "$(atuin init bash)"
+||||||| Stash base
+eval "$(atuin init bash)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/harper/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+. "$HOME/.local/share/../bin/env"
+
+. "$HOME/.atuin/bin/env"
+=======
+eval "$(atuin init bash)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/harper/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+. "$HOME/.local/share/../bin/env"
+
+. "$HOME/.atuin/bin/env"
+export PATH="$HOME/.local/bin:$PATH"
+>>>>>>> Stashed changes

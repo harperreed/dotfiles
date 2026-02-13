@@ -158,6 +158,7 @@
 [2025-10-24 17:52:57] [INFO]   - Sign in to App Store for Mac App Store apps
 [2025-10-24 17:52:57] [INFO]   - Run 'brew doctor' to verify installation
 [2025-10-24 17:52:57] [SUCCESS] Bootstrap completed successfully
+<<<<<<< Updated upstream
 [2025-12-09 16:16:08] [INFO] Starting yadm bootstrap
 [2025-12-09 16:16:08] [INFO] Bootstrap directory: /home/harper/.config/yadm/bootstrap.d
 [2025-12-09 16:16:08] [INFO] Detected platform: linux
@@ -200,3 +201,23 @@
 [2025-12-09 16:16:24] [SUCCESS] Arch Linux bootstrap completed
 [2025-12-09 16:16:24] [INFO] To change shell to Fish, run: chsh -s /usr/bin/fish
 [2025-12-09 16:16:24] [SUCCESS] Bootstrap completed successfully
+||||||| Stash base
+=======
+[2025-12-15 21:59:15] [INFO] Starting yadm bootstrap
+[2025-12-15 21:59:15] [INFO] Bootstrap directory: /Users/harper/.config/yadm/bootstrap.d
+[2025-12-15 21:59:15] [INFO] Detected platform: darwin
+[2025-12-15 21:59:15] [INFO] Architecture: arm64
+[2025-12-15 21:59:15] [INFO] Running platform bootstrap: /Users/harper/.config/yadm/bootstrap.d/darwin.sh
+[2025-12-15 21:59:15] [INFO] Starting Darwin bootstrap
+[2025-12-15 21:59:15] [INFO] Darwin bootstrap started
+[2025-12-15 21:59:15] [INFO] Installing Homebrew
+[2025-12-15 21:59:58] [INFO] Line already exists in /Users/harper/.zprofile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2025-12-15 21:59:58] [INFO] Line already exists in /Users/harper/.bash_profile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2025-12-15 21:59:58] [INFO] Backing up /Users/harper/.profile to /Users/harper/.profile.yadm-backup.20251215_215958
+[2025-12-15 21:59:58] [SUCCESS] Added to /Users/harper/.profile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2025-12-15 21:59:58] [INFO] Installing packages from Brewfile
+[2025-12-15 21:59:58] [INFO] Executing: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2025-12-15 22:48:05] [ERROR] Command failed: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2025-12-15 22:48:05] [ERROR] Bootstrap failed with exit code: 1
+[2025-12-15 22:48:05] [INFO] Check log file: /Users/harper/.config/yadm/bootstrap.log
+>>>>>>> Stashed changes
