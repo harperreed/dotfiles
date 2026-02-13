@@ -18,15 +18,6 @@ end
 # 85-abbreviations.fish - Command abbreviations
 # 90-plugins.fish     - Plugin initialization
 
-<<<<<<< Updated upstream
-||||||| Stash base
-# pnpm
-set -gx PNPM_HOME "/Users/harper/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
-=======
 # pnpm
 set -gx PNPM_HOME "/Users/harper/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
@@ -35,5 +26,6 @@ end
 # pnpm end
 
 # OpenClaw Completion
-source "/Users/harper/.openclaw/completions/openclaw.fish"
->>>>>>> Stashed changes
+if test -f ~/.openclaw/completions/openclaw.fish
+    source ~/.openclaw/completions/openclaw.fish
+end
