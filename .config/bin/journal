@@ -1,1 +1,5 @@
-dayone2 new $@
+#!/bin/sh
+# ABOUTME: Quick shortcut to create a new Day One journal entry.
+# ABOUTME: Passes all arguments to dayone2 as the entry text.
+
+dayone2 new "$@"

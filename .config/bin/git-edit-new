@@ -7,4 +7,4 @@
 # edit them in your editor next. Why waste time clicking around like some sort
 # of plebian when you can just run another command?
 
-$EDITOR $(git ls-files --others --exclude-standard)
+"$EDITOR" $(git ls-files --others --exclude-standard)

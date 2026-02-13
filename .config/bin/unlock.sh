@@ -1,9 +1,9 @@
 #!/bin/bash
+# ABOUTME: Checks if the macOS keychain is locked and unlocks it if needed.
+# ABOUTME: Uses security CLI to inspect and unlock the default keychain.
 
-
-# Try to show keychain info without password prompt
-# If it times out or fails, the keychain is locked
-if timeout 1 security show-keychain-info &>/dev/null; then
+# show-keychain-info returns non-zero when locked, no timeout needed
+if security show-keychain-info &>/dev/null; then
     echo "✓ Keychain is already unlocked"
 else
     echo "✗ Keychain is locked - unlocking..."

@@ -11,7 +11,7 @@
   "hooks": {},
   "statusLine": {
     "type": "command",
-    "command": "bunx -y ccstatusline@latest",
+    "command": "bash ~/.claude/scripts/statusline.sh",
     "padding": 0
   },
   "enabledPlugins": {
