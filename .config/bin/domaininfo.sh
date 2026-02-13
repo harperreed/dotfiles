@@ -22,7 +22,7 @@ do
 	_ip=$(host $d | grep 'has add' | head -1 | awk '{ print $4}')
 	[ "$_ip" == "" ] && { echo "Error: $d is not valid domain or dns error."; continue; }
 	echo "Getting information for domain: $d [ $_ip ]..."
-	whois "$_ip" | egrep -w 'OrgName:|City:|Country:|OriginAS:|NetRange:'
+	whois "$_ip" | grep -Ew 'OrgName:|City:|Country:|OriginAS:|NetRange:'
 	echo ""
 done
 
