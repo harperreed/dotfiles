@@ -57,6 +57,7 @@
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	editor = nvim
 	hooksPath = /Users/harper/.git_hooks
+	excludesfile = /Users/harper/.gitignore_global
 [push]
 	default = current
 	autoSetupRemote = true
