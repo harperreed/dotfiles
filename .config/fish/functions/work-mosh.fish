@@ -1,6 +1,6 @@
-# ~/.config/fish/functions/startwork-mosh.fish
-function startwork-mosh --description "mosh <host> and run fish function utm (default host: disaster)"
-  # Usage: startwork-mosh [host]
+# ~/.config/fish/functions/work-mosh.fish
+function work-mosh --description "mosh <host> and run fish function utm (default host: disaster)"
+  # Usage: work-mosh [host]
   set -l host disaster
   if test (count $argv) -ge 1
     set host $argv[1]

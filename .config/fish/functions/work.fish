@@ -1,6 +1,6 @@
-# ~/.config/fish/functions/startwork.fish
-function startwork --description "ssh -t <host> and run fish function utm (default host: disaster)"
-  # Usage: startwork [host]
+# ~/.config/fish/functions/work.fish
+function work --description "ssh -t <host> and run fish function utm (default host: disaster)"
+  # Usage: work [host]
   set -l host disaster
   if test (count $argv) -ge 1
     set host $argv[1]
