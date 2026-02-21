@@ -22,7 +22,6 @@
     "commit-commands@claude-code-plugins": true,
     "css-development@2389-research-marketplace": true,
     "documentation-audit@2389-research-marketplace": true,
-    "double-shot-latte@superpowers-marketplace": true,
     "elements-of-style@superpowers-marketplace": true,
     "episodic-memory@superpowers-marketplace": false,
     "beads@beads-marketplace": false,
@@ -50,6 +49,7 @@
     "xtool@2389-research-marketplace": true
   },
   "alwaysThinkingEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
   "mcpServers": {
     "fold-gateway": {
       "type": "streamable-http",
@@ -58,6 +58,5 @@
   },
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
-  },
-  "skipDangerousModePermissionPrompt": true
+  }
 }
