@@ -1,14 +1,64 @@
 {
   "cleanupPeriodDays": 999,
+  "env": {
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "permissions": {
     "allow": [
       "mcp__socialmedia__login",
       "mcp__socialmedia__create_post",
       "mcp__private-journal__process_thoughts"
     ],
-    "deny": []
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm -fr *)",
+      "Bash(sudo *)",
+      "Bash(mkfs *)",
+      "Bash(dd *)",
+      "Bash(wget *|bash*)",
+      "Bash(wget *| bash*)",
+      "Bash(git push --force*)",
+      "Bash(git push *--force*)",
+      "Bash(git reset --hard*)",
+      "Edit(~/.bashrc)",
+      "Edit(~/.zshrc)",
+      "Edit(~/.ssh/**)",
+      "Read(~/.ssh/**)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.azure/**)",
+      "Read(~/.config/gh/**)",
+      "Read(~/.git-credentials)",
+      "Read(~/.docker/config.json)",
+      "Read(~/.kube/**)",
+      "Read(~/.npmrc)",
+      "Read(~/.npm/**)",
+      "Read(~/.pypirc)",
+      "Read(~/.gem/credentials)",
+      "Read(~/Library/Keychains/**)",
+      "Read(~/Library/Application Support/**/metamask*/**)",
+      "Read(~/Library/Application Support/**/electrum*/**)",
+      "Read(~/Library/Application Support/**/exodus*/**)",
+      "Read(~/Library/Application Support/**/phantom*/**)",
+      "Read(~/Library/Application Support/**/solflare*/**)"
+    ]
   },
-  "hooks": {},
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude needs your attention\" with title \"Claude Code\"'"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "bash ~/.claude/scripts/statusline.sh",
@@ -46,10 +96,23 @@
     "superpowers-lab@superpowers-marketplace": true,
     "sysadmin@2389-research-marketplace": true,
     "test-kitchen@2389-research-marketplace": true,
-    "xtool@2389-research-marketplace": true
+    "xtool@2389-research-marketplace": true,
+    "agent-browser@agent-browser": true,
+    "last30days@skills-curated": true,
+    "security-awareness@skills-curated": true,
+    "x-research@skills-curated": true,
+    "ask-questions-if-underspecified@trailofbits": true,
+    "audit-context-building@trailofbits": true,
+    "differential-review@trailofbits": true,
+    "git-cleanup@trailofbits": true,
+    "insecure-defaults@trailofbits": true,
+    "modern-python@trailofbits": true,
+    "spec-to-code-compliance@trailofbits": true,
+    "variant-analysis@trailofbits": true,
+    "workflow-skill-design@trailofbits": true
   },
   "alwaysThinkingEnabled": true,
-  "skipDangerousModePermissionPrompt": true,
+  "skipDangerousModePermissionPrompt": false,
   "mcpServers": {
     "fold-gateway": {
       "type": "streamable-http",
