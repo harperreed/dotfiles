@@ -1,5 +1,5 @@
 # ABOUTME: Platform-specific configuration for macOS/Darwin
-# ABOUTME: Includes iTerm2, Homebrew, Conda, Go, and other macOS tools
+# ABOUTME: Includes iTerm2, Homebrew, Go, and other macOS tools
 
 # Only run on macOS
 if test (uname) != "Darwin"
@@ -26,19 +26,5 @@ end
 #     source {$HOME}/.iterm2_shell_integration.fish
 # end
 
-# Conda lazy initialization
-# Set up conda paths but defer full initialization until first use
-set -gx CONDA_PREFIX /opt/homebrew/Caskroom/miniconda/base
-if test -d $CONDA_PREFIX/bin
-    fish_add_path -g $CONDA_PREFIX/bin
-end
-
-# Create a wrapper function that initializes conda on first use
-function conda --description 'Lazy-loaded conda' --wraps conda
-    # Initialize conda properly
-    eval $CONDA_PREFIX/bin/conda "shell.fish" "hook" | source
-    # Call conda with the original arguments
-    conda $argv
-end
 
 # mise is activated in 32-mise.fish
