@@ -109,7 +109,12 @@
     "modern-python@trailofbits": true,
     "spec-to-code-compliance@trailofbits": true,
     "variant-analysis@trailofbits": true,
-    "workflow-skill-design@trailofbits": true
+    "workflow-skill-design@trailofbits": true,
+    "gtm-partner@2389-research-marketplace": true,
+    "prbuddy@2389-research-marketplace": true,
+    "product-launcher@2389-research-marketplace": true,
+    "qbp@2389-research-marketplace": true,
+    "worldview-synthesis@2389-research-marketplace": true
   },
   "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true,
@@ -121,5 +126,6 @@
   },
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
-  }
+  },
+  "effortLevel": "medium"
 }
