@@ -112,7 +112,7 @@
     "workflow-skill-design@trailofbits": true
   },
   "alwaysThinkingEnabled": true,
-  "skipDangerousModePermissionPrompt": false,
+  "skipDangerousModePermissionPrompt": true,
   "mcpServers": {
     "fold-gateway": {
       "type": "streamable-http",
