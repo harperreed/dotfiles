@@ -1,0 +1,32 @@
+personality = "pragmatic"
+model = "gpt-5.3-codex"
+model_reasoning_effort = "high"
+[projects."/Users/harper/Public/src/personal/adsb-kit"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/ma-interface/sendspin-go"]
+trust_level = "trusted"
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp"]
+
+[mcp_servers.chronicle]
+command = "chronicle"
+args = ["mcp"]
+
+[mcp_servers.bbs]
+command = "bbs"
+args = ["mcp"]
+
+[mcp_servers.toki]
+command = "toki"
+args = ["mcp"]
+
+[mcp_servers.pulse]
+command = "pulse"
+args = ["mcp"]
+
+[mcp_servers.memo]
+command = "memo"
+args = ["mcp"]
