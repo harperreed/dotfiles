@@ -29,3 +29,8 @@ end
 if test -f ~/.openclaw/completions/openclaw.fish
     source ~/.openclaw/completions/openclaw.fish
 end
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/harper/.lmstudio/bin
+# End of LM Studio CLI section
+
