@@ -29,6 +29,7 @@ firebase = "latest"
 bun = "latest"
 zig = "latest"
 python = "latest"
+java = "21"
 
 [tasks."llm:generate_bundle"]
 description = 'Generate LLM bundle output file using repomix'

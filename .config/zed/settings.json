@@ -8,8 +8,8 @@
 // from the command palette or from `Zed` application menu.
 {
     // "theme": "Andromeda",
-    "features": {
-        "edit_prediction_provider": "zed"
+    "edit_predictions": {
+        "provider": "zed"
     },
     "ssh_connections": [
         {
@@ -90,7 +90,10 @@
 
     "agent": {
         // Version of this setting.
-        "always_allow_tool_actions": true,
+        "show_turn_stats": true,
+        "tool_permissions": {
+            "default": "allow"
+        },
         "play_sound_when_agent_done": true,
         "default_model": {
             "provider": "anthropic",

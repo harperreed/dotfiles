@@ -11,3 +11,8 @@ if [ -n "$PS1" ]; then
     hostname | figlet -f ~/.config/fonts/Bloody.flf | lolcat 2>/dev/null
     fortune | lolcat 2>/dev/null
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/harper/.lmstudio/bin"
+# End of LM Studio CLI section
+
