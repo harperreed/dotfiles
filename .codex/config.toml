@@ -1,10 +1,16 @@
 personality = "pragmatic"
-model = "gpt-5.3-codex"
+model = "gpt-5.4"
 model_reasoning_effort = "high"
 [projects."/Users/harper/Public/src/personal/adsb-kit"]
 trust_level = "trusted"
 
 [projects."/Users/harper/Public/src/personal/ma-interface/sendspin-go"]
+trust_level = "trusted"
+
+[projects."/Users/harper"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/filament-reverse"]
 trust_level = "trusted"
 
 [mcp_servers.context7]
@@ -30,3 +36,6 @@ args = ["mcp"]
 [mcp_servers.memo]
 command = "memo"
 args = ["mcp"]
+
+[notice.model_migrations]
+"gpt-5.3-codex" = "gpt-5.4"
