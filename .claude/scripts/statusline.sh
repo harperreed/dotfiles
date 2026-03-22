@@ -144,12 +144,17 @@ fi
 if [ -n "$ctx_pct" ]; then
     output="$output $(printf '\033[37m%s\033[0m' "$ctx_pct")"
 fi
-output="$output $(printf '%b \033[33m$%s\033[0m' "$SEP" "$cost")"
 if [ -n "$session_time" ]; then
     output="$output $(printf '%b \033[36m⏱ %s\033[0m' "$SEP" "$session_time")"
 fi
 if [ "$cache_pct" -gt 0 ] 2>/dev/null; then
     output="$output $(printf ' \033[2m↻%s%%\033[0m' "$cache_pct")"
+fi
+
+# Usage limits from ccut (if installed)
+usage_limits=$(ccut 2>/dev/null)
+if [ -n "$usage_limits" ]; then
+    output="$output $(printf '%b %s' "$SEP" "$usage_limits")"
 fi
 
 printf '%b' "$output"

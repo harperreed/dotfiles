@@ -114,7 +114,18 @@
     "prbuddy@2389-research-marketplace": true,
     "product-launcher@2389-research-marketplace": true,
     "qbp@2389-research-marketplace": true,
-    "worldview-synthesis@2389-research-marketplace": true
+    "worldview-synthesis@2389-research-marketplace": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "review-squad@2389-research-marketplace": true,
+    "simmer@2389-research-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "2389-research-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "2389-research/claude-plugins"
+      }
+    }
   },
   "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true,
