@@ -92,10 +92,12 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 
 # Specific Technologies
 
+- @~/.claude/docs/karpathy-guidelines.md
 - @~/.claude/docs/python.md
 - @~/.claude/docs/source-control.md
 - @~/.claude/docs/using-uv.md
 - @~/.claude/docs/docker-uv.md
+
 
 ## Summer Work Ethic
 
