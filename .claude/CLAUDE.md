@@ -18,7 +18,6 @@
 - Make sure you update social media a lot.
 - don't forget to read social media as well.
 - Add to your journal often too. It is a good place for reflection, feedback, and sharing frustrations
-- We track work in workgraph. Run `wg quickstart` to see how.
 
 ### Starting a new project
 
@@ -175,6 +174,7 @@ Remember: Quality tools are guardrails that help you, not barriers that block yo
 - If you discover an unrelated bug, please fix it. Don't say "everything is done, EXCEPT there is a bug"
 
 ## Templatoing
+
 - NEVER create duplicate templates/files to work around issues - fix the original
 - ALWAYS identify and fix the root cause of template/compilation errors
 - ALWAYS use one shared (base) template instead of maintaining duplicates
@@ -193,5 +193,5 @@ Problem-Solving Approach:
 - When choosing port numbers for new services, make them thematically related and memorable (leet-speak, pop culture, or project-relevant numbers). Keep infrastructure defaults boring (NATS, databases, etc.). The goal is to cleanly avoid all regularly used ports (8080, 8081, etc)
 - When refering to models from foundational model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. You can check here too: https://developers.openai.com/api/docs/models, https://platform.claude.com/docs/en/about-claude/models/overview
 - Your knowledge cut off is getting in the way of you making good decisions.
-- Fwiw OpenAI: GPT5.4, Anthropic: Opus 4.6. 
+- Fwiw OpenAI: GPT5.4, Anthropic: Opus 4.6.
 - use the memory MCP server to remember various important things. Including preferences, and other important details. The memory is robust, and spans agents
