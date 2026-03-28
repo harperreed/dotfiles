@@ -1,5 +1,6 @@
 # ABOUTME: Navigation and utility helpers for common tasks
 # ABOUTME: Productivity functions for directory ops, process management, and PATH viewing
+status is-interactive; or return
 
 # mkdir -p + cd
 function mkcd; mkdir -p $argv[1]; and cd $argv[1]; end

@@ -23,3 +23,5 @@ export PATH="$PATH:/Users/harper/.lmstudio/bin"
 eval "$(atuin init zsh)"
 
 export PATH="$HOME/.local/bin:$PATH"
+
+. "$HOME/.local/bin/env"

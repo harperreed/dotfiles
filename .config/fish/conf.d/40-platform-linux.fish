@@ -14,6 +14,11 @@ else if test -d $HOME/go
 end
 test -n "$GOPATH"; and fish_add_path -g $GOPATH/bin
 
+# mise and interactive features require a terminal
+if not status is-interactive
+    return
+end
+
 # mise settings
 if test -e ~/.local/bin/mise
     ~/.local/bin/mise activate fish | source

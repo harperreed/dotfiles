@@ -1,5 +1,6 @@
 # ABOUTME: Quality of life improvements for better man pages, clipboard, and Quick Look
 # ABOUTME: Enhanced terminal experience with colored output and macOS integration
+status is-interactive; or return
 
 # Pretty man pages with bat
 set -gx MANPAGER "sh -c 'col -bx | bat -l man -p'"

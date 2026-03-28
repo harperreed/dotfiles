@@ -1,5 +1,6 @@
 # ABOUTME: Fish abbreviations for common commands
 # ABOUTME: Abbreviations expand inline and are more efficient than aliases
+status is-interactive; or return
 
 # Navigation
 abbr -a .. 'cd ..'

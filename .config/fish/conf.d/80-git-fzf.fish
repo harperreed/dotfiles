@@ -1,5 +1,6 @@
 # ABOUTME: Git superpowers using fzf for branch and stash management
 # ABOUTME: Interactive git operations with preview and fuzzy selection
+status is-interactive; or return
 
 # fzf checkout: local or remote branches
 function gco --description 'fzf checkout branch'

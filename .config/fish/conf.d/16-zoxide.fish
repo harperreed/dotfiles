@@ -1,5 +1,6 @@
 # ABOUTME: Zoxide configuration for fast directory jumping
 # ABOUTME: Provides z command for smart cd and zi for fuzzy directory selection
+status is-interactive; or return
 
 if type -q zoxide
   zoxide init fish | source

@@ -1,5 +1,6 @@
 # ABOUTME: Default key bindings, bang-bang (!!), and quick shell reload
 # ABOUTME: Essential keyboard shortcuts and shell management functions
+status is-interactive; or return
 
 # Default mode (not Vi)
 fish_default_key_bindings

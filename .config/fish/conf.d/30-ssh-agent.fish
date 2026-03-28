@@ -136,6 +136,7 @@ function __ssh_agent__add_keys --description 'Add local keys to the agent (macOS
 end
 
 # ---- Main flow ----
+status is-interactive; or return
 __ssh_agent__ensure
 __ssh_agent__symlink
 __ssh_agent__valid; and __ssh_agent__add_keys

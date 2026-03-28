@@ -1,4 +1,5 @@
 ### mosh/tmux helpers ###
+status is-interactive; or return
 
 # w: mosh into host, attach/create tmux session
 # usage:
