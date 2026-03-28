@@ -13,6 +13,9 @@ trust_level = "trusted"
 [projects."/Users/harper/Public/src/2389/filament-reverse"]
 trust_level = "trusted"
 
+[projects."/Users/harper/Public/src/2389/cc-screensaver"]
+trust_level = "trusted"
+
 [mcp_servers.context7]
 command = "npx"
 args = ["-y", "@upstash/context7-mcp"]
@@ -39,3 +42,15 @@ args = ["mcp"]
 
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
+
+[plugins."google-calendar@openai-curated"]
+enabled = true
+
+[plugins."gmail@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."google-drive@openai-curated"]
+enabled = true

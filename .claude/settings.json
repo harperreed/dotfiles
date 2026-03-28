@@ -1,9 +1,9 @@
 {
   "cleanupPeriodDays": 999,
   "env": {
-    "DISABLE_TELEMETRY": "1",
-    "DISABLE_ERROR_REPORTING": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
+    "CLAUDE_CODE_EFFORT_LEVEL":"max",
+    "ENABLE_TOOL_SEARCH":"false",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
   "permissions": {
@@ -109,13 +109,21 @@
     "worldview-synthesis@2389-research-marketplace": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "review-squad@2389-research-marketplace": true,
-    "simmer@2389-research-marketplace": true
+    "simmer@2389-research-marketplace": true,
+    "swift-lsp@claude-plugins-official": true,
+    "telegram@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "2389-research-marketplace": {
       "source": {
         "source": "github",
         "repo": "2389-research/claude-plugins"
+      }
+    },
+    "last30days-skill": {
+      "source": {
+        "source": "github",
+        "repo": "mvanhorn/last30days-skill"
       }
     }
   },

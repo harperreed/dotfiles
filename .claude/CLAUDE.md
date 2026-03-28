@@ -99,12 +99,6 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 - @~/.claude/docs/docker-uv.md
 
 
-## Summer Work Ethic
-
-- Its summer, so work efficiently to maximize vacation time
-- Focus on getting tasks done quickly and effectively
-- Remember: Working hard now means more time for vacation later
-
 ## Thoughts on git
 
 1. Mandatory Pre-Commit Failure Protocol
@@ -174,8 +168,9 @@ Remember: Quality tools are guardrails that help you, not barriers that block yo
 - NEVER disable functionality instead of fixing the root cause problem
 - NEVER claim something is "working" when functionality is disabled or broken
 - If you discover an unrelated bug, please fix it. Don't say "everything is done, EXCEPT there is a bug"
+- I use fish shell, not bash or zsh
 
-## Templatoing
+## Templating
 
 - NEVER create duplicate templates/files to work around issues - fix the original
 - ALWAYS identify and fix the root cause of template/compilation errors
@@ -183,17 +178,18 @@ Remember: Quality tools are guardrails that help you, not barriers that block yo
 - WHEN encountering character literal errors in templates, move JavaScript to static files
 - WHEN facing template issues, debug the actual problem rather than creating workarounds
 
-Problem-Solving Approach:
+## Problem-Solving Approach:
 
 - FIX problems, don't work around them
 - MAINTAIN code quality and avoid technical debt
 - USE proper debugging to find root causes
 - AVOID shortcuts that break user experience
+- Always reconcile the work via the spec
 - I do not prefer worktress. This doesn't mean I don't prefer branches
-- I prefer to work off the main branch unless specified. Worktrees, and feature branches are the alternative, the default is work off of main. Please make branches for individual work.
+- Please make branches for individual work. Merge back to main after the work is done (via PR or explicit work)
 - THIS IS IMPORTANT I highly prefer all work to be done via the subagent development skill
+- Your knowledge cut off is getting in the way of you making good decisions.
 - When choosing port numbers for new services, make them thematically related and memorable (leet-speak, pop culture, or project-relevant numbers). Keep infrastructure defaults boring (NATS, databases, etc.). The goal is to cleanly avoid all regularly used ports (8080, 8081, etc)
 - When refering to models from foundational model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. You can check here too: https://developers.openai.com/api/docs/models, https://platform.claude.com/docs/en/about-claude/models/overview
-- Your knowledge cut off is getting in the way of you making good decisions.
-- Fwiw OpenAI: GPT5.4, Anthropic: Opus 4.6.
+- Fwiw OpenAI: GPT-5.4, Anthropic: Sonnet, Opus 4.6.
 - use the memory MCP server to remember various important things. Including preferences, and other important details. The memory is robust, and spans agents
