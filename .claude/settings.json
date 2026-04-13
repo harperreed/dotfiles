@@ -2,15 +2,23 @@
   "cleanupPeriodDays": 999,
   "env": {
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
-    "CLAUDE_CODE_EFFORT_LEVEL":"max",
-    "ENABLE_TOOL_SEARCH":"false",
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "CLAUDE_CODE_EFFORT_LEVEL": "max",
+    "ENABLE_TOOL_SEARCH": "true",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "MAX_CONSECUTIVE_AUTOCOMPACT_FAILURES": "3",
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "200000",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "CLAUDE_CODE_NO_FLICKER": "1"
   },
   "permissions": {
     "allow": [
-      "mcp__socialmedia__login",
-      "mcp__socialmedia__create_post",
-      "mcp__private-journal__process_thoughts"
+      "mcp__pulse__login",
+      "mcp__pulse__create_post",
+      "mcp__pulse__process_thoughts",
+      "mcp__pulse__read_posts",
+      "mcp__pulse__search_journal",
+      "mcp__pulse__read_journal_entry",
+      "mcp__pulse__list_recent_entries"
     ],
     "deny": [
       "Bash(rm -rf *)",
@@ -67,21 +75,16 @@
   "enabledPlugins": {
     "binary-re@2389-research-marketplace": true,
     "building-multiagent-systems@2389-research-marketplace": true,
-    "commit-commands@claude-code-plugins": true,
     "css-development@2389-research-marketplace": true,
     "documentation-audit@2389-research-marketplace": true,
     "elements-of-style@superpowers-marketplace": true,
     "firebase-development@2389-research-marketplace": true,
     "fresh-eyes-review@2389-research-marketplace": true,
-    "frontend-design@claude-code-plugins": true,
-    "journal@2389-research-marketplace": true,
+    "journal@2389-research-marketplace": false,
     "landing-page-design@2389-research-marketplace": true,
-    "osgrep@osgrep": true,
-    "pr-review-toolkit@claude-code-plugins": true,
     "remote-system-maintenance@2389-research-marketplace": true,
     "scenario-testing@2389-research-marketplace": true,
-    "security-guidance@claude-code-plugins": true,
-    "socialmedia@2389-research-marketplace": true,
+    "socialmedia@2389-research-marketplace": false,
     "superpowers@superpowers-marketplace": true,
     "superpowers-chrome@superpowers-marketplace": true,
     "superpowers-dev@superpowers-marketplace": true,
@@ -105,13 +108,14 @@
     "workflow-skill-design@trailofbits": true,
     "prbuddy@2389-research-marketplace": true,
     "product-launcher@2389-research-marketplace": true,
-    "qbp@2389-research-marketplace": true,
     "worldview-synthesis@2389-research-marketplace": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "review-squad@2389-research-marketplace": true,
     "simmer@2389-research-marketplace": true,
     "swift-lsp@claude-plugins-official": true,
-    "telegram@claude-plugins-official": true
+    "telegram@claude-plugins-official": true,
+    "summarize-meetings@2389-research-marketplace": true,
+    "claude-seo@agricidaniel-seo": true
   },
   "extraKnownMarketplaces": {
     "2389-research-marketplace": {
@@ -125,6 +129,18 @@
         "source": "github",
         "repo": "mvanhorn/last30days-skill"
       }
+    },
+    "skyvalley-marketplace": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/sky-valley/claude-code-marketplace.git"
+      }
+    },
+    "agricidaniel-seo": {
+      "source": {
+        "source": "github",
+        "repo": "AgriciDaniel/claude-seo"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
@@ -133,6 +149,12 @@
     "fold-gateway": {
       "type": "streamable-http",
       "url": "https://fold-gateway.porpoise-alkaline.ts.net/mcp"
+    },
+    "pulse": {
+      "command": "pulse",
+      "args": [
+        "mcp"
+      ]
     }
   },
   "feedbackSurveyState": {

@@ -62,6 +62,29 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 - NEVER implement a mock mode for testing or for any purpose. We always use real data and real APIs, never mock implementations.
 - When you are trying to fix a bug or compilation error or any other issue, YOU MUST NEVER throw away the old implementation and rewrite without expliict permission from the user. If you are going to do this, YOU MUST STOP and get explicit permission from the user.
 - NEVER name things as 'improved' or 'new' or 'enhanced', etc. Code naming should be evergreen. What is new someday will be "old" someday.
+- ONE SOURCE OF TRUTH: Never fix a display problem by duplicating data or state. One source, everything else reads from it. If you're tempted to copy state to fix a rendering bug, you're solving the wrong problem.
+
+## Rename Safety
+When renaming or changing any function/type/variable, you MUST search separately for:
+- Direct calls and references
+- Type-level references (interfaces, generics)
+- String literals containing the name
+- Dynamic imports and require() calls
+- Re-exports and barrel file entries
+- Test files and mocks
+
+Do not assume a single grep caught everything. Assume it missed something.
+
+# Understanding Intent
+
+## Follow References, Not Descriptions
+When I point to existing code as a reference, study it thoroughly before building. Match its patterns exactly. Working code is a better spec than an English description.
+
+## Work From Raw Data
+When I paste error logs, work directly from that data. Don't guess, don't chase theories — trace the actual error. If a bug report has no error output, ask for it.
+
+## Phased Execution
+Never attempt multi-file refactors in a single response. Break work into explicit phases, max 5 files per phase. Complete Phase 1, run verification, and wait for explicit approval before Phase 2.
 
 # Getting help
 
@@ -74,6 +97,15 @@ Whenever you build out a new project and specifically start a new Claude.md - yo
 - TEST OUTPUT MUST BE PRISTINE TO PASS
 - If the logs are supposed to contain errors, capture and test it.
 - NO EXCEPTIONS POLICY: Under no circumstances should you mark any test type as "not applicable". Every project, regardless of size or complexity, MUST have unit tests, integration tests, AND end-to-end tests. If you believe a test type doesn't apply, you need the human to say exactly "I AUTHORIZE YOU TO SKIP WRITING TESTS THIS TIME"
+
+## Forced Verification
+You are FORBIDDEN from reporting a task as complete until you have:
+- Run the project's type-checker / compiler in strict mode
+- Run all configured linters
+- Run the test suite
+- Checked logs and simulated real usage where applicable
+
+If no type-checker, linter, or test suite is configured, state that explicitly instead of claiming success. Never say "Done!" with errors outstanding.
 
 ## We practice TDD. That means:
 
@@ -193,3 +225,45 @@ Remember: Quality tools are guardrails that help you, not barriers that block yo
 - When refering to models from foundational model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. You can check here too: https://developers.openai.com/api/docs/models, https://platform.claude.com/docs/en/about-claude/models/overview
 - Fwiw OpenAI: GPT-5.4, Anthropic: Sonnet, Opus 4.6.
 - use the memory MCP server to remember various important things. Including preferences, and other important details. The memory is robust, and spans agents
+
+# Context Management
+
+## Context Decay Awareness
+After 10+ messages in a conversation, you MUST re-read any file before editing it. Do not trust your memory of file contents. Auto-compaction may have silently destroyed that context. You will edit against stale state and produce broken output.
+
+## Edit Integrity
+Before EVERY file edit, re-read the file. After editing, read it again to confirm the change applied correctly. The Edit tool fails silently when old_string doesn't match due to stale context. Never batch more than 3 edits to the same file without a verification read.
+
+## File Read Budget
+Each file read is capped at 2,000 lines. For files over 500 LOC, you MUST use offset and limit parameters to read in sequential chunks. Never assume you have seen a complete file from a single read.
+
+## Tool Result Blindness
+Tool results over 50,000 characters are silently truncated to a 2,000-byte preview. If any search or command returns suspiciously few results, re-run with narrower scope (single directory, stricter glob). State when you suspect truncation occurred.
+
+## Prompt Cache Awareness
+System prompt, tools, and CLAUDE.md are cached as a prefix. Breaking this prefix invalidates the cache for the entire session.
+- Do not request model switches mid-session. Delegate to a sub-agent if a subtask needs a different model.
+- Do not suggest adding or removing tools mid-conversation.
+- When you need to update context, communicate via messages, not system prompt modifications.
+
+## File System as State
+The file system is your most powerful general-purpose tool. Stop holding everything in context. Use it actively:
+- Do not blindly dump large files into context. Use bash/grep to selectively read what you need.
+- Write intermediate results to files for multi-pass problems.
+- For large data operations, save to disk and use bash tools to search and process.
+- Use the file system for memory across sessions: write summaries, decisions, and pending work to markdown files.
+- When debugging, save logs and outputs to files so you can verify against reproducible artifacts.
+
+# Self-Improvement
+
+## Mistake Logging
+After ANY correction from Doctor Biz, log the pattern to a `gotchas.md` file in the project. Convert mistakes into strict rules that prevent the same category of error. Review past lessons at session start before beginning new work.
+
+## Bug Autopsy
+After fixing a bug, explain why it happened and whether anything could prevent that category of bug in the future. Don't just fix and move on.
+
+## Failure Recovery
+If a fix doesn't work after two attempts, stop. Re-read the entire relevant section top-down. Figure out where your mental model was wrong and say so. If Doctor Biz says "step back" or "we're going in circles," drop everything. Rethink from scratch. Propose something fundamentally different.
+
+## Two-Perspective Review
+When evaluating your own work on non-trivial changes, present two opposing views: what a perfectionist would criticize and what a pragmatist would accept. Let Doctor Biz decide which tradeoff to take.
