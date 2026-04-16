@@ -1,6 +1,10 @@
 {
   "cleanupPeriodDays": 999,
   "env": {
+    "CLAUDE_CODE_EFFORT_LEVEL": "max",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "MAX_THINKING_TOKENS": "128000",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_EFFORT_LEVEL": "max",
     "ENABLE_TOOL_SEARCH": "true",
@@ -9,6 +13,10 @@
     "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "200000",
     "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
     "CLAUDE_CODE_NO_FLICKER": "1"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
   },
   "permissions": {
     "allow": [
@@ -21,37 +29,6 @@
       "mcp__pulse__list_recent_entries"
     ],
     "deny": [
-      "Bash(rm -rf *)",
-      "Bash(rm -fr *)",
-      "Bash(sudo *)",
-      "Bash(mkfs *)",
-      "Bash(dd *)",
-      "Bash(wget *|bash*)",
-      "Bash(wget *| bash*)",
-      "Bash(git push --force*)",
-      "Bash(git push *--force*)",
-      "Bash(git reset --hard*)",
-      "Edit(~/.bashrc)",
-      "Edit(~/.zshrc)",
-      "Edit(~/.ssh/**)",
-      "Read(~/.ssh/**)",
-      "Read(~/.gnupg/**)",
-      "Read(~/.aws/**)",
-      "Read(~/.azure/**)",
-      "Read(~/.config/gh/**)",
-      "Read(~/.git-credentials)",
-      "Read(~/.docker/config.json)",
-      "Read(~/.kube/**)",
-      "Read(~/.npmrc)",
-      "Read(~/.npm/**)",
-      "Read(~/.pypirc)",
-      "Read(~/.gem/credentials)",
-      "Read(~/Library/Keychains/**)",
-      "Read(~/Library/Application Support/**/metamask*/**)",
-      "Read(~/Library/Application Support/**/electrum*/**)",
-      "Read(~/Library/Application Support/**/exodus*/**)",
-      "Read(~/Library/Application Support/**/phantom*/**)",
-      "Read(~/Library/Application Support/**/solflare*/**)"
     ]
   },
   "hooks": {
@@ -145,11 +122,10 @@
   },
   "alwaysThinkingEnabled": true,
   "skipDangerousModePermissionPrompt": true,
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  },
   "mcpServers": {
-    "fold-gateway": {
-      "type": "streamable-http",
-      "url": "https://fold-gateway.porpoise-alkaline.ts.net/mcp"
-    },
     "pulse": {
       "command": "pulse",
       "args": [
