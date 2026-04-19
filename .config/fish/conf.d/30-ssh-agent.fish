@@ -1,17 +1,40 @@
 # ABOUTME: Manages SSH agent initialization and key loading
 # ABOUTME: Handles both local terminal and SSH forwarding scenarios
 # 30-ssh-agent.fish
-# Robust SSH agent setup for fish (macOS-aware). No universal vars. No races.
+# Robust SSH agent setup for fish (macOS-aware).
+# Uses a stable socket path (~/.ssh/agent_sock) so all fish processes
+# share one agent. Only spawns a new agent when the stable socket is dead.
 # Behavior:
-#  - If a valid SSH_AUTH_SOCK exists, keep it.
-#  - Else on macOS, try launchd's socket.
-#  - Else start a local agent (fish-native parsing).
-#  - Auto-add keys locally (not when connected over SSH).
-#  - Keys come from $SSH_KEYS or default to id_ed25519/id_rsa if present.
+#  - If SSH_AUTH_SOCK is already valid, keep it (forwarded sessions, etc.)
+#  - Else check the stable socket (~/.ssh/agent_sock) for a running agent
+#  - Else on macOS, try launchd's socket
+#  - Else start a local agent, writing its socket to the stable path
+#  - Auto-add keys locally (not when connected over SSH)
+#  - Keys come from $SSH_KEYS or default to id_ed25519/id_rsa if present
+
+set -g __ssh_agent_stable_sock "$HOME/.ssh/agent_sock"
 
 function __ssh_agent__valid --description 'Return 0 if SSH_AUTH_SOCK is a valid socket'
     if set -q SSH_AUTH_SOCK; and test -S "$SSH_AUTH_SOCK"
         return 0
+    end
+    return 1
+end
+
+function __ssh_agent__from_stable --description 'Try to adopt the shared stable socket'
+    if test -S "$__ssh_agent_stable_sock"
+        set -gx SSH_AUTH_SOCK "$__ssh_agent_stable_sock"
+        # Verify the agent behind the socket is alive
+        # ssh-add -l exits 0 (keys listed) or 1 (no keys) when agent is reachable,
+        # exits 2 when the agent is not reachable
+        ssh-add -l >/dev/null 2>&1
+        set -l agent_status $status
+        if test $agent_status -le 1
+            return 0
+        end
+        # Socket exists but agent is dead — clean it up
+        rm -f "$__ssh_agent_stable_sock"
+        set -e SSH_AUTH_SOCK
     end
     return 1
 end
@@ -22,17 +45,15 @@ function __ssh_agent__symlink --description 'Create stable symlink for tmux pers
         return 0
     end
 
-    set -l stable_sock "$HOME/.ssh/agent_sock"
-
     # If already using the stable path, nothing to do
-    if test "$SSH_AUTH_SOCK" = "$stable_sock"
+    if test "$SSH_AUTH_SOCK" = "$__ssh_agent_stable_sock"
         return 0
     end
 
     # If we have a valid socket, symlink it to the stable path
     if test -S "$SSH_AUTH_SOCK"
-        ln -sf "$SSH_AUTH_SOCK" "$stable_sock" 2>/dev/null
-        set -gx SSH_AUTH_SOCK "$stable_sock"
+        ln -sf "$SSH_AUTH_SOCK" "$__ssh_agent_stable_sock" 2>/dev/null
+        set -gx SSH_AUTH_SOCK "$__ssh_agent_stable_sock"
     end
 end
 
@@ -41,14 +62,15 @@ function __ssh_agent__from_launchd --description 'Try to adopt launchd-managed a
         set -l sock (launchctl getenv SSH_AUTH_SOCK)
         if test -n "$sock"; and test -S "$sock"
             set -gx SSH_AUTH_SOCK "$sock"
-            # SSH_AGENT_PID is not needed with launchd; do not set it.
+            # Point the stable socket here too so other shells find it
+            ln -sf "$sock" "$__ssh_agent_stable_sock" 2>/dev/null
             return 0
         end
     end
     return 1
 end
 
-function __ssh_agent__start --description 'Start a fresh agent and export vars (fish-parse sh output)'
+function __ssh_agent__start --description 'Start a fresh agent and point stable socket to it'
     for line in (ssh-agent -s | string split \n)
         if string match -rq 'SSH_AUTH_SOCK=' -- "$line"
             set -gx SSH_AUTH_SOCK (string replace -r '.*SSH_AUTH_SOCK=([^;]+);.*' '$1' -- "$line")
@@ -56,10 +78,16 @@ function __ssh_agent__start --description 'Start a fresh agent and export vars (
             set -gx SSH_AGENT_PID (string replace -r '.*SSH_AGENT_PID=([0-9]+);.*' '$1' -- "$line")
         end
     end
+    # Point stable socket to the new agent so other shells reuse it
+    if test -S "$SSH_AUTH_SOCK"
+        ln -sf "$SSH_AUTH_SOCK" "$__ssh_agent_stable_sock" 2>/dev/null
+        set -gx SSH_AUTH_SOCK "$__ssh_agent_stable_sock"
+    end
 end
 
 function __ssh_agent__ensure --description 'Ensure a valid agent socket is available'
     __ssh_agent__valid; and return 0
+    __ssh_agent__from_stable; and return 0
     __ssh_agent__from_launchd; and return 0
     __ssh_agent__start
 end
