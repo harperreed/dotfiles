@@ -25,6 +25,18 @@ trust_level = "trusted"
 [projects."/Users/harper/Public/src/2389/tracker-runner"]
 trust_level = "trusted"
 
+[projects."/Users/harper/Public/src/2389/autodidact"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/dot-files"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/tracker"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/harperreed/harperreed-static"]
+trust_level = "trusted"
+
 [mcp_servers.context7]
 command = "npx"
 args = ["-y", "@upstash/context7-mcp"]
