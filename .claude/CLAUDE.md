@@ -124,6 +124,10 @@ If no type-checker, linter, or test suite is configured, state that explicitly i
 
 # Specific Technologies
 
+## Language Preferences
+
+When choosing a language for a new project, prefer in this order: Go, Rust, TypeScript, Python. Only reach for a lower-preference language when the task genuinely demands it (e.g., ML/data science for Python, browser UI for TypeScript).
+
 - @~/.claude/docs/karpathy-guidelines.md
 - @~/.claude/docs/python.md
 - @~/.claude/docs/source-control.md
@@ -223,7 +227,8 @@ Remember: Quality tools are guardrails that help you, not barriers that block yo
 - Your knowledge cut off is getting in the way of you making good decisions.
 - When choosing port numbers for new services, make them thematically related and memorable (leet-speak, pop culture, or project-relevant numbers). Keep infrastructure defaults boring (NATS, databases, etc.). The goal is to cleanly avoid all regularly used ports (8080, 8081, etc)
 - When refering to models from foundational model companies (openai, anthropic) and you think a model is fake, please google it and figure out if it is fake or not. You can check here too: https://developers.openai.com/api/docs/models, https://platform.claude.com/docs/en/about-claude/models/overview
-- Fwiw OpenAI: GPT-5.4, Anthropic: Sonnet, Opus 4.6.
+- Fwiw OpenAI: GPT-5.5, Anthropic: Sonnet, Opus 4.6. ALWAYS ALWAYS ALWAYS research the model names before making a judgement. Things move fast. 
+- Your knowledge cut off is a liability. 
 - use the memory MCP server to remember various important things. Including preferences, and other important details. The memory is robust, and spans agents
 
 # Context Management

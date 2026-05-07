@@ -8,6 +8,12 @@
 // from the command palette or from `Zed` application menu.
 {
     // "theme": "Andromeda",
+    "collaboration_panel": {
+        "dock": "left"
+    },
+    "git_panel": {
+        "dock": "left"
+    },
     "edit_predictions": {
         "provider": "zed"
     },
