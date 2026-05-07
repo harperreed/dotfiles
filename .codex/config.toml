@@ -37,6 +37,147 @@ trust_level = "trusted"
 [projects."/Users/harper/Public/src/personal/harperreed/harperreed-static"]
 trust_level = "trusted"
 
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip758435710/001/8e349b6ab833"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitArtifactRepo_CommitNodeRecordsHistory2655833889/001"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitArtifactRepo_TagCheckpoint1890933182/001"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/remix-partners/remix-os-go-3"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_CommitsRetryExhausted542623745/001/f2a043034273"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip1477867922/001/bd3d34089cf9"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip3053951428/001/60f95ecc2c6b"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip1494520116/001/91838311f16c"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_CommitsRetryExhausted1889146416/001/25617c10ffcd"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitArtifactRepo_CommitNodeRecordsHistory2050850570/001"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_CommitsRetryExhausted3577424649/001/cb440c2b055f"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_CommitsFailOutcome2518878448/001/318ff10e2dd8"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip553470102/001/5875059f2c2d"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_CommitsFailOutcome675414993/001/8522175d7af9"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/harperreed/harper.blog"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/remix-partners/remix-os-go-4"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip2836606367/001/031c675dc509"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_ProducesCommitsPerNode2539740415/001/f71633a71a89"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_CommitsRetryExhausted2566530264/001/e90c1a482e3e"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip4146722158/001/97d9d31494a3"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/transcript-listener"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip2828751345/001/2c27a4994309"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_CommitsRetryExhausted1389658607/001/65b66462ba68"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_CommitsFailOutcome2711213080/001/42d00543ea52"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitArtifactRepo_CommitNodeRecordsHistory4162239198/001"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitArtifactRepo_TagCheckpoint2647855806/001"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_ProducesCommitsPerNode3807256357/001/0bedf4b16422"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip3151060920/001/352284d8e2d5"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitArtifactRepo_CommitNodeRecordsHistory2912412438/001"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/codegen-tracks/sprint-based/code-agent-yaml"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/pipelines"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/gist-slurp"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/codegen-tracks/sprint-based/code-agent"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitPull2155933204/001/work"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitPull1829506344/001/work"]
+trust_level = "trusted"
+
+[projects."/private/tmp/tracker-escape-test/target"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/reachy-mqtt"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip2720674521/001/76cce702c32b"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitArtifactRepo_CommitNodeRecordsHistory3723968580/001"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitArtifactRepo_CommitNodeRecordsHistory1879397526/001"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestGitArtifactRepo_TagCheckpoint1858271478/001"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestExportBundle_RoundTrip2310597534/001/9d664f814e70"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_CommitsRetryExhausted3301284101/001/f8afb99d1917"]
+trust_level = "trusted"
+
+[projects."/private/var/folders/rc/cyjg3p3x0cb4w4xlb8yqm_1h0000gn/T/TestEngine_WithGitArtifacts_ProducesCommitsPerNode1282935927/001/c14c9604a928"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/reachy-agent"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/reachy-agent-openai-realtime"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/reachy-agent-google-live"]
+trust_level = "trusted"
+
 [mcp_servers.context7]
 command = "npx"
 args = ["-y", "@upstash/context7-mcp"]

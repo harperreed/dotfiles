@@ -38,26 +38,12 @@
     "padding": 0
   },
   "enabledPlugins": {
-    "binary-re@2389-research-marketplace": true,
-    "building-multiagent-systems@2389-research-marketplace": true,
-    "css-development@2389-research-marketplace": true,
-    "documentation-audit@2389-research-marketplace": true,
     "elements-of-style@superpowers-marketplace": true,
-    "firebase-development@2389-research-marketplace": true,
-    "fresh-eyes-review@2389-research-marketplace": true,
-    "journal@2389-research-marketplace": false,
-    "landing-page-design@2389-research-marketplace": true,
-    "remote-system-maintenance@2389-research-marketplace": true,
-    "scenario-testing@2389-research-marketplace": true,
-    "socialmedia@2389-research-marketplace": false,
     "superpowers@superpowers-marketplace": true,
     "superpowers-chrome@superpowers-marketplace": true,
     "superpowers-dev@superpowers-marketplace": true,
     "superpowers-developing-for-claude-code@superpowers-marketplace": true,
     "superpowers-lab@superpowers-marketplace": true,
-    "sysadmin@2389-research-marketplace": true,
-    "test-kitchen@2389-research-marketplace": true,
-    "xtool@2389-research-marketplace": true,
     "agent-browser@agent-browser": true,
     "last30days@skills-curated": true,
     "security-awareness@skills-curated": true,
@@ -71,24 +57,26 @@
     "spec-to-code-compliance@trailofbits": true,
     "variant-analysis@trailofbits": true,
     "workflow-skill-design@trailofbits": true,
-    "prbuddy@2389-research-marketplace": true,
-    "product-launcher@2389-research-marketplace": true,
-    "worldview-synthesis@2389-research-marketplace": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "review-squad@2389-research-marketplace": true,
-    "simmer@2389-research-marketplace": true,
     "swift-lsp@claude-plugins-official": true,
     "telegram@claude-plugins-official": true,
-    "summarize-meetings@2389-research-marketplace": true,
-    "claude-seo@agricidaniel-seo": true
+    "claude-seo@agricidaniel-seo": true,
+    "binary-re@2389-research-marketplace": true,
+    "building-multiagent-systems@2389-research-marketplace": true,
+    "css-development@2389-research-marketplace": true,
+    "deliberation@2389-research-marketplace": true,
+    "documentation-audit@2389-research-marketplace": true,
+    "fresh-eyes-review@2389-research-marketplace": true,
+    "landing-page-design@2389-research-marketplace": true,
+    "prbuddy@2389-research-marketplace": true,
+    "remote-system-maintenance@2389-research-marketplace": true,
+    "review-squad@2389-research-marketplace": true,
+    "scenario-testing@2389-research-marketplace": true,
+    "simmer@2389-research-marketplace": true,
+    "test-kitchen@2389-research-marketplace": true,
+    "xtool@2389-research-marketplace": true
   },
   "extraKnownMarketplaces": {
-    "2389-research-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "2389-research/claude-plugins"
-      }
-    },
     "last30days-skill": {
       "source": {
         "source": "github",
@@ -106,9 +94,16 @@
         "source": "github",
         "repo": "AgriciDaniel/claude-seo"
       }
+    },
+    "2389-research-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "2389-research/claude-plugins"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
   "mcpServers": {
     "pulse": {
@@ -120,6 +115,5 @@
   },
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
-  },
-  "effortLevel": "high"
+  }
 }
