@@ -2,82 +2,191 @@
 # ABOUTME: macOS optimizations for low-RAM machines (8GB or less).
 # ABOUTME: Run after set-defaults.sh — only on memory-constrained machines.
 
-set -e
-UID_NUM=$(id -u)
+set -euo pipefail
 
-echo "Configuring low-RAM optimizations..."
+UID_NUM=$(id -u)
+DRY_RUN=0
+
+usage() {
+  cat <<'EOF'
+Usage: low-ram.sh [--dry-run|-n]
+
+Options:
+  -n, --dry-run    Print mutating commands without executing them.
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -n|--dry-run)
+      DRY_RUN=1
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
+log() {
+  echo "$1"
+}
+
+run() {
+  if [[ "$DRY_RUN" == "1" ]]; then
+    printf '+'
+    printf ' %q' "$@"
+    printf '\n'
+  else
+    "$@"
+  fi
+}
+
+require_sudo() {
+  if [[ "$DRY_RUN" == "1" ]]; then
+    log "Dry run mode: skipping sudo authentication."
+  else
+    sudo -v
+  fi
+}
+
+disable_service() {
+  local target="$1"
+
+  # Prevent future auto-start and stop the service if it is currently loaded.
+  run launchctl disable "$target" 2>/dev/null || true
+  run launchctl bootout "$target" 2>/dev/null || true
+}
+
+is_external_volume() {
+  local volume="$1"
+
+  [[ -d "$volume" ]] || return 1
+
+  [[ "$(diskutil info -plist "$volume" 2>/dev/null | plutil -extract RemovableMediaOrExternalDevice raw -o - - 2>/dev/null || echo false)" == "true" ]]
+}
+
+disable_external_spotlight() {
+  local volume
+
+  shopt -s nullglob
+  for volume in /Volumes/*; do
+    is_external_volume "$volume" || continue
+    run sudo mdutil -i off "$volume" 2>/dev/null || true
+  done
+  shopt -u nullglob
+}
+
+report_external_spotlight() {
+  local volume
+
+  shopt -s nullglob
+  for volume in /Volumes/*; do
+    is_external_volume "$volume" || continue
+    mdutil -s "$volume" 2>/dev/null || true
+  done
+  shopt -u nullglob
+}
+
+require_sudo
+
+log "Configuring low-RAM optimizations..."
 
 # ==============================================================================
 # TIER 1: DISABLE BACKGROUND LEECHES
 # ==============================================================================
-echo "→ Disabling background processes..."
+log "→ Disabling background processes..."
 
 # Spotify auto-launch
-launchctl disable "gui/$UID_NUM/com.spotify.client.startuphelper" 2>/dev/null || true
+disable_service "gui/$UID_NUM/com.spotify.client.startuphelper"
 
 # Zoom daemon + updaters (3 plists)
-sudo launchctl disable system/us.zoom.ZoomDaemon 2>/dev/null || true
-launchctl disable "gui/$UID_NUM/us.zoom.updater" 2>/dev/null || true
-launchctl disable "gui/$UID_NUM/us.zoom.updater.login.check" 2>/dev/null || true
+run sudo launchctl disable system/us.zoom.ZoomDaemon 2>/dev/null || true
+run sudo launchctl bootout system/us.zoom.ZoomDaemon 2>/dev/null || true
+disable_service "gui/$UID_NUM/us.zoom.updater"
+disable_service "gui/$UID_NUM/us.zoom.updater.login.check"
 
 # OpenAI chat helper
-launchctl disable "gui/$UID_NUM/com.openai.chat-helper" 2>/dev/null || true
+disable_service "gui/$UID_NUM/com.openai.chat-helper"
 
 # Helium updater processes
-launchctl disable "gui/$UID_NUM/net.imput.helium-sparkle-updater" 2>/dev/null || true
-launchctl disable "gui/$UID_NUM/net.imput.helium-sparkle-progress" 2>/dev/null || true
+disable_service "gui/$UID_NUM/net.imput.helium-sparkle-updater"
+disable_service "gui/$UID_NUM/net.imput.helium-sparkle-progress"
 
 # ==============================================================================
 # TIER 2: REDUCE SYSTEM OVERHEAD
 # ==============================================================================
-echo "→ Reducing visual overhead..."
+log "→ Reducing visual overhead..."
 
-# Reduce transparency (fewer compositing layers for WindowServer)
-defaults write com.apple.universalaccess reduceTransparency -bool true
+# Reduce transparency to cut visual effects overhead.
+run defaults write com.apple.universalaccess reduceTransparency -bool true
 
-# Reduce motion (fewer animation frames held in memory)
-defaults write com.apple.universalaccess reduceMotion -bool true
+# Reduce motion to limit animation churn.
+run defaults write com.apple.universalaccess reduceMotion -bool true
 
-# Disable wallpaper tinting (overrides set-defaults.sh glass diffusion)
-defaults write NSGlobalDomain NSGlassDiffusionSetting -int 0
+# Disable wallpaper tinting (overrides set-defaults.sh glass diffusion).
+run defaults write NSGlobalDomain NSGlassDiffusionSetting -int 0
 
-echo "→ Window management..."
+log "→ Window management..."
 
-# Disable window resume (prevents storing window state blobs in memory)
-defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
+# Disable window resume so apps do not reopen previous window sets by default.
+run defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
-echo "→ Spotlight..."
+log "→ Spotlight..."
 
-# Disable Spotlight indexing on external volumes (mdworker is a RAM pig)
-sudo mdutil -i off /Volumes/* 2>/dev/null || true
+# Disable Spotlight indexing on currently mounted external volumes.
+disable_external_spotlight
 
-# Reduce Spotlight indexing scope — disable categories that spawn mdworker_shared
-# Keep: Applications, System Preferences, Calculator, Folders, Documents
-# Disable: heavy indexers like Mail, Messages, Fonts, Music, etc.
-defaults write com.apple.spotlight orderedItems -array \
-  '{ enabled = 1; name = APPLICATIONS; }' \
-  '{ enabled = 1; name = "SYSTEM_PREFS"; }' \
-  '{ enabled = 1; name = DIRECTORIES; }' \
-  '{ enabled = 1; name = DOCUMENTS; }' \
-  '{ enabled = 1; name = "SOURCE"; }' \
-  '{ enabled = 0; name = FONTS; }' \
-  '{ enabled = 0; name = "MESSAGES"; }' \
-  '{ enabled = 0; name = "CONTACT"; }' \
-  '{ enabled = 0; name = "EVENT_TODO"; }' \
-  '{ enabled = 0; name = IMAGES; }' \
-  '{ enabled = 0; name = BOOKMARKS; }' \
-  '{ enabled = 0; name = MUSIC; }' \
-  '{ enabled = 0; name = MOVIES; }' \
-  '{ enabled = 0; name = PRESENTATIONS; }' \
-  '{ enabled = 0; name = SPREADSHEETS; }' \
-  '{ enabled = 0; name = "PDF"; }'
+# Rewriting Spotlight categories is mostly a search-preference choice, not a
+# proven RAM optimization. Leave it opt-in so the script stays conservative.
+if [[ "${LOW_RAM_REWRITE_SPOTLIGHT_CATEGORIES:-0}" == "1" ]]; then
+  log "→ Rewriting Spotlight categories (opt-in)..."
+  run defaults write com.apple.spotlight orderedItems -array \
+    '{ enabled = 1; name = APPLICATIONS; }' \
+    '{ enabled = 1; name = "SYSTEM_PREFS"; }' \
+    '{ enabled = 1; name = DIRECTORIES; }' \
+    '{ enabled = 1; name = DOCUMENTS; }' \
+    '{ enabled = 1; name = "SOURCE"; }' \
+    '{ enabled = 0; name = FONTS; }' \
+    '{ enabled = 0; name = "MESSAGES"; }' \
+    '{ enabled = 0; name = "CONTACT"; }' \
+    '{ enabled = 0; name = "EVENT_TODO"; }' \
+    '{ enabled = 0; name = IMAGES; }' \
+    '{ enabled = 0; name = BOOKMARKS; }' \
+    '{ enabled = 0; name = MUSIC; }' \
+    '{ enabled = 0; name = MOVIES; }' \
+    '{ enabled = 0; name = PRESENTATIONS; }' \
+    '{ enabled = 0; name = SPREADSHEETS; }' \
+    '{ enabled = 0; name = "PDF"; }'
+else
+  log "→ Leaving Spotlight category order unchanged."
+fi
 
 # ==============================================================================
 # REPORT
 # ==============================================================================
 echo ""
+echo "Disabled launch services:"
+launchctl print-disabled "gui/$UID_NUM" 2>/dev/null | grep -E "spotify|zoom|openai|helium" || true
+if [[ "$DRY_RUN" == "1" ]]; then
+  echo "  (dry run: skipped system launchctl verification)"
+else
+  sudo launchctl print-disabled system 2>/dev/null | grep -i "zoom" || true
+fi
+
+echo ""
+echo "Spotlight status for mounted external volumes:"
+report_external_spotlight
+
+echo ""
 echo "Currently loaded non-Apple launch agents:"
-launchctl list | grep -v "com.apple" | grep -v "PID" | awk '{print "  " $3}' | sort
+launchctl list | grep -v "com.apple" | grep -v "PID" | awk '{print "  " $3}' | sort || true
 
 echo ""
 echo "Done. Some changes require logout/restart."
