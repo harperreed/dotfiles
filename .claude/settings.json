@@ -38,63 +38,44 @@
     "padding": 0
   },
   "enabledPlugins": {
-    "elements-of-style@superpowers-marketplace": true,
+    "elements-of-style@superpowers-marketplace": false,
     "superpowers@superpowers-marketplace": true,
-    "superpowers-chrome@superpowers-marketplace": true,
+    "superpowers-chrome@superpowers-marketplace": false,
     "superpowers-dev@superpowers-marketplace": true,
     "superpowers-developing-for-claude-code@superpowers-marketplace": true,
     "superpowers-lab@superpowers-marketplace": true,
     "agent-browser@agent-browser": true,
-    "last30days@skills-curated": true,
+    "last30days@skills-curated": false,
     "security-awareness@skills-curated": true,
-    "x-research@skills-curated": true,
-    "ask-questions-if-underspecified@trailofbits": true,
-    "audit-context-building@trailofbits": true,
-    "differential-review@trailofbits": true,
-    "git-cleanup@trailofbits": true,
-    "insecure-defaults@trailofbits": true,
-    "modern-python@trailofbits": true,
-    "spec-to-code-compliance@trailofbits": true,
-    "variant-analysis@trailofbits": true,
-    "workflow-skill-design@trailofbits": true,
+    "x-research@skills-curated": false,
+    "ask-questions-if-underspecified@trailofbits": false,
+    "audit-context-building@trailofbits": false,
+    "differential-review@trailofbits": false,
+    "git-cleanup@trailofbits": false,
+    "insecure-defaults@trailofbits": false,
+    "modern-python@trailofbits": false,
+    "spec-to-code-compliance@trailofbits": false,
+    "variant-analysis@trailofbits": false,
+    "workflow-skill-design@trailofbits": false,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true,
-    "telegram@claude-plugins-official": true,
-    "claude-seo@agricidaniel-seo": true,
+    "swift-lsp@claude-plugins-official": false,
+    "telegram@claude-plugins-official": false,
     "binary-re@2389-research-marketplace": true,
-    "building-multiagent-systems@2389-research-marketplace": true,
+    "building-multiagent-systems@2389-research-marketplace": false,
     "css-development@2389-research-marketplace": true,
-    "deliberation@2389-research-marketplace": true,
+    "deliberation@2389-research-marketplace": false,
     "documentation-audit@2389-research-marketplace": true,
     "fresh-eyes-review@2389-research-marketplace": true,
     "landing-page-design@2389-research-marketplace": true,
-    "prbuddy@2389-research-marketplace": true,
+    "prbuddy@2389-research-marketplace": false,
     "remote-system-maintenance@2389-research-marketplace": true,
     "review-squad@2389-research-marketplace": true,
     "scenario-testing@2389-research-marketplace": true,
     "simmer@2389-research-marketplace": true,
     "test-kitchen@2389-research-marketplace": true,
-    "xtool@2389-research-marketplace": true
+    "xtool@2389-research-marketplace": false
   },
   "extraKnownMarketplaces": {
-    "last30days-skill": {
-      "source": {
-        "source": "github",
-        "repo": "mvanhorn/last30days-skill"
-      }
-    },
-    "skyvalley-marketplace": {
-      "source": {
-        "source": "git",
-        "url": "https://github.com/sky-valley/claude-code-marketplace.git"
-      }
-    },
-    "agricidaniel-seo": {
-      "source": {
-        "source": "github",
-        "repo": "AgriciDaniel/claude-seo"
-      }
-    },
     "2389-research-marketplace": {
       "source": {
         "source": "github",

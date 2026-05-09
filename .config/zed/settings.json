@@ -8,6 +8,7 @@
 // from the command palette or from `Zed` application menu.
 {
     // "theme": "Andromeda",
+    "cli_default_open_behavior": "existing_window",
     "collaboration_panel": {
         "dock": "left"
     },

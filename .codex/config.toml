@@ -178,6 +178,9 @@ trust_level = "trusted"
 [projects."/Users/harper/Public/src/2389/reachy-agent-google-live"]
 trust_level = "trusted"
 
+[projects."/Users/harper/Public/src/2389/barnstormer"]
+trust_level = "trusted"
+
 [mcp_servers.context7]
 command = "npx"
 args = ["-y", "@upstash/context7-mcp"]
@@ -216,3 +219,6 @@ enabled = true
 
 [plugins."google-drive@openai-curated"]
 enabled = true
+
+[tui.model_availability_nux]
+"gpt-5.5" = 1
