@@ -34,3 +34,7 @@ end
 set -gx PATH $PATH /Users/harper/.lmstudio/bin
 # End of LM Studio CLI section
 
+
+if status is-interactive
+    atuin init fish | source
+end

@@ -221,3 +221,99 @@
 [2025-12-15 22:48:05] [ERROR] Bootstrap failed with exit code: 1
 [2025-12-15 22:48:05] [INFO] Check log file: /Users/harper/.config/yadm/bootstrap.log
 >>>>>>> Stashed changes
+[2026-03-26 15:36:22] [INFO] Starting yadm bootstrap
+[2026-03-26 15:36:22] [INFO] Bootstrap directory: /Users/harper/.config/yadm/bootstrap.d
+[2026-03-26 15:36:22] [INFO] Detected platform: darwin
+[2026-03-26 15:36:22] [INFO] Architecture: arm64
+[2026-03-26 15:36:22] [INFO] Running platform bootstrap: /Users/harper/.config/yadm/bootstrap.d/darwin.sh
+[2026-03-26 15:36:22] [INFO] Starting Darwin bootstrap
+[2026-03-26 15:36:22] [INFO] Darwin bootstrap started
+[2026-03-26 15:36:22] [INFO] Homebrew is already installed
+[2026-03-26 15:36:22] [INFO] Line already exists in /Users/harper/.zprofile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 15:36:22] [INFO] Backing up /Users/harper/.bash_profile to /Users/harper/.bash_profile.yadm-backup.20260326_153622
+[2026-03-26 15:36:22] [SUCCESS] Added to /Users/harper/.bash_profile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 15:36:22] [INFO] Installing packages from Brewfile
+[2026-03-26 15:36:22] [INFO] Executing: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2026-03-26 16:24:05] [ERROR] Command failed: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2026-03-26 16:24:05] [ERROR] Bootstrap failed with exit code: 1
+[2026-03-26 16:24:05] [INFO] Check log file: /Users/harper/.config/yadm/bootstrap.log
+[2026-03-26 16:25:05] [INFO] Starting yadm bootstrap
+[2026-03-26 16:25:05] [INFO] Bootstrap directory: /Users/harper/.config/yadm/bootstrap.d
+[2026-03-26 16:25:05] [INFO] Detected platform: darwin
+[2026-03-26 16:25:05] [INFO] Architecture: arm64
+[2026-03-26 16:25:05] [INFO] Running platform bootstrap: /Users/harper/.config/yadm/bootstrap.d/darwin.sh
+[2026-03-26 16:25:05] [INFO] Starting Darwin bootstrap
+[2026-03-26 16:25:05] [INFO] Darwin bootstrap started
+[2026-03-26 16:25:05] [INFO] Homebrew is already installed
+[2026-03-26 16:25:05] [INFO] Line already exists in /Users/harper/.zprofile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 16:25:05] [INFO] Line already exists in /Users/harper/.bash_profile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 16:25:05] [INFO] Installing packages from Brewfile
+[2026-03-26 16:25:05] [INFO] Executing: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2026-03-26 16:29:01] [ERROR] Command failed: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2026-03-26 16:29:01] [ERROR] Bootstrap failed with exit code: 1
+[2026-03-26 16:29:01] [INFO] Check log file: /Users/harper/.config/yadm/bootstrap.log
+[2026-03-26 16:29:39] [INFO] Starting yadm bootstrap
+[2026-03-26 16:29:39] [INFO] Bootstrap directory: /Users/harper/.config/yadm/bootstrap.d
+[2026-03-26 16:29:39] [INFO] Detected platform: darwin
+[2026-03-26 16:29:39] [INFO] Architecture: arm64
+[2026-03-26 16:29:39] [INFO] Running platform bootstrap: /Users/harper/.config/yadm/bootstrap.d/darwin.sh
+[2026-03-26 16:29:39] [INFO] Starting Darwin bootstrap
+[2026-03-26 16:29:39] [INFO] Darwin bootstrap started
+[2026-03-26 16:29:39] [INFO] Homebrew is already installed
+[2026-03-26 16:29:39] [INFO] Line already exists in /Users/harper/.zprofile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 16:29:39] [INFO] Line already exists in /Users/harper/.bash_profile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 16:29:39] [INFO] Installing packages from Brewfile
+[2026-03-26 16:29:39] [INFO] Executing: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2026-03-26 16:29:54] [ERROR] Command failed: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2026-03-26 16:29:54] [ERROR] Bootstrap failed with exit code: 1
+[2026-03-26 16:29:54] [INFO] Check log file: /Users/harper/.config/yadm/bootstrap.log
+[2026-03-26 16:30:02] [INFO] Starting yadm bootstrap
+[2026-03-26 16:30:02] [INFO] Bootstrap directory: /Users/harper/.config/yadm/bootstrap.d
+[2026-03-26 16:30:02] [INFO] Detected platform: darwin
+[2026-03-26 16:30:02] [INFO] Architecture: arm64
+[2026-03-26 16:30:02] [INFO] Running platform bootstrap: /Users/harper/.config/yadm/bootstrap.d/darwin.sh
+[2026-03-26 16:30:02] [INFO] Starting Darwin bootstrap
+[2026-03-26 16:30:02] [INFO] Darwin bootstrap started
+[2026-03-26 16:30:02] [INFO] Homebrew is already installed
+[2026-03-26 16:30:02] [INFO] Line already exists in /Users/harper/.zprofile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 16:30:02] [INFO] Line already exists in /Users/harper/.bash_profile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 16:30:02] [INFO] Installing packages from Brewfile
+[2026-03-26 16:30:02] [INFO] Executing: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2026-03-26 16:30:14] [ERROR] Command failed: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2026-03-26 16:30:14] [ERROR] Bootstrap failed with exit code: 1
+[2026-03-26 16:30:14] [INFO] Check log file: /Users/harper/.config/yadm/bootstrap.log
+[2026-03-26 16:37:43] [INFO] Starting yadm bootstrap
+[2026-03-26 16:37:43] [INFO] Bootstrap directory: /Users/harper/.config/yadm/bootstrap.d
+[2026-03-26 16:37:43] [INFO] Detected platform: darwin
+[2026-03-26 16:37:43] [INFO] Architecture: arm64
+[2026-03-26 16:37:43] [INFO] Running platform bootstrap: /Users/harper/.config/yadm/bootstrap.d/darwin.sh
+[2026-03-26 16:37:43] [INFO] Starting Darwin bootstrap
+[2026-03-26 16:37:43] [INFO] Darwin bootstrap started
+[2026-03-26 16:37:43] [INFO] Homebrew is already installed
+[2026-03-26 16:37:43] [INFO] Line already exists in /Users/harper/.zprofile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 16:37:43] [INFO] Line already exists in /Users/harper/.bash_profile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 16:37:43] [INFO] Backing up /Users/harper/.profile to /Users/harper/.profile.yadm-backup.20260326_163743
+[2026-03-26 16:37:43] [SUCCESS] Added to /Users/harper/.profile: eval "$(/opt/homebrew/bin/brew shellenv)"
+[2026-03-26 16:37:43] [INFO] Installing packages from Brewfile
+[2026-03-26 16:37:43] [INFO] Executing: brew bundle --file '/Users/harper/.config/brewfile/Brewfile'
+[2026-03-26 16:38:04] [INFO] Executing: brew cleanup
+[2026-03-26 16:38:16] [INFO] Adding Fish shell to /etc/shells
+[2026-03-26 16:38:16] [INFO] This operation requires sudo privileges
+[2026-03-26 16:38:19] [INFO] Executing: echo '/opt/homebrew/bin/fish' | sudo tee -a /etc/shells
+[2026-03-26 16:38:22] [INFO] Executing: chsh -s '/opt/homebrew/bin/fish'
+[2026-03-26 16:38:24] [SUCCESS] Fish set as default shell
+[2026-03-26 16:38:24] [INFO] Installing fonts
+[2026-03-26 16:38:24] [INFO] No fonts found to install
+[2026-03-26 16:38:24] [INFO] uv is already installed
+[2026-03-26 16:38:24] [INFO] mise is already installed
+[2026-03-26 16:38:25] [INFO] atuin is already installed
+[2026-03-26 16:38:25] [INFO] Configuring SSH config symlink
+[2026-03-26 16:38:25] [SUCCESS] SSH config symlink created: /Users/harper/.ssh/config_local -> config_darwin
+[2026-03-26 16:38:27] [INFO] Configuring macOS settings
+[2026-03-26 16:38:28] [SUCCESS] macOS settings configured
+[2026-03-26 16:38:28] [SUCCESS] Darwin bootstrap completed
+[2026-03-26 16:38:28] [INFO] Remember to:
+[2026-03-26 16:38:28] [INFO]   - Restart terminal for shell changes
+[2026-03-26 16:38:28] [INFO]   - Sign in to App Store for Mac App Store apps
+[2026-03-26 16:38:28] [INFO]   - Run 'brew doctor' to verify installation
+[2026-03-26 16:38:28] [SUCCESS] Bootstrap completed successfully
