@@ -1,6 +1,8 @@
 personality = "pragmatic"
-model = "gpt-5.4"
-model_reasoning_effort = "high"
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+notify = ["/Users/harper/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
+
 [projects."/Users/harper/Public/src/personal/adsb-kit"]
 trust_level = "trusted"
 
@@ -181,6 +183,33 @@ trust_level = "trusted"
 [projects."/Users/harper/Public/src/2389/barnstormer"]
 trust_level = "trusted"
 
+[projects."/Users/harper/Public/src/2389/claude-session-driver"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/aiproxy-codex"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/mux-mush"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/storytime"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/glassspider"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/aiproxy"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/kanmail-cc"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/adsb-anomoly-sensor"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/interrogator"]
+trust_level = "trusted"
+
 [mcp_servers.context7]
 command = "npx"
 args = ["-y", "@upstash/context7-mcp"]
@@ -205,6 +234,23 @@ args = ["mcp"]
 command = "memo"
 args = ["mcp"]
 
+[mcp_servers.node_repl]
+args = []
+command = "/Applications/Codex.app/Contents/Resources/node_repl"
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_MARKETPLACE_NAME = "openai-bundled"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+CODEX_HOME = "/Users/harper/.codex"
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = ""
+NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/node"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "167fdf579477181fba1773c1efb067b00c5a64fe85dafb50a2001bde198dc739"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/harper/.codex"
+NODE_REPL_UNTRUSTED_ENV_ALLOWLIST = "BROWSER_USE_MARKETPLACE_NAME"
+
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
 
@@ -220,5 +266,30 @@ enabled = true
 [plugins."google-drive@openai-curated"]
 enabled = true
 
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
 [tui.model_availability_nux]
-"gpt-5.5" = 2
+"gpt-5.5" = 4
+
+[marketplaces.openai-bundled]
+last_updated = "2026-05-21T19:24:12Z"
+source_type = "local"
+source = "/Users/harper/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-05-21T20:11:55Z"
+source_type = "local"
+source = "/Users/harper/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[features]
+js_repl = false

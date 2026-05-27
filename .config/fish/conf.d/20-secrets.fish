@@ -4,6 +4,7 @@
 # Load secrets from ~/.secrets/secrets.env if it exists
 if test -f ~/.secrets/secrets.env
     for i in (cat ~/.secrets/secrets.env)
+        test -z "$i"; and continue
         if test (echo $i | sed -E 's/^[[:space:]]*(.).+$/\\1/g') != "#"
             set arr (echo $i |tr = \n)
             set -gx $arr[1] $arr[2]

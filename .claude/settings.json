@@ -38,12 +38,6 @@
     "padding": 0
   },
   "enabledPlugins": {
-    "elements-of-style@superpowers-marketplace": false,
-    "superpowers@superpowers-marketplace": true,
-    "superpowers-chrome@superpowers-marketplace": false,
-    "superpowers-dev@superpowers-marketplace": true,
-    "superpowers-developing-for-claude-code@superpowers-marketplace": true,
-    "superpowers-lab@superpowers-marketplace": true,
     "agent-browser@agent-browser": true,
     "last30days@skills-curated": false,
     "security-awareness@skills-curated": true,
@@ -73,7 +67,8 @@
     "scenario-testing@2389-research-marketplace": true,
     "simmer@2389-research-marketplace": true,
     "test-kitchen@2389-research-marketplace": true,
-    "xtool@2389-research-marketplace": false
+    "xtool@2389-research-marketplace": false,
+    "superpowers@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "2389-research-marketplace": {
@@ -86,6 +81,7 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark",
   "mcpServers": {
     "pulse": {
       "command": "pulse",
