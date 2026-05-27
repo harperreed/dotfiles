@@ -10,10 +10,10 @@
     // "theme": "Andromeda",
     "cli_default_open_behavior": "existing_window",
     "collaboration_panel": {
-        "dock": "left"
+        "dock": "right"
     },
     "git_panel": {
-        "dock": "left"
+        "dock": "right"
     },
     "edit_predictions": {
         "provider": "zed"
@@ -109,7 +109,7 @@
         // Whether to show the assistant panel button in the status bar.
         "button": true,
         // Where to dock the assistant panel. Can be 'left', 'right' or 'bottom'.
-        "dock": "right",
+        "dock": "left",
         // Default width when the assistant is docked to the left or right.
         "default_width": 640,
         // Default height when the assistant is docked to the bottom.
@@ -125,7 +125,7 @@
         "metrics": false
     },
     "project_panel": {
-        "dock": "left",
+        "dock": "right",
         "git_status": true,
         "button": true
     },

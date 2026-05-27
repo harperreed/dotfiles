@@ -5,7 +5,7 @@ idiomatic_version_file_enable_tools = ["python"]
 [tools]
 usage = "latest"
 node = "latest"
-go = "latest"
+go = "1.26.3"
 rust = "latest"
 claude = { version = "latest", bin = "claude", platforms = """
 [linux-arm64]
