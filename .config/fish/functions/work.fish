@@ -18,7 +18,7 @@ function work --description "ssh -t <host> and run utm (default), herdr, or boo 
 
   set -l remote_cmd utm
   if set -q _flag_herdr
-    set remote_cmd herdr
+    set remote_cmd uhm
   else if set -q _flag_boo
     set remote_cmd 'boo ui'
   end
