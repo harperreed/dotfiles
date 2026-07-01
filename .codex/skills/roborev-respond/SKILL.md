@@ -1,54 +1,84 @@
 ---
-name: roborev:respond
-description: Add a comment to a roborev code review and mark it as addressed
+name: roborev-respond
+description: Add a comment to a roborev code review and close it
 ---
 
-# roborev:respond
+# roborev-respond
 
-Record a comment on a roborev code review and mark it as addressed.
+Record a comment on a roborev code review and close it.
 
 ## Usage
 
 ```
-$roborev:respond <job_id> [message]
+$roborev-respond <job_id> [message]
 ```
 
 ## IMPORTANT
 
-This skill requires you to **execute bash commands** to record the comment and mark the review addressed. The task is not complete until you run both commands and see confirmation output.
+This skill requires you to **execute bash commands** to record the comment and close the review. The task is not complete until you run both commands and see confirmation output.
+
+These instructions are guidelines, not a rigid script. Use the conversation
+context. Skip steps that are already satisfied. Defer to project-level
+CLAUDE.md instructions when they conflict with these steps.
 
 ## Instructions
 
-When the user invokes `$roborev:respond <job_id> [message]`:
+When the user invokes `$roborev-respond <job_id> [message]`:
 
-1. **If a message is provided**, immediately execute:
-   ```bash
-   roborev comment --job <job_id> "<message>" && roborev address <job_id>
-   ```
+### 1. Validate input
 
-2. **If no message is provided**, ask the user what they'd like to say, then execute the commands with their comment.
+If no job_id is provided, inform the user that a job ID is required. Suggest `roborev status` or `roborev fix --list` to find job IDs. Discovery surfaces synthesis parents (and non-panel reviews), never individual panel members, so the job ID you comment on and close is the parent.
 
-3. **Verify success** - both commands will output confirmation. If either fails, report the error.
+If a job_id is provided, inspect it before closing:
 
-The comment is recorded in roborev's database and the review is marked as addressed. View results with `roborev show`.
+```bash
+roborev show --job <job_id> --json
+```
+
+If `job.panel_role` is `"member"`, do **not** comment on or close that job.
+Resolve the synthesis parent for the same `job.panel_run_uuid` if it is already
+known from the conversation or discovery output; otherwise ask the user for the
+synthesis parent ID. Only continue once the resolved job ID is a synthesis
+parent or a non-panel review.
+
+### 2. Record the comment and close the review
+
+**If a message is provided**, immediately execute:
+```bash
+roborev comment --job <resolved_job_id> "<message>" && roborev close <resolved_job_id>
+```
+
+If the message contains quotes or special characters, escape them properly in the bash command.
+
+**If no message is provided**, ask the user what they'd like to say, then execute the commands with their comment.
+
+### 3. Verify success
+
+Both commands will output confirmation. If either fails, report the error to the user. Common causes:
+- The daemon is not running
+- The job ID does not exist
+- The repo is not initialized (suggest `roborev init`)
+- The review is already closed (not an error, but worth noting to the user)
+
+The comment is recorded in roborev's database and the review is closed. View results with `roborev show`.
 
 ## Examples
 
 **With message provided:**
 
-User: `$roborev:respond 1019 Fixed all issues`
+User: `$roborev-respond 1019 Fixed all issues`
 
 Agent action:
 ```bash
-roborev comment --job 1019 "Fixed all issues" && roborev address 1019
+roborev comment --job 1019 "Fixed all issues" && roborev close 1019
 ```
-Then confirm: "Comment recorded and review #1019 marked as addressed."
+Then confirm: "Comment recorded and review #1019 closed."
 
 ---
 
 **Without message:**
 
-User: `$roborev:respond 1019`
+User: `$roborev-respond 1019`
 
 Agent: "What would you like to say about review #1019?"
 
@@ -56,6 +86,10 @@ User: "The null check was a false positive"
 
 Agent action:
 ```bash
-roborev comment --job 1019 "The null check was a false positive" && roborev address 1019
+roborev comment --job 1019 "The null check was a false positive" && roborev close 1019
 ```
-Then confirm: "Comment recorded and review #1019 marked as addressed."
+Then confirm: "Comment recorded and review #1019 closed."
+
+## See also
+
+- `$roborev-fix` — fix a review's findings in code, then comment and close it
