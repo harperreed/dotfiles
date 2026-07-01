@@ -210,6 +210,51 @@ trust_level = "trusted"
 [projects."/Users/harper/Public/src/2389/interrogator"]
 trust_level = "trusted"
 
+[projects."/Users/harper/Public/src/2389/kittyhawk-sow"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/gsuite-mcp"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/aed"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/homeworld"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/grove"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/spaces"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/wire"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/manager"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/hawk"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/hex"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/bot-socialmedia-server"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/superpowers-beta-cloud/superpowers-cloud-build-main"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/mux"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/pingpong"]
+trust_level = "trusted"
+
 [mcp_servers.context7]
 command = "npx"
 args = ["-y", "@upstash/context7-mcp"]
@@ -240,16 +285,17 @@ command = "/Applications/Codex.app/Contents/Resources/node_repl"
 startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
-BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
-BROWSER_USE_MARKETPLACE_NAME = "openai-bundled"
-CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
-CODEX_HOME = "/Users/harper/.codex"
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
 NODE_REPL_NODE_MODULE_DIRS = ""
 NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/node"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "167fdf579477181fba1773c1efb067b00c5a64fe85dafb50a2001bde198dc739"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/harper/.codex"
-NODE_REPL_UNTRUSTED_ENV_ALLOWLIST = "BROWSER_USE_MARKETPLACE_NAME"
+CODEX_HOME = "/Users/harper/.codex"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "0b0d41e7a14a4903d2f95b0b3f427ed796b12c8edca2fa392a03df43997075ae"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
 
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
@@ -266,9 +312,6 @@ enabled = true
 [plugins."google-drive@openai-curated"]
 enabled = true
 
-[plugins."browser@openai-bundled"]
-enabled = true
-
 [plugins."documents@openai-primary-runtime"]
 enabled = true
 
@@ -278,18 +321,42 @@ enabled = true
 [plugins."presentations@openai-primary-runtime"]
 enabled = true
 
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."superpowers@openai-curated"]
+enabled = true
+
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 
 [marketplaces.openai-bundled]
-last_updated = "2026-05-21T19:24:12Z"
+last_updated = "2026-05-29T21:14:15Z"
 source_type = "local"
 source = "/Users/harper/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-05-21T20:11:55Z"
+last_updated = "2026-06-01T18:12:15Z"
 source_type = "local"
 source = "/Users/harper/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
 [features]
+hooks = true
 js_repl = false
+
+[hooks.state]
+
+[hooks.state."/Users/harper/.codex/hooks.json:permission_request:0:0"]
+trusted_hash = "sha256:a7c576795ac7bea8e2702f669fd0dd2d25b664d6813bb293d2921f14ecd7c398"
+
+[hooks.state."/Users/harper/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:7b3de0102c38701200e185837043b2268cd10afeab2fc5c3fc495c6799fe4209"
+
+[hooks.state."/Users/harper/.codex/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:af787c6c24fb93f49ec22848939ea0625b96e186ab31eafcaccc64a39d171794"
+
+[hooks.state."/Users/harper/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:0904468b685b60d4f2dc73da0f356f1f3fccd1161f277813f8780a2641aeeea9"
+
+[hooks.state."/Users/harper/.codex/hooks.json:session_start:1:0"]
+trusted_hash = "sha256:abe8732863af57591845a56ceb2fb40e6cd9a4803e76dcd3867a715940bf6802"

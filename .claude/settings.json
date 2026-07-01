@@ -1,16 +1,16 @@
 {
   "cleanupPeriodDays": 999,
   "env": {
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "200000",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_EFFORT_LEVEL": "max",
-    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_NO_FLICKER": "1",
+    "MAX_CONSECUTIVE_AUTOCOMPACT_FAILURES": "3",
     "MAX_THINKING_TOKENS": "128000",
     "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
-    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
-    "ENABLE_TOOL_SEARCH": "true",
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "MAX_CONSECUTIVE_AUTOCOMPACT_FAILURES": "3",
-    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "200000",
-    "CLAUDE_CODE_NO_FLICKER": "1"
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "ENABLE_TOOL_SEARCH": "true"
   },
   "attribution": {
     "commit": "",
@@ -30,6 +30,61 @@
           }
         ]
       }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/harper/.local/bin/moshi-hook' claude-hook",
+            "timeout": 300,
+            "async": false
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/harper/.local/bin/moshi-hook' claude-hook",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/harper/.local/bin/moshi-hook' claude-hook",
+            "async": true
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/harper/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/Users/harper/.local/bin/moshi-hook' claude-hook",
+            "async": true
+          }
+        ]
+      }
     ]
   },
   "statusLine": {
@@ -39,36 +94,37 @@
   },
   "enabledPlugins": {
     "agent-browser@agent-browser": true,
-    "last30days@skills-curated": false,
-    "security-awareness@skills-curated": true,
-    "x-research@skills-curated": false,
     "ask-questions-if-underspecified@trailofbits": false,
     "audit-context-building@trailofbits": false,
-    "differential-review@trailofbits": false,
-    "git-cleanup@trailofbits": false,
-    "insecure-defaults@trailofbits": false,
-    "modern-python@trailofbits": false,
-    "spec-to-code-compliance@trailofbits": false,
-    "variant-analysis@trailofbits": false,
-    "workflow-skill-design@trailofbits": false,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": false,
-    "telegram@claude-plugins-official": false,
     "binary-re@2389-research-marketplace": true,
     "building-multiagent-systems@2389-research-marketplace": false,
     "css-development@2389-research-marketplace": true,
     "deliberation@2389-research-marketplace": false,
+    "differential-review@trailofbits": false,
     "documentation-audit@2389-research-marketplace": true,
     "fresh-eyes-review@2389-research-marketplace": true,
+    "git-cleanup@trailofbits": false,
+    "insecure-defaults@trailofbits": false,
     "landing-page-design@2389-research-marketplace": true,
+    "last30days@skills-curated": false,
+    "modern-python@trailofbits": false,
     "prbuddy@2389-research-marketplace": false,
     "remote-system-maintenance@2389-research-marketplace": true,
     "review-squad@2389-research-marketplace": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
     "scenario-testing@2389-research-marketplace": true,
+    "security-awareness@skills-curated": true,
     "simmer@2389-research-marketplace": true,
+    "spec-to-code-compliance@trailofbits": false,
+    "superpowers@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": false,
+    "telegram@claude-plugins-official": false,
     "test-kitchen@2389-research-marketplace": true,
-    "xtool@2389-research-marketplace": false,
-    "superpowers@claude-plugins-official": true
+    "thrifty@thrifty": true,
+    "variant-analysis@trailofbits": false,
+    "workflow-skill-design@trailofbits": false,
+    "x-research@skills-curated": false,
+    "xtool@2389-research-marketplace": false
   },
   "extraKnownMarketplaces": {
     "2389-research-marketplace": {
@@ -76,21 +132,27 @@
         "source": "github",
         "repo": "2389-research/claude-plugins"
       }
+    },
+    "thrifty": {
+      "source": {
+        "source": "github",
+        "repo": "2389-research/thrifty"
+      }
     }
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
-  "mcpServers": {
-    "pulse": {
-      "command": "pulse",
-      "args": [
-        "mcp"
-      ]
-    }
-  },
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
+  },
+  "mcpServers": {
+    "pulse": {
+      "args": [
+        "mcp"
+      ],
+      "command": "pulse"
+    }
   }
 }
