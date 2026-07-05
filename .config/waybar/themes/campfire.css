@@ -1,0 +1,129 @@
+/* ABOUTME: Waybar theme - Campfire, warm embers on a dark night sky */
+/* ABOUTME: Charcoal base, ember glow borders, modules look like coals */
+
+* {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #d4a574;
+    margin: 6px 10px 0 10px;
+}
+
+window#waybar > box {
+    background: rgba(20, 15, 10, 0.88);
+    border-radius: 10px;
+    border-top: 1px solid rgba(255, 100, 20, 0.05);
+    border-bottom: 2px solid rgba(255, 80, 0, 0.2);
+    box-shadow: 0 2px 12px rgba(255, 80, 0, 0.08);
+    padding: 2px 6px;
+}
+
+#workspaces {
+    margin: 4px 4px;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: rgba(212, 165, 116, 0.25);
+    background: transparent;
+    border-radius: 6px;
+    margin: 2px 1px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: #ff6a00;
+    border-bottom: 2px solid #ff6a00;
+}
+
+#workspaces button:hover {
+    color: #d4a574;
+    background: rgba(255, 106, 0, 0.05);
+}
+
+#clock,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#custom-weather,
+#custom-updates,
+#tray {
+    padding: 2px 12px;
+    margin: 4px 2px;
+    background: rgba(40, 25, 15, 0.5);
+    border-radius: 8px;
+    border-bottom: 1px solid rgba(255, 100, 20, 0.1);
+}
+
+#clock {
+    color: #ffaa44;
+    background: rgba(255, 170, 68, 0.06);
+    border-bottom: 1px solid rgba(255, 170, 68, 0.2);
+    font-weight: bold;
+}
+
+#custom-weather {
+    color: #e8c170;
+}
+
+#pulseaudio {
+    color: #cc7744;
+}
+
+#pulseaudio.muted {
+    color: #3a2a1a;
+}
+
+#network {
+    color: #88aa66;
+    border-bottom-color: rgba(136, 170, 102, 0.15);
+}
+
+#network.disconnected {
+    color: #cc3300;
+    border-bottom-color: rgba(204, 51, 0, 0.3);
+}
+
+#cpu {
+    color: #ff6a00;
+}
+
+#memory {
+    color: #aa7755;
+}
+
+#battery {
+    color: #88aa66;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffaa44;
+    border-bottom-color: rgba(255, 170, 68, 0.25);
+}
+
+#battery.critical:not(.charging) {
+    color: #cc3300;
+    border-bottom-color: rgba(204, 51, 0, 0.4);
+}
+
+#tray {
+    background: rgba(40, 25, 15, 0.3);
+    border-bottom: none;
+}
+
+tooltip {
+    background: rgba(20, 15, 10, 0.95);
+    border: 1px solid rgba(255, 106, 0, 0.2);
+    border-radius: 8px;
+    color: #d4a574;
+}

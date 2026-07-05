@@ -1,0 +1,156 @@
+/* ABOUTME: Waybar styling - glassmorphism theme with frosted pill modules */
+/* ABOUTME: Floating bar with blur, rounded pills, and Nord accent colors */
+
+* {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #d8dee9;
+    margin: 6px 10px 0 10px;
+}
+
+window#waybar > box {
+    background: rgba(30, 34, 42, 0.45);
+    border-radius: 14px;
+    border: 1px solid rgba(136, 192, 208, 0.15);
+    padding: 2px 6px;
+}
+
+/* ── Workspaces ─────────────────────────── */
+#workspaces {
+    background: rgba(59, 66, 82, 0.4);
+    border-radius: 10px;
+    margin: 4px 4px;
+    padding: 0 2px;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: rgba(216, 222, 233, 0.4);
+    background: transparent;
+    border-radius: 8px;
+    margin: 2px 1px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    color: #88c0d0;
+    background: rgba(136, 192, 208, 0.15);
+    border-bottom: none;
+}
+
+#workspaces button:hover {
+    color: #d8dee9;
+    background: rgba(136, 192, 208, 0.1);
+}
+
+/* ── Shared pill style ──────────────────── */
+#clock,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#custom-weather,
+#custom-updates,
+#tray {
+    background: rgba(59, 66, 82, 0.4);
+    border-radius: 10px;
+    padding: 2px 12px;
+    margin: 4px 3px;
+    transition: all 0.2s ease;
+}
+
+/* ── Clock ──────────────────────────────── */
+#clock {
+    color: #88c0d0;
+    background: rgba(136, 192, 208, 0.1);
+    font-weight: bold;
+}
+
+/* ── Weather ────────────────────────────── */
+#custom-weather {
+    color: #ebcb8b;
+    background: rgba(235, 203, 139, 0.1);
+}
+
+/* ── Audio ──────────────────────────────── */
+#pulseaudio {
+    color: #b48ead;
+    background: rgba(180, 142, 173, 0.1);
+}
+
+#pulseaudio.muted {
+    color: #4c566a;
+    background: rgba(76, 86, 106, 0.2);
+}
+
+/* ── Network ────────────────────────────── */
+#network {
+    color: #a3be8c;
+    background: rgba(163, 190, 140, 0.1);
+}
+
+#network.disconnected {
+    color: #bf616a;
+    background: rgba(191, 97, 106, 0.1);
+}
+
+/* ── CPU ────────────────────────────────── */
+#cpu {
+    color: #d08770;
+    background: rgba(208, 135, 112, 0.1);
+}
+
+/* ── Memory ─────────────────────────────── */
+#memory {
+    color: #5e81ac;
+    background: rgba(94, 129, 172, 0.1);
+}
+
+/* ── Battery ────────────────────────────── */
+#battery {
+    color: #a3be8c;
+    background: rgba(163, 190, 140, 0.1);
+}
+
+#battery.charging {
+    color: #a3be8c;
+}
+
+#battery.warning:not(.charging) {
+    color: #ebcb8b;
+    background: rgba(235, 203, 139, 0.15);
+}
+
+#battery.critical:not(.charging) {
+    color: #bf616a;
+    background: rgba(191, 97, 106, 0.15);
+}
+
+/* ── Tray ───────────────────────────────── */
+#tray {
+    background: rgba(59, 66, 82, 0.3);
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+/* ── Tooltips ───────────────────────────── */
+tooltip {
+    background: rgba(30, 34, 42, 0.85);
+    border: 1px solid rgba(136, 192, 208, 0.2);
+    border-radius: 10px;
+    color: #d8dee9;
+}

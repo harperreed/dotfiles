@@ -1,0 +1,119 @@
+/* ABOUTME: Waybar theme - The Matrix, green phosphor terminal aesthetic */
+/* ABOUTME: Black void, green-only palette, scanline energy, hacker mode */
+
+* {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #00ff41;
+    margin: 0;
+}
+
+window#waybar > box {
+    background: rgba(0, 0, 0, 0.92);
+    border-top: 1px solid rgba(0, 255, 65, 0.15);
+    border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+    padding: 0 4px;
+}
+
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 2px 8px;
+    color: rgba(0, 255, 65, 0.2);
+    background: transparent;
+    border-radius: 0;
+    margin: 0;
+    transition: all 0.1s ease;
+}
+
+#workspaces button.active {
+    color: #00ff41;
+    background: rgba(0, 255, 65, 0.08);
+    border-bottom: 1px solid #00ff41;
+}
+
+#workspaces button:hover {
+    color: rgba(0, 255, 65, 0.6);
+}
+
+#clock,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#custom-weather,
+#custom-updates,
+#tray {
+    padding: 2px 10px;
+    margin: 0;
+    color: #00ff41;
+    background: transparent;
+}
+
+#clock {
+    color: #00ff41;
+    border-left: 1px solid rgba(0, 255, 65, 0.2);
+    border-right: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+#custom-weather {
+    color: rgba(0, 255, 65, 0.7);
+}
+
+#pulseaudio {
+    color: rgba(0, 255, 65, 0.8);
+}
+
+#pulseaudio.muted {
+    color: rgba(0, 255, 65, 0.15);
+}
+
+#network {
+    color: rgba(0, 255, 65, 0.8);
+}
+
+#network.disconnected {
+    color: #ff0041;
+}
+
+#cpu {
+    color: rgba(0, 255, 65, 0.7);
+}
+
+#memory {
+    color: rgba(0, 255, 65, 0.6);
+}
+
+#battery {
+    color: rgba(0, 255, 65, 0.8);
+}
+
+#battery.warning:not(.charging) {
+    color: #ccff00;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff0041;
+}
+
+#tray {
+    color: rgba(0, 255, 65, 0.5);
+}
+
+tooltip {
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(0, 255, 65, 0.4);
+    border-radius: 0;
+    color: #00ff41;
+}

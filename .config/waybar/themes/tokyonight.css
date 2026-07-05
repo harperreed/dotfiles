@@ -1,0 +1,131 @@
+/* ABOUTME: Waybar theme - Tokyo Night with deep blue-black and soft purples */
+/* ABOUTME: Night city coding vibes, blue and violet accents */
+
+* {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 14px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #a9b1d6;
+    margin: 6px 10px 0 10px;
+}
+
+window#waybar > box {
+    background: rgba(26, 27, 38, 0.8);
+    border-radius: 14px;
+    border: 1px solid rgba(122, 162, 247, 0.1);
+    padding: 2px 6px;
+}
+
+#workspaces {
+    background: rgba(41, 46, 66, 0.5);
+    border-radius: 10px;
+    margin: 4px 4px;
+    padding: 0 2px;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: rgba(169, 177, 214, 0.3);
+    background: transparent;
+    border-radius: 8px;
+    margin: 2px 1px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    color: #7aa2f7;
+    background: rgba(122, 162, 247, 0.15);
+}
+
+#workspaces button:hover {
+    color: #a9b1d6;
+    background: rgba(169, 177, 214, 0.08);
+}
+
+#clock,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#custom-weather,
+#custom-updates,
+#tray {
+    background: rgba(41, 46, 66, 0.5);
+    border-radius: 10px;
+    padding: 2px 12px;
+    margin: 4px 3px;
+}
+
+#clock {
+    color: #7aa2f7;
+    background: rgba(122, 162, 247, 0.1);
+    font-weight: bold;
+}
+
+#custom-weather {
+    color: #e0af68;
+    background: rgba(224, 175, 104, 0.1);
+}
+
+#pulseaudio {
+    color: #bb9af7;
+    background: rgba(187, 154, 247, 0.1);
+}
+
+#pulseaudio.muted {
+    color: #565f89;
+    background: rgba(86, 95, 137, 0.2);
+}
+
+#network {
+    color: #9ece6a;
+    background: rgba(158, 206, 106, 0.08);
+}
+
+#network.disconnected {
+    color: #f7768e;
+    background: rgba(247, 118, 142, 0.1);
+}
+
+#cpu {
+    color: #ff9e64;
+    background: rgba(255, 158, 100, 0.1);
+}
+
+#memory {
+    color: #7dcfff;
+    background: rgba(125, 207, 255, 0.08);
+}
+
+#battery {
+    color: #9ece6a;
+    background: rgba(158, 206, 106, 0.08);
+}
+
+#battery.warning:not(.charging) {
+    color: #e0af68;
+    background: rgba(224, 175, 104, 0.12);
+}
+
+#battery.critical:not(.charging) {
+    color: #f7768e;
+    background: rgba(247, 118, 142, 0.15);
+}
+
+#tray {
+    background: rgba(41, 46, 66, 0.3);
+}
+
+tooltip {
+    background: rgba(26, 27, 38, 0.92);
+    border: 1px solid rgba(122, 162, 247, 0.2);
+    border-radius: 10px;
+    color: #a9b1d6;
+}

@@ -1,0 +1,61 @@
+// ABOUTME: Waybar status bar configuration for Hyprland
+// ABOUTME: Workspaces, clock, system tray, and basic system info
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/updates", "custom/weather", "pulseaudio", "network", "cpu", "memory", "battery", "tray"],
+
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate"
+    },
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "tooltip-format": "{:%Y-%m-%d %A}"
+    },
+    "cpu": {
+        "format": "🧠 {usage}%",
+        "interval": 5
+    },
+    "memory": {
+        "format": "💾 {}%",
+        "interval": 5
+    },
+    "battery": {
+        "format": "🔋 {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        }
+    },
+    "network": {
+        "format-wifi": "📶 {essid}",
+        "format-ethernet": "🔌 eth",
+        "format-disconnected": "❌ offline",
+        "on-click": "ghostty -e nmtui"
+    },
+    "pulseaudio": {
+        "format": "🔊 {volume}%",
+        "format-muted": "🔇",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+    "tray": {
+        "spacing": 8
+    },
+    "custom/weather": {
+        "exec": "~/.config/waybar/scripts/weather.sh",
+        "return-type": "json",
+        "interval": 900,
+        "exec-if": "ping -c1 -W2 wttr.in >/dev/null 2>&1"
+    },
+    "custom/updates": {
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "return-type": "json",
+        "interval": 3600,
+        "exec-if": "checkupdates | grep -q ."
+    }
+}

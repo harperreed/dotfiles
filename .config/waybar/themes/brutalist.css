@@ -1,0 +1,128 @@
+/* ABOUTME: Waybar theme - Brutalist, raw concrete, no rounded anything */
+/* ABOUTME: Hard edges, thick borders, monochrome with red accents, loud */
+
+* {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 15px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-weight: bold;
+}
+
+window#waybar {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    margin: 0;
+    border-bottom: 4px solid #ff0000;
+    padding: 0 4px;
+}
+
+window#waybar > box {
+    background: #1a1a1a;
+    border-bottom: 4px solid #ff0000;
+    padding: 0 4px;
+}
+
+#workspaces {
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 4px 14px;
+    color: #555;
+    background: #1a1a1a;
+    border-right: 2px solid #333;
+    border-radius: 0;
+    margin: 0;
+    transition: none;
+}
+
+#workspaces button.active {
+    color: #ff0000;
+    background: #000;
+    border-bottom: 3px solid #ff0000;
+}
+
+#workspaces button:hover {
+    color: #fff;
+    background: #333;
+}
+
+#clock,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#custom-weather,
+#custom-updates,
+#tray {
+    padding: 4px 14px;
+    margin: 0;
+    border-left: 2px solid #333;
+    background: #1a1a1a;
+}
+
+#clock {
+    color: #ff0000;
+    background: #000;
+    border-left: 3px solid #ff0000;
+    border-right: 3px solid #ff0000;
+}
+
+#custom-weather {
+    color: #fff;
+}
+
+#pulseaudio {
+    color: #e0e0e0;
+}
+
+#pulseaudio.muted {
+    color: #333;
+}
+
+#network {
+    color: #e0e0e0;
+}
+
+#network.disconnected {
+    color: #ff0000;
+    background: #2a0000;
+}
+
+#cpu {
+    color: #ff6600;
+}
+
+#memory {
+    color: #999;
+}
+
+#battery {
+    color: #e0e0e0;
+}
+
+#battery.warning:not(.charging) {
+    color: #ff6600;
+    background: #1a1000;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff0000;
+    background: #2a0000;
+    border-left: 3px solid #ff0000;
+}
+
+#tray {
+    border-left: 2px solid #333;
+}
+
+tooltip {
+    background: #000;
+    border: 2px solid #ff0000;
+    border-radius: 0;
+    color: #e0e0e0;
+}

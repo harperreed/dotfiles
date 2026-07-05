@@ -1,0 +1,81 @@
+/* ABOUTME: Waybar theme - ultra minimal, nearly invisible until you need it */
+/* ABOUTME: Thin bar, muted colors, no backgrounds on modules */
+
+* {
+    font-family: "JetBrains Mono", "Fira Code", monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: rgba(216, 222, 233, 0.6);
+    margin: 0;
+}
+
+window#waybar > box {
+    background: rgba(20, 20, 28, 0.3);
+    padding: 0 8px;
+}
+
+#workspaces {
+    margin: 0;
+}
+
+#workspaces button {
+    padding: 0 6px;
+    color: rgba(216, 222, 233, 0.2);
+    background: transparent;
+    min-width: 20px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button.active {
+    color: rgba(216, 222, 233, 0.8);
+}
+
+#workspaces button:hover {
+    color: rgba(216, 222, 233, 0.5);
+}
+
+#clock,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio,
+#custom-weather,
+#custom-updates,
+#tray {
+    padding: 0 8px;
+    background: transparent;
+}
+
+#clock {
+    color: rgba(216, 222, 233, 0.8);
+}
+
+#battery.warning:not(.charging) {
+    color: #ebcb8b;
+}
+
+#battery.critical:not(.charging) {
+    color: #bf616a;
+}
+
+#network.disconnected {
+    color: #bf616a;
+}
+
+#pulseaudio.muted {
+    color: rgba(216, 222, 233, 0.2);
+}
+
+tooltip {
+    background: rgba(20, 20, 28, 0.9);
+    border: 1px solid rgba(216, 222, 233, 0.1);
+    border-radius: 6px;
+    color: #d8dee9;
+}
