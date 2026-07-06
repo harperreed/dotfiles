@@ -78,7 +78,7 @@ uv pip sync   -r requirements.txt   # deterministic install
 Other handy commands:
 
 ```bash
-uv cache dir && uv cache info      # show path + stats
+uv cache dir && uv cache size      # show path + size
 uv cache clean                     # wipe wheels & sources
 ```
 
@@ -106,13 +106,13 @@ jobs:
 ### 3.2 Docker
 
 ```dockerfile
-FROM ghcr.io/astral-sh/uv:0.7.4 AS uv
+FROM ghcr.io/astral-sh/uv:latest AS uv
 FROM python:3.12-slim
 
 COPY --from=uv /usr/local/bin/uv /usr/local/bin/uv
 COPY pyproject.toml uv.lock /app/
 WORKDIR /app
-RUN uv sync --production --locked
+RUN uv sync --no-dev --locked
 COPY . /app
 CMD ["uv", "run", "python", "-m", "myapp"]
 ```
