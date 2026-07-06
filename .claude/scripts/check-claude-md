@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+# ABOUTME: Canonical check for ~/.claude/CLAUDE.md candidates — enforces the approved envelope from
+# ABOUTME: docs/specs/2026-07-05-claude-md-rewrite-design.md §8 (+D8): sizes, must-hit/must-miss strings, include line.
+
+set -u
+
+usage() {
+  cat <<'EOF'
+check-claude-md — validate a CLAUDE.md candidate against the approved envelope
+
+Usage: check-claude-md [CANDIDATE] [LOCAL_MD]
+  CANDIDATE  file to check            (default: ~/.claude/CLAUDE.md)
+  LOCAL_MD   companion include file   (default: ~/.claude/docs/local.md)
+
+Checks (spec §8, ceiling amended per D8):
+  - sizes: CANDIDATE <= 11400 B, LOCAL_MD <= 1500 B, combined <= 12500 B
+  - 9 must-hit strings present, 9 must-miss strings absent
+  - exactly one @-include line, and it is the last line: @~/.claude/docs/local.md
+
+Exit: 0 = all pass; 1 = any failure (details on stdout).
+EOF
+}
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then usage; exit 0; fi
+
+CAND="${1:-$HOME/.claude/CLAUDE.md}"
+LOCAL="${2:-$HOME/.claude/docs/local.md}"
+
+if [ ! -f "$CAND" ]; then echo "FAIL  candidate not found: $CAND"; exit 1; fi
+if [ ! -f "$LOCAL" ]; then echo "FAIL  local.md not found: $LOCAL"; exit 1; fi
+
+fail=0
+result() { # STATUS NAME DETAIL
+  printf '%s  %-44s %s\n' "$1" "$2" "$3"
+  if [ "$1" = "FAIL" ]; then fail=$((fail + 1)); fi
+}
+
+cb=$(wc -c < "$CAND" | tr -d ' ')
+lb=$(wc -c < "$LOCAL" | tr -d ' ')
+comb=$((cb + lb))
+
+if [ "$cb" -le 11400 ]; then result PASS "size: candidate <= 11400 B" "${cb} B (headroom $((11400 - cb)))"
+else result FAIL "size: candidate <= 11400 B" "${cb} B (over by $((cb - 11400)))"; fi
+if [ "$lb" -le 1500 ]; then result PASS "size: local.md <= 1500 B" "${lb} B"
+else result FAIL "size: local.md <= 1500 B" "${lb} B (over by $((lb - 1500)))"; fi
+if [ "$comb" -le 12500 ]; then result PASS "size: combined <= 12500 B" "${comb} B (headroom $((12500 - comb)))"
+else result FAIL "size: combined <= 12500 B" "${comb} B (over by $((comb - 12500)))"; fi
+
+MUST_HIT=(
+  "THE SUN IS DYING"
+  "Doctor Biz"
+  "ABOUTME"
+  "I AUTHORIZE YOU TO SKIP WRITING TESTS THIS TIME"
+  "scripts/check"
+  "NEVER INVENT"
+  "Rule #1"
+  "subagent-driven-development"
+  "Session lifecycle"
+)
+for s in "${MUST_HIT[@]}"; do
+  if grep -qF -- "$s" "$CAND"; then result PASS "must-hit: $s" ""
+  else result FAIL "must-hit: $s" "missing"; fi
+done
+
+MUST_MISS=(
+  "GPT-5.5"
+  "Opus 4.6"
+  "memory MCP"
+  "Context Decay"
+  "worktress"
+  "expliict"
+  "refering"
+  "--production"
+  "0.7.4"
+)
+for s in "${MUST_MISS[@]}"; do
+  if grep -qF -- "$s" "$CAND"; then result FAIL "must-miss: $s" "present"
+  else result PASS "must-miss: $s" ""; fi
+done
+
+inc_count=$(grep -c '^@' "$CAND" || true)
+last_line=$(tail -n 1 "$CAND")
+if [ "$inc_count" -eq 1 ]; then result PASS "exactly one @-include line" ""
+else result FAIL "exactly one @-include line" "found $inc_count"; fi
+if [ "$last_line" = "@~/.claude/docs/local.md" ]; then result PASS "last line is the local.md include" ""
+else result FAIL "last line is the local.md include" "got: $last_line"; fi
+
+echo
+if [ "$fail" -eq 0 ]; then
+  echo "OK: all checks passed — candidate ${cb} B, combined ${comb} B (headroom $((12500 - comb)) B)"
+  exit 0
+else
+  echo "FAILED: $fail check(s) failed — see above"
+  exit 1
+fi
