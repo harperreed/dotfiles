@@ -27,12 +27,13 @@ Empirical backing (session-analyzer, 13,568 sessions / ~59B tokens): the Context
 | D5 | Worktrees | Scoped: day-to-day work on branches, never worktrees; parallel-agent skills (cookoff/jam/test-kitchen) may use them internally |
 | D6 | Git protocol | Compress 60 lines → ~10; keep forbidden-flags list, fix-then-recommit, pressure-proofing; add obra's VC rules |
 | D7 | Obra tone | Full strength, adapted to Doctor Biz |
+| D8 | Session lifecycle (amendment, 2026-07-06) | Adopt the session-analyzer lifecycle block (bbs: session-analyzer/"CLAUDE.md patterns", 8,970-session ccvault dig — 2.5% of sessions held 64% of output tokens): sessions disposable / artifacts permanent, retire after 3rd compaction or landed plan phase, plan-doc-first session start, subagent delegation (absorbs the Designing-software subagent bullet; supersedes half the file-system bullet). Companion "trust files already read" rules NOT adopted — harness-enforced. CLAUDE.md ceiling amended 11,000 → 11,400: the cost-bearing budget is the combined 12,500 (both files load every session); nibbling approved rules to fit a derived sub-ceiling weakens content for no cost saving. Decision delegated by Doctor Biz ("what do you think?"), 2026-07-06 |
 
 ## 3. Artifacts
 
 | Artifact | Action |
 |----------|--------|
-| `~/.claude/CLAUDE.md` | Rewrite per §4. Target ≤ 11,000 chars |
+| `~/.claude/CLAUDE.md` | Rewrite per §4. Target ≤ 11,400 chars (amended per D8; was 11,000) |
 | `~/.claude/docs/local.md` | NEW — machine facts, per §5. Target ≤ 1,500 chars |
 | `~/.claude/skills/uv/SKILL.md` | NEW — absorbs using-uv.md + docker-uv.md, per §6 |
 | `~/.claude/docs/retired/` | NEW dir — karpathy-guidelines.md, python.md, source-control.md, using-uv.md, docker-uv.md move here (moved, never deleted) |
@@ -161,7 +162,7 @@ Content = using-uv.md (audit-corrected: `uv cache size`, `--no-dev`, `uv:latest`
 
 ## 8. Success criteria (verification before completion)
 
-1. `wc -c`: CLAUDE.md ≤ 11,000; local.md ≤ 1,500; skill exists. Combined standing payload ≤ 12,500 chars.
+1. `wc -c`: CLAUDE.md ≤ 11,400 (amended per D8; was 11,000); local.md ≤ 1,500; skill exists. Combined standing payload ≤ 12,500 chars (unchanged — this is the binding budget).
 2. All `@` includes in CLAUDE.md resolve to existing files (single include: local.md).
 3. Greps return ZERO hits in CLAUDE.md + local.md: `GPT-5.5`, `Opus 4.6`, `memory MCP`, `Context Decay`, `worktress`, `expliict`, `refering`, `--production`, `0.7.4`.
 4. Greps return ≥1 hit in CLAUDE.md: `THE SUN IS DYING`, `Doctor Biz`, `ABOUTME`, `I AUTHORIZE YOU TO SKIP WRITING TESTS THIS TIME`, `scripts/check`, `NEVER INVENT`, `Rule #1`.

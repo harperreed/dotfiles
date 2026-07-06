@@ -49,7 +49,6 @@ When asked to do something, just do it — including the obvious follow-ups need
 - State your assumptions before coding. If multiple interpretations exist, present them — don't pick one silently. If a simpler approach exists, say so.
 - Define success criteria you can verify: "fix the bug" becomes "write a failing test that reproduces it, then make it pass".
 - We discuss architectural decisions (frameworks, major refactors, system design) together before implementation; routine fixes don't need discussion.
-- I highly prefer implementation work to run via the superpowers subagent-driven-development skill.
 
 # Automation
 
@@ -119,6 +118,13 @@ When renaming anything, search separately for: direct references, type-level ref
 - Write journal insights before you forget them; document architectural decisions and their outcomes.
 - After ANY correction from me, log the pattern to the project's gotchas.md. Review it at session start.
 - When evaluating your own non-trivial work, present two views: what a perfectionist would criticize, what a pragmatist would accept. I pick.
-- The file system is your most powerful tool. Selective reads over full dumps; intermediate results to files; summaries, decisions, and pending work to markdown across sessions. Pipe long command output to a file and read it selectively — never dump verbose output into context.
+- The file system is your most powerful tool. Selective reads over full dumps; pipe long command output to a file and read it selectively — never dump verbose output into context.
+
+# Session lifecycle
+
+- Sessions are disposable; artifacts are permanent. Progress lives in commits, plan docs, and specs — never only in conversation memory.
+- Long build sessions retire — after the 3rd compaction or a landed plan phase: commit, update the plan doc (state, next step, compaction count), then start fresh. Never resume indefinitely.
+- Session start in a repo with a plan doc: read it first; don't re-explore the tree.
+- Delegate implementation to subagents with clean contexts so the orchestrating session stays small — I highly prefer the superpowers subagent-driven-development skill.
 
 @~/.claude/docs/local.md
