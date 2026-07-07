@@ -3,7 +3,7 @@
 
 # Only run on macOS
 if test (uname) != "Darwin"
-    exit
+    return
 end
 
 

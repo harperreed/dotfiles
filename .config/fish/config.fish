@@ -19,7 +19,7 @@ end
 # 90-plugins.fish     - Plugin initialization
 
 # pnpm
-set -gx PNPM_HOME "/Users/harper/.local/share/pnpm"
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
@@ -31,10 +31,7 @@ if test -f ~/.openclaw/completions/openclaw.fish
 end
 
 # Added by LM Studio CLI (lms)
-set -gx PATH $PATH /Users/harper/.lmstudio/bin
+set -gx PATH $PATH $HOME/.lmstudio/bin
 # End of LM Studio CLI section
 
-
-if status is-interactive
-    atuin init fish | source
-end
+# atuin is initialized in conf.d/90-plugins.fish (guarded by type -q)

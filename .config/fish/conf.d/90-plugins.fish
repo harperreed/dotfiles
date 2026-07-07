@@ -10,8 +10,8 @@ if status is-interactive
     # Lazy-load done.fish plugin (notification on long-running commands)
     # Only loads on first prompt to avoid startup delay
     function __load_done_plugin --on-event fish_prompt
-        if test -f /Users/harper/.config/fish/conf.d/done.fish.disabled
-            source /Users/harper/.config/fish/conf.d/done.fish.disabled
+        if test -f ~/.config/fish/conf.d/done.fish.disabled
+            source ~/.config/fish/conf.d/done.fish.disabled
         end
         functions -e __load_done_plugin
     end
@@ -19,8 +19,8 @@ if status is-interactive
     # Lazy-load grc (generic colourizer)
     # Creates a wrapper that loads the real grc on first use
     function grc --description 'Generic colourizer' --wraps grc
-        if test -f /Users/harper/.config/fish/conf.d/grc.fish.disabled
-            source /Users/harper/.config/fish/conf.d/grc.fish.disabled
+        if test -f ~/.config/fish/conf.d/grc.fish.disabled
+            source ~/.config/fish/conf.d/grc.fish.disabled
         end
         # Call the real grc with the same arguments
         if type -q grc

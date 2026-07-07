@@ -3,7 +3,7 @@
 
 # Only run on Linux
 if test (uname) != "Linux"
-    exit
+    return
 end
 
 # Go environment - check common locations
@@ -14,15 +14,12 @@ else if test -d $HOME/go
 end
 test -n "$GOPATH"; and fish_add_path -g $GOPATH/bin
 
-# mise and interactive features require a terminal
+# Interactive features below require a terminal
 if not status is-interactive
     return
 end
 
-# mise settings
-if test -e ~/.local/bin/mise
-    ~/.local/bin/mise activate fish | source
-end
+# mise is activated in 32-mise.fish (10-paths.fish puts ~/.local/bin on PATH first)
 
 # Linux welcome message
 if status is-interactive
