@@ -139,9 +139,6 @@ echo "→ Reducing cruft..."
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Disable quarantine "Are you sure?" dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-
 # ==============================================================================
 # QUALITY OF LIFE
 # ==============================================================================

@@ -101,8 +101,6 @@ protocol = https
 	prompt = false
 [rebase]
 	autoStash = true
-[safe]
-	directory = /private/tmp
 [credential "https://github.com"]
 	helper = 
 	helper = !gh auth git-credential
