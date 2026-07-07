@@ -24,8 +24,6 @@ set ttyfast
 
 syntax on           " syntax highlighing
 
-set rtp+=~/.vim/bundle/vundle/
-
 
 if has("gui_running")
     " See ~/.gvimrc
@@ -54,8 +52,6 @@ set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
 set writebackup
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-set runtimepath^=~/.vim/bundle/vim-airline/plugin/airline.vim
 set laststatus=2 " for airline
 
 "============================================================
