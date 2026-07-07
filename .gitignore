@@ -6,6 +6,8 @@ tests/*.log
 .ngrok2/
 # Remmina stores an auto-generated master key in remmina.pref; never track it
 .config/remmina/
+# Zoom writes hardware identifiers (deviceID) into its config; never track it
+.config/zoomus.conf
 
 # Machine-specific fish state
 .config/fish/fish_variables
