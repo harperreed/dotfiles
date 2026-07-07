@@ -8,5 +8,10 @@
 #
 #   git nuke add-git-nuke
 
+if [ -z "$1" ]; then
+    echo "usage: git nuke <branch>" >&2
+    exit 1
+fi
+
 git branch -D "$1"
 git push origin :"$1"

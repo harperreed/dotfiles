@@ -22,12 +22,12 @@
             else \
                 commit_msg=$(git diff $1 | llm -s \"$(cat ~/.config/prompts/commit-system-prompt.txt)\"); \
                 echo \"Commit message:\n$commit_msg\"; \
-                read -p \"Do you want to commit with this message? [y/N] \" confirm; \
-                if [[ $confirm =~ ^[Yy]$ ]]; then \
-                    git commit -m \"$commit_msg\"; \
-                else \
-                    echo \"Commit aborted.\"; \
-                fi; \
+                printf \"Do you want to commit with this message? [y/N] \"; \
+                read -r confirm; \
+                case \"$confirm\" in \
+                    [Yy]) git commit -m \"$commit_msg\";; \
+                    *) echo \"Commit aborted.\";; \
+                esac; \
             fi; \
         }; f"
 
@@ -36,13 +36,12 @@
             if ! git diff --cached --quiet; then \
                 commit_msg=$(git diff --cached | llm -s \"$(cat ~/.config/prompts/commit-system-prompt.txt)\"); \
                 echo \"Commit message:\n$commit_msg\"; \
-                read -p \"Do you want to commit with this message? [y/N] \" confirm; \
-                if [[ $confirm =~ ^[Yy]$ ]]; then \
-                    git commit -m \"$commit_msg\"; \
-                else \
-                    git reset HEAD .; \
-                    echo \"Commit aborted.\"; \
-                fi; \
+                printf \"Do you want to commit with this message? [y/N] \"; \
+                read -r confirm; \
+                case \"$confirm\" in \
+                    [Yy]) git commit -m \"$commit_msg\";; \
+                    *) git reset HEAD .; echo \"Commit aborted.\";; \
+                esac; \
             else \
                 echo \"No changes staged for commit. Aborting.\"; \
             fi; \

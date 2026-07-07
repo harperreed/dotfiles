@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # usage: tarscp <host> [remote-dir [local-file ...]]
 #
