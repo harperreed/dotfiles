@@ -4,6 +4,8 @@ tests/*.log
 
 # Sensitive configs - never commit
 .ngrok2/
+# Remmina stores an auto-generated master key in remmina.pref; never track it
+.config/remmina/
 
 # Machine-specific fish state
 .config/fish/fish_variables
