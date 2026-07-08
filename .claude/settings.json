@@ -2,22 +2,22 @@
   "cleanupPeriodDays": 999,
   "env": {
     "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "200000",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_EFFORT_LEVEL": "max",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "CLAUDE_CODE_NO_FLICKER": "1",
-    "MAX_CONSECUTIVE_AUTOCOMPACT_FAILURES": "3",
-    "MAX_THINKING_TOKENS": "128000",
     "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
-    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
-    "ENABLE_TOOL_SEARCH": "true"
+    "ENABLE_TOOL_SEARCH": "true",
+    "MAX_CONSECUTIVE_AUTOCOMPACT_FAILURES": "3",
+    "MAX_THINKING_TOKENS": "128000"
   },
   "attribution": {
     "commit": "",
     "pr": ""
   },
   "permissions": {
-    "defaultMode": "bypassPermissions"
+    "defaultMode": "dontAsk"
   },
   "model": "claude-fable-5[1m]",
   "hooks": {
@@ -32,47 +32,14 @@
         ]
       }
     ],
-    "PermissionRequest": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "'/Users/harper/.local/bin/moshi-hook' claude-hook",
-            "timeout": 300,
-            "async": false
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "'/Users/harper/.local/bin/moshi-hook' claude-hook",
-            "async": true
-          }
-        ]
-      }
-    ],
     "SessionStart": [
       {
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
-            "command": "'/Users/harper/.local/bin/moshi-hook' claude-hook",
-            "async": true
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "'/Users/harper/.local/bin/moshi-hook' claude-hook",
-            "async": true
+            "command": "bash '/Users/harper/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
           }
         ]
       }
@@ -135,6 +102,7 @@
   "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
+  "switchModelsOnFlag": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754360713440
   },
