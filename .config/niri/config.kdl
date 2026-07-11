@@ -1,0 +1,285 @@
+// ABOUTME: niri compositor config translated from Doctor Biz's Hyprland setup
+// ABOUTME: scrollable-tiling test-drive — vim keys, ghostty, wofi, swayosd, Nord accent
+//
+// KDL format: https://kdl.dev  ("/-" comments out the following node.)
+// Escape hatch out of niri: Ctrl+Alt+Delete (quit -> back to SDDM). See binds below.
+
+// ── Input ────────────────────────────────────────────────
+// From Hyprland: us layout, caps:escape, natural scroll, tap-to-click,
+// clickfinger, disable-while-typing, tap-and-drag, follow_mouse=1.
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            options "caps:escape"
+        }
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        dwt                      // disable-while-typing = true
+        click-method "clickfinger"
+    }
+
+    // Hyprland had follow_mouse=1 (focus follows pointer).
+    focus-follows-mouse
+}
+
+// ── Output ───────────────────────────────────────────────
+// Hyprland used scale 1.0 (monitor=,preferred,auto,1.0). Match that so the
+// X1 Nano's HiDPI panel isn't auto-scaled to something unfamiliar.
+// If the output name isn't eDP-1, this block is ignored and niri auto-detects.
+// Run `niri msg outputs` inside niri to confirm the real name.
+output "eDP-1" {
+    scale 1.0
+}
+
+// ── Layout ───────────────────────────────────────────────
+layout {
+    gaps 12
+    background-color "transparent"
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+    default-column-width { proportion 0.5; }
+
+    // Nord frost accent (#88c0d0) to match your hyprlock theme.
+    focus-ring {
+        width 3
+        active-color "#88c0d0"
+        inactive-color "#4c566a"
+    }
+
+    border {
+        off
+    }
+}
+
+// ── Startup ──────────────────────────────────────────────
+// Translated from your Hyprland exec-once list. All compositor-agnostic
+// userspace — these run the same under niri.
+/-spawn-at-startup "waybar"
+/-spawn-at-startup "hyprpaper"                 // wallpaper daemon (layer-shell, works on niri)
+/-spawn-at-startup "hyprpolkitagent"           // polkit auth agent
+/-spawn-at-startup "dunst"                     // notifications
+/-spawn-at-startup "swayosd-server"            // on-screen volume/brightness OSD
+/-spawn-at-startup "gammastep"                 // blue-light filter
+/-spawn-at-startup "nm-applet" "--indicator"
+spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
+spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
+spawn-sh-at-startup "eval $(ssh-agent -s)"
+spawn-at-startup "~/.config/hypr/battery-watch.sh"
+
+/-spawn-at-startup "hypridle"                  // idle daemon: auto-lock + lock-before-suspend + screen-off/suspend on idle
+
+// ── DankMaterialShell ────────────────────────────────────
+// Launched via the systemd user service `dms.service` (WantedBy=graphical-session.target),
+// NOT spawn-at-startup — enabling both would double-launch DMS. Fallback: uncomment the line below.
+/-spawn-at-startup "dms" "run"
+
+// ── Environment ──────────────────────────────────────────
+environment {
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    XCURSOR_SIZE "24"
+    XDG_CURRENT_DESKTOP "niri"
+}
+
+cursor {
+    xcursor-size 24
+}
+
+// ── Screenshots ──────────────────────────────────────────
+// niri has a built-in interactive screenshot UI (region/window/screen).
+// Saved to ~/Pictures to match your Hyprland grim habit.
+screenshot-path "~/Pictures/screenshot-%Y%m%d-%H%M%S.png"
+
+hotkey-overlay {
+    // Leave the startup "Important Hotkeys" popup ON — it's your cheat sheet.
+}
+
+// ── Named workspaces ─────────────────────────────────────
+// Named workspaces are static: they always exist, even when empty, and niri
+// sorts them ahead of the dynamic ones. Declaration order is their order.
+workspace "browser"
+
+// ── Window rules ─────────────────────────────────────────
+// DMS draws its wallpaper/backdrop as a quickshell layer surface.
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+// Inactive window opacity 0.85 (your Hyprland `opacity 1.0 override 0.85`).
+window-rule {
+    match is-active=false
+    opacity 0.85
+}
+
+// Float nmtui (your Hyprland float rule).
+window-rule {
+    match title="nmtui"
+    open-floating true
+}
+
+// Firefox picture-in-picture floats (carried over from niri default).
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// Chrome always opens on the "browser" workspace. Anchored ^…$ so it catches
+// the browser itself and not Chrome's app/PWA windows (app-id chrome-<id>-Default).
+window-rule {
+    match app-id=r#"^google-chrome$"#
+    open-on-workspace "browser"
+}
+
+// ── Keybinds ─────────────────────────────────────────────
+binds {
+    // ---- Help / escape hatches ----
+    Mod+Shift+Slash { show-hotkey-overlay; }          // Mod+? : show all hotkeys
+    Ctrl+Alt+Delete { quit; }                          // ESCAPE HATCH: quit niri -> SDDM
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // ---- Launchers / apps ----
+    Mod+Return { spawn "ghostty"; }
+    Mod+T      { spawn "ghostty"; }                     // niri-habit terminal key too
+    Mod+Backslash { spawn-sh "ghostty -e fish -c 'cd ~ && cc-continue'"; }
+    Mod+Shift+Return { spawn "kitty"; }
+    /-Mod+D { spawn "wofi" "--show" "drun"; }            // your launcher (not fuzzel)
+    Mod+D { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+A { spawn "nwg-drawer"; }                      // app drawer
+    Mod+E { spawn "thunar"; }                          // file manager
+    Mod+B { spawn "google-chrome-stable"; }            // browser
+    Mod+Shift+E { spawn-sh "wlogout -b 5 -c 20 -r 0 -m 300"; }  // logout menu
+    /-Mod+Shift+X { spawn "hyprlock"; }                  // lock screen (works on niri)
+    Mod+Shift+X { spawn "dms" "ipc" "call" "lock" "lock"; }
+    Mod+Ctrl+Shift+X { spawn "hyprlock"; }              // trial fallback lock
+
+    /-Mod+Shift+V { spawn-sh "cliphist list | wofi --dmenu | cliphist decode | wl-copy"; }
+    Mod+Shift+V { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+
+    // ---- Window management ----
+    Mod+Q repeat=false { close-window; }
+    Mod+V { toggle-window-floating; }
+    Mod+Shift+Space { switch-focus-between-floating-and-tiling; }
+
+    // Focus (vim + arrows). H/L = columns (horizontal), J/K = windows in column.
+    Mod+H { focus-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    // Arrows up/down = workspaces (niri stacks workspaces vertically).
+    Mod+Up   { focus-workspace-up; }
+    Mod+Down { focus-workspace-down; }
+
+    // Move window (your Shift = move). H/L move columns, J/K move within column.
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+L { move-column-right; }
+    Mod+Shift+J { move-window-down; }
+    Mod+Shift+K { move-window-up; }
+
+    // Resize (your Ctrl = resize). H/L width, K/J height.
+    Mod+Ctrl+H { set-column-width "-10%"; }
+    Mod+Ctrl+L { set-column-width "+10%"; }
+    Mod+Ctrl+K { set-window-height "-10%"; }
+    Mod+Ctrl+J { set-window-height "+10%"; }
+
+    // Fullscreen / maximize. Mod+F = true fullscreen (your Hyprland habit).
+    Mod+F { fullscreen-window; }
+    Mod+M { maximize-column; }                          // niri's signature "fill width"
+    Mod+C { center-column; }
+    Mod+R { switch-preset-column-width; }               // cycle 1/3, 1/2, 2/3
+
+    // Consume/expel into columns (niri's core move — build multi-window columns).
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    // ---- Workspaces ----
+    // Your Mod+1..0 numbered-workspace muscle memory, preserved.
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+0 { focus-workspace 10; }
+
+    // Move column to workspace (your Shift+number habit).
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+    Mod+Shift+0 { move-column-to-workspace 10; }
+
+    // Workspace cycling: U/I + PageUp/Down + Mod+scroll (niri idiom).
+    Mod+U { focus-workspace-down; }
+    Mod+I { focus-workspace-up; }
+    Mod+Page_Down { focus-workspace-down; }
+    Mod+Page_Up   { focus-workspace-up; }
+    Mod+Tab { focus-workspace-previous; }               // quick last-workspace toggle
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+
+    // ---- Overview (niri's zoomed-out workspace view) ----
+    Mod+O repeat=false { toggle-overview; }
+
+    // ---- Media / brightness (your swayosd OSD, kept intact) ----
+    /-XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "5"; }
+    /-XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "lower"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "5"; }
+    /-XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioMute        allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
+    /-XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
+    /-XF86MonBrightnessUp   allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "10"; }
+    /-XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "10"; }
+    /-Caps_Lock allow-when-locked=true { spawn "swayosd-client" "--caps-lock"; }
+    /-XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioPlay allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
+    /-XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioNext allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "next"; }
+    /-XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
+    XF86AudioPrev allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "previous"; }
+
+    Mod+N { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    Mod+Shift+N { spawn "dms" "ipc" "call" "control-center" "toggle"; }
+
+    // ---- Screenshots (niri native UI) ----
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // ---- Power ----
+    Mod+Shift+P { power-off-monitors; }
+
+    // ==== NOT TRANSLATED (no niri equivalent) ====
+    // Mod+grave scratchpad (special:term): niri has no special workspace.
+    //   Stand-in: float a terminal with Mod+V, or keep one on a dedicated ws.
+    // Mod+P pseudo / Mod+S togglesplit: dwindle-only, meaningless in niri's model.
+    // Alt+Tab cyclenext: niri navigates spatially (H/L/J/K), no linear alt-tab.
+    //   Mod+Tab above gives you last-workspace toggle instead.
+    // Per-workspace master layout (ws1): niri has no master layout / per-ws layouts.
+}
+
+include "dms/cursor.kdl"
