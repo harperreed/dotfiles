@@ -77,7 +77,7 @@ enabled = true
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
-"gpt-5.6-sol" = 4
+"gpt-5.6-sol" = 1
 
 [marketplaces.openai-bundled]
 last_updated = "2026-05-29T21:14:15Z"
@@ -151,4 +151,7 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/harper"]
+trust_level = "trusted"
+
+[projects."/home/harper"]
 trust_level = "trusted"

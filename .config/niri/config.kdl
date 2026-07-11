@@ -102,11 +102,6 @@ hotkey-overlay {
     // Leave the startup "Important Hotkeys" popup ON — it's your cheat sheet.
 }
 
-// ── Named workspaces ─────────────────────────────────────
-// Named workspaces are static: they always exist, even when empty, and niri
-// sorts them ahead of the dynamic ones. Declaration order is their order.
-workspace "browser"
-
 // ── Window rules ─────────────────────────────────────────
 // DMS draws its wallpaper/backdrop as a quickshell layer surface.
 layer-rule {
@@ -132,13 +127,6 @@ window-rule {
     open-floating true
 }
 
-// Chrome always opens on the "browser" workspace. Anchored ^…$ so it catches
-// the browser itself and not Chrome's app/PWA windows (app-id chrome-<id>-Default).
-window-rule {
-    match app-id=r#"^google-chrome$"#
-    open-on-workspace "browser"
-}
-
 // ── Keybinds ─────────────────────────────────────────────
 binds {
     // ---- Help / escape hatches ----
@@ -152,7 +140,8 @@ binds {
     Mod+Backslash { spawn-sh "ghostty -e fish -c 'cd ~ && cc-continue'"; }
     Mod+Shift+Return { spawn "kitty"; }
     /-Mod+D { spawn "wofi" "--show" "drun"; }            // your launcher (not fuzzel)
-    Mod+D { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+D     { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+Space { spawn "dms" "ipc" "call" "spotlight" "toggle"; }  // same search box, macOS-style key
     Mod+A { spawn "nwg-drawer"; }                      // app drawer
     Mod+E { spawn "thunar"; }                          // file manager
     Mod+B { spawn "google-chrome-stable"; }            // browser
@@ -251,9 +240,9 @@ binds {
     /-XF86AudioMicMute     allow-when-locked=true { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
     /-XF86MonBrightnessUp   allow-when-locked=true { spawn "swayosd-client" "--brightness" "raise"; }
-    XF86MonBrightnessUp   allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "10"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "10" ""; }
     /-XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "lower"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "10"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "10" ""; }
     /-Caps_Lock allow-when-locked=true { spawn "swayosd-client" "--caps-lock"; }
     /-XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
     XF86AudioPlay allow-when-locked=true { spawn "dms" "ipc" "call" "mpris" "playPause"; }
@@ -283,3 +272,4 @@ binds {
 }
 
 include "dms/cursor.kdl"
+include "dms/layout.kdl"
