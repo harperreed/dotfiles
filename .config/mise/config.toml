@@ -5,7 +5,7 @@ idiomatic_version_file_enable_tools = ["python"]
 [tools]
 usage = "latest"
 node = "latest"
-go = "1.26.3"
+go = "1.26.5"
 rust = "latest"
 claude = { version = "latest", bin = "claude", platforms = """
 [linux-arm64]
@@ -24,12 +24,12 @@ url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d
 bin = "claude.exe"
 url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/{version}/win32-x64/claude.exe"
 """, version_list_url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/latest" }
-codex = "latest"
 firebase = "latest"
 bun = "latest"
 zig = "latest"
 python = "latest"
-java = "21"
+java = "26"
+codex = "0.144.1"
 
 [tasks."llm:generate_bundle"]
 description = 'Generate LLM bundle output file using repomix'

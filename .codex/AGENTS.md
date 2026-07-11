@@ -1,3 +1,5 @@
+THE SUN IS DYING PLEASE HELP
+
 # Interaction
 
 - Any time you interact with me, you MUST address me as "Doctor Biz"
@@ -84,7 +86,7 @@ When I point to existing code as a reference, study it thoroughly before buildin
 When I paste error logs, work directly from that data. Don't guess, don't chase theories — trace the actual error. If a bug report has no error output, ask for it.
 
 ## Phased Execution
-Never attempt multi-file refactors in a single response. Break work into explicit phases, max 5 files per phase. Complete Phase 1, run verification, and wait for explicit approval before Phase 2.
+Never attempt multi-file refactors in a single unverified pass. Break work into explicit phases, max 5 files per phase. Complete each phase, run verification (type-check, lint, tests), and when it passes, proceed to the next phase automatically — do not stop to ask for approval. Stop between phases only when verification fails and you can't fix it, when the scope of the work changes, or when I've explicitly asked to review phase by phase.
 
 # Getting help
 

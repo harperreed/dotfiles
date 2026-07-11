@@ -1,6 +1,6 @@
 personality = "pragmatic"
-model = "gpt-5.5"
-model_reasoning_effort = "medium"
+model = "gpt-5.6-sol"
+model_reasoning_effort = "high"
 notify = ["/Users/harper/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 
 [mcp_servers.context7]
@@ -77,6 +77,7 @@ enabled = true
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
+"gpt-5.6-sol" = 4
 
 [marketplaces.openai-bundled]
 last_updated = "2026-05-29T21:14:15Z"
@@ -98,7 +99,8 @@ js_repl = false
 trusted_hash = "sha256:a7c576795ac7bea8e2702f669fd0dd2d25b664d6813bb293d2921f14ecd7c398"
 
 [hooks.state."/Users/harper/.codex/hooks.json:session_start:0:0"]
-trusted_hash = "sha256:7b3de0102c38701200e185837043b2268cd10afeab2fc5c3fc495c6799fe4209"
+trusted_hash = "sha256:abe8732863af57591845a56ceb2fb40e6cd9a4803e76dcd3867a715940bf6802"
+enabled = true
 
 [hooks.state."/Users/harper/.codex/hooks.json:user_prompt_submit:0:0"]
 trusted_hash = "sha256:af787c6c24fb93f49ec22848939ea0625b96e186ab31eafcaccc64a39d171794"
@@ -108,3 +110,45 @@ trusted_hash = "sha256:0904468b685b60d4f2dc73da0f356f1f3fccd1161f277813f8780a264
 
 [hooks.state."/Users/harper/.codex/hooks.json:session_start:1:0"]
 trusted_hash = "sha256:abe8732863af57591845a56ceb2fb40e6cd9a4803e76dcd3867a715940bf6802"
+
+[projects."/Users/harper/Public/src/2389/botslack"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/mux-mush"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/homeworld"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/hawk"]
+trust_level = "trusted"
+
+[projects."/Users/harper/.cache/mise"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/suite/pulse"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/suite/bbs"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/suite/chronicle"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/suite/toki"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/suite/position"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/grove"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/spaces"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/teststrip"]
+trust_level = "trusted"
+
+[projects."/Users/harper"]
+trust_level = "trusted"
