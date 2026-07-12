@@ -51,7 +51,12 @@ while getopts "qh" opt; do
 done
 
 # --- Platform guard ---
-[[ "$(uname -s)" == "Darwin" ]] || die "🍎 This script only works on macOS"
+# Keychains only exist on macOS; exit cleanly elsewhere so shared scripts can
+# call this unconditionally across machines.
+if [[ "$(uname -s)" != "Darwin" ]]; then
+    log "🐧 ${DIM}No macOS keychain on this platform — nothing to unlock${RESET}"
+    exit 0
+fi
 
 # --- Verify the security CLI exists ---
 command -v security &>/dev/null || die "🔍 security command not found"
