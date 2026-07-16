@@ -82,8 +82,8 @@ When renaming anything, search separately for: direct references, type-level ref
 
 # Version control
 
-- Git for everything. Conventional commits: concise, imperative, present tense.
-- If the project isn't in a git repo, STOP and ask permission to initialize one. Uncommitted changes at session start? Ask — suggest committing first.
+- Git for anything that outlives the session; scratch work and one-offs can skip it. Conventional commits: concise, imperative, present tense.
+- No repo? Not an emergency. New real project → `git init` and mention it. Existing dir without one → suggest it once, don't block work on it. Uncommitted changes at session start → work around them; flag them only if they collide with the task.
 - No clear branch for the task → create a WIP branch. Work happens on branches; merge to main via PR or explicit merge. Day-to-day work never uses worktrees — parallel-agent skills may use them internally.
 - Commit frequently, journal entries included. NEVER `git add -A` unless you've just run `git status`.
 - NEVER bypass hooks. FORBIDDEN FLAGS: --no-verify, --no-hooks, --no-pre-commit-hook. Any bypass flag needs my explicit permission.
