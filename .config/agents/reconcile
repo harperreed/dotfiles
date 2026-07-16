@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+# ABOUTME: Drift check + deploy for the global agent policy. Copy of record: ~/.config/agents/AGENTS.md;
+# ABOUTME: deployed copies: ~/.claude/CLAUDE.md (Claude Code) and ~/.codex/AGENTS.md (Codex). `reconcile help` for the flow.
+set -euo pipefail
+
+RECORD="$HOME/.config/agents/AGENTS.md"
+NAMES=(claude codex)
+
+path_for() {
+  case "$1" in
+    claude) echo "$HOME/.claude/CLAUDE.md" ;;
+    codex)  echo "$HOME/.codex/AGENTS.md" ;;
+    *) echo "reconcile: unknown copy '$1' (want: claude, codex)" >&2; exit 2 ;;
+  esac
+}
+
+usage() {
+  cat <<'EOF'
+reconcile — keep the deployed agent-policy copies in sync with the copy of record
+
+Copy of record:  ~/.config/agents/AGENTS.md   (edit this one)
+Deployed copies: ~/.claude/CLAUDE.md, ~/.codex/AGENTS.md
+
+Commands:
+  reconcile [status]            Sync state of each copy. Exit 0 when all synced, 1 otherwise.
+  reconcile diff                Unified diff, record -> each out-of-sync copy.
+  reconcile deploy [--force]    Overwrite both copies with the record. Any existing
+                                difference requires --force ("I reviewed what I'm
+                                overwriting"). Missing copies deploy without it.
+  reconcile adopt claude|codex  Overwrite the record with that copy (the drift was good).
+  reconcile help                This text.
+
+Drift flow: reconcile -> reconcile diff -> fold changes into the record (edit it,
+or adopt) -> reconcile deploy --force -> yadm add + commit record and both copies.
+EOF
+}
+
+require_record() {
+  [[ -f "$RECORD" ]] || { echo "reconcile: copy of record missing: $RECORD" >&2; exit 2; }
+}
+
+do_status() {
+  require_record
+  local rc=0 p plus minus
+  for n in "${NAMES[@]}"; do
+    p="$(path_for "$n")"
+    if [[ ! -f "$p" ]]; then
+      printf '%-7s MISSING   %s\n' "$n" "$p"; rc=1
+    elif diff -q "$RECORD" "$p" >/dev/null; then
+      printf '%-7s in sync   %s\n' "$n" "$p"
+    else
+      plus=$(diff "$RECORD" "$p" | grep -c '^>' || true)
+      minus=$(diff "$RECORD" "$p" | grep -c '^<' || true)
+      printf '%-7s DRIFTED   %s (+%s/-%s lines vs record)\n' "$n" "$p" "$plus" "$minus"; rc=1
+    fi
+  done
+  return "$rc"
+}
+
+do_diff() {
+  require_record
+  local any=0 p
+  for n in "${NAMES[@]}"; do
+    p="$(path_for "$n")"
+    if [[ ! -f "$p" ]]; then
+      echo "== $n: MISSING ($p)"; any=1; continue
+    fi
+    if ! diff -q "$RECORD" "$p" >/dev/null; then
+      any=1
+      echo "== $n: record -> $p"
+      diff -u "$RECORD" "$p" || true
+      echo
+    fi
+  done
+  [[ "$any" -eq 0 ]] && echo "all copies in sync with the record"
+  return 0
+}
+
+do_deploy() {
+  require_record
+  local force="${1:-}" dirty=0 p
+  for n in "${NAMES[@]}"; do
+    p="$(path_for "$n")"
+    if [[ -f "$p" ]] && ! diff -q "$RECORD" "$p" >/dev/null; then dirty=1; fi
+  done
+  if [[ "$dirty" -eq 1 && "$force" != "--force" ]]; then
+    echo "reconcile: copies differ from the record — review before overwriting:" >&2
+    do_status || true
+    echo "run 'reconcile diff' to inspect, fold anything worth keeping into the record, then 'reconcile deploy --force'." >&2
+    exit 1
+  fi
+  for n in "${NAMES[@]}"; do
+    p="$(path_for "$n")"
+    mkdir -p "$(dirname "$p")"
+    cp "$RECORD" "$p"
+    echo "deployed -> $p"
+  done
+  echo "remember: yadm add + commit the record and both copies."
+}
+
+do_adopt() {
+  require_record
+  [[ $# -eq 1 ]] || { echo "reconcile: adopt needs exactly one of: claude, codex" >&2; exit 2; }
+  local p; p="$(path_for "$1")"
+  [[ -f "$p" ]] || { echo "reconcile: nothing to adopt, $p is missing" >&2; exit 2; }
+  cp "$p" "$RECORD"
+  echo "record now matches $1 ($p). run 'reconcile deploy --force' to sync the other copy, then commit."
+}
+
+cmd="${1:-status}"; shift || true
+case "$cmd" in
+  status) do_status ;;
+  diff)   do_diff ;;
+  deploy) do_deploy "${1:-}" ;;
+  adopt)  do_adopt "$@" ;;
+  help|-h|--help) usage ;;
+  *) echo "reconcile: unknown command '$cmd'" >&2; usage >&2; exit 2 ;;
+esac

@@ -1,5 +1,5 @@
-<!-- ABOUTME: Global agent policy. Deliberately duplicated: ~/.claude/CLAUDE.md and ~/.codex/AGENTS.md are identical twins. -->
-<!-- ABOUTME: No imports, no symlinks. Edit both copies together; `diff` the two paths proves they're in sync. -->
+<!-- ABOUTME: Global agent policy. Copy of record: ~/.config/agents/AGENTS.md — edit that one; deployed copies: ~/.claude/CLAUDE.md and ~/.codex/AGENTS.md. -->
+<!-- ABOUTME: All three stay byte-identical. `~/.config/agents/reconcile` checks drift and deploys; see ~/.config/agents/README.md for the flow. -->
 
 THE SUN IS DYING PLEASE HELP
 
