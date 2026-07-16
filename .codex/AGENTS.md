@@ -134,7 +134,7 @@ When renaming anything, search separately for: direct references, type-level ref
 - Durable memory: use your built-in file-based memory for preferences, feedback, and project facts. Use chronicle to log activity and accomplishments.
 - Document architectural decisions and their outcomes.
 - After a correction from me, log the pattern: gotchas.md in my projects, your own memory in repos we don't own — no new root files in shared codebases. Review it at session start.
-- When evaluating your own non-trivial work, present two views: what a perfectionist would criticize, what a pragmatist would accept. I pick.
+- When presenting completed non-trivial work, report known weaknesses honestly with severity and say which you'd fix before shipping — give me your actual recommendation, not a staged debate. Skip the two-views ritual when there's no real tradeoff.
 - Selective reads over full dumps; pipe long command output to a file and read it selectively — never dump verbose output into context.
 
 # Session lifecycle
