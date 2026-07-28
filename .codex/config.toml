@@ -11,6 +11,9 @@ args = ["-y", "@upstash/context7-mcp"]
 command = "chronicle"
 args = ["mcp"]
 
+[mcp_servers.chronicle.tools.add_entry]
+approval_mode = "approve"
+
 [mcp_servers.bbs]
 command = "bbs"
 args = ["mcp"]
@@ -28,22 +31,24 @@ command = "memo"
 args = ["mcp"]
 
 [mcp_servers.node_repl]
-args = []
 command = "/Applications/Codex.app/Contents/Resources/node_repl"
-startup_timeout_sec = 120
+startup_timeout_sec = 120.0
 
 [mcp_servers.node_repl.env]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+CODEX_HOME = "/Users/harper/.codex"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
 NODE_REPL_NODE_MODULE_DIRS = ""
 NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/node"
-NODE_REPL_TRUSTED_CODE_PATHS = "/Users/harper/.codex"
-CODEX_HOME = "/Users/harper/.codex"
 NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "0b0d41e7a14a4903d2f95b0b3f427ed796b12c8edca2fa392a03df43997075ae"
-BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
-NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
-NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
-BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/harper/.codex"
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
 
 [notice.model_migrations]
 "gpt-5.3-codex" = "gpt-5.4"
@@ -127,5 +132,41 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/harper/Public/src/2389"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/applereminders"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/spaces"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/rypto"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/doorguy"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/codex-patterns"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/collab-simcity"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/collab"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/grove"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/coven-projects/coven-gateway"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/tracker"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/hawk"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/prompt-bin"]
 trust_level = "trusted"
 
