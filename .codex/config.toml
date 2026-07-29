@@ -170,3 +170,12 @@ trust_level = "trusted"
 [projects."/Users/harper/Public/src/2389/prompt-bin"]
 trust_level = "trusted"
 
+[projects."/Users/harper/Downloads/nanoclaw-stuff"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/earthquake-notifier"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/elves"]
+trust_level = "trusted"
+
