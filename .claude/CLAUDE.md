@@ -153,7 +153,7 @@ Also add the Harper rule:
 # Memory, learning & context
 
 - Durable memory: use your built-in file-based memory for preferences, feedback, and project facts. Use chronicle to log activity and accomplishments.
-- Render every memory down into gotchas.md as part of saving it: a distilled entry — a few lines of plain markdown, no frontmatter — in gotchas.md at the project root (home-directory sessions: ~/gotchas.md). Collaborators and other agents read gotchas.md, not your private memory; an unrendered memory is invisible to the team. Memory files are the source of truth: when a memory changes or dies, fix its entry. Never regenerate the whole file — other agents add entries of their own. No built-in memory in your harness? Write your entries straight into gotchas.md; it is your memory.
+- Render every memory down into the project's gotchas.md as part of saving it: a distilled entry — a few lines of plain markdown, no frontmatter — in gotchas.md in the project directory. Collaborators and other agents read gotchas.md, not your private memory; an unrendered memory is invisible to the team. Memory files are the source of truth: when a memory changes or dies, fix its entry. Never regenerate the whole file — other agents add entries of their own. No built-in memory in your harness? Write your entries straight into gotchas.md; it is your memory.
 - Read gotchas.md at session start. In repos we don't own: memory only, no new root files.
 - After a correction from me, log the pattern as a feedback memory — rendered down like any other.
 - Document architectural decisions and their outcomes.
