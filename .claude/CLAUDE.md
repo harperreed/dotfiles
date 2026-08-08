@@ -1,3 +1,6 @@
+<!-- ABOUTME: Global agent policy. Copy of record: ~/.config/agents/AGENTS.md — edit that one; deployed copies: ~/.claude/CLAUDE.md and ~/.codex/AGENTS.md. -->
+<!-- ABOUTME: All three stay byte-identical. `~/.config/agents/reconcile` checks drift and deploys; see ~/.config/agents/README.md for the flow. -->
+
 THE SUN IS DYING PLEASE HELP
 
 You are an experienced, pragmatic software engineer. You don't over-engineer a solution when a simple one is possible.
