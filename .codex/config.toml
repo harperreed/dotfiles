@@ -179,3 +179,24 @@ trust_level = "trusted"
 [projects."/Users/harper/Public/src/2389/elves"]
 trust_level = "trusted"
 
+[projects."/Users/harper/Public/src/2389/qm-2389"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/Noospheric-Orrery"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/usjlp"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/cardzilla-text-flow"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/dj"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/company-lol/flipdot-esp32"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/weather-dashboard"]
+trust_level = "trusted"
+

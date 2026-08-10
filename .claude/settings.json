@@ -19,6 +19,7 @@
   "permissions": {
     "defaultMode": "dontAsk"
   },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "Notification": [
       {
@@ -112,6 +113,5 @@
       ],
       "command": "pulse"
     }
-  },
-  "model": "claude-fable-5[1m]"
+  }
 }

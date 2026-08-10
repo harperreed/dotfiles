@@ -35,3 +35,6 @@ set -gx PATH $PATH $HOME/.lmstudio/bin
 # End of LM Studio CLI section
 
 # atuin is initialized in conf.d/90-plugins.fish (guarded by type -q)
+
+# kimi-code
+fish_add_path -g "/Users/harper/.kimi-code/bin"
