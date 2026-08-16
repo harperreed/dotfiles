@@ -37,37 +37,46 @@ function work --description "ssh -t or --mosh to <host> and run utm (default), h
   # Fresh screen so the banner owns the terminal
   clear
 
-  # Phrases and matching emojis for random selection
-  set -l phrases 'G O B L I N   M O D E   E N G A G E D' 'F E R A L   K E Y B O A R D   H O U R' 'S U M M O N I N G   T H E   D A E M O N S' 'T H E   K E R N E L   P A N I C S   F I R S T' 'C E R T I F I E D   C U R S E D   E N E R G Y' 'B O N E L E S S   D E P L O Y   T O   P R O D' 'N E C R O M A N C I N G   A   D E A D   B R A N C H' 'B I G F O O T   S T O M P S   T H E   S E R V E R' 'C O M M I T T I N G   C R I M E S   I N   M A I N' 'R E L E A S E   T H E   D O O M S L U G' 'C R A C K E D   O U T   O N   S E M I C O L O N S' 'P R A Y I N G   T O   T H E   L I N K E R' 'N O   G O D S   N O   T E S T S' 'L I C E N S E   T O   K E R N E L' 'B A B Y G I R L   I T S   R E F A C T O R   O C L O C K' 'F O U R   L O K O   F U E L E D   M E R G E' 'R A C C O O N   I N   T H E   S E R V E R   R O O M' 'F R E A K Y   F R I D A Y   M E R G E   C O N F L I C T' 'T H E   L O G S   K N O W   W H A T   Y O U   D I D' 'H E A R S E   R O L L I N G   T O   P R O D'
-  set -l emojis '👹' '🐺' '😈' '💥' '🔮' '🍗' '🪦' '🦶' '🔪' '🐉' '💊' '🙏' '⚰️' '🔑' '💅' '🧃' '🦝' '🎭' '👁️' '🏴'
-  set -l pick (random 1 (count $phrases))
-  set -l bar_colors brred bryellow brgreen brcyan brblue brmagenta
-
-  echo
-  # Top rainbow bar
-  for _r in (seq 1 6)
-    for c in $bar_colors
-      set_color $c
-      printf '▓▒'
+  # Random art splash from ~/.config/prompt-art, sized to the terminal width
+  if type -q chafa
+    set -l art_files ~/.config/prompt-art/*
+    if test (count $art_files) -gt 0
+      set -l art $art_files[(random 1 (count $art_files))]
+      set -l art_cols (tput cols)
+      chafa -f symbols -c full -s {$art_cols}x{$art_cols} --symbols block+half+space --dither ordered $art
     end
   end
-  printf '\n'
+
+  # Phrases and matching emojis for random selection
+  # set -l phrases 'G O B L I N   M O D E   E N G A G E D' 'F E R A L   K E Y B O A R D   H O U R' 'S U M M O N I N G   T H E   D A E M O N S' 'T H E   K E R N E L   P A N I C S   F I R S T' 'C E R T I F I E D   C U R S E D   E N E R G Y' 'B O N E L E S S   D E P L O Y   T O   P R O D' 'N E C R O M A N C I N G   A   D E A D   B R A N C H' 'B I G F O O T   S T O M P S   T H E   S E R V E R' 'C O M M I T T I N G   C R I M E S   I N   M A I N' 'R E L E A S E   T H E   D O O M S L U G' 'C R A C K E D   O U T   O N   S E M I C O L O N S' 'P R A Y I N G   T O   T H E   L I N K E R' 'N O   G O D S   N O   T E S T S' 'L I C E N S E   T O   K E R N E L' 'B A B Y G I R L   I T S   R E F A C T O R   O C L O C K' 'F O U R   L O K O   F U E L E D   M E R G E' 'R A C C O O N   I N   T H E   S E R V E R   R O O M' 'F R E A K Y   F R I D A Y   M E R G E   C O N F L I C T' 'T H E   L O G S   K N O W   W H A T   Y O U   D I D' 'H E A R S E   R O L L I N G   T O   P R O D'
+  # set -l emojis '👹' '🐺' '😈' '💥' '🔮' '🍗' '🪦' '🦶' '🔪' '🐉' '💊' '🙏' '⚰️' '🔑' '💅' '🧃' '🦝' '🎭' '👁️' '🏴'
+  # set -l pick (random 1 (count $phrases))
+  # set -l bar_colors brred bryellow brgreen brcyan brblue brmagenta
+
+  # Top rainbow bar
+  # for _r in (seq 1 6)
+  #   for c in $bar_colors
+  #     set_color $c
+  #     printf '▓▒'
+  #   end
+  # end
+  # printf '\n'
 
   # Phrase line
-  echo
-  set_color --bold $bar_colors[(random 1 (count $bar_colors))]
-  echo "      $emojis[$pick]  $phrases[$pick]  $emojis[$pick]"
-  echo
-  set_color normal
+  # echo
+  # set_color --bold $bar_colors[(random 1 (count $bar_colors))]
+  # echo "      $emojis[$pick]  $phrases[$pick]  $emojis[$pick]"
+  # echo
+  # set_color normal
 
   # Bottom rainbow bar
-  for _r in (seq 1 6)
-    for c in $bar_colors
-      set_color $c
-      printf '▒▓'
-    end
-  end
-  printf '\n'
+  # for _r in (seq 1 6)
+  #   for c in $bar_colors
+  #     set_color $c
+  #     printf '▒▓'
+  #   end
+  # end
+  # printf '\n'
   echo
 
   # Connection info
@@ -91,27 +100,27 @@ function work --description "ssh -t or --mosh to <host> and run utm (default), h
 
     echo
     # Dim disconnect bar
-    for _r in (seq 1 6)
-      for c in $bar_colors
-        set_color $c
-        printf '░░'
-      end
-    end
-    printf '\n'
+    # for _r in (seq 1 6)
+    #   for c in $bar_colors
+    #     set_color $c
+    #     printf '░░'
+    #   end
+    # end
+    # printf '\n'
 
     echo
-    set_color --bold $bar_colors[(random 1 (count $bar_colors))]
+    set_color --bold brcyan
     echo "      $bye_emojis[$bye_pick]  $bye_phrases[$bye_pick]  $bye_emojis[$bye_pick]"
     echo
     set_color normal
 
-    for _r in (seq 1 6)
-      for c in $bar_colors
-        set_color $c
-        printf '░░'
-      end
-    end
-    printf '\n'
+    # for _r in (seq 1 6)
+    #   for c in $bar_colors
+    #     set_color $c
+    #     printf '░░'
+    #   end
+    # end
+    # printf '\n'
     echo
 
     set_color --bold brred
