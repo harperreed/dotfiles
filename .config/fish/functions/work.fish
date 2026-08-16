@@ -1,8 +1,10 @@
 # ~/.config/fish/functions/work.fish
 function work --description "ssh -t or --mosh to <host> and run utm (default), herdr, or boo ui"
   # Usage: work [--mosh] [--herdr|--boo] [host]
-  # -S: exact long flags only, so -h can mean help instead of prefix-matching --herdr
-  argparse -S -x 'herdr,boo' --max-args 1 'h/help' 'mosh' 'herdr' 'boo' -- $argv
+  # h/help keeps -h meaning help: argparse never matches -h to --herdr while a
+  # short h exists. (-S/--strict-longopts would too, but needs fish 4.1+ and the
+  # exe.dev boxes run 3.7.)
+  argparse -x 'herdr,boo' --max-args 1 'h/help' 'mosh' 'herdr' 'boo' -- $argv
   or return
 
   if set -q _flag_help
