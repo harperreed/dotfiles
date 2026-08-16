@@ -1,8 +1,21 @@
 # ~/.config/fish/functions/work.fish
 function work --description "ssh -t or --mosh to <host> and run utm (default), herdr, or boo ui"
   # Usage: work [--mosh] [--herdr|--boo] [host]
-  argparse -x 'herdr,boo' --max-args 1 'mosh' 'herdr' 'boo' -- $argv
+  # -S: exact long flags only, so -h can mean help instead of prefix-matching --herdr
+  argparse -S -x 'herdr,boo' --max-args 1 'h/help' 'mosh' 'herdr' 'boo' -- $argv
   or return
+
+  if set -q _flag_help
+    echo 'Usage: work [--mosh] [--herdr | --boo] [host]'
+    echo
+    echo 'Connect to host (default: disaster) and launch a ui.'
+    echo
+    echo '  --mosh      connect with mosh instead of ssh -t'
+    echo '  --herdr     run herdr (uhm) instead of utm'
+    echo '  --boo       run boo ui (ubm) instead of utm'
+    echo '  -h, --help  show this help and connect to nothing'
+    return 0
+  end
 
   set -l host disaster
   if test (count $argv) -ge 1
