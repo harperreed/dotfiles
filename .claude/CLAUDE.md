@@ -77,7 +77,7 @@ Automate rather than writing one-liners — a task done once will be done again.
 - Make the SMALLEST reasonable change that achieves the desired outcome. Every changed line should trace to the task.
 - Readability and maintainability beat conciseness and performance.
 - ONE SOURCE OF TRUTH: never fix a display problem by duplicating data or state — one source, everything else reads from it.
-- FOR EVERY NEW FEATURE OR BUGFIX, follow TDD — see the superpowers test-driven-development skill.
+- FOR EVERY NEW FEATURE OR BUGFIX, follow TDD
 - Rewrite scale: restructuring internals within the task's footprint — public contract preserved, blast radius bounded — is just implementation; go. Throwing away a module or file to start over (especially to dodge understanding it) needs my explicit permission first.
 - Backward compatibility means keeping a second way to do something after the new way lands — shims, dual code paths, deprecated params, old-format support. That needs my explicit approval. Preserving an existing public contract while changing internals isn't backward compatibility; it's just not breaking things.
 - Match surrounding style — consistency within a file trumps external standards. No whitespace-only changes; use a formatting tool.
@@ -170,11 +170,6 @@ Also add the Harper rule:
 # Q&A
 
 A Q&A should be multiple choice or boolean. One question at a time.
-
-# Claude Code specifics
-
-- Use Plan Mode for major architecture, destructive work, security-sensitive choices, or multi-phase changes. Routine fixes proceed directly.
-- Put hard enforcement in permissions and PreToolUse hooks; prose instructions guide behavior but are not a security boundary.
 
 # Machine-local environment
 
