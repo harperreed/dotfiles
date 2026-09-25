@@ -1,0 +1,70 @@
+#!/bin/sh
+# ABOUTME: Installs a pinned standalone pi release (self-contained binary, no Node) under
+# ABOUTME: ~/.local/share/pi and points ~/.local/bin/pi at it; roborev's pi_cmd uses that path.
+#
+# Usage: pi-install <version>      e.g. pi-install 0.87.1
+#        pi-install --help
+#
+# Downloads pi-<os>-<arch>.tar.gz from the matching earendil-works/pi GitHub
+# release, verifies it against the release's SHA256SUMS, extracts it to
+# ~/.local/share/pi/pi-<version>, then repoints ~/.local/share/pi/current and
+# ~/.local/bin/pi. Re-running with an already installed version only repoints.
+#
+# Why the standalone tarball and not `pi.dev/install.sh` or npm: the roborev
+# daemon gets auto-started from git hooks with whatever PATH the caller had,
+# often without Node. The standalone binary has no runtime dependency.
+
+set -eu
+
+usage() {
+    sed -n '4,11p' "$0" | sed 's/^# \{0,1\}//'
+}
+
+case "${1:-}" in
+    -h|--help) usage; exit 0 ;;
+    "") usage >&2; exit 1 ;;
+esac
+
+version=${1#v}
+repo=earendil-works/pi
+share=${XDG_DATA_HOME:-$HOME/.local/share}/pi
+bindir=$HOME/.local/bin
+dest=$share/pi-$version
+
+case "$(uname -s)" in
+    Darwin) os=darwin ;;
+    Linux) os=linux ;;
+    *) echo "pi-install: unsupported OS $(uname -s)" >&2; exit 1 ;;
+esac
+case "$(uname -m)" in
+    arm64|aarch64) arch=arm64 ;;
+    x86_64) arch=x64 ;;
+    *) echo "pi-install: unsupported arch $(uname -m)" >&2; exit 1 ;;
+esac
+asset=pi-$os-$arch.tar.gz
+base=https://github.com/$repo/releases/download/v$version
+
+if [ ! -x "$dest/pi" ]; then
+    tmp=$(mktemp -d "${TMPDIR:-/tmp}/pi-install.XXXXXX")
+    trap 'rm -rf "$tmp"' EXIT
+    echo "pi-install: downloading $base/$asset"
+    curl -fLsS "$base/$asset" -o "$tmp/$asset"
+    curl -fLsS "$base/SHA256SUMS" -o "$tmp/SHA256SUMS"
+    grep " $asset\$" "$tmp/SHA256SUMS" > "$tmp/SHA256SUMS.asset"
+    if command -v sha256sum >/dev/null 2>&1; then
+        (cd "$tmp" && sha256sum -c SHA256SUMS.asset)
+    else
+        (cd "$tmp" && shasum -a 256 -c SHA256SUMS.asset)
+    fi
+    mkdir -p "$dest.partial"
+    tar -xzf "$tmp/$asset" -C "$dest.partial" --strip-components=1
+    rm -rf "$dest"
+    mv "$dest.partial" "$dest"
+fi
+
+"$dest/pi" --version >/dev/null || { echo "pi-install: $dest/pi does not run" >&2; exit 1; }
+
+mkdir -p "$bindir"
+ln -sfn "$dest" "$share/current"
+ln -sfn "$share/current/pi" "$bindir/pi"
+echo "pi-install: $bindir/pi -> $share/current -> pi-$version ($("$bindir/pi" --version))"
