@@ -45,16 +45,6 @@
             "timeout": 10
           }
         ]
-      },
-      {
-        "matcher": "compact|resume",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash '/Users/harper/.claude/hooks/compaction-guard.sh'",
-            "timeout": 10
-          }
-        ]
       }
     ]
   },

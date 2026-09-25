@@ -173,11 +173,12 @@ Also add the Harper rule:
   - Next: the step after
   - Open: questions waiting on me, or none
   - Approved: "my exact words" (YYYY-MM-DD), one line per gate
+  - Compactions: count so far; add one after each compaction
   ```
 - Approvals are written down when given. When I approve a gate, quote it in the Now section before doing anything else. After a compaction, only written approvals count.
-- Compaction summaries are lossy and can be wrong: on 2026-09-24 one rewrote a review gate and invented an announcement to me. The compaction-guard hook (~/.claude/hooks/compaction-guard.sh) runs after every compaction and on resume; it prints the compaction count and the newest plan doc's Now section, and its count is the only count. First action after any compaction: read that output and gotchas.md. Where the summary and the files disagree, the files win.
+- Compaction summaries are lossy and can be wrong: on 2026-09-24 one rewrote a review gate and invented an announcement to me. First action after any compaction: read the Now section and gotchas.md. Where the summary and the files disagree, the files win.
 - Write deliverables to their file piece by piece as each piece is finished. Finished work that exists only in context is not finished.
-- Retire at the 3rd compaction (the hook's count) or a landed plan phase: finish the current step, commit, update the Now section, then end the turn with the word RETIRED and no next step. Ending the turn is how you retire. "The plan doc carries state, so I'll keep going" is the rationalization that produced 14-hour, 25-compaction sessions; a stopped session costs nothing.
+- Retire at the 3rd compaction or a landed plan phase: finish the current step, commit, update the Now section, then end the turn with the word RETIRED and no next step. Ending the turn is how you retire. "The plan doc carries state, so I'll keep going" is the rationalization that produced 14-hour, 25-compaction sessions; a stopped session costs nothing.
 - Session start in a repo with a plan doc: read the Now section first, the rest only when the current step needs it. Don't re-explore the tree.
 - Delegate implementation to subagents with clean contexts so the orchestrating session stays small — I highly prefer the subagent-driven-development skill.
 
