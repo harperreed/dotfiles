@@ -1,7 +1,6 @@
 {
   "cleanupPeriodDays": 999,
   "env": {
-    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "200000",
     "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_EFFORT_LEVEL": "max",
@@ -10,6 +9,7 @@
     "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
     "ENABLE_TOOL_SEARCH": "true",
     "MAX_CONSECUTIVE_AUTOCOMPACT_FAILURES": "3",
+    "CLAUDE_CODE_FORK_SUBAGENT": "0",
     "MAX_THINKING_TOKENS": "128000"
   },
   "attribution": {
@@ -85,7 +85,8 @@
     "variant-analysis@trailofbits": false,
     "workflow-skill-design@trailofbits": false,
     "x-research@skills-curated": false,
-    "xtool@2389-research-marketplace": false
+    "xtool@2389-research-marketplace": false,
+    "typesafe@typesafe-ai": true
   },
   "extraKnownMarketplaces": {
     "2389-research-marketplace": {
@@ -98,6 +99,12 @@
       "source": {
         "source": "github",
         "repo": "2389-research/thrifty"
+      }
+    },
+    "typesafe-ai": {
+      "source": {
+        "source": "github",
+        "repo": "typesafe-ai/skills"
       }
     }
   },
