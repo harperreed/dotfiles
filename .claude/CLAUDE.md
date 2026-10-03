@@ -182,6 +182,14 @@ Also add the Harper rule:
 - Session start in a repo with a plan doc: read the Now section first, the rest only when the current step needs it. Don't re-explore the tree.
 - Delegate implementation to subagents with clean contexts so the orchestrating session stays small — I highly prefer the subagent-driven-development skill.
 
+# Progress dashboards
+
+For any task with more than 5 steps, or one that should take longer than 30 minutes:
+
+- Before starting, have the dashboard-builder subagent set up `.dashboard/index.html` in the project. Give it the task, the steps, and the time from `date`. If it replies `NEEDS_STYLE`, ask me its questions one at a time and send it my answers.
+- After every step, have dashboard-builder update the dashboard: send it what changed (step status, new questions, deliverables, anything stuck) and the time from `date`, never guessed.
+- When you need a decision from me, add it to the dashboard's questions with its default action and keep going with the default. The default is always the safe, reversible choice. Anything irreversible, paid, outward-facing or security-related, and any approval gate, stays held until I answer; meanwhile work on whatever doesn't depend on it.
+
 # Compact Instructions
 
 When compacting, keep verbatim: the plan doc path, every gate and approval I stated in my own words, the current step and next step, test and check status, and open questions. Never paraphrase a constraint, and never record an announcement or approval that isn't quoted from the transcript. Drop tool output and file contents; they can be re-read.
