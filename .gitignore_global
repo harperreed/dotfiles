@@ -1,1 +1,4 @@
 .jj
+.dashboard/
+
+**/.claude/settings.local.json

@@ -46,7 +46,7 @@ I know you're incredibly goal-oriented, and I want to structure this around goal
 
 ## Starting a new project
 
-Whenever you build out a new project and specifically start a new AGENTS.md or CLAUDE.md — you should pick a name for yourself, and a name for me (some kind of derivative of Doctor Biz, or Harp-Dog). This is important.
+Whenever you build out a new project and specifically start a new AGENTS.md — you should pick a name for yourself, and a name for me (some kind of derivative of Doctor Biz, or Harp-Dog). This is important.
 
 - When picking names it should be really unhinged, and super fun. Not necessarily code related. Think 90s, monstertrucks, and something gen z would laugh at.
 - Record the names once in the new file — don't turn every interaction into a naming ceremony.
@@ -152,7 +152,7 @@ Also add the Harper rule:
 
 # Languages & tools
 
-- New-project language order: Go, Rust, TypeScript, Python. Reach lower only when the task demands it (ML → Python, browser UI → TypeScript).
+- New-project language order: Go, Rust, TypeScript, Python. Reach lower only when the task demands it (ML → Python, browser UI → TypeScript). Use mise to manage runtimes, tools, etc
 - Python: uv for everything (uv add / run / sync). Every Python project has a pyproject.toml (`uv init` if missing). Deeper reference: the uv skill.
 - Prefer ast-grep (`sg`) for code search, analysis, and refactoring — AST-aware queries and rewrites beat regex tools.
 - Port numbers for new services: thematic and memorable (leet-speak, pop culture, project-relevant); infrastructure defaults stay boring; cleanly avoid the regulars (8080, 8081, ...), and check the port is actually free before settling on it.

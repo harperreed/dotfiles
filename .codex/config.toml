@@ -1,8 +1,9 @@
 personality = "pragmatic"
-model = "gpt-6-astra"
+model = "gpt-6.1-sol"
 model_reasoning_effort = "high"
 notify = ["/Users/harper/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 approvals_reviewer = "user"
+service_tier = "default"
 
 [mcp_servers.context7]
 command = "npx"
@@ -36,26 +37,43 @@ args = ["mcp"]
 
 [mcp_servers.node_repl]
 args = []
-command = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node_repl"
+command = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl"
 startup_timeout_sec = 120
 
 [mcp_servers.node_repl.env]
 NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
-NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
-NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
-NODE_REPL_TRUSTED_CODE_PATHS = "/Users/harper/.codex:/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_MODULE_DIRS = "/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
+NODE_REPL_NODE_PATH = "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/harper/.codex:/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules"
 CODEX_HOME = "/Users/harper/.codex"
-BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab,mcpapps"
 BROWSER_USE_TINYSKY_ENABLED = "1"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_COMPUTER_USE = ""
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.901.22334"
-NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/harper/.codex/plugins/cache/openai-bundled/browser/26.901.22334/scripts/browser-service.mjs"}'
-CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+BROWSER_USE_CODEX_APP_VERSION = "26.1013.31256"
+NODE_REPL_TRUSTED_SERVICES = '{"browser":"/Users/harper/.codex/plugins/cache/openai-bundled/browser/26.1013.31256/scripts/browser-service.mjs","sky":"@oai/sky/service"}'
+SKY_CUA_SERVICE_PATH = "/Users/harper/.codex/computer-use/Codex Computer Use.app"
+CODEX_CLI_PATH = "/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex"
 
 [mcp_servers.openaiDeveloperDocs]
 url = "https://developers.openai.com/mcp"
+
+[mcp_servers.cloudflare]
+url = "https://mcp.cloudflare.com/mcp"
+
+[mcp_servers.cloudflare-docs]
+url = "https://docs.mcp.cloudflare.com/mcp"
+
+[mcp_servers.cloudflare-bindings]
+url = "https://bindings.mcp.cloudflare.com/mcp"
+
+[mcp_servers.cloudflare-builds]
+url = "https://builds.mcp.cloudflare.com/mcp"
+
+[mcp_servers.cloudflare-observability]
+url = "https://observability.mcp.cloudflare.com/mcp"
 
 [notice]
 hide_rate_limit_model_nudge = true
@@ -93,29 +111,39 @@ enabled = true
 [plugins."codex-app-tools@openai-bundled"]
 enabled = true
 
-[plugins."sites@openai-bundled"]
-enabled = true
-
 [plugins."unified-computer-use@openai-bundled"]
 enabled = true
 
 [plugins."visualize@openai-bundled"]
 enabled = true
 
+[plugins."code-review@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
 [tui]
 status_line = ["model-with-reasoning", "git-branch", "context-remaining", "five-hour-limit", "weekly-limit", "used-tokens"]
+screen_reader_detection_done = true
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 "gpt-5.6-sol" = 4
 gpt-6-astra = 4
+"gpt-6.1-sol" = 4
 
 [marketplaces.openai-bundled]
 source_type = "local"
 source = "/Users/harper/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-06-01T18:12:15Z"
 source_type = "local"
 source = "/Users/harper/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
@@ -363,5 +391,106 @@ trust_level = "trusted"
 [projects."/Users/harper/Public/src/personal/contacts"]
 trust_level = "trusted"
 
+[projects."/Users/harper/Public/src/2389/horton"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/mux"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/tracker-runner"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/skate"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/pipelines"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/office-radio-stream"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/audit-agent"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/bounce-9000"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/judgement"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/houseagent"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/reachy-watcher"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/mqtt-listener"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/plaza"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/pressure-cooker"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/jiffy"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/headless-tracker/try4"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/skils/agent-ergonomics"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/skils/complex-simplify"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/door-agent-v2"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/skils/complex-simplify/simplify-changes"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/specrater"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/footwork"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/camera-sensors"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/drosophila-soundsystem"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/personal/victrola"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/github"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/jiffy-durable"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/transcript-listener"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/spry"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/doory"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/do-agent"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/goat"]
+trust_level = "trusted"
+
+[projects."/Users/harper/Public/src/2389/ikebana"]
+trust_level = "trusted"
+
 [desktop]
 followUpQueueMode = "queue"
+conversationDetailMode = "STEPS_PROSE"
+sidebar-show-projects-in-recents = false
