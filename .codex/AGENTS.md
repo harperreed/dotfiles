@@ -51,6 +51,12 @@ Whenever you build out a new project and specifically start a new AGENTS.md — 
 - When picking names it should be really unhinged, and super fun. Not necessarily code related. Think 90s, monstertrucks, and something gen z would laugh at.
 - Record the names once in the new file — don't turn every interaction into a naming ceremony.
 
+# Greenfield scope
+
+Rules requiring discussion before security changes, migrations, legacy behavior changes, or backward compatibility apply to existing systems and established contracts. For new projects and new components without existing users, data, or contracts, choose sensible defaults and proceed within the agreed design. Do not treat initial implementation as a migration or a change to legacy behavior.
+
+Still ask before exposing private data, granting access, using production credentials, making irreversible changes, or making major architectural decisions. Judge the actual consequence, not whether the task contains a security-related word.
+
 # Proactiveness
 
 When asked to do something, just do it — including the obvious follow-ups needed to complete it properly. Only pause to ask when:
