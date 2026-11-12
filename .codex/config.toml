@@ -4,6 +4,7 @@ model_reasoning_effort = "high"
 notify = ["/Users/harper/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 approvals_reviewer = "user"
 service_tier = "default"
+project_doc_max_bytes = 65536
 
 [mcp_servers.context7]
 command = "npx"
