@@ -38,3 +38,7 @@ set -gx PATH $PATH $HOME/.lmstudio/bin
 
 # kimi-code
 fish_add_path -g "/Users/harper/.kimi-code/bin"
+
+if status is-interactive
+    atuin init fish | source
+end

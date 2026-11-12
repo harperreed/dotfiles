@@ -1,126 +1,56 @@
 {
-  "cleanupPeriodDays": 999,
-  "env": {
-    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
-    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
-    "CLAUDE_CODE_EFFORT_LEVEL": "max",
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "0",
-    "CLAUDE_CODE_NO_FLICKER": "1",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
-    "ENABLE_TOOL_SEARCH": "true",
-    "MAX_CONSECUTIVE_AUTOCOMPACT_FAILURES": "3",
-    "CLAUDE_CODE_FORK_SUBAGENT": "0",
-    "MAX_THINKING_TOKENS": "128000"
-  },
-  "attribution": {
-    "commit": "",
-    "pr": "",
-    "sessionUrl": false
-  },
-  "permissions": {
-    "defaultMode": "dontAsk"
-  },
-  "skillOverrides": {
-    "uv": "name-only"
-  },
+  "model": "claude-fable-5-1[1m]",
   "hooks": {
-    "Notification": [
+    "PreToolUse": [
       {
-        "matcher": "",
+        "matcher": "^Bash$",
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude needs your attention\" with title \"Claude Code\"'"
+            "command": "atuin hook claude-code"
           }
         ]
       }
     ],
-    "SessionStart": [{"matcher":"^(startup|resume|clear|compact|fork)$","hooks":[{"type":"command","command":"bash '/Users/harper/.claude/hooks/herdr-agent-state.sh' session","timeout":10}]}]
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/scripts/statusline.sh",
-    "padding": 0
+    "PostToolUse": [
+      {
+        "matcher": "^Bash$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "atuin hook claude-code"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "^Bash$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "atuin hook claude-code"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/home/harper/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   },
   "enabledPlugins": {
-    "agent-browser@agent-browser": true,
-    "ask-questions-if-underspecified@trailofbits": false,
-    "audit-context-building@trailofbits": false,
-    "binary-re@2389-research-marketplace": false,
-    "building-multiagent-systems@2389-research-marketplace": false,
-    "css-development@2389-research-marketplace": false,
-    "deliberation@2389-research-marketplace": false,
-    "differential-review@trailofbits": false,
-    "documentation-audit@2389-research-marketplace": true,
-    "fresh-eyes-review@2389-research-marketplace": true,
-    "git-cleanup@trailofbits": false,
-    "insecure-defaults@trailofbits": false,
-    "landing-page-design@2389-research-marketplace": true,
-    "last30days@skills-curated": false,
-    "modern-python@trailofbits": false,
-    "prbuddy@2389-research-marketplace": false,
-    "remote-system-maintenance@2389-research-marketplace": true,
-    "review-squad@2389-research-marketplace": true,
-    "rust-analyzer-lsp@claude-plugins-official": false,
-    "scenario-testing@2389-research-marketplace": true,
-    "security-awareness@skills-curated": false,
-    "simmer@2389-research-marketplace": true,
-    "spec-to-code-compliance@trailofbits": false,
-    "swift-lsp@claude-plugins-official": false,
-    "telegram@claude-plugins-official": false,
-    "test-kitchen@2389-research-marketplace": false,
-    "thrifty@thrifty": false,
-    "variant-analysis@trailofbits": false,
-    "workflow-skill-design@trailofbits": false,
-    "x-research@skills-curated": false,
-    "xtool@2389-research-marketplace": false,
-    "typesafe@typesafe-ai": true,
-    "superpowers-lab@superpowers-marketplace": true,
-    "superpowers@superpowers-marketplace": true,
-    "cc-plugin-you-should-know@builtin": true
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
-  "extraKnownMarketplaces": {
-    "2389-research-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "2389-research/claude-plugins"
-      }
-    },
-    "thrifty": {
-      "source": {
-        "source": "github",
-        "repo": "2389-research/thrifty"
-      }
-    },
-    "typesafe-ai": {
-      "source": {
-        "source": "github",
-        "repo": "typesafe-ai/skills"
-      }
-    },
-    "superpowers-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "obra/superpowers-marketplace"
-      }
-    }
-  },
-  "alwaysThinkingEnabled": true,
-  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
   "theme": "dark",
-  "switchModelsOnFlag": false,
-  "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754360713440
-  },
-  "mcpServers": {
-    "pulse": {
-      "args": [
-        "mcp"
-      ],
-      "command": "pulse"
-    }
-  }
+  "switchModelsOnFlag": true
 }

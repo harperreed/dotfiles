@@ -170,6 +170,12 @@ trusted_hash = "sha256:0904468b685b60d4f2dc73da0f356f1f3fccd1161f277813f8780a264
 [hooks.state."/Users/harper/.codex/hooks.json:session_start:1:0"]
 trusted_hash = "sha256:7b3de0102c38701200e185837043b2268cd10afeab2fc5c3fc495c6799fe4209"
 
+[hooks.state."/home/harper/.codex/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:ac371f260e4b23ba1d1b7a4ad68a44a323a8470b61f38471a47aceac1b7a5a7c"
+
+[hooks.state."/home/harper/.codex/hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:fc87dbee1cb8a9be4f78ba094c4fa8d5e2fd38cb800854e3717f9b6a52fe2a47"
+
 [projects."/Users/harper/Public/src/personal/crm"]
 trust_level = "trusted"
 
@@ -489,6 +495,27 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/Users/harper/Public/src/2389/ikebana"]
+trust_level = "trusted"
+
+[projects."/home/harper/workspace/personal/esp-analog-streamer"]
+trust_level = "trusted"
+
+[projects."/home/harper/workspace/personal/dna"]
+trust_level = "trusted"
+
+[projects."/home/harper/workspace/personal/voice-mail-board"]
+trust_level = "trusted"
+
+[projects."/home/harper/workspace/personal/voip-board"]
+trust_level = "trusted"
+
+[projects."/home/harper/workspace/personal/analog-streamer-board"]
+trust_level = "trusted"
+
+[projects."/home/harper/workspace/personal/c4dir"]
+trust_level = "trusted"
+
+[projects."/home/harper/workspace/2389/office-helper"]
 trust_level = "trusted"
 
 [desktop]

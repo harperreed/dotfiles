@@ -6,7 +6,7 @@ go_set_goroot = false
 [tools]
 usage = "latest"
 node = "latest"
-go = "1.26.6"
+go = "1.26.10"
 rust = "latest"
 claude = { version = "latest", bin = "claude", platforms = """
 [linux-arm64]
@@ -30,6 +30,7 @@ bun = "latest"
 zig = "latest"
 python = "latest"
 java = "26"
+gh = "latest"
 
 [tasks."llm:generate_bundle"]
 description = 'Generate LLM bundle output file using repomix'

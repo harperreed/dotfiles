@@ -73,7 +73,7 @@ layout {
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 spawn-sh-at-startup "eval $(ssh-agent -s)"
-spawn-at-startup "~/.config/hypr/battery-watch.sh"
+/-spawn-at-startup "~/.config/hypr/battery-watch.sh"  // Hyprland-only; this desktop has no battery
 
 /-spawn-at-startup "hypridle"                  // idle daemon: auto-lock + lock-before-suspend + screen-off/suspend on idle
 

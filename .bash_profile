@@ -20,3 +20,5 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 . "$HOME/.atuin/bin/env"
 export PATH="/Users/harper/.local/bin:$PATH"
+
+. "$HOME/.local/bin/env"
