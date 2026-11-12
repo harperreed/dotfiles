@@ -1,0 +1,552 @@
+# DO NOT EDIT -- WILL BE OVERWRITTEN
+# Managed Sheprd defaults, refreshed on startup and GUI config reload.
+# Put your overrides in config-gpui.local.toml beside this file.
+# Sheprd settings. Independent of the daemon config, except where a setting
+# below says it starts from one the daemon config already carries.
+# Save at $XDG_CONFIG_HOME/herdr/config-gpui.toml (default ~/.config/herdr/).
+# Omitted settings use defaults. Keys this build does not know, such as ones a
+# newer build reads, are ignored and named in a dismissible warning instead of
+# failing the load. The former [github] account table is rejected explicitly.
+# Font sizes are logical pixels, inclusive 8..48.
+# Font families below are examples; leave them commented to use platform defaults.
+# Fonts must be installed locally; none are bundled.
+# Powerline separators and Nerd Font icons live in the Private Use Area, which
+# no text face covers. Each section falls back to the installed "Nerd Font"
+# families automatically; set fallback to choose them yourself, or to [] for
+# none. Uninstalled names are ignored, and at most 8 are accepted per section.
+# With none installed and [terminal] fallback unset, a pane showing an icon
+# brings up a dismissible card naming a Nerd Font to install.
+# [sidebar], [tabs], and [ui] then fall back to the platform's Chinese,
+# Japanese, and Korean faces (PingFang and Hiragino on macOS, Microsoft YaHei
+# and Yu Gothic on Windows, Noto Sans CJK on Linux), the one matching the
+# first CJK language in `language` or the system's languages first, so Han
+# characters take that region's shapes. [terminal] keeps the icons alone.
+# Saved changes to the local file reload automatically in every GUI window.
+
+# Built-ins: Default, Nord, Dracula, Catppuccin Mocha, Catppuccin Latte, plus
+# popular Ghostty themes compiled in, such as TokyoNight, Gruvbox Dark,
+# Rose Pine, Atom One Dark, and GitHub Light Default (Settings lists them all).
+# Also accepts a Ghostty theme name, an absolute path, or a ~/ path.
+# Set "Follow Herdr" in config-gpui.local.toml to follow the local Herdr theme.
+# On an Omarchy desktop, "Omarchy" follows its current theme as it switches,
+# and is what you get until config-gpui.local.toml names another theme.
+# To follow the system light/dark appearance, name a theme for each side, as
+# Ghostty does: theme = "light:Catppuccin Latte,dark:Catppuccin Mocha"
+theme = "Default"
+# Themes starred in the Color Scheme picker, listed above the rest. The
+# picker's star button keeps this list in config-gpui.local.toml.
+# favorite_themes = ["Nord", "Catppuccin Mocha"]
+# How far the app's own colors (status dots, pull request badges, diff counts,
+# warnings, dim labels) stand off the sidebar and menus. "standard" moves a
+# color only when it would fall below 3:1, as pastels do on light themes.
+# "high" raises them and dim labels to 4.5:1 and makes selected rows stand out
+# more. Terminal output always keeps its program's colors.
+contrast = "standard"
+# The app's own accent (the current tab, selected rows): "theme" takes it from
+# the theme, "system" from Windows Settings > Personalization > Colors.
+# Other platforms keep the theme's. Terminal colors never change with it.
+accent = "theme"
+# The language of the app's own text: "system" follows the OS's preferred
+# languages, or a BCP 47 tag such as "fr-CA". Only English ships so far, so
+# any other language shows English. "en-XA" (accented and longer) and "en-XB"
+# (right to left) are pseudo-locales for testing; see docs/i18n.md. Terminal
+# output, names, and what the daemon reports never change with it.
+language = "system"
+
+# Ask before closing a tab (closing terminates its terminal processes).
+confirm_close_tab = true
+# Ask before closing a pane, independently of tabs. The dialog's "Do not ask
+# again" checkbox sets this to false in config-gpui.local.toml.
+confirm_close_pane = true
+# Show the Agents section below Spaces in the sidebar.
+show_agents = true
+# Show the Agents title row, with the sort toggle on its right. Hidden, the
+# order follows Herdr's `ui.agent_panel_sort` until you toggle it, unless a
+# plugin sets the agent view, which keeps the header shown. Also under
+# Settings > Sidebar.
+show_agents_header = true
+# Where the sidebar lists agents while show_agents is on: "panel", their own
+# section below Spaces, or "nested", under the workspace each one runs in.
+# Also under Settings > Sidebar.
+agents_placement = "panel"
+# Show the search field at the top of the sidebar, which finds devices,
+# worktrees, and branches. Also under Settings > Sidebar.
+show_sidebar_search = true
+# Show the repository owner's avatar, or the GitHub mark, before each space's
+# name in the sidebar, in the layouts that draw one (not orca or minimal).
+# Also under Settings > Sidebar.
+show_repository_icons = true
+# How agent status is drawn: "dots" (the default), "solid", "outline",
+# "tiles", "wave" (Superset's grid), "braille", or "orca". Only this app reads
+# it; Herdr's `ui.status_indicators` stays the terminal client's. Working always
+# moves. Also under Settings > Appearance > Indicators.
+# status_icons = "dots"
+# Draw a bar on the leading edge of each working, done, or blocked row, with
+# any set. Also under Settings > Appearance > Indicators.
+# edge_rail = false
+# Show a mark before each device's name in the sidebar for where it runs: this
+# machine, a cloud provider, Tailscale, or SSH. In the layouts that draw one
+# (not orca or minimal). Also under Settings > Sidebar.
+show_device_icons = true
+# Show the TCP ports each workspace's servers listen on, under its sidebar row
+# and in the status bar; click one to open it in a browser tab. Hosts are
+# scanned every five seconds with ss or lsof, a remote one over SSH; false
+# stops all scanning. Also under Settings > General.
+show_listening_ports = true
+# Show latency and loss from this machine in the status bar. One timed TCP
+# connect to 1.1.1.1:443 every 15 seconds, about a megabyte a day, so it suits
+# a metered link such as a phone hotspot. Also
+# under Settings > Status bar.
+show_network_quality = false
+# Draw wheel and trackpad scrollback between rows, following the OS deltas
+# and momentum; false scrolls by whole rows. Applications reading the mouse
+# always get whole rows. Also under Settings > General.
+smooth_scroll = true
+# Linux only: draw minimize, maximize, and close buttons at the right end of the
+# menu bar. When true the window needs no title bar from the window manager;
+# disable server-side decorations in your compositor or window manager settings.
+# On Wayland without server-side decorations (GNOME), buttons are always shown
+# regardless of this setting.
+# show_window_controls = true
+
+# Focus split terminal panes on hover in the active window, without clicking.
+focus_follows_mouse = true
+# macOS only: whether Option-letter reaches a pane as an Alt shortcut (Alt-P
+# for Option-P) or types the character the keyboard layout puts there. "auto"
+# sends Alt from the left Option on the U.S. and ABC layouts, while the right
+# Option still types accents and dead keys (Option-E then E types é); it types
+# with both elsewhere, so layouts that keep @, [, or letters on Option still
+# type them. "left" or "right" sends Alt from that Option key alone on any
+# layout, true from both, and false never. Alt always reaches the pane on
+# Linux and Windows.
+option_as_alt = "auto"
+# Keep a terminal selection highlighted after releasing the mouse copies it,
+# until the next click or keystroke. Cmd-C and Edit > Copy copy it again, and
+# selection tools and screen readers can still read it. false clears it on
+# release.
+keep_selection_after_copy = true
+# "normal" (TUI-like), "comfortable" (the previous roomy Normal), or "compact".
+# Compact hides workspace branch lines and PR change
+# counts, and tightens Spaces and Agents spacing without changing font sizes.
+# Add "-rounded" to any of them ("normal-rounded", "compact-rounded",
+# "comfortable-rounded") for inset rows with rounded, bordered highlights.
+# "superset" (single-line rows), "orca" (cards), and "minimal" (status and name
+# only) draw rows with a design of their own. "devices" lists each device with
+# its agents under it, and a search over them. View > Layout lists them all.
+layout = "normal"
+# How tab strips draw their tabs: "classic" (even cells divided by a rule),
+# "pills" (rounded pills led by the agent's logo, the status after the title),
+# "outline" (bare titles, the chosen one in an outlined pill with its close
+# button), "underline" (flat titles, a bar under the chosen one), "cards"
+# (browser-like, the chosen tab joined to its terminal), "curved" (the chosen
+# tab's curved body flows into content sitting in an inset card, and slides
+# between tabs), or "compact" (icons only, the chosen tab named). View > Tab
+# Layout lists them all.
+tab_layout = "classic"
+# New tabs run in herdr-core (Herdr 2), whose terminals Sheprd draws and
+# splits into native panes, instead of in Herdr 1. Herdr 1 tabs keep running
+# beside them. Without Herdr 1 installed, terminals are Herdr 2's anyway.
+# herdr-core runs on this computer only, so tabs on other hosts stay Herdr's.
+# Also under Settings > Tabs.
+herdr_2_terminals = false
+
+[palette]
+# Two short Shift taps open the unified palette in the focused GUI window.
+# Cmd-Shift-P opens All; Cmd-P starts on Navigation. Ordinary Shift typing and
+# selection do not count. Disable the gesture independently of keybindings.
+double_shift = true
+# Immediate non-hidden subdirectories, including folders without Git metadata.
+# Roots expand a leading ~ and $VAR / ${VAR}; unset variables show an error.
+# At most 16 roots. Child symlinks are skipped. Local folders open locally,
+# never on the selected SSH host. These settings do not read herdr-utils config.
+project_roots = []
+# Example override: project_roots = ["~/Code", "$HOME/Projects"]
+
+# Inherit shared [ui.toast] delivery, delay_seconds, and herdr.position.
+# Only delivery = "herdr" enables in-app toasts; "off", "terminal", and "system"
+# do not. QA previews bypass delivery policy. In config-gpui.local.toml, each
+# explicit key overrides the shared setting independently, including false.
+# [notifications]
+# enabled = false
+# Inclusive 0..3600. Custom notifications are immediate.
+# delay_seconds = 1
+# top-left, top-right, bottom-left, bottom-right. Explicit wire corners win.
+# position = "bottom-right"
+# GUI-only: false posts no "finished" toasts or OS notifications. "Needs
+# attention" and custom notifications (herdr notification show) still appear.
+# finished = true
+
+# The "copied to clipboard" flash shown after a terminal selection is copied.
+# Left commented out, this follows the daemon config's [ui.toast.clipboard], so
+# setting it there covers both clients. Uncomment a key to override that one
+# here; each key overrides on its own. Defaults, as in herdr: shown, at the
+# bottom center of the terminal.
+# [clipboard_toast]
+# enabled = true
+# top-left, top-center, top-right, bottom-left, bottom-center, bottom-right.
+# The position also places the note saying why New Worktree opened no dialog.
+# position = "bottom-center"
+
+# How loud this app plays agent sounds (done and request), as a percentage of
+# the sound file's own level, inclusive 0..100. Herdr's [ui.sound] chooses
+# whether and which sounds play; it has no volume, so this is this app's own.
+# Also under Settings > Notifications > Volume.
+# [sound]
+# volume = 50
+
+# What a pane's terminal bell (BEL) does. Herdr has no bell setting of its own:
+# it forwards each bell to the focused client, as an outer terminal would see it.
+# [bell]
+# Bounce the Dock icon while the window is in the background.
+# attention = true
+# Play the system alert sound.
+# sound = false
+
+# Where the managed agent skill may go on its own, over the answer saved when
+# the app asked. "local" (the default) offers and refreshes it only on this
+# computer; "off" never offers or refreshes it. Settings and the palette
+# still install it on this computer when you choose to.
+# [agent_skill]
+# install = "local"
+
+# Native shortcuts. Each key is a command; the value is one keystroke or a list,
+# primary first. "" or [] unbinds it. Assigning a keystroke here takes it away
+# from its default command. Modifiers: cmd (Super on Linux, Win on Windows),
+# ctrl, alt, shift, fn; keystrokes need at least one of cmd, ctrl, alt, or fn,
+# or a function key F1 through F24. Sheprd > Keyboard Shortcuts also edits,
+# unbinds, and resets them.
+# Herdr's own [keys] in config.toml (prefix chords included) add to these
+# defaults; a command named here keeps only the keystrokes listed here.
+# The examples below use the macOS defaults. Linux and Windows have their own
+# Ctrl+Shift defaults (not Super or Win): new_tab = "ctrl-shift-t",
+# new_window = "ctrl-alt-n", close_window = "ctrl-alt-w",
+# new_workspace = "ctrl-alt-shift-n",
+# new_worktree = "ctrl-shift-n",
+# split_right = "ctrl-shift-d", split_down = "ctrl-alt-shift-d",
+# command_palette = "ctrl-shift-p", resume_palette = "ctrl-alt-shift-r",
+# toggle_full_screen = "f11", quit = "ctrl-shift-q", and reset_font_size =
+# "ctrl-shift-0" on Linux but "ctrl-0" on Windows, which can take
+# Ctrl+Shift+0 for switching input languages.
+# See Keyboard Shortcuts for the full platform-specific list. Explicit values
+# are used literally on every platform; cmd is not translated to Ctrl+Shift.
+# Ctrl+Shift+U is left to GNOME/IBus Unicode character entry.
+# [keybindings]
+# new_tab = "cmd-t"
+# new_workspace = "cmd-shift-n"
+# new_worktree = "cmd-n"
+# new_window = "cmd-alt-shift-n"
+# split_right = "cmd-d"
+# split_down = "cmd-shift-d"
+# next_tab = "cmd-shift-]"
+# previous_tab = "cmd-shift-["
+# focus_left = "cmd-alt-left"
+# focus_right = "cmd-alt-right"
+# focus_up = "cmd-alt-up"
+# focus_down = "cmd-alt-down"
+# next_pane = "cmd-alt-]"
+# previous_pane = "cmd-alt-["
+# toggle_zoom = "cmd-shift-enter"
+# close_pane = "cmd-w"
+# close_tab = "cmd-shift-w"
+# focus_tab_1 = "cmd-1"   # through focus_tab_9 = "cmd-9"
+# toggle_sidebar = "cmd-b"
+# toggle_status_bar = "cmd-ctrl-b"   # unbound by default
+# toggle_zen_mode = "ctrl-cmd-z"   # Linux and Windows: "ctrl-alt-z"
+# increase_font_size = ["cmd-=", "cmd-+"]
+# decrease_font_size = "cmd--"
+# reset_font_size = "cmd-0"
+# settings = "cmd-,"
+# keybindings = "cmd-/"
+# workspace_picker = "cmd-p"
+# command_palette = "cmd-shift-p"
+# resume_palette = "cmd-shift-r"   # last query, filters, and selection
+# open_notification_target = "cmd-alt-n"
+# quit = "cmd-q"
+# find_next = "cmd-g"
+# find_previous = "cmd-shift-g"
+# toggle_full_screen = "ctrl-cmd-f"
+# cycle_windows = "cmd-`"
+# close_window = "cmd-alt-shift-w"
+# Unbound by default: themes, reconnect, logs, about, worktree_notes,
+# edit_worktree_note, git_menu, toggle_annotate.
+
+# What the focused pane receives instead of a keystroke, as Ghostty's text:
+# binds do. The value is a key a terminal can receive (ctrl-a, home, alt-b,
+# shift-enter), or "text:" and the text to type, at most 1024 bytes; an empty
+# string removes a default. A keystroke here leaves its default or daemon
+# command, but naming it in [keybindings] too is an error.
+# Shift-Enter sends Alt-Enter (Esc CR) by default everywhere, so a prompt that
+# never enabled the kitty keyboard protocol reads a newline instead of the bare
+# CR Herdr would send it; "shift-enter" = "" sends Shift-Enter unchanged.
+# On macOS these are also defaults:
+# [pane_keys]
+# "cmd-left" = "ctrl-a"
+# "cmd-right" = "ctrl-e"
+# "cmd-backspace" = "ctrl-u"
+# "alt-left" = "alt-b"
+# "alt-right" = "alt-f"
+# With option_as_alt = true on a layout that keeps symbols on Option, text
+# types them again. Name the key as the layout has it without Option: on a
+# Norwegian keyboard Option-7 is "alt-7" and Option-Shift-7 is "alt-/".
+# "alt-7" = "text:|"
+# "alt-/" = "text:\\"
+
+# Saved SSH devices use the local keybindings above, as `herdr --remote` does.
+# "server" uses the [keys] profile that device's Herdr publishes instead, like
+# `herdr --remote-keybindings server`; [keybindings] still apply on top. Keyed
+# by catalog ID; a device's right-click menu toggles it.
+# A device's theme paints only its terminal, so each host is told apart
+# where you work; the chrome keeps `theme`. Any `theme` value works, and the
+# device's right-click menu picks it.
+# [devices.0123456789abcdef0123456789abcdef]
+# keybindings = "server"
+# theme = "Dracula"
+
+# SSH hosts whose host keys are never verified, by the target saved with the
+# device. Anyone who can intercept the connection to one can impersonate it.
+# Only for hosts that keep no stable key (`UserKnownHostsFile=/dev/null`).
+# Add Device's "Skip host key
+# verification" box adds the target. To verify a host again, delete its
+# target here, or remove the device and add it again with the box clear.
+# [ssh]
+# skip_host_key_verification = ["ephemeral-host"]
+
+# Preferences offers a searchable picker for all four families together or each row.
+# Platform default removes the local family override; fallback cascades remain active.
+[sidebar]
+# Default: "Menlo" on macOS, "Cascadia Mono" on Windows (Consolas when
+# missing), "DejaVu Sans Mono" on Linux (or an installed monospace family such
+# as JetBrains Mono when DejaVu is missing).
+# family = "DejaVu Sans Mono"
+size = 12
+# fallback = ["Symbols Nerd Font Mono"]
+# Spacing written over the layout chosen above, in logical pixels. Each key
+# left out keeps the layout's own value. The indent is how far each nesting
+# level steps in: workspaces under their host, worktrees under their
+# repository. Bands: indent 0..=48, row_padding 0..=16, gap 0..=32,
+# host_gap 0..=48. The superset and orca layouts copy another app's rows,
+# so row_padding does not reach them: superset spaces its rows by gap, and
+# orca keeps its own gap and padding. Both take indent and host_gap.
+# indent = 14
+# row_padding = 2
+# gap = 6
+# host_gap = 10
+# What selecting a workspace marks besides its own row: "row" (only the row),
+# "group" (a stronger wash over the whole host group), or "group-dim" (that,
+# and the other hosts' rows dimmed). Hosts without a colour below use the
+# theme's active colour for the wash.
+# select = "row"
+# When to draw the device footer at the sidebar's foot (the device picker,
+# Sessions, and Settings): "always", "auto" (only with two or more devices,
+# or while one is being added), or "never". Without it, Settings and Sessions
+# keep their shortcuts and command palette entries, and Devices Overview in
+# the palette still offers Add Device.
+# device_footer = "always"
+# Whose +added/-deleted line counts a worktree row shows: "pr" (its cached
+# pull request's) or "local" (the checkout's uncommitted changes against HEAD,
+# for checkouts on this machine, drawn inside the pencil chip that marks
+# uncommitted work). Only one set is shown. Local counts reuse
+# the uncommitted-work probe's slow schedule: one checkout at a time, each at
+# most every 30 seconds while the window is active.
+# change_counts = "pr"
+
+# The activity bar: an icon column at the window's left edge. Workspaces is
+# the sidebar beside the terminals; Overview, Automations, and Usage use
+# the window's body.
+# Settings sits at its foot. false keeps the plain sidebar.
+# activity_bar = true
+
+# Show the Automations activity page. It reports unavailable until Core has
+# an authoritative job and run feed. false hides the page.
+# automations = true
+
+# A colour per host, keyed by the host's name in the sidebar, as #rgb or
+# #rrggbb. It washes the host's header, its workspace rows, and its agents'
+# rows faintly, so a long list reads by colour. Names with spaces go in quotes.
+# [sidebar.hosts]
+# Personal = "#3a4a6b"
+# "Mac mini" = "#5a3a3a"
+
+# Linked Git worktrees, told apart from their repository's main checkout,
+# which keeps the theme as drawn. In every sidebar layout, worktrees nested
+# under their main checkout hang from it on the tree's thin guide lines; one
+# standing alone, its main checkout not open, shows the branch glyph in place
+# of the owner's avatar. With "terminal" in apply_to, its workspace also gets
+# a thin rule where the tab strip meets the terminals, and none while the
+# strip is hidden; terminal cells are never covered or recoloured. tint picks the glyph's and the rule's hue as
+# #rgb or #rrggbb; unset, it is the theme's blue. Either way the hue only gets
+# lighter or darker as far as it must to stand out from the chrome. apply_to
+# lists where the marks show, "sidebar" and "terminal"; it defaults to
+# ["sidebar"]. [] turns them off, leaving the guides only in the flat
+# layouts, which always drew them.
+# [worktrees]
+# tint = "#7aa2f7"
+# apply_to = ["sidebar", "terminal"]
+
+[tab_labels]
+# Show the agent's terminal title on a tab with no name of its own, in place
+# of its number, cut after 28 columns. A tab you named keeps its name, and a
+# tab without an agent or a title keeps its number.
+agent_title = false
+
+[tabs]
+# Default: "Menlo" on macOS, "Cascadia Mono" on Windows (Consolas when
+# missing), "DejaVu Sans Mono" on Linux (or an installed monospace family such
+# as JetBrains Mono when DejaVu is missing).
+# family = "DejaVu Sans Mono"
+size = 12
+# fallback = ["Symbols Nerd Font Mono"]
+
+[terminal]
+# Default: "Menlo" on macOS, "Cascadia Mono" on Windows (Consolas when
+# missing), "DejaVu Sans Mono" on Linux (or an installed monospace family such
+# as JetBrains Mono when DejaVu is missing).
+# family = "DejaVu Sans Mono"
+size = 14
+# fallback = ["Symbols Nerd Font Mono"]
+# Row height as a multiple of size, 1 to 2. Default 20/14 (about 1.43), which
+# is 20 logical pixels at size 14. Lower it for tighter rows. Only [terminal]
+# takes this key.
+# line_height = 1.3
+# Weight of regular text: a name (thin, extralight, light, regular, medium,
+# semibold, bold, extrabold, black) or a number from 100 to 900. Default
+# regular. Bold text draws 300 heavier, at least bold. A weight the family has
+# no face for draws at its nearest one, and on macOS is reported. Only
+# [terminal] takes this key.
+# weight = "medium"
+# Blank space between the cells and the edges of the terminal's tab group, in
+# logical pixels from 0 to 64. One number pads both sides; a pair pads each:
+# [left, right] for padding_x, [top, bottom] for padding_y. Default 0. The
+# terminal keeps the remaining size, so wide padding costs columns and rows.
+# Only [terminal] takes these keys. They replace the deprecated
+# [layout] sidebar_gap, which still loads as the left padding.
+# padding_x = 8
+# padding_y = [4, 8]
+
+[ui]
+# Default: ".SystemUIFont" on macOS and Windows, "DejaVu Sans" on Linux (or an installed
+# sans family such as Noto Sans when DejaVu is missing).
+# family = "DejaVu Sans"
+size = 12
+# fallback = ["Symbols Nerd Font Mono"]
+
+# How chat views draw: "timeline" (entries on a line with avatars), "bubbles"
+# (your messages in bubbles on the right, like Claude's app), "terminal"
+# (Claude Code's own screen, in the terminal font), "document" (each prompt
+# a heading, the reply prose under it), "cards" (each turn in one card),
+# "imessage" (blue and gray bubbles with tails, like Apple's Messages), or
+# "opencode" (tinted blocks, finished tools on one line, like OpenCode).
+# The button in a chat's header steps through them.
+# [chat]
+# layout = "timeline"
+# Maximum reading-column width in logical pixels: 320–4000, or 0 for full width.
+# Settings > General offers a width slider and Full-width chat switch.
+# Command line: sheprd config set chat.max_width 0
+# max_width = 800
+#
+# Scroll smoothly to a streaming reply's new text, rather than jumping to it
+# as each chunk lands. Settings > General edits this while ACP chats are on.
+# glide = false
+#
+# Where tab strips offer a one-click chat with each installed agent; "+" keeps
+# opening a terminal tab in every placement. "plus" (the agents slide out
+# beside "+" under the pointer), "beside" (right after "+"), "leading" (before
+# the tabs), "trailing" (at the strip's right end), "button" (one button for
+# the agent last started, the others sliding out beside it), or "off".
+# Settings > General edits this while ACP chats are on.
+# launcher = "plus"
+
+# Variables every chat's tab starts with, on this machine or an SSH host, so
+# an agent reaches a company endpoint the pane's shell does not set up: GitHub
+# Enterprise for Copilot, an LLM gateway for Claude. Values are stored as
+# written, so keep tokens in your shell or the agent's own sign-in. HERDR_ACP is
+# the app's own. Settings > General edits this while ACP chats are on.
+# [chat.env]
+# GH_HOST = "mycompany.ghe.com"
+# ANTHROPIC_BASE_URL = "https://llm.example.com"
+
+# Saved Container devices use this computer's Docker or Podman engine. Settings >
+# Cloud devices > Container edits the engine key. Old provisioning and auto-stop
+# keys remain in user files as inert data; Spaceport does not offer those actions.
+# [container]
+# docker or podman; the first one installed when unset.
+# engine = "docker"
+
+# Old [cloud] and [cloud.container] setup values remain in user files as inert
+# data. Spaceport does not run them or offer agent installation on a device.
+
+# What shows behind the main window, also under Settings > Theme > Window. At the
+# default opacity the window paints as it always has.
+# [backdrop]
+# How solid the theme's background is, from 0 (clear) to 1 (opaque). Terminal
+# colors a program chooses, popups, and dialogs stay opaque.
+# opacity = 1.0
+# Blur the desktop behind a translucent window: macOS, Windows, and Wayland
+# compositors with KDE's blur protocol.
+# blur = false
+# What blur paints on Windows 11: "acrylic" (the windows behind, blurred) or
+# "mica" (the wallpaper). Ignored elsewhere.
+# material = "acrylic"
+# A picture behind the window, absolute or under ~/. The window stays opaque
+# over it; lower opacity shows more of it.
+# image = "~/Pictures/wallpaper.jpg"
+
+# What the status bar shows, also under Settings > Status bar.
+# Whether usage appears at all is [usage] show.
+# [status_bar]
+# The bar itself. false opens windows without it; Terminal > Toggle Status Bar,
+# or a `toggle_status_bar` binding, hides or shows it for the session. While
+# hidden, its connection message, prefix and resize badges show nowhere else.
+# show = true
+# "detailed" draws a meter and a service's two tightest windows; "compact"
+# shows each service's tightest limit as one share.
+# usage = "detailed"
+# The cup that keeps the machine awake; it stays while holding, so it can stop.
+# keep_awake = true
+# What the cup keeps awake: "display" holds the display and the system, so the
+# screen never locks; "system" holds only the system (like `caffeinate -i`) and
+# lets the display sleep and lock. A cup already on keeps its scope until it is
+# turned off and on again.
+# keep_awake_scope = "display"
+# Buttons: "label" for icon and name, "icon" for the icon alone, or "hidden".
+# theme = "label"
+# shortcuts = "label"
+# report_issue = "label"
+
+# Zen mode (View > Toggle Zen Mode, or `toggle_zen_mode`) hides the
+# header, sidebar, tab strips, status bar, and notices, and every group but
+# the one in use, for this window and session. Toasts and menus still show.
+# [zen]
+# Also enter native full screen, leaving it again when zen mode ends.
+# fullscreen = false
+# Centre a column this many terminal columns wide (20 to 1000), or this share
+# of the window ("10%" to "100%"), with blank room either side. Unset uses the
+# whole width.
+# width = 120
+# The terminal font size while in zen mode (8 to 48); the previous size comes
+# back when it ends. Unset keeps the current size.
+# font_size = 24
+
+# Optional behaviors, also under Settings > General.
+# [features]
+# Show sheprd-acp chats as native chat views and offer new chats with the
+# agents installed on the host. Off, chat panes keep their terminal.
+# acp_chats = true
+#
+# Open a space's menu when the pointer rests on its sidebar row, without a
+# right click. Moving the pointer anywhere but into that menu closes it again.
+# sidebar_hover_menu = false
+
+# Plan usage presentation. No authoritative report feed is connected yet;
+# missing usage is unavailable, never zero. Provider sign-in is not supported.
+# [usage]
+# Also under Settings > Status bar.
+# show = true
+# Show the runtime's toolbar usage segments, independently of show.
+# topbar = true
+# Honor the runtime's inline sidebar usage rows.
+# inline = true
+# Include these display identities when a report is unavailable.
+# show_providers = ["cursor", "openrouter"]
+# Exclude these display identities.
+# hide_providers = []

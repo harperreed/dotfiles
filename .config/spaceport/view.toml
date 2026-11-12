@@ -1,0 +1,6 @@
+[ui]
+hide_tab_bar_when_single_tab = true
+tab_bar_position = "top"
+
+[ui.toast]
+delivery = "system"
